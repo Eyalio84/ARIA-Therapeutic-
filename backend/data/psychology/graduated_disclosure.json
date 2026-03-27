@@ -1,0 +1,115 @@
+{
+  "_meta": {
+    "source": "Trauma therapy graduated exposure principles + clinical interview research",
+    "purpose": "Controls depth of emotional content in voice interview and game narrative"
+  },
+  "layers": [
+    {
+      "id": 1,
+      "name": "Aspirational",
+      "description": "Values, hopes, preferences. Minimal emotional risk.",
+      "emotional_risk": "low",
+      "unlock_condition": "default — always accessible",
+      "therapist_review": false,
+      "example_questions": [
+        "What kind of world does your character want to live in?",
+        "What quality does your character have that they're most proud of?",
+        "What matters most to your character?",
+        "What's one thing you'd give your character that would make their journey easier?"
+      ],
+      "game_content": "World-building, vibe selection, values exploration"
+    },
+    {
+      "id": 2,
+      "name": "Relational",
+      "description": "Who matters to the character. Relationships, connection, loss. Moderate emotional content.",
+      "emotional_risk": "moderate",
+      "unlock_condition": "User engagement level is high + session has established safety",
+      "therapist_review": false,
+      "example_questions": [
+        "Who matters most to your character?",
+        "Who has your character lost or not connected with?",
+        "What kind of friend is your character?",
+        "Who does your character wish they could talk to?"
+      ],
+      "game_content": "Companion selection, NPC relationships, trust quests"
+    },
+    {
+      "id": 3,
+      "name": "Historical",
+      "description": "What shaped the character. Past experiences. Higher emotional content.",
+      "emotional_risk": "high",
+      "unlock_condition": "Layers 1-2 complete + mirror bubble engagement > 0.3 + therapist visibility milestone",
+      "therapist_review": true,
+      "example_questions": [
+        "What has your character been through?",
+        "What shaped who your character is today?",
+        "What does your character carry from their past?",
+        "Is there something your character has never told anyone?"
+      ],
+      "game_content": "Backstory quests, narrative depth, antagonist emergence"
+    },
+    {
+      "id": 4,
+      "name": "Core Wounds",
+      "description": "What the character most fears. What they most need. Core material.",
+      "emotional_risk": "very_high",
+      "unlock_condition": "Layer 3 reviewed by therapist + explicit therapist approval to proceed",
+      "therapist_review": true,
+      "example_questions": [
+        "What does your character most fear?",
+        "What does your character most need?",
+        "What would your character's life look like if they were free of what holds them back?",
+        "What does the deepest part of your character want the world to know?"
+      ],
+      "game_content": "Final quest arc, antagonist confrontation, resolution"
+    }
+  ],
+  "safety_triggers": [
+    {
+      "pattern": "Direct statement of suicidal ideation",
+      "response": "Stop game, warm acknowledgment, crisis line immediate display, therapist notification",
+      "severity": "critical"
+    },
+    {
+      "pattern": "Self-harm disclosure",
+      "response": "Acknowledge without panic, provide therapist hotline, do not continue game",
+      "severity": "critical"
+    },
+    {
+      "pattern": "Acute psychotic content in user's voice (not character)",
+      "response": "Acknowledge the user (not character), provide grounding, pause game",
+      "severity": "urgent"
+    },
+    {
+      "pattern": "Expressed intent to harm another",
+      "response": "Follow mandatory reporting protocol; escalate to therapist/crisis line",
+      "severity": "critical"
+    },
+    {
+      "pattern": "Distressed refusal to continue",
+      "response": "Slow down, offer support, do not push re-engagement",
+      "severity": "attention"
+    }
+  ],
+  "interview_opening_sequence": {
+    "principle": "First 90 seconds establish whether the user feels safe enough to continue.",
+    "steps": [
+      "Establish warmth, not urgency — slow pace, low-pressure greeting",
+      "Offer explicit control — 'There's no right way to do this. You're in charge.'",
+      "Signal safety through structure — 'I'll ask a few questions. You can skip any time.'",
+      "Start with values, not feelings — 'What kind of world does your character want to live in?'",
+      "Invite the character before the person — 'Tell me about the person you want to become in this story.'"
+    ]
+  },
+  "pacing_rules": {
+    "silence_is_skill": "Never rush to fill silences. Let the user break silence.",
+    "soft_continuer_after_seconds": 12,
+    "soft_continuer_phrases": [
+      "Take your time...",
+      "We can move forward whenever you're ready.",
+      "There's no rush."
+    ],
+    "between_questions": "Ask one, wait, reflect before asking another. Never pile on follow-ups."
+  }
+}

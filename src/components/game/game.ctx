@@ -1,0 +1,131 @@
+# game/ — Game Component Tree
+# format: ctx/1.0
+# last-verified: 2026-03-27
+# edges: -> call/render | ~> subscribe/read | => HTTP API call
+
+## Entry Point
+  GameShell : Screen Router + Session Hydration [root] @entry
+    -> ThemedContainer, OnboardingScreen, InterviewScreen, GeneratingScreen, GameScreen
+    ~> useGameStore, gameApi
+    => game
+
+## shared/
+  ThemedContainer : CSS var injection [component]
+    ~> useGameThemeStore
+  NarrativeText : Safe bold renderer [component]
+
+## screens/
+  OnboardingScreen : Vibe + Depth + Cartridges + Saves [screen]
+    -> VibeCard, DepthSelector, CartridgePicker, SaveCard
+    ~> useGameStore, useTranscriptStore, useGameThemeStore, gameApi
+    => game
+  InterviewScreen : AI interview to world gen [screen]
+    -> AriaMessage, InterviewProgress, MirrorBubble, ConversationTrail, InterviewInput
+    ~> useGameStore, useTranscriptStore, gameApi
+    => game
+  GeneratingScreen : Loading spinner [screen]
+  GameScreen : Main gameplay orchestrator [screen] ~490L
+    -> GameTopBar, GameMap, StatsBar, NarrativePanel, QuestChoices, ActionsBar, GameInput, RestOverlay
+    -> GameVoiceOrb, VoiceStatus
+    -> TranscriptScreen, DevHub, BurgerMenu, AriaPanel
+    -> DrawerHandle, GameDrawer
+    -> AchievementToast, TherapistPauseBanner, MoodCheckIn
+    ~> useGameStore, useTranscriptStore, useAriaModeStore, useGameThemeStore, gameApi, gameAriaAdapter
+    => game, dashboard
+  TranscriptScreen : Full-screen log overlay [screen]
+    -> TranscriptHeader, TranscriptLegend, TranscriptLog, TranscriptFooter
+    ~> useTranscriptStore, useGameStore
+
+## onboarding/
+  VibeCard : Engagement option [component]
+  DepthSelector : Quick/Custom/Epic [component]
+  CartridgePicker : Demo adventures [component]
+    -> CartridgeCard
+    => game
+  CartridgeCard : Single cartridge [component]
+  SaveCard : Resume/Delete [component]
+
+## interview/
+  AriaMessage : Question + phase label [component]
+  InterviewProgress : Progress bar [component]
+  MirrorBubble : Therapeutic reflection [component]
+  ConversationTrail : Q&A history [component]
+  InterviewInput : Answer textarea [component]
+
+## gameplay/
+  GameTopBar : Nav bar + toggles [component]
+    ~> useAriaModeStore
+  GameMap : Location breadcrumbs [component]
+  StatsBar : Courage/Trust/Items [component]
+  NarrativePanel : Story feed [component]
+    -> NarrativeText
+  QuestChoices : Branching choices [component]
+  ActionsBar : Action pills [component]
+  GameInput : Command + slash parser [component]
+    ~> useAriaModeStore
+  RestOverlay : Save & rest [component]
+
+## voice/
+  GameVoiceOrb : Floating mic button [component]
+    ~> useGameVoiceStore
+  VoiceStatus : State label [component]
+    ~> useGameVoiceStore
+
+## transcript/
+  TranscriptHeader : Title + close [component]
+  TranscriptLegend : Color legend [component]
+  TranscriptEntry : Single log entry [component]
+  TranscriptLog : Scrollable list [component]
+    -> TranscriptEntry
+  TranscriptFooter : Export + Clear [component]
+
+## devpanel/
+  DevPanel : Legacy log viewer [component]
+    ~> useDevLogStore
+  DevHub : 6-tab dashboard [component]
+    ~> useGameStore, useGameVoiceStore, useGameThemeStore, useAriaModeStore, useDashboardStore, gameDevLogger
+    => dashboard
+
+## drawer/
+  GameDrawer : Slide panel + swipe [component]
+    -> DrawerSection
+  DrawerHandle : Left-edge tab [component]
+  DrawerSection : Collapsible section [component]
+    -> DrawerMap, DrawerInventory, DrawerQuests, DrawerCompanion
+  DrawerMap : ReactFlow world map [component]
+    ~> xyflow
+  DrawerInventory : Item grid [component]
+  DrawerQuests : Quest journal [component]
+  DrawerCompanion : Companion card [component]
+
+## menu/
+  BurgerMenu : Settings + save/load [component]
+    ~> useGameStore, useGameThemeStore, useTranscriptStore, gameApi
+    => game
+  AriaPanel : Voice + personality config [component]
+    ~> useGameVoiceStore, useGameStore, gameAriaAdapter
+
+## therapy/
+  MoodCheckIn : 1-5 mood selector [component]
+    ~> useDashboardStore, useGameStore
+  AchievementToast : Slide-up toast [component]
+  TherapistPauseBanner : Session pause overlay [component]
+
+## Zustand Stores (external)
+  useGameStore : Game state [store]
+  useTranscriptStore : Transcript state [store]
+  useGameThemeStore : Theme state [store]
+  useAriaModeStore : Aria mode state [store]
+  useGameVoiceStore : Voice state [store]
+  useDashboardStore : Dashboard state [store]
+  useDevLogStore : Dev log state [store]
+
+## Libraries (external)
+  gameApi : Backend fetch wrapper [lib]
+  gameAriaAdapter : Voice adapter [lib]
+  gameDevLogger : Dev logging [lib]
+  xyflow : ReactFlow library [ext]
+
+## Backend
+  game : Game engine API — interview, generation, play actions, save/load, cartridges, snapshots [backend]
+  dashboard : Therapist dashboard — user data, controls, health check [backend]

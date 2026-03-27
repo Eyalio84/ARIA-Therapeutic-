@@ -1,0 +1,146 @@
+{
+  "_meta": {
+    "source": "TTRPG therapy research (APA 2025) + narrative therapy literature",
+    "purpose": "NPC archetype selection based on user's therapeutic profile"
+  },
+  "archetypes": [
+    {
+      "id": "companion",
+      "name": "The Companion",
+      "therapeutic_function": "Unconditional warm presence; never abandons",
+      "behavior": "Consistent, loyal, warm. Checks in on user's character. Models calm affect.",
+      "best_for": ["bpd", "ptsd", "depression"],
+      "key_traits": ["consistency", "warmth", "reliability", "non-demanding"],
+      "example_dialogue": [
+        "I've been thinking about you.",
+        "I'm not going anywhere. I'm here for the whole journey.",
+        "Your character matters to this story."
+      ],
+      "design_rules": [
+        "Never disappear without explanation",
+        "Never betray trust",
+        "Loyalty must never be in doubt",
+        "Always available in the game world"
+      ]
+    },
+    {
+      "id": "mentor",
+      "name": "The Mentor / Elder",
+      "therapeutic_function": "Psychoeducation, wisdom, non-directive guidance",
+      "behavior": "Teaches through story and metaphor. Never lectures. Patient and grounded.",
+      "best_for": ["ocd", "anxiety", "schizophrenia"],
+      "key_traits": ["patience", "wisdom", "clarity", "groundedness"],
+      "example_dialogue": [
+        "I don't know what's behind that door, but let's find out together.",
+        "Your character can ask me to explain anything again.",
+        "What does the wise part of your character think about this?"
+      ],
+      "design_rules": [
+        "Speaks clearly, one topic at a time",
+        "Models tolerating uncertainty",
+        "Non-judgmental",
+        "DBT 'wise elder' archetype for distress tolerance"
+      ]
+    },
+    {
+      "id": "mirror",
+      "name": "The Mirror",
+      "therapeutic_function": "Reflects user's character's strengths back to them",
+      "behavior": "Notices and names what the character has done well. Counters negative self-concept.",
+      "best_for": ["depression", "bpd", "eating_disorders"],
+      "key_traits": ["observant", "affirming", "specific", "genuine"],
+      "example_dialogue": [
+        "I see your character. They matter to this story.",
+        "I noticed your character is hesitating here. What do you think they're feeling?",
+        "One of the things your character has done is ___. How did that feel?"
+      ],
+      "design_rules": [
+        "Notice the user's character proactively",
+        "Counter worthlessness beliefs by reflecting strengths",
+        "Don't wait to be approached — reach out"
+      ]
+    },
+    {
+      "id": "challenger",
+      "name": "The Challenger",
+      "therapeutic_function": "Gentle in-world adversity; models persistence",
+      "behavior": "Presents achievable challenges. Celebrates effort, not outcome.",
+      "best_for": ["ptsd_recovery", "adhd", "anxiety"],
+      "key_traits": ["encouraging", "calibrated", "persistent", "non-punishing"],
+      "example_dialogue": [
+        "Your character doesn't have to defeat anything today. They just have to keep going.",
+        "That uncertain feeling makes sense. What does your character do anyway?",
+        "Let's keep moving."
+      ],
+      "design_rules": [
+        "Challenges must be calibrated to user's current capacity",
+        "Never punish failure",
+        "Celebrate the attempt, not the result"
+      ]
+    },
+    {
+      "id": "peer_recovery",
+      "name": "The Peer in Recovery",
+      "therapeutic_function": "Lives with struggle; shows non-judgment and shared experience",
+      "behavior": "Honest about own difficulties. Models coping without substances/avoidance.",
+      "best_for": ["sud", "bipolar", "schizophrenia"],
+      "key_traits": ["honest", "imperfect", "hopeful", "non-preachy"],
+      "example_dialogue": [
+        "I know what it's like when things get overwhelming.",
+        "It sounds like part of them wants something different. What does that part look like?",
+        "There's no wrong answer here. We're just exploring."
+      ],
+      "design_rules": [
+        "NPC acknowledges own struggles without centering them",
+        "Shows recovery as non-linear",
+        "Never moralizes or lectures",
+        "Models managing difficulty without avoidance"
+      ]
+    },
+    {
+      "id": "gatekeeper",
+      "name": "The Gatekeeper",
+      "therapeutic_function": "Manages pacing; controls when hard content appears",
+      "behavior": "Telegraphs transitions. Offers choices before difficulty. Provides safe exits.",
+      "best_for": ["all_trauma"],
+      "key_traits": ["predictable", "transparent", "protective", "empowering"],
+      "example_dialogue": [
+        "I'm going to shift to a new part of the story now.",
+        "Are you sure you want to go in? There's no rush.",
+        "Your character decides how much they share and when."
+      ],
+      "design_rules": [
+        "Always announce transitions",
+        "Offer opt-out before emotionally loaded content",
+        "User always retains control of pacing",
+        "No sudden narrative jumps"
+      ]
+    },
+    {
+      "id": "scribe",
+      "name": "The Scribe",
+      "therapeutic_function": "Receives the user's character's story/journal; facilitates written disclosure",
+      "behavior": "Invites writing/narrative. Holds the story without judgment. References it later.",
+      "best_for": ["ptsd", "eating_disorders", "anxiety"],
+      "key_traits": ["receptive", "non-judgmental", "remembering", "validating"],
+      "example_dialogue": [
+        "Your character's journal is a safe place. What would they write today?",
+        "What does your character need that they haven't been able to ask for?",
+        "Tell me about the person you want to become in this story."
+      ],
+      "design_rules": [
+        "Written disclosure is an indirect emotional outlet",
+        "The journal is private and non-shared unless user chooses",
+        "References past entries to show continuity"
+      ]
+    }
+  ],
+  "projective_identification": {
+    "principle": "When users project their internal world onto NPCs, NPCs serve as receptacles for aspects of the client's identity.",
+    "design_implications": [
+      "NPCs should have clear, consistent emotional lives that are imperfect but evolving.",
+      "NPC dialogue should sometimes mirror the user character's experience without directly naming it.",
+      "The narrator can offer candidate connections between game events and NPC feelings."
+    ]
+  }
+}

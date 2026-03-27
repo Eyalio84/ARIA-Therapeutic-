@@ -1,0 +1,39 @@
+# store/ — Store Components
+# format: ctx/1.0
+# last-verified: 2026-03-27
+# edges: -> call/render | ~> subscribe/read | => HTTP API call
+
+## Entry
+  TabContainer : Lazy tab router [component]
+    -> StorePage
+
+## StorePage — E-commerce Shell
+  StorePage : Store page orchestrator [component] @entry
+    -> StoreHeader, ProductGrid, ProductDetail, Cart, JarvisOrb
+  StoreHeader : Category filter and cart toggle [component]
+    ~> useProductsStore "setCategory"
+    ~> useCartStore "toggleCart"
+  ProductGrid : Product listing grid [component]
+    -> ProductCard
+    ~> useProductsStore "fetchProducts"
+  ProductCard : Single product card [component]
+  ProductDetail : Selected product view [component]
+    ~> useProductsStore "selectedProduct"
+    ~> useCartStore "addItem"
+  Cart : Shopping cart drawer [component]
+    ~> useCartStore "items, quantities"
+  JarvisOrb : Store voice assistant button [component]
+    -> JarvisChatPanel
+  JarvisChatPanel : Store chat assistant panel [component]
+    ~> useSdkStore "setPersonaState"
+    => aria
+
+## Stores
+  useProductsStore : Product catalog and selection state [store]
+    => products
+  useCartStore : Cart items and quantities [store]
+  useSdkStore : SDK persona state [store]
+
+## Backend
+  aria : POST /api/aria/respond — store chat assistant [backend]
+  products : GET /api/products, GET /api/products/{id} — product catalog [backend]

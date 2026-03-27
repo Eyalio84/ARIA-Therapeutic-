@@ -1,0 +1,35 @@
+# data/ — FunctionGemma Fine-Tuning Pipeline
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## finetune/ — Training Scripts & Data
+  generate_dataset : 45 functions to 1,448 examples [lib]
+    -> fullJSONL
+  train_on_hf : Launch LoRA training on HF Space [lib]
+    -> trainerSpace
+  finetune-functiongemma-colab : Interactive Colab training [lib]
+    -> datasetRepo, baseModel, modelRepo
+  fullJSONL : 1,448 examples [data]
+    -> trainJSONL, evalJSONL
+  trainJSONL : 1,303 train split [data]
+    -> datasetRepo
+  evalJSONL : 145 eval split [data]
+    -> datasetRepo
+  TRAINING-README : End-to-end guide [doc]
+    ~> generate_dataset, train_on_hf
+
+## HuggingFace — External Model & Data Hosting
+  baseModel : google/functiongemma-270m-it [ext]
+  datasetRepo : eyalnof123/su-lab-functiongemma-dataset [ext]
+  modelRepo : eyalnof123/functiongemma-270m-su-lab [ext]
+    -> localAria
+  trainerSpace : eyalnof123/functiongemma-trainer [ext]
+    -> datasetRepo, baseModel, modelRepo
+
+## App Integration — Runtime Consumers
+  trainingLogger : Captures function-call pairs for training [lib]
+    -> generate_dataset
+  localAria : FunctionGemma on-device inference [lib]
+    -> serveGame
+  serveGame : Serves game with local model [lib]

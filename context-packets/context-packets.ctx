@@ -1,0 +1,40 @@
+# context-packets/ — Session Continuity Packets
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> temporal flow between sessions | ~> thematic cross-reference
+
+## Sessions — Chronological Development Log
+
+  SESSION-2026-03-21_01-31 : Therapy game engine — 204 tests, 16 files, 60+ sources [doc]
+    -> SESSION-2026-03-21_16-31
+    ~> SESSION-2026-03-22_13-15 "therapy backend reused"
+
+  SESSION-2026-03-21_16-31 : React migration, voice, DevHub, persistence [doc]
+    -> SESSION-2026-03-21_20-18
+
+  SESSION-2026-03-21_20-18 : Update #2 — menus, access layers [doc]
+    -> SESSION-2026-03-22_05-57
+
+  SESSION-2026-03-22_05-57 : Mega session — Jarvis SU, Termux, computer use [doc]
+    -> SESSION-2026-03-22_13-15
+    ~> SESSION-2026-03-22_13-15 "MEGA PLAN approved"
+
+  SESSION-2026-03-22_13-15 : MEGA PLAN complete — dashboard, clinical data [doc]
+    -> SESSION-2026-03-22_15-37
+    ~> SESSION-2026-03-22_15-37 "MEGA PLAN wiring"
+
+  SESSION-2026-03-22_15-37 : Persistence fix, slash cmds, DevHub upgrade, SU Lab [doc]
+    -> SESSION-2026-03-23_08-17
+
+  SESSION-2026-03-23_08-17 : SU Lab waves 1-3, FunctionGemma dataset [doc]
+    -> SESSION-2026-03-23_17-00
+    ~> SESSION-2026-03-23_17-00 "dataset generated"
+
+  SESSION-2026-03-23_17-00 : Visual Logic System, Colab training [doc]
+    -> SESSION-2026-03-23_23-09
+    ~> SESSION-2026-03-23_23-09 "training started"
+
+  SESSION-2026-03-23_23-09 : FunctionGemma done, CT2 conversion, 42% acc [doc]
+    -> SESSION-2026-03-24_11-07
+
+  SESSION-2026-03-24_11-07 : Planning — local inference research, SU Lab plan [doc]

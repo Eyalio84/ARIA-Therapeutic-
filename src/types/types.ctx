@@ -1,0 +1,21 @@
+# types/ — Type Definitions
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## types/ — Type Definitions
+  dashboard : Mood, flags, notes, achievements [type]
+    ~> storeDash, compDash
+  game : World, NPCs, quests, transcript [type]
+    ~> storeGame, storeTranscript, libGameAdapter, compGame
+  sqlite : SQLite WASM ambient types [type]
+    ~> libDb
+
+## Consumers
+  storeDash : store/dashboard [store]
+  storeGame : store/game [store]
+  storeTranscript : store/transcript [store]
+  libDb : lib/db [lib]
+  libGameAdapter : lib/gameAriaAdapter [lib]
+  compGame : components/game/* [component]
+  compDash : components/dashboard/* [component]

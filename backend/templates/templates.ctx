@@ -1,0 +1,43 @@
+# templates/ — Game Frontend Templates
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## game.html — Single-Page App
+  onboarding : Vibe selection + depth + cartridge picker [screen] @entry
+    -> interview "begin / load cartridge"
+    -> generating "load cartridge"
+    ~> backendAPI "cartridges, cartridges/load"
+  interview : Guided question flow with mirror bubbles [screen]
+    -> generating "interview complete"
+  generating : Spinner while world is built [screen]
+    -> game "game config ready"
+  game : Narrative play: map, stats, choices, actions [screen]
+    -> restOverlay, voiceOrb, transcriptPanel
+    ~> googleFonts
+  transcriptPanel : Color-coded session log with export [screen]
+  restOverlay : Pause with continue/save options [screen]
+  voiceOrb : Floating mic button, state machine [screen]
+
+## JavaScript Modules
+  stateManager : userId, vibe, depth, gameConfig [lib]
+    -> interviewFlow, gamePlayer, voiceEngine
+  interviewFlow : startInterview, submitAnswer, mirrorBubble [lib]
+    -> interview
+    ~> backendAPI "start, answer, expand_mirror"
+  gamePlayer : Game orchestrator — launchGame, handleGameAction, renderMap [lib]
+    -> game, transcriptEngine
+    ~> backendAPI "generate, play/start, play/action, play/save"
+  transcriptEngine : logTranscript, export JSON [lib]
+    -> transcriptPanel
+  voiceEngine : Gemini Live WebSocket + mic + playback [lib]
+    -> transcriptEngine, gamePlayer
+    ~> backendAPI "voice-config"
+    ~> geminiWS "audio stream + tool calls"
+  domHelpers : createTextNode, setNarrative, autoGrow [lib]
+    -> interviewFlow, gamePlayer
+
+## External APIs
+  backendAPI : Backend REST API — /api/game/* [ext]
+  geminiWS : Gemini Live WS — Voice streaming + tool calls [ext]
+  googleFonts : Google Fonts — Instrument Serif, DM Sans, JetBrains Mono [ext]

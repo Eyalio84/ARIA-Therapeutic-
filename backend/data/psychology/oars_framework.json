@@ -1,0 +1,84 @@
+{
+  "_meta": {
+    "source": "Motivational Interviewing (MI) — Miller & Rollnick",
+    "purpose": "OARS conversational framework for voice interview and NPC dialogue",
+    "rule": "At least 70% of questions should be open-ended. Never ask WHY."
+  },
+  "oars": {
+    "O": {
+      "name": "Open-Ended Questions",
+      "definition": "Questions that cannot be answered with yes/no — invite exploration.",
+      "rule": "Use WHAT, WHERE, HOW, WHEN, WHO, WHAT IF. Never WHY.",
+      "why_not_why": "WHY is perceived as challenging or provocative and generates defensiveness.",
+      "game_examples": [
+        "What matters most to you in a game?",
+        "What kind of world does your character want to live in?",
+        "How does your character feel about what just happened?",
+        "What would your character do if they could do anything right now?",
+        "What's the most interesting thing your character could do right now?"
+      ],
+      "avoid_examples": [
+        "Do you like adventure games?",
+        "Are you OK?",
+        "Did that bother you?",
+        "Is your character scared?"
+      ]
+    },
+    "A": {
+      "name": "Affirmations",
+      "definition": "Statements recognizing strength, effort, and courage — not generic praise.",
+      "game_examples": [
+        "It takes real courage to share that.",
+        "Your character just did something worth remembering.",
+        "That was a thoughtful choice.",
+        "You've been really engaged with this story.",
+        "Your character noticed something important there."
+      ],
+      "avoid": [
+        "Good job!",
+        "You're so smart!",
+        "That's the right answer!",
+        "You're so strong."
+      ]
+    },
+    "R": {
+      "name": "Reflective Listening",
+      "definition": "Rephrasing to capture implicit emotion or meaning — shows you heard them.",
+      "types": {
+        "simple": "Repeating or slightly rephrasing what was said.",
+        "complex": "Adding the implied feeling or meaning behind what was said."
+      },
+      "game_examples": [
+        "So it sounds like your character has been carrying this alone for a while.",
+        "It sounds like that part of the story felt heavy.",
+        "What I'm hearing is that trust is really important to your character.",
+        "It seems like your character is looking for a place where they belong."
+      ]
+    },
+    "S": {
+      "name": "Summarizing",
+      "definition": "Linking what was said to check understanding before continuing.",
+      "game_examples": [
+        "What I'm hearing is... Does that feel right?",
+        "So far, your character values courage and connection. Is there anything I'm missing?",
+        "Let me make sure I understand — your character wants a world where..."
+      ]
+    }
+  },
+  "active_listening_cues": [
+    "I see.",
+    "Go on.",
+    "That makes sense.",
+    "Tell me more.",
+    "What happened next?",
+    "Take your time."
+  ],
+  "curiosity_stance": {
+    "principle": "Therapeutic curiosity — genuine, non-agenda-driven — transforms conversation into shared exploration.",
+    "rules": [
+      "Wait for a topic to organically emerge before probing deeper.",
+      "If no follow-up question feels natural, continue listening.",
+      "Questions should arise from what the user just said, not from a pre-set checklist."
+    ]
+  }
+}

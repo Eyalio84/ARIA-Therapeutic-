@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Aria — Your Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   OBSIDIAN COMMAND CENTER — Therapeutic Narrative Game
+   Dark, warm, inviting. Game first. Never clinical.
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  --bg-deep: #0a0a0f;
+  --bg-mid: #12121a;
+  --bg-surface: #1a1a26;
+  --bg-elevated: #222233;
+  --bg-hover: #2a2a3d;
+  --gold: #c9a84c;
+  --gold-light: #e4cc7a;
+  --gold-dim: #8a7235;
+  --gold-glow: rgba(201, 168, 76, 0.15);
+  --gold-border: rgba(201, 168, 76, 0.25);
+  --teal: #4a9e8e;
+  --teal-glow: rgba(74, 158, 142, 0.12);
+  --rose: #c47a7a;
+  --text-primary: #e8e4dc;
+  --text-secondary: #9a9690;
+  --text-dim: #5a5854;
+  --text-aria: var(--gold-light);
+  --font-aria: 'Instrument Serif', Georgia, serif;
+  --font-ui: 'DM Sans', -apple-system, sans-serif;
+  --font-game: 'JetBrains Mono', 'Fira Code', monospace;
+  --gap: 16px;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --mood-primary: #1a1a26;
+  --mood-secondary: #12121a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%; width: 100%;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.screen {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.screen.active { display: flex; opacity: 1; }
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px var(--gap);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  flex-shrink: 0;
+}
+.top-bar .brand { font-family: var(--font-aria); font-size: 20px; color: var(--gold); letter-spacing: 0.5px; }
+.top-bar .status { font-size: 11px; color: var(--text-dim); font-family: var(--font-game); }
+
+.scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--gap);
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-area::-webkit-scrollbar { width: 3px; }
+.scroll-area::-webkit-scrollbar-track { background: transparent; }
+.scroll-area::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+/* ═══ ONBOARDING ═══ */
+#onboarding { background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.06) 0%, var(--bg-deep) 70%); }
+
+.onboard-hero { text-align: center; padding: 48px var(--gap) 32px; }
+.onboard-hero h1 { font-family: var(--font-aria); font-size: 32px; font-weight: 400; color: var(--text-primary); margin-bottom: 8px; }
+.onboard-hero h1 em { color: var(--gold); font-style: italic; }
+.onboard-hero p { color: var(--text-secondary); font-size: 14px; max-width: 280px; margin: 0 auto; }
+
+.vibe-cards { display: flex; flex-direction: column; gap: 12px; padding: 0 var(--gap) 24px; }
+
+.vibe-card {
+  background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius); padding: 16px 18px; cursor: pointer;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.vibe-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold-dim); transition: all 0.3s ease; }
+.vibe-card:hover, .vibe-card.selected { border-color: var(--gold-border); background: var(--bg-elevated); transform: translateX(4px); }
+.vibe-card.selected::before { background: var(--gold); box-shadow: 0 0 12px var(--gold-glow); }
+.vibe-card h3 { font-family: var(--font-aria); font-size: 18px; color: var(--text-primary); margin-bottom: 4px; }
+.vibe-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+
+.depth-selector { display: flex; gap: 8px; padding: 0 var(--gap) 24px; }
+.depth-btn {
+  flex: 1; background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius-sm); padding: 12px 8px; cursor: pointer;
+  text-align: center; transition: all 0.3s ease; color: var(--text-secondary);
+}
+.depth-btn:hover, .depth-btn.selected { border-color: var(--gold-border); color: var(--gold-light); }
+.depth-btn .label { font-size: 14px; font-weight: 500; }
+.depth-btn .count { font-size: 11px; font-family: var(--font-game); color: var(--text-dim); margin-top: 2px; }
+
+.begin-btn {
+  display: block; width: calc(100% - 32px); margin: 0 auto 24px; padding: 16px;
+  background: linear-gradient(135deg, var(--gold-dim) 0%, var(--gold) 100%);
+  border: none; border-radius: var(--radius); font-family: var(--font-aria);
+  font-size: 18px; color: var(--bg-deep); cursor: pointer; transition: all 0.3s ease; letter-spacing: 0.5px;
+}
+.begin-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.25); }
+.begin-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* ═══ INTERVIEW ═══ */
+#interview { background: var(--bg-deep); }
+
+.progress-track { height: 3px; background: rgba(255,255,255,0.04); flex-shrink: 0; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dim), var(--gold)); transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 0 2px 2px 0; }
+
+.phase-tag { display: inline-block; font-family: var(--font-game); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-dim); padding: 6px 0; margin-bottom: 12px; }
+
+.aria-message { font-family: var(--font-aria); font-size: 20px; line-height: 1.5; color: var(--text-aria); margin-bottom: 24px; animation: fadeSlideUp 0.5s ease; }
+
+@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+.input-area { padding: var(--gap); border-top: 1px solid rgba(255,255,255,0.04); flex-shrink: 0; background: var(--bg-mid); }
+.input-row { display: flex; gap: 8px; align-items: flex-end; }
+.input-field {
+  flex: 1; background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius); padding: 12px 16px; color: var(--text-primary);
+  font-family: var(--font-ui); font-size: 15px; resize: none; min-height: 44px;
+  max-height: 120px; line-height: 1.4; outline: none; transition: border-color 0.2s ease; overflow-y: hidden;
+}
+.input-field:focus { border-color: var(--gold-border); }
+
+.send-btn {
+  width: 44px; height: 44px; background: var(--gold); border: none;
+  border-radius: var(--radius); cursor: pointer; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s ease;
+}
+.send-btn:hover { background: var(--gold-light); }
+.send-btn svg { width: 18px; height: 18px; fill: var(--bg-deep); }
+
+.exit-ramp {
+  font-size: 13px; color: var(--text-dim); font-style: italic; margin-top: 8px;
+  padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm);
+  cursor: pointer; transition: color 0.2s;
+}
+.exit-ramp:hover { color: var(--text-secondary); }
+
+/* ═══ MIRROR BUBBLE ═══ */
+.mirror-bubble {
+  display: none; background: linear-gradient(135deg, rgba(74,158,142,0.08), rgba(201,168,76,0.06));
+  border: 1px solid var(--teal); border-left: 3px solid var(--teal);
+  border-radius: var(--radius); padding: 16px; margin: 16px 0;
+  animation: bubbleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.mirror-bubble.visible { display: block; }
+@keyframes bubbleIn { from { opacity: 0; transform: scale(0.95) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.mirror-bubble .reflection { font-family: var(--font-aria); font-size: 16px; font-style: italic; color: var(--teal); margin-bottom: 12px; }
+.mirror-bubble .bubble-actions { display: flex; gap: 8px; }
+.bubble-btn { padding: 8px 16px; border-radius: var(--radius-sm); font-family: var(--font-ui); font-size: 13px; cursor: pointer; transition: all 0.2s ease; border: 1px solid; }
+.bubble-btn.close { background: transparent; border-color: rgba(255,255,255,0.08); color: var(--text-secondary); }
+.bubble-btn.expand { background: rgba(74,158,142,0.12); border-color: var(--teal); color: var(--teal); }
+.bubble-btn:hover { transform: translateY(-1px); }
+
+/* ═══ GAME ═══ */
+#game { background: var(--mood-primary); transition: background 1.5s ease; }
+
+.narrative { font-family: var(--font-game); font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--text-primary); white-space: pre-wrap; }
+.narrative-bold { color: var(--gold-light); font-weight: 500; }
+
+.quest-choices { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+.quest-choice {
+  background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.06);
+  border-left: 3px solid var(--gold-dim); border-radius: var(--radius-sm);
+  padding: 12px 16px; cursor: pointer; transition: all 0.25s ease;
+  font-family: var(--font-game); font-size: 13px; color: var(--text-primary); text-align: left;
+}
+.quest-choice:hover { border-left-color: var(--gold); background: var(--bg-elevated); transform: translateX(4px); }
+
+.actions-bar { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px var(--gap); border-top: 1px solid rgba(255,255,255,0.04); background: var(--bg-mid); flex-shrink: 0; }
+.action-chip {
+  padding: 6px 12px; background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px; font-family: var(--font-game); font-size: 11px;
+  color: var(--text-secondary); cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+}
+.action-chip:hover { border-color: var(--gold-border); color: var(--gold-light); }
+.action-chip.primary { border-color: var(--gold-dim); color: var(--gold); }
+
+.game-map { background: var(--bg-mid); border-bottom: 1px solid rgba(255,255,255,0.04); padding: 8px var(--gap); flex-shrink: 0; overflow-x: auto; display: flex; gap: 6px; align-items: center; }
+.map-node { padding: 4px 10px; border-radius: 12px; font-family: var(--font-game); font-size: 10px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.06); color: var(--text-dim); transition: all 0.3s ease; flex-shrink: 0; }
+.map-node.discovered { color: var(--text-secondary); border-color: rgba(255,255,255,0.1); }
+.map-node.current { color: var(--gold); border-color: var(--gold-dim); background: var(--gold-glow); }
+.map-connector { width: 12px; height: 1px; background: rgba(255,255,255,0.08); flex-shrink: 0; }
+
+.stats-bar { display: flex; gap: 12px; padding: 6px var(--gap); font-family: var(--font-game); font-size: 10px; color: var(--text-dim); border-bottom: 1px solid rgba(255,255,255,0.03); flex-shrink: 0; }
+.stat { display: flex; align-items: center; gap: 4px; }
+.stat-value { color: var(--gold-dim); }
+
+/* ═══ VOICE ORB ═══ */
+.voice-orb {
+  position: fixed; bottom: 80px; right: 16px; width: 48px; height: 48px;
+  border-radius: 50%; background: radial-gradient(circle at 35% 35%, var(--gold), var(--gold-dim));
+  box-shadow: 0 4px 20px rgba(201,168,76,0.3); cursor: pointer; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease; animation: orbPulse 3s infinite ease-in-out;
+}
+.voice-orb:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(201,168,76,0.4); }
+.voice-orb.listening { animation: orbListening 1s infinite ease-in-out; box-shadow: 0 0 30px rgba(201,168,76,0.5); }
+.voice-orb svg { width: 20px; height: 20px; fill: var(--bg-deep); }
+@keyframes orbPulse { 0%, 100% { box-shadow: 0 4px 20px rgba(201,168,76,0.3); } 50% { box-shadow: 0 4px 24px rgba(201,168,76,0.4); } }
+@keyframes orbListening { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+
+/* ═══ REST OVERLAY ═══ */
+.rest-overlay { display: none; position: fixed; inset: 0; background: rgba(10,10,15,0.92); z-index: 200; flex-direction: column; align-items: center; justify-content: center; padding: var(--gap); animation: fadeIn 0.6s ease; }
+.rest-overlay.visible { display: flex; }
+.rest-content { text-align: center; max-width: 320px; }
+.rest-content h2 { font-family: var(--font-aria); font-size: 24px; color: var(--gold-light); margin-bottom: 12px; }
+.rest-content p { color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; line-height: 1.6; }
+.rest-actions { display: flex; flex-direction: column; gap: 8px; }
+.rest-btn { padding: 14px 24px; border-radius: var(--radius); font-family: var(--font-ui); font-size: 14px; cursor: pointer; transition: all 0.2s ease; border: 1px solid; }
+.rest-btn.continue { background: var(--gold-glow); border-color: var(--gold-dim); color: var(--gold-light); }
+.rest-btn.save { background: transparent; border-color: rgba(255,255,255,0.08); color: var(--text-secondary); }
+
+/* ═══ CARTRIDGE PICKER ═══ */
+.cartridge-section { margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.04); }
+.cartridge-section h3 { font-family: var(--font-aria); font-size: 16px; color: var(--text-secondary); margin-bottom: 12px; text-align: center; }
+.cartridge-cards { display: flex; flex-direction: column; gap: 10px; }
+.cartridge-card {
+  background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius); padding: 14px 16px; cursor: pointer;
+  transition: all 0.3s ease; position: relative;
+}
+.cartridge-card:hover { border-color: var(--gold-border); background: var(--bg-elevated); transform: translateX(4px); }
+.cartridge-card .cart-name { font-family: var(--font-aria); font-size: 17px; color: var(--gold-light); margin-bottom: 2px; }
+.cartridge-card .cart-age { font-family: var(--font-game); font-size: 10px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+.cartridge-card .cart-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+.cartridge-card .cart-tone { font-family: var(--font-game); font-size: 10px; color: var(--gold-dim); margin-top: 4px; }
+
+/* ═══ VOICE ORB STATES ═══ */
+.voice-orb.connecting { animation: orbSpin 1s linear infinite; }
+.voice-orb.speaking { animation: orbSpeaking 0.6s infinite ease-in-out; box-shadow: 0 0 35px rgba(201,168,76,0.6); }
+@keyframes orbSpin { 0% { box-shadow: 0 4px 20px rgba(201,168,76,0.3); } 50% { box-shadow: 0 4px 20px rgba(74,158,142,0.4); } 100% { box-shadow: 0 4px 20px rgba(201,168,76,0.3); } }
+@keyframes orbSpeaking { 0%, 100% { transform: scale(1.05); box-shadow: 0 0 30px rgba(201,168,76,0.5); } 50% { transform: scale(1.12); box-shadow: 0 0 40px rgba(201,168,76,0.7); } }
+.voice-status { position: fixed; bottom: 134px; right: 8px; font-family: var(--font-game); font-size: 9px; color: var(--gold-dim); z-index: 100; text-align: right; pointer-events: none; max-width: 120px; }
+
+/* ═══ TRANSCRIPT PANEL ═══ */
+.transcript-toggle {
+  width: 28px; height: 28px; background: transparent; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center;
+  justify-content: center; transition: all 0.2s ease; margin-left: 8px; flex-shrink: 0;
+}
+.transcript-toggle:hover, .transcript-toggle.active { border-color: var(--teal); background: rgba(74,158,142,0.1); }
+.transcript-toggle svg { width: 14px; height: 14px; fill: var(--text-dim); }
+.transcript-toggle.active svg { fill: var(--teal); }
+.transcript-toggle .notif { position: absolute; top: -3px; right: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+
+#transcriptPanel {
+  display: none; position: fixed; inset: 0; z-index: 150;
+  background: var(--bg-deep); flex-direction: column;
+}
+#transcriptPanel.visible { display: flex; }
+
+.transcript-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px var(--gap); border-bottom: 1px solid rgba(255,255,255,0.06); flex-shrink: 0;
+}
+.transcript-header .brand { font-family: var(--font-aria); font-size: 18px; color: var(--teal); }
+.transcript-close {
+  width: 32px; height: 32px; background: transparent; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center;
+  justify-content: center; color: var(--text-secondary); font-size: 18px;
+}
+.transcript-close:hover { border-color: var(--rose); color: var(--rose); }
+
+.transcript-legend {
+  display: flex; gap: 12px; padding: 6px var(--gap); font-family: var(--font-game);
+  font-size: 9px; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.03); flex-shrink: 0;
+}
+.legend-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+.legend-user .legend-dot { background: #6ba3d6; }
+.legend-aria .legend-dot { background: var(--gold); }
+.legend-game .legend-dot { background: var(--teal); }
+.legend-user { color: #6ba3d6; }
+.legend-aria { color: var(--gold-dim); }
+.legend-game { color: var(--teal); }
+
+.transcript-log {
+  flex: 1; overflow-y: auto; padding: var(--gap); scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.transcript-log::-webkit-scrollbar { width: 3px; }
+.transcript-log::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 3px; opacity: 0.4; }
+
+.t-entry { margin-bottom: 10px; animation: fadeSlideUp 0.3s ease; }
+.t-entry .t-meta { font-family: var(--font-game); font-size: 9px; color: var(--text-dim); margin-bottom: 2px; display: flex; align-items: center; gap: 6px; }
+.t-entry .t-label { text-transform: uppercase; letter-spacing: 1px; }
+.t-entry .t-text { font-size: 13px; line-height: 1.5; padding: 6px 10px; border-radius: var(--radius-sm); }
+
+.t-entry.t-user .t-label { color: #6ba3d6; }
+.t-entry.t-user .t-text { color: #a8cceb; background: rgba(107,163,214,0.08); border-left: 2px solid #6ba3d6; font-family: var(--font-ui); }
+
+.t-entry.t-aria .t-label { color: var(--gold); }
+.t-entry.t-aria .t-text { color: var(--gold-light); background: rgba(201,168,76,0.06); border-left: 2px solid var(--gold-dim); font-family: var(--font-aria); font-style: italic; }
+
+.t-entry.t-game .t-label { color: var(--teal); }
+.t-entry.t-game .t-text { color: var(--text-secondary); background: rgba(74,158,142,0.06); border-left: 2px solid rgba(74,158,142,0.4); font-family: var(--font-game); font-size: 12px; }
+
+.t-entry.t-system .t-label { color: var(--text-dim); }
+.t-entry.t-system .t-text { color: var(--text-dim); background: rgba(255,255,255,0.02); border-left: 2px solid rgba(255,255,255,0.06); font-family: var(--font-game); font-size: 11px; }
+
+.transcript-footer {
+  padding: 8px var(--gap); border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex; gap: 8px; flex-shrink: 0;
+}
+.transcript-export {
+  flex: 1; padding: 8px; background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-sm); font-family: var(--font-game); font-size: 11px;
+  color: var(--text-secondary); cursor: pointer; text-align: center; transition: all 0.2s ease;
+}
+.transcript-export:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ═══ GENERATING ═══ */
+#generating { background: var(--bg-deep); align-items: center; justify-content: center; }
+.gen-content { text-align: center; padding: var(--gap); }
+.gen-content h2 { font-family: var(--font-aria); font-size: 22px; color: var(--gold-light); margin-bottom: 8px; }
+.gen-content p { color: var(--text-secondary); font-size: 14px; margin-bottom: 32px; }
+.gen-spinner { width: 40px; height: 40px; border: 2px solid rgba(255,255,255,0.06); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (min-width: 481px) { #app { border-left: 1px solid rgba(255,255,255,0.04); border-right: 1px solid rgba(255,255,255,0.04); } }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <!-- ONBOARDING -->
+  <div id="onboarding" class="screen active">
+    <div class="top-bar"><span class="brand">Aria</span><span class="status">v1.0</span></div>
+    <div class="scroll-area">
+      <div class="onboard-hero">
+        <h1>Your <em>story</em> begins here</h1>
+        <p>Choose how you'd like to create your adventure</p>
+      </div>
+      <div class="vibe-cards" id="vibeCards">
+        <div class="vibe-card" data-vibe="build_cool" onclick="selectVibe(this)">
+          <h3>Let's build something cool</h3>
+          <p>Jump straight into creating your own game world, characters, and adventure.</p>
+        </div>
+        <div class="vibe-card" data-vibe="your_way" onclick="selectVibe(this)">
+          <h3>Your story, your way</h3>
+          <p>Build a game that's uniquely yours. Stories can help us see things differently.</p>
+        </div>
+        <div class="vibe-card" data-vibe="explore_together" onclick="selectVibe(this)">
+          <h3>Let's explore together</h3>
+          <p>Create a story and discover what it means to you. A journey of building and reflection.</p>
+        </div>
+      </div>
+      <div class="depth-selector" id="depthSelector">
+        <button class="depth-btn" data-depth="quick" onclick="selectDepth(this)"><div class="label">Quick</div><div class="count">~10 questions</div></button>
+        <button class="depth-btn selected" data-depth="standard" onclick="selectDepth(this)"><div class="label">Custom</div><div class="count">~20 questions</div></button>
+        <button class="depth-btn" data-depth="deep" onclick="selectDepth(this)"><div class="label">Epic</div><div class="count">30+ questions</div></button>
+      </div>
+      <button class="begin-btn" id="beginBtn" onclick="startInterview()" disabled>Begin your adventure</button>
+      <div class="cartridge-section">
+        <h3>or try a demo adventure</h3>
+        <div class="cartridge-cards" id="cartridgeCards">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERVIEW -->
+  <div id="interview" class="screen">
+    <div class="top-bar"><span class="brand">Aria</span><span class="status" id="interviewStatus">1 / 20</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
+    <div class="scroll-area" id="interviewScroll">
+      <div class="phase-tag" id="phaseTag">YOUR CHARACTER</div>
+      <div class="aria-message" id="ariaQuestion">Loading...</div>
+      <div class="mirror-bubble" id="mirrorBubble">
+        <div class="reflection" id="mirrorReflection"></div>
+        <div class="bubble-actions">
+          <button class="bubble-btn close" onclick="closeMirror()">Continue</button>
+          <button class="bubble-btn expand" id="expandBtn" onclick="expandMirror()">Tell me more</button>
+        </div>
+      </div>
+      <div id="conversationTrail"></div>
+    </div>
+    <div class="input-area">
+      <div id="exitRamp" class="exit-ramp" style="display:none" onclick="useExitRamp()"></div>
+      <div class="input-row">
+        <textarea class="input-field" id="answerInput" placeholder="Type your answer..." rows="1" onkeydown="handleEnter(event)" oninput="autoGrow(this)"></textarea>
+        <button class="send-btn" onclick="submitAnswer()">
+          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GENERATING -->
+  <div id="generating" class="screen">
+    <div class="gen-content">
+      <h2>Crafting your world...</h2>
+      <p>Aria is building your adventure from everything you shared.</p>
+      <div class="gen-spinner"></div>
+    </div>
+  </div>
+
+  <!-- GAME -->
+  <div id="game" class="screen">
+    <div class="top-bar">
+      <span class="brand" id="gameTitle">Your Adventure</span>
+      <div style="display:flex;align-items:center;gap:4px;">
+        <span class="status" id="turnCount">Turn 0</span>
+        <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()" title="Session transcript" style="position:relative;">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="game-map" id="gameMap"></div>
+    <div class="stats-bar" id="statsBar">
+      <div class="stat">Courage: <span class="stat-value" id="statCourage">4</span></div>
+      <div class="stat">Trust: <span class="stat-value" id="statTrust">3</span></div>
+      <div class="stat">Items: <span class="stat-value" id="statItems">0</span></div>
+    </div>
+    <div class="scroll-area" id="gameScroll">
+      <div id="gameNarrative"></div>
+      <div class="quest-choices" id="questChoices"></div>
+    </div>
+    <div class="actions-bar" id="actionsBar"></div>
+    <div class="input-area" id="gameInputArea">
+      <div class="input-row">
+        <textarea class="input-field" id="gameInput" placeholder="Type a command or tap an action above..." rows="1" onkeydown="handleGameEnter(event)" oninput="autoGrow(this)"></textarea>
+        <button class="send-btn" onclick="submitGameCommand()">
+          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSCRIPT PANEL -->
+  <div id="transcriptPanel">
+    <div class="transcript-header">
+      <span class="brand">Session Transcript</span>
+      <button class="transcript-close" onclick="toggleTranscript()">x</button>
+    </div>
+    <div class="transcript-legend">
+      <span class="legend-user"><span class="legend-dot"></span>Player</span>
+      <span class="legend-aria"><span class="legend-dot"></span>Aria</span>
+      <span class="legend-game"><span class="legend-dot"></span>Game</span>
+    </div>
+    <div class="transcript-log" id="transcriptLog"></div>
+    <div class="transcript-footer">
+      <button class="transcript-export" onclick="exportTranscript()">Export JSON</button>
+      <button class="transcript-export" onclick="clearTranscript()">Clear</button>
+    </div>
+  </div>
+
+  <!-- VOICE ORB -->
+  <div class="voice-orb" id="voiceOrb" onclick="toggleVoice()" style="display:none">
+    <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1 1.93c-3.94-.49-7-3.85-7-7.93h2c0 3.31 2.69 6 6 6s6-2.69 6-6h2c0 4.08-3.06 7.44-7 7.93V20h4v2H8v-2h4v-4.07z"/></svg>
+  </div>
+  <div class="voice-status" id="voiceStatus" style="display:none"></div>
+
+  <!-- REST OVERLAY -->
+  <div class="rest-overlay" id="restOverlay">
+    <div class="rest-content">
+      <h2>A moment of rest</h2>
+      <p id="restMessage">Your character finds a quiet place. The adventure will be here when you're ready.</p>
+      <div class="rest-actions">
+        <button class="rest-btn continue" onclick="continueGame()">Keep playing</button>
+        <button class="rest-btn save" onclick="saveAndRest()">Save &amp; rest</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══ STATE ═══ */
+const API = '';
+let state = {
+  userId: 'user_' + Math.random().toString(36).substr(2, 8),
+  vibe: null, depth: 'standard', currentScreen: 'onboarding',
+  gameConfig: null, playerState: null,
+};
+
+let currentQuestion = null;
+let mirrorData = null;
+
+/* ═══ SAFE DOM HELPERS ═══ */
+function createTextNode(tag, text, className) {
+  const el = document.createElement(tag);
+  el.textContent = text;
+  if (className) el.className = className;
+  return el;
+}
+
+function setNarrative(container, text) {
+  const block = document.createElement('div');
+  block.className = 'narrative';
+  block.style.marginBottom = '16px';
+  block.style.animation = 'fadeSlideUp 0.4s ease';
+  const parts = text.split(/\*\*(.*?)\*\*/g);
+  parts.forEach((part, i) => {
+    if (i % 2 === 1) {
+      const b = document.createElement('span');
+      b.className = 'narrative-bold';
+      b.textContent = part;
+      block.appendChild(b);
+    } else {
+      part.split('\n').forEach((line, j) => {
+        if (j > 0) block.appendChild(document.createElement('br'));
+        block.appendChild(document.createTextNode(line));
+      });
+    }
+  });
+  container.appendChild(block);
+}
+
+/* ═══ ONBOARDING ═══ */
+function selectVibe(el) {
+  document.querySelectorAll('.vibe-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.vibe = el.dataset.vibe;
+  document.getElementById('beginBtn').disabled = false;
+}
+
+function selectDepth(el) {
+  document.querySelectorAll('.depth-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  state.depth = el.dataset.depth;
+}
+
+/* ═══ CARTRIDGE LOADER ═══ */
+async function loadCartridges() {
+  try {
+    const res = await fetch(API + '/api/game/cartridges');
+    const data = await res.json();
+    const container = document.getElementById('cartridgeCards');
+    (data.cartridges || []).forEach(function(c) {
+      const card = document.createElement('div');
+      card.className = 'cartridge-card';
+      card.onclick = function() { loadCartridge(c.id); };
+
+      const name = document.createElement('div');
+      name.className = 'cart-name';
+      name.textContent = c.name;
+      card.appendChild(name);
+
+      const age = document.createElement('div');
+      age.className = 'cart-age';
+      age.textContent = 'Age ' + c.age;
+      card.appendChild(age);
+
+      const desc = document.createElement('div');
+      desc.className = 'cart-desc';
+      desc.textContent = c.tagline;
+      card.appendChild(desc);
+
+      const tone = document.createElement('div');
+      tone.className = 'cart-tone';
+      tone.textContent = c.tone_hint;
+      card.appendChild(tone);
+
+      container.appendChild(card);
+    });
+  } catch (e) {
+    // Silently skip if backend not ready
+  }
+}
+
+async function loadCartridge(cartridgeId) {
+  showScreen('generating');
+  try {
+    const res = await fetch(API + '/api/game/cartridges/load', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ user_id: state.userId, cartridge_id: cartridgeId }),
+    });
+    const config = await res.json();
+    if (config.detail) throw new Error(config.detail);
+    state.gameConfig = config;
+    document.getElementById('voiceOrb').style.display = 'flex';
+    launchGame(config);
+  } catch (e) {
+    document.querySelector('.gen-content h2').textContent = 'Something went wrong';
+    document.querySelector('.gen-content p').textContent = e.message || 'Please refresh and try again.';
+    document.querySelector('.gen-spinner').style.display = 'none';
+  }
+}
+
+// Load cartridge cards on page load
+loadCartridges();
+
+/* ═══ INTERVIEW ═══ */
+async function startInterview() {
+  showScreen('interview');
+  document.getElementById('voiceOrb').style.display = 'flex';
+  try {
+    const res = await fetch(API + '/api/game/interview/start', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ user_id: state.userId, depth: state.depth, vibe: state.vibe }),
+    });
+    const data = await res.json();
+    displayQuestion(data);
+  } catch (e) {
+    document.getElementById('ariaQuestion').textContent = 'Connection issue. Please refresh and try again.';
+  }
+}
+
+function displayQuestion(data) {
+  if (data.status === 'complete') { onInterviewComplete(data.synthesis); return; }
+  if (data.status === 'mirror_bubble') {
+    showMirrorBubble(data.mirror_bubble, data.next_question);
+    if (data.progress) updateProgress(data.progress);
+    return;
+  }
+  currentQuestion = data.question;
+  const q = data.question;
+  const phaseNames = { warmup: 'GETTING TO KNOW YOU', character: 'YOUR CHARACTER', world: 'YOUR WORLD', story: 'YOUR STORY', challenges: 'YOUR CHALLENGES', choices: 'YOUR CHOICES' };
+  document.getElementById('phaseTag').textContent = phaseNames[q.phase] || q.phase.toUpperCase();
+  const questionEl = document.getElementById('ariaQuestion');
+  questionEl.style.opacity = '0';
+  questionEl.style.transform = 'translateY(12px)';
+  setTimeout(() => {
+    questionEl.textContent = q.text;
+    questionEl.style.transition = 'all 0.4s ease';
+    questionEl.style.opacity = '1';
+    questionEl.style.transform = 'translateY(0)';
+  }, 100);
+  const exitEl = document.getElementById('exitRamp');
+  if (q.has_exit_ramp && q.exit_ramp) { exitEl.textContent = q.exit_ramp; exitEl.style.display = 'block'; }
+  else { exitEl.style.display = 'none'; }
+  if (data.progress) updateProgress(data.progress);
+  const input = document.getElementById('answerInput');
+  input.value = '';
+  input.style.height = 'auto';
+  setTimeout(() => input.focus(), 300);
+}
+
+function updateProgress(progress) {
+  document.getElementById('interviewStatus').textContent = progress.current + ' / ' + progress.total;
+  document.getElementById('progressFill').style.width = progress.percent + '%';
+}
+
+async function submitAnswer() {
+  const input = document.getElementById('answerInput');
+  const answer = input.value.trim();
+  if (!answer) return;
+  addToTrail(currentQuestion ? currentQuestion.text : '', answer);
+  try {
+    const res = await fetch(API + '/api/game/interview/answer', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ user_id: state.userId, answer: answer }),
+    });
+    const data = await res.json();
+    displayQuestion(data);
+  } catch (e) { document.getElementById('ariaQuestion').textContent = 'Something went wrong. Try again.'; }
+}
+
+function addToTrail(question, answer) {
+  const trail = document.getElementById('conversationTrail');
+  const entry = document.createElement('div');
+  entry.style.cssText = 'margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.03);';
+  const qEl = createTextNode('div', question);
+  qEl.style.cssText = 'font-family:var(--font-aria);font-size:14px;color:var(--gold-dim);margin-bottom:4px;';
+  const aEl = createTextNode('div', answer);
+  aEl.style.cssText = 'font-size:14px;color:var(--text-secondary);';
+  entry.appendChild(qEl);
+  entry.appendChild(aEl);
+  trail.insertBefore(entry, trail.firstChild);
+}
+
+function handleEnter(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitAnswer(); } }
+function autoGrow(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 120) + 'px'; }
+function useExitRamp() { document.getElementById('answerInput').value = document.getElementById('exitRamp').textContent; submitAnswer(); }
+
+/* ═══ MIRROR BUBBLE ═══ */
+function showMirrorBubble(bubble, nextQuestion) {
+  mirrorData = { bubble, nextQuestion };
+  document.getElementById('mirrorReflection').textContent = bubble.reflection;
+  document.getElementById('mirrorBubble').classList.add('visible');
+  document.getElementById('mirrorBubble').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function closeMirror() {
+  document.getElementById('mirrorBubble').classList.remove('visible');
+  if (mirrorData && mirrorData.nextQuestion) displayQuestion({ status: 'next', question: mirrorData.nextQuestion, progress: null });
+  mirrorData = null;
+}
+
+async function expandMirror() {
+  document.getElementById('mirrorBubble').classList.remove('visible');
+  fetch(API + '/api/game/interview/expand_mirror', {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ user_id: state.userId }),
+  });
+  if (mirrorData && mirrorData.bubble && mirrorData.bubble.expand_prompt) {
+    document.getElementById('ariaQuestion').textContent = mirrorData.bubble.expand_prompt;
+  }
+  mirrorData = null;
+}
+
+/* ═══ GENERATING → GAME ═══ */
+async function onInterviewComplete(synthesis) {
+  showScreen('generating');
+  try {
+    const res = await fetch(API + '/api/game/generate', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ user_id: state.userId, synthesis: synthesis }),
+    });
+    const config = await res.json();
+    state.gameConfig = config;
+    launchGame(config);
+  } catch (e) {
+    document.querySelector('.gen-content h2').textContent = 'Something went wrong';
+    document.querySelector('.gen-content p').textContent = 'Please refresh and try again.';
+    document.querySelector('.gen-spinner').style.display = 'none';
+  }
+}
+
+/* ═══ GAME PLAYER ═══ */
+async function launchGame(config) {
+  showScreen('game');
+  document.getElementById('gameTitle').textContent = config.title || 'Your Adventure';
+  logTranscript('system', 'Game started: "' + (config.title || 'Adventure') + '" — ' + (config.protagonist_name || 'Hero') + ' in ' + (config.theme || 'unknown world'));
+  try {
+    const res = await fetch(API + '/api/game/play/start', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ user_id: state.userId }),
+    });
+    const action = await res.json();
+    handleGameAction(action);
+  } catch (e) {
+    document.getElementById('gameNarrative').textContent = 'Connection issue. Please refresh.';
+  }
+}
+
+function handleGameAction(action) {
+  const narrativeEl = document.getElementById('gameNarrative');
+  if (action.narrative) {
+    setNarrative(narrativeEl, action.narrative);
+    logTranscript('game', action.narrative, { action_type: action.action_type });
+  }
+  const scroll = document.getElementById('gameScroll');
+  setTimeout(() => { scroll.scrollTop = scroll.scrollHeight; }, 100);
+
+  if (action.location) {
+    document.documentElement.style.setProperty('--mood-primary', action.location.mood_color || '#1a1a26');
+    document.documentElement.style.setProperty('--mood-secondary', action.location.mood_secondary || '#12121a');
+  }
+
+  if (action.map_update) renderMap(action.map_update);
+
+  if (action.state_changes) {
+    for (const [k, v] of Object.entries(action.state_changes)) {
+      const el = document.getElementById('stat' + k.charAt(0).toUpperCase() + k.slice(1));
+      if (el) el.textContent = parseInt(el.textContent) + v;
+    }
+  }
+
+  if (action.turn_count !== undefined) document.getElementById('turnCount').textContent = 'Turn ' + action.turn_count;
+
+  const choicesEl = document.getElementById('questChoices');
+  choicesEl.textContent = '';
+  if (action.choices && action.choices.length > 0) {
+    action.choices.forEach(function(c) {
+      const btn = document.createElement('button');
+      btn.className = 'quest-choice';
+      btn.textContent = c.text;
+      btn.onclick = function() { gameAction('choose', c.id); };
+      choicesEl.appendChild(btn);
+    });
+  }
+
+  renderActions(action.available_actions || []);
+
+  if (action.mirror_moment && action.mirror_text) {
+    logTranscript('system', 'Mirror moment: ' + action.mirror_text, { therapeutic: true });
+    document.getElementById('mirrorReflection').textContent = action.mirror_text;
+    const expandBtn = document.getElementById('expandBtn');
+    expandBtn.textContent = 'I noticed that too';
+    expandBtn.onclick = function() { document.getElementById('mirrorBubble').classList.remove('visible'); };
+    document.getElementById('mirrorBubble').classList.add('visible');
+  }
+
+  if (action.is_rest_point) showRestPoint(action.narrative);
+  if (action.ending) renderActions(['New adventure', 'Export game']);
+}
+
+async function gameAction(action, target) {
+  try {
+    const res = await fetch(API + '/api/game/play/action', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ user_id: state.userId, action: action, target: target || '' }),
+    });
+    const result = await res.json();
+    handleGameAction(result);
+    // Keep Aria aware of typed commands too
+    voice.updateContext(result.narrative);
+  } catch (e) {
+    const el = document.getElementById('gameNarrative');
+    const err = createTextNode('div', 'Connection lost. Try again.', 'narrative');
+    err.style.color = 'var(--rose)';
+    el.appendChild(err);
+  }
+}
+
+function renderMap(mapData) {
+  const mapEl = document.getElementById('gameMap');
+  mapEl.textContent = '';
+  (mapData.nodes || []).forEach(function(node, i) {
+    if (i > 0) { const conn = document.createElement('div'); conn.className = 'map-connector'; mapEl.appendChild(conn); }
+    const el = document.createElement('div');
+    el.className = 'map-node';
+    if (node.discovered) el.classList.add('discovered');
+    if (node.current) el.classList.add('current');
+    el.textContent = node.label;
+    if (node.discovered) el.onclick = function() { gameAction('move', node.id); };
+    mapEl.appendChild(el);
+  });
+}
+
+function renderActions(actions) {
+  const bar = document.getElementById('actionsBar');
+  bar.textContent = '';
+  var priority = ['quest', 'look'];
+  actions.forEach(function(a) {
+    const chip = document.createElement('button');
+    chip.className = 'action-chip';
+    if (priority.some(function(p) { return a.startsWith(p); })) chip.classList.add('primary');
+    chip.textContent = a;
+    chip.onclick = function() { var parts = a.split(' '); gameAction(parts[0], parts.slice(1).join(' ')); };
+    bar.appendChild(chip);
+  });
+}
+
+/* ═══ GAME TEXT INPUT ═══ */
+function handleGameEnter(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitGameCommand(); } }
+
+function submitGameCommand() {
+  var input = document.getElementById('gameInput');
+  var cmd = input.value.trim();
+  if (!cmd) return;
+  input.value = '';
+  input.style.height = 'auto';
+  logTranscript('user', cmd, { input_method: 'typed' });
+  var parts = cmd.split(' ');
+  var action = parts[0];
+  var target = parts.slice(1).join(' ');
+  gameAction(action, target);
+}
+
+/* ═══ REST / SAVE ═══ */
+function showRestPoint(message) {
+  document.getElementById('restMessage').textContent = message || 'Your character finds a quiet moment. The journey will be here when you return.';
+  document.getElementById('restOverlay').classList.add('visible');
+}
+function continueGame() { document.getElementById('restOverlay').classList.remove('visible'); }
+async function saveAndRest() {
+  await fetch(API + '/api/game/play/save', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ user_id: state.userId }) });
+  document.getElementById('restOverlay').classList.remove('visible');
+  showScreen('onboarding');
+  document.getElementById('voiceOrb').style.display = 'none';
+  voice.disconnect();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TRANSCRIPT ENGINE — Session logging for therapist dashboard
+   ═══════════════════════════════════════════════════════════════ */
+
+var transcript = [];
+
+function logTranscript(type, text, meta) {
+  // type: 'user' | 'aria' | 'game' | 'system'
+  if (!text || !text.trim()) return;
+  var entry = {
+    type: type,
+    text: text.trim(),
+    timestamp: new Date().toISOString(),
+    turn: parseInt(document.getElementById('turnCount').textContent.replace('Turn ', '') || '0'),
+  };
+  if (meta) entry.meta = meta;
+  transcript.push(entry);
+  renderTranscriptEntry(entry);
+}
+
+function renderTranscriptEntry(entry) {
+  var log = document.getElementById('transcriptLog');
+  if (!log) return;
+
+  var el = document.createElement('div');
+  el.className = 't-entry t-' + entry.type;
+
+  var meta = document.createElement('div');
+  meta.className = 't-meta';
+  var label = document.createElement('span');
+  label.className = 't-label';
+  var labels = { user: 'Player', aria: 'Aria', game: 'Game', system: 'System' };
+  label.textContent = labels[entry.type] || entry.type;
+  meta.appendChild(label);
+  var time = document.createElement('span');
+  time.textContent = new Date(entry.timestamp).toLocaleTimeString();
+  meta.appendChild(time);
+  if (entry.turn > 0) {
+    var turn = document.createElement('span');
+    turn.textContent = 'T' + entry.turn;
+    meta.appendChild(turn);
+  }
+  el.appendChild(meta);
+
+  var text = document.createElement('div');
+  text.className = 't-text';
+  text.textContent = entry.text;
+  el.appendChild(text);
+
+  log.appendChild(el);
+  log.scrollTop = log.scrollHeight;
+}
+
+function toggleTranscript() {
+  var panel = document.getElementById('transcriptPanel');
+  var btn = document.getElementById('transcriptBtn');
+  panel.classList.toggle('visible');
+  btn.classList.toggle('active');
+}
+
+function exportTranscript() {
+  var data = JSON.stringify({
+    session_id: state.userId,
+    game: state.gameConfig ? state.gameConfig.title : null,
+    protagonist: state.gameConfig ? state.gameConfig.protagonist_name : null,
+    exported_at: new Date().toISOString(),
+    entries: transcript,
+  }, null, 2);
+  var blob = new Blob([data], { type: 'application/json' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'aria-transcript-' + state.userId + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function clearTranscript() {
+  transcript = [];
+  document.getElementById('transcriptLog').textContent = '';
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GEMINI LIVE VOICE ENGINE
+   Direct WebSocket to Gemini Live API (Option 3 — browser-direct)
+   Pattern ported from aria-core: micCapture + playbackScheduler + geminiLiveSDK
+   ═══════════════════════════════════════════════════════════════ */
+
+const voice = (function() {
+  // ── State ──
+  let ws = null;
+  let audioCtx = null;
+  let micStream = null;
+  let processor = null;
+  let source = null;
+  let nextPlayTime = 0;
+  let orbState = 'idle'; // idle | connecting | listening | thinking | speaking
+  let apiKey = null;
+  let modelName = null;
+  let silenceTimer = null;
+
+  // ── PCM Helpers (from pcmHelpers.ts) ──
+  function floatTo16BitPCM(f32) {
+    var buf = new ArrayBuffer(f32.length * 2);
+    var dv = new DataView(buf);
+    for (var i = 0; i < f32.length; i++) {
+      var s = Math.max(-1, Math.min(1, f32[i]));
+      dv.setInt16(i * 2, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+    }
+    return buf;
+  }
+
+  function arrayBufferToBase64(buf) {
+    var b = new Uint8Array(buf);
+    var s = '';
+    for (var i = 0; i < b.byteLength; i++) s += String.fromCharCode(b[i]);
+    return btoa(s);
+  }
+
+  function base64ToInt16(b64) {
+    var bin = atob(b64);
+    var b = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) b[i] = bin.charCodeAt(i);
+    return new Int16Array(b.buffer);
+  }
+
+  function encodeChunk(f32) {
+    return arrayBufferToBase64(floatTo16BitPCM(f32));
+  }
+
+  // ── Orb State Machine ──
+  function setOrbState(newState) {
+    orbState = newState;
+    var orb = document.getElementById('voiceOrb');
+    var statusEl = document.getElementById('voiceStatus');
+    orb.className = 'voice-orb';
+    statusEl.style.display = 'block';
+    switch (newState) {
+      case 'idle':
+        statusEl.style.display = 'none';
+        break;
+      case 'connecting':
+        orb.classList.add('connecting');
+        statusEl.textContent = 'connecting...';
+        break;
+      case 'listening':
+        orb.classList.add('listening');
+        statusEl.textContent = 'listening';
+        break;
+      case 'thinking':
+        orb.classList.add('connecting');
+        statusEl.textContent = 'thinking...';
+        break;
+      case 'speaking':
+        orb.classList.add('speaking');
+        statusEl.textContent = 'speaking';
+        break;
+    }
+  }
+
+  // ── Build System Prompt with Full Game Context ──
+  function buildSystemPrompt() {
+    var gc = state.gameConfig;
+    if (!gc) return 'You are Aria, a friendly game companion. The game has not started yet.';
+
+    var prompt = 'You are Aria — the living voice of this adventure. You ARE the world.\n' +
+      'You narrate, you voice every NPC, you describe every sensation.\n' +
+      'You are warm, creative, and atmospheric. Never clinical. Never break character.\n\n';
+
+    // ── Game identity ──
+    prompt += 'WORLD: "' + (gc.title || 'Adventure') + '"\n' +
+      'PROTAGONIST: ' + (gc.protagonist_name || 'Hero') + '\n' +
+      'TONE: ' + (gc.tone || 'adventurous') + ' — match this in every response\n' +
+      'THEME: ' + (gc.theme || 'discovery') + '\n\n';
+
+    // ── Companion ──
+    if (gc.companion && gc.companion.name) {
+      prompt += 'COMPANION: ' + gc.companion.name + '\n' +
+        gc.companion.description + '\n' +
+        'The companion is always present. Reference them naturally — reactions, sounds, gestures.\n\n';
+    }
+
+    // ── NPC details for voice acting ──
+    if (gc.npcs && gc.npcs.length > 0) {
+      prompt += 'NPCs IN THIS WORLD (voice each one differently):\n';
+      gc.npcs.forEach(function(npc) {
+        prompt += '- ' + npc.name + ' (' + npc.role + '): ' + npc.personality +
+          '. Speaks with ' + npc.dialogue_style + '. Found at: ' + npc.location_id + '\n';
+      });
+      prompt += '\n';
+    }
+
+    // ── Locations ──
+    if (gc.locations && gc.locations.length > 0) {
+      prompt += 'LOCATIONS:\n';
+      gc.locations.forEach(function(loc) {
+        prompt += '- ' + loc.name + ' [' + loc.id + ']: ' + loc.atmosphere + ' atmosphere. ';
+        if (loc.exits) prompt += 'Exits: ' + Object.keys(loc.exits).join(', ');
+        prompt += '\n';
+      });
+      prompt += '\n';
+    }
+
+    // ── Items ──
+    if (gc.items && gc.items.length > 0) {
+      prompt += 'ITEMS:\n';
+      gc.items.forEach(function(item) {
+        prompt += '- ' + item.name + ' [' + item.id + ']: ' + item.description.slice(0, 60) +
+          ' (at: ' + item.location_id + ')\n';
+      });
+      prompt += '\n';
+    }
+
+    // ── Quests ──
+    if (gc.quests && gc.quests.length > 0) {
+      prompt += 'QUESTS:\n';
+      gc.quests.forEach(function(q) {
+        prompt += '- ' + q.title + ' [' + q.id + ']: ' + q.description.slice(0, 80) + '\n';
+      });
+      prompt += '\n';
+    }
+
+    // ── Live state from DOM ──
+    prompt += 'CURRENT STATE:\n';
+    var currentNode = document.querySelector('.map-node.current');
+    prompt += 'Location: ' + (currentNode ? currentNode.textContent : 'unknown') + '\n';
+    prompt += 'Courage: ' + document.getElementById('statCourage').textContent +
+      ' | Trust: ' + document.getElementById('statTrust').textContent +
+      ' | Items: ' + document.getElementById('statItems').textContent + '\n';
+    prompt += document.getElementById('turnCount').textContent + '\n';
+
+    var choices = [];
+    document.querySelectorAll('.quest-choice').forEach(function(c) { choices.push(c.textContent); });
+    if (choices.length > 0) prompt += 'Active quest choices: ' + choices.join(' | ') + '\n';
+    prompt += '\n';
+
+    // ── Voice behavior rules ──
+    prompt += 'VOICE RULES:\n' +
+      '- ALWAYS use functions to execute game actions. Never just describe what would happen — make it happen.\n' +
+      '- After executing a function, narrate the result atmospherically. Read the narrative from the function result and retell it in your voice.\n' +
+      '- Keep responses to 1-3 sentences for normal actions. Use 3-5 for dramatic moments (new locations, quest climaxes, NPC encounters).\n' +
+      '- When voicing NPCs, change your delivery — speak as them, not about them.\n' +
+      '- Reference the companion naturally: "' + (gc.companion ? gc.companion.name : 'your companion') + ' perks up..." or "...watches quietly."\n' +
+      '- When the player is quiet or says "hmm" / "what now" / "help", gently suggest the most interesting available action.\n' +
+      '- Use sensory language matching the atmosphere: sounds, textures, temperatures, light.\n' +
+      '- For quest choices, present them dramatically — make each option feel meaningful.\n' +
+      '- NEVER say "I\'ll call the move function" or reference functions/tools by name. Just narrate naturally.\n' +
+      '- NEVER be therapeutic, clinical, or break the fourth wall. You are a storyteller inside the world.\n';
+
+    return prompt;
+  }
+
+  // ── Send game state update to Aria mid-session ──
+  function sendGameContext(narrative) {
+    if (!ws || ws.readyState !== WebSocket.OPEN) return;
+    var currentNode = document.querySelector('.map-node.current');
+    var ctx = '[GAME STATE UPDATE — do not respond to this, just absorb it]\n' +
+      'Location: ' + (currentNode ? currentNode.textContent : '?') + '\n' +
+      'Courage: ' + document.getElementById('statCourage').textContent +
+      ' Trust: ' + document.getElementById('statTrust').textContent + '\n';
+    if (narrative) ctx += 'What just happened: ' + narrative.slice(0, 200) + '\n';
+    var choices = [];
+    document.querySelectorAll('.quest-choice').forEach(function(c) { choices.push(c.textContent); });
+    if (choices.length > 0) ctx += 'New choices available: ' + choices.join(' | ');
+    ws.send(JSON.stringify({
+      client_content: {
+        turns: [{ role: 'user', parts: [{ text: ctx }] }],
+        turn_complete: false
+      }
+    }));
+  }
+
+  // ── Function Declarations for Voice Commands ──
+  var gameFunctions = [
+    {
+      name: 'move',
+      description: 'Navigate to a different location. Use direction names like "explore", "go out", "onward", "back", or location names.',
+      parameters: { type: 'OBJECT', properties: { direction: { type: 'STRING', description: 'Direction or location name/ID' } }, required: ['direction'] }
+    },
+    {
+      name: 'look',
+      description: 'Look around the current location. Describes the scene, NPCs present, and items visible.',
+      parameters: { type: 'OBJECT', properties: {}, required: [] }
+    },
+    {
+      name: 'talk',
+      description: 'Talk to an NPC. Use their name or role (e.g. "the guide", "helper", "stranger").',
+      parameters: { type: 'OBJECT', properties: { npc_name: { type: 'STRING', description: 'NPC name, ID, or role' } }, required: ['npc_name'] }
+    },
+    {
+      name: 'take',
+      description: 'Pick up an item in the current location.',
+      parameters: { type: 'OBJECT', properties: { item: { type: 'STRING', description: 'Item name or ID' } }, required: ['item'] }
+    },
+    {
+      name: 'use_item',
+      description: 'Use an item from the player inventory.',
+      parameters: { type: 'OBJECT', properties: { item: { type: 'STRING', description: 'Item name or ID' } }, required: ['item'] }
+    },
+    {
+      name: 'choose',
+      description: 'Make a quest choice. Use the choice text or ID. If the player describes what they want to do, match it to the closest available choice.',
+      parameters: { type: 'OBJECT', properties: { choice_id: { type: 'STRING', description: 'Choice ID or descriptive text matching an available choice' } }, required: ['choice_id'] }
+    },
+    {
+      name: 'quest',
+      description: 'Show current quest status, objectives, and available choices.',
+      parameters: { type: 'OBJECT', properties: {}, required: [] }
+    },
+    {
+      name: 'status',
+      description: 'Show player stats: courage, trust, items collected, quests completed.',
+      parameters: { type: 'OBJECT', properties: {}, required: [] }
+    },
+    {
+      name: 'inventory',
+      description: 'List all items the player is carrying.',
+      parameters: { type: 'OBJECT', properties: {}, required: [] }
+    },
+    {
+      name: 'save_game',
+      description: 'Save the current game state so the player can continue later.',
+      parameters: { type: 'OBJECT', properties: {}, required: [] }
+    }
+  ];
+
+  // ── Handle Function Calls from Gemini ──
+  async function handleFunctionCall(fc) {
+    var action = fc.name;
+    var target = '';
+
+    // Special non-API actions
+    if (action === 'save_game') {
+      try {
+        await fetch(API + '/api/game/play/save', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: state.userId }),
+        });
+        return JSON.stringify({ narrative: 'Game saved. Your adventure will be here when you return.' });
+      } catch (e) {
+        return JSON.stringify({ error: 'Save failed' });
+      }
+    }
+
+    switch (action) {
+      case 'move':
+        target = (fc.args && fc.args.direction) || '';
+        break;
+      case 'talk':
+        target = (fc.args && fc.args.npc_name) || '';
+        break;
+      case 'take':
+        target = (fc.args && fc.args.item) || '';
+        break;
+      case 'use_item':
+        action = 'use';
+        target = (fc.args && fc.args.item) || '';
+        break;
+      case 'choose':
+        target = (fc.args && fc.args.choice_id) || '';
+        break;
+      case 'look':
+      case 'quest':
+      case 'status':
+      case 'inventory':
+        break;
+      default:
+        return JSON.stringify({ error: 'Unknown action: ' + action });
+    }
+
+    try {
+      var res = await fetch(API + '/api/game/play/action', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id: state.userId, action: action, target: target }),
+      });
+      var result = await res.json();
+      handleGameAction(result);
+
+      // Send context update so Aria tracks state changes
+      sendGameContext(result.narrative);
+
+      // Rich response for Aria to narrate
+      var response = { narrative: result.narrative || '' };
+      if (result.location) response.new_location = result.location.name;
+      if (result.choices && result.choices.length > 0) {
+        response.quest_choices = result.choices.map(function(c) { return { id: c.id, text: c.text }; });
+      }
+      if (result.state_changes) response.stat_changes = result.state_changes;
+      if (result.mirror_moment) response.mirror_text = result.mirror_text;
+      if (result.ending) response.ending = result.ending;
+      return JSON.stringify(response);
+    } catch (e) {
+      return JSON.stringify({ error: 'Game action failed: ' + e.message });
+    }
+  }
+
+  // ── Playback Scheduler ──
+  function scheduleAudioChunk(b64data) {
+    if (!audioCtx) return;
+    if (orbState !== 'speaking') setOrbState('speaking');
+    clearTimeout(silenceTimer);
+
+    var int16 = base64ToInt16(b64data);
+    var f32 = new Float32Array(int16.length);
+    for (var i = 0; i < int16.length; i++) f32[i] = int16[i] / 0x8000;
+
+    var buf = audioCtx.createBuffer(1, f32.length, 24000);
+    buf.getChannelData(0).set(f32);
+
+    var src = audioCtx.createBufferSource();
+    src.buffer = buf;
+    src.connect(audioCtx.destination);
+
+    var now = audioCtx.currentTime;
+    if (nextPlayTime < now) nextPlayTime = now + 0.05;
+    src.start(nextPlayTime);
+    nextPlayTime += buf.duration;
+
+    // After last chunk plays, return to listening
+    silenceTimer = setTimeout(function() {
+      if (orbState === 'speaking') setOrbState('listening');
+    }, 400);
+  }
+
+  // ── Mic Capture ──
+  async function startMic() {
+    try {
+      micStream = await navigator.mediaDevices.getUserMedia({
+        audio: { sampleRate: 16000, channelCount: 1, echoCancellation: true, noiseSuppression: true }
+      });
+    } catch (e) {
+      setOrbState('idle');
+      return;
+    }
+
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+    if (audioCtx.state === 'suspended') await audioCtx.resume();
+
+    // Create a separate context for 16kHz capture
+    var captureCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+    source = captureCtx.createMediaStreamSource(micStream);
+    processor = captureCtx.createScriptProcessor(4096, 1, 1);
+
+    processor.onaudioprocess = function(e) {
+      if (!ws || ws.readyState !== WebSocket.OPEN) return;
+      var f32 = e.inputBuffer.getChannelData(0);
+      var b64 = encodeChunk(f32);
+      ws.send(JSON.stringify({
+        realtime_input: { media_chunks: [{ mime_type: 'audio/pcm;rate=16000', data: b64 }] }
+      }));
+    };
+
+    source.connect(processor);
+    processor.connect(captureCtx.destination);
+    // Store for cleanup
+    voice._captureCtx = captureCtx;
+  }
+
+  function stopMic() {
+    if (processor) { processor.disconnect(); processor = null; }
+    if (source) { source.disconnect(); source = null; }
+    if (micStream) { micStream.getTracks().forEach(function(t) { t.stop(); }); micStream = null; }
+    if (voice._captureCtx) { voice._captureCtx.close().catch(function(){}); voice._captureCtx = null; }
+  }
+
+  // ── WebSocket Connection to Gemini Live ──
+  async function connect() {
+    if (ws && ws.readyState === WebSocket.OPEN) { disconnect(); return; }
+
+    setOrbState('connecting');
+
+    // Fetch API key from backend
+    if (!apiKey) {
+      try {
+        var cfgRes = await fetch(API + '/api/game/voice-config');
+        var cfg = await cfgRes.json();
+        apiKey = cfg.apiKey;
+        modelName = cfg.model;
+      } catch (e) {
+        setOrbState('idle');
+        return;
+      }
+    }
+
+    var wsUrl = 'wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent?key=' + apiKey;
+
+    ws = new WebSocket(wsUrl);
+
+    ws.onopen = function() {
+      // Setup message — key MUST be "setup" (not "config"), snake_case fields
+      // Matches working tal-boilerplate/lib/aria-core/providers/geminiLive.ts
+      var setupMsg = {
+        setup: {
+          model: modelName,
+          generation_config: {
+            response_modalities: ['AUDIO'],
+            speech_config: {
+              voice_config: {
+                prebuilt_voice_config: { voice_name: 'Aoede' }
+              }
+            }
+          },
+          input_audio_transcription: {},
+          system_instruction: { parts: [{ text: buildSystemPrompt() }] },
+          tools: [{ function_declarations: gameFunctions }]
+        }
+      };
+      console.log('[Voice] Sending setup:', JSON.stringify(setupMsg).slice(0, 300));
+      ws.send(JSON.stringify(setupMsg));
+    };
+
+    ws.onmessage = async function(event) {
+      var raw = event.data;
+      // Gemini may send Blob or string — normalize to string
+      if (raw instanceof Blob) {
+        raw = await raw.text();
+      }
+      var msg;
+      try { msg = JSON.parse(raw); } catch (e) { console.warn('[Voice] Non-JSON message, type:', typeof event.data, 'len:', raw.length, 'preview:', String(raw).slice(0, 100)); return; }
+      console.log('[Voice] Received:', Object.keys(msg).join(', '));
+
+      // Setup complete
+      if (msg.setupComplete) {
+        setOrbState('listening');
+        startMic();
+        return;
+      }
+
+      // Server content (audio, transcription)
+      if (msg.serverContent) {
+        var sc = msg.serverContent;
+
+        // Input transcription (what user said)
+        if (sc.inputTranscription && sc.inputTranscription.text) {
+          logTranscript('user', sc.inputTranscription.text);
+        }
+
+        // Output transcription (Aria speaking text)
+        if (sc.outputTranscription && sc.outputTranscription.text) {
+          logTranscript('aria', sc.outputTranscription.text);
+          var statusEl = document.getElementById('voiceStatus');
+          statusEl.textContent = sc.outputTranscription.text.slice(-60);
+        }
+
+        // Audio chunks
+        if (sc.modelTurn && sc.modelTurn.parts) {
+          sc.modelTurn.parts.forEach(function(part) {
+            if (part.inlineData && part.inlineData.data) {
+              scheduleAudioChunk(part.inlineData.data);
+            }
+          });
+        }
+
+        // Turn complete
+        if (sc.turnComplete) {
+          setTimeout(function() {
+            if (orbState === 'speaking' || orbState === 'thinking') setOrbState('listening');
+          }, 500);
+        }
+      }
+
+      // Tool calls (function calls from Gemini)
+      if (msg.toolCall && msg.toolCall.functionCalls) {
+        setOrbState('thinking');
+        var calls = msg.toolCall.functionCalls;
+        var responses = [];
+
+        (async function processCalls() {
+          for (var i = 0; i < calls.length; i++) {
+            logTranscript('system', 'Aria called: ' + calls[i].name + '(' + JSON.stringify(calls[i].args || {}) + ')', { function_call: calls[i].name });
+            var fc = calls[i];
+            var result = await handleFunctionCall(fc);
+            responses.push({
+              id: fc.id || '',
+              name: fc.name || '',
+              response: { output: result }
+            });
+          }
+          // Send function responses back to Gemini
+          if (ws && ws.readyState === WebSocket.OPEN) {
+            ws.send(JSON.stringify({
+              tool_response: { function_responses: responses }
+            }));
+          }
+        })();
+      }
+    };
+
+    ws.onerror = function(e) {
+      console.error('[Voice] WebSocket error:', e);
+      setOrbState('idle');
+    };
+
+    ws.onclose = function(e) {
+      console.log('[Voice] WebSocket closed:', e.code, e.reason);
+      stopMic();
+      setOrbState('idle');
+    };
+  }
+
+  function disconnect() {
+    stopMic();
+    if (ws) { try { ws.close(); } catch(e) {} ws = null; }
+    setOrbState('idle');
+    nextPlayTime = 0;
+  }
+
+  // Public API
+  return { connect: connect, disconnect: disconnect, updateContext: sendGameContext };
+})();
+
+/* ═══ VOICE TOGGLE (replaces old stub) ═══ */
+function toggleVoice() {
+  voice.connect();
+}
+
+/* ═══ SCREEN MGMT ═══ */
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  state.currentScreen = id;
+}
+</script>
+</body>
+</html>

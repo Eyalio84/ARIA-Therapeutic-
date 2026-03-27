@@ -1,0 +1,121 @@
+{
+  "_meta": {
+    "source": "Clinical communication research — validated across all 10 disorders",
+    "purpose": "Phrase filtering for voice interview and NPC dialogue generation"
+  },
+  "universal_safe": [
+    {
+      "phrase": "Your feelings are valid. I'm here to listen.",
+      "context": "any"
+    },
+    {
+      "phrase": "It doesn't matter how long it's been. You deserve support now.",
+      "context": "trauma, delayed disclosure"
+    },
+    {
+      "phrase": "Thank you for trusting me with this.",
+      "context": "disclosure"
+    },
+    {
+      "phrase": "Are you looking for input right now, or would you rather I just listen?",
+      "context": "checking consent"
+    },
+    {
+      "phrase": "I know things are really hard right now. You don't have to go through this alone.",
+      "context": "distress"
+    },
+    {
+      "phrase": "I may not know exactly what you're going through, but I want to understand.",
+      "context": "empathy"
+    },
+    {
+      "phrase": "That sounds like it's been really heavy to carry.",
+      "context": "burden"
+    },
+    {
+      "phrase": "What's that been like for you?",
+      "context": "exploration"
+    },
+    {
+      "phrase": "Tell me more about that.",
+      "context": "deepening"
+    },
+    {
+      "phrase": "There's no pressure to go anywhere you don't want to go in this story.",
+      "context": "safety, control"
+    },
+    {
+      "phrase": "Your character gets to set the pace.",
+      "context": "externalized control"
+    },
+    {
+      "phrase": "Take your time. There's no rush in this world.",
+      "context": "pacing"
+    },
+    {
+      "phrase": "Your character can pause here as long as they need.",
+      "context": "rest, trauma"
+    },
+    {
+      "phrase": "Even small steps count in this world.",
+      "context": "depression, motivation"
+    }
+  ],
+  "universal_harmful": [
+    {
+      "phrase": "Just calm down.",
+      "why_harmful": "Implies anxiety is a controllable choice.",
+      "say_instead": "It makes sense your mind is working overtime right now."
+    },
+    {
+      "phrase": "You're overreacting.",
+      "why_harmful": "Invalidates subjective experience.",
+      "say_instead": "Your feelings make sense, even if the situation is hard to read from the outside."
+    },
+    {
+      "phrase": "I know exactly how you feel.",
+      "why_harmful": "Comparative invalidation; centers speaker.",
+      "say_instead": "Keep the focus on them; reflect their emotion."
+    },
+    {
+      "phrase": "Have you tried just being positive?",
+      "why_harmful": "Oversimplifies complex conditions.",
+      "say_instead": "What's one small thing that used to bring you even a little relief?"
+    },
+    {
+      "phrase": "You have so much to be grateful for.",
+      "why_harmful": "Induces guilt; depression is not about lacking gratitude.",
+      "say_instead": "I hear that despite what you have, things feel really difficult."
+    },
+    {
+      "phrase": "Why can't you just...?",
+      "why_harmful": "Challenges competence; sounds like interrogation.",
+      "say_instead": "What gets in the way when you try to...?"
+    },
+    {
+      "phrase": "Are you OK?!",
+      "why_harmful": "Creates social pressure to appear fine.",
+      "say_instead": "How are things going for you today -- really?"
+    },
+    {
+      "phrase": "At least you had / have...",
+      "why_harmful": "Minimizes pain via silver lining.",
+      "say_instead": "I can only imagine how painful that was."
+    },
+    {
+      "phrase": "You're so strong.",
+      "why_harmful": "Shame-inducing for those who feel they can't be vulnerable.",
+      "say_instead": "It makes sense you're feeling exhausted by all of this."
+    },
+    {
+      "phrase": "You need to see a therapist / take medication.",
+      "why_harmful": "Unsolicited advice removes autonomy.",
+      "say_instead": "Let the therapist guide this; if urgent, provide resource gently."
+    },
+    {
+      "phrase": "You can't change the past.",
+      "why_harmful": "Deeply invalidating to trauma survivors.",
+      "say_instead": "It takes time to work through what happened. You don't have to rush."
+    }
+  ]
+}

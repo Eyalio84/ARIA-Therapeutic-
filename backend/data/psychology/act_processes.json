@@ -1,0 +1,190 @@
+{
+  "_meta": {
+    "source": "Acceptance and Commitment Therapy — Steven Hayes",
+    "purpose": "ACT hexaflex processes for clinical cartridge design",
+    "note": "ACT focuses on psychological flexibility — the ability to be present, open up, and do what matters"
+  },
+  "core_goal": "Psychological flexibility — contacting the present moment fully as a conscious human being, and based on what the situation affords, changing or persisting in behavior in the service of chosen values.",
+  "hexaflex": [
+    {
+      "id": "acceptance",
+      "name": "Acceptance",
+      "opposite": "Experiential avoidance",
+      "definition": "Actively embracing private events (thoughts, feelings, sensations) without trying to change their form or frequency.",
+      "key_metaphor": "Quicksand — struggling makes it worse; opening up and spreading out lets you float.",
+      "exercises": [
+        {
+          "name": "Physicalizing",
+          "instruction": "Give the feeling a shape, color, size, texture. Observe it as an object rather than a threat.",
+          "game_mapping": "Character encounters an emotion as a visible entity in the game world — they must observe it, not fight it."
+        },
+        {
+          "name": "Expansion",
+          "instruction": "Breathe into the feeling. Make room for it. Don't try to push it away or shrink it.",
+          "game_mapping": "A quest obstacle that grows larger when attacked but shrinks when accepted."
+        },
+        {
+          "name": "Willingness Scale",
+          "instruction": "Rate willingness to have this feeling from 0-10. Notice what happens to the feeling when willingness increases.",
+          "game_mapping": "NPC asks: 'How willing is your character to sit with this feeling right now?'"
+        }
+      ],
+      "npc_design": "An NPC who faces pain openly — doesn't avoid or suppress, but moves through it with dignity."
+    },
+    {
+      "id": "defusion",
+      "name": "Cognitive Defusion",
+      "opposite": "Cognitive fusion (believing thoughts are literal truth)",
+      "definition": "Learning to step back from thoughts and see them as just thoughts — not commands, not truths, just mental events.",
+      "key_metaphor": "Passengers on the Bus — you're the driver, thoughts are noisy passengers. They can yell, but you choose where to drive.",
+      "exercises": [
+        {
+          "name": "I'm having the thought that...",
+          "instruction": "Prefix every difficult thought with 'I'm having the thought that...' Notice how it changes.",
+          "game_mapping": "NPC narrates the character's thoughts in third person: 'Your character is having the thought that they'll fail.'"
+        },
+        {
+          "name": "Silly Voice",
+          "instruction": "Say the thought in a silly voice (cartoon character, song). Notice how it changes the grip.",
+          "game_mapping": "A playful NPC who restates the character's fear in a lighthearted way — not dismissive, but defusing."
+        },
+        {
+          "name": "Leaves on a Stream",
+          "instruction": "Visualize thoughts as leaves floating down a stream. Place each thought on a leaf and watch it drift by.",
+          "game_mapping": "A meditation location in the game world — a river where thoughts appear as floating objects."
+        },
+        {
+          "name": "The Mind Radio",
+          "instruction": "Imagine your mind is a radio that plays unhelpful programs. You can turn down the volume without turning it off.",
+          "game_mapping": "An in-game 'noise' mechanic — intrusive thoughts as ambient sound the character can lower but not silence."
+        }
+      ],
+      "npc_design": "A wise NPC who speaks about thoughts as weather — they come and go, they're not the sky."
+    },
+    {
+      "id": "present_moment",
+      "name": "Being Present",
+      "opposite": "Dwelling on past or fearing future",
+      "definition": "Contacting the present moment fully and without defense — experiencing what is here and now.",
+      "key_metaphor": "Life is a stage performance — you can only act in this scene, not the ones before or after.",
+      "exercises": [
+        {
+          "name": "5-4-3-2-1 Grounding",
+          "instruction": "Name 5 things you see, 4 you hear, 3 you can touch, 2 you smell, 1 you taste.",
+          "game_mapping": "When character is overwhelmed, NPC guides a sensory inventory of the current game location."
+        },
+        {
+          "name": "Mindful Check-In",
+          "instruction": "Pause and notice: What am I feeling right now? What am I thinking? What am I doing?",
+          "game_mapping": "Regular check-in mechanic where the game pauses and asks the character to notice their state."
+        },
+        {
+          "name": "Dropping Anchor",
+          "instruction": "ACE: Acknowledge what's showing up, Connect with your body, Engage in what you're doing.",
+          "game_mapping": "A 'grounding' action available in every location — the character plants their feet and anchors."
+        }
+      ],
+      "npc_design": "An NPC who always speaks in the present tense — always noticing what's happening now."
+    },
+    {
+      "id": "self_as_context",
+      "name": "Self-as-Context",
+      "opposite": "Self-as-content (I AM my thoughts/feelings/stories)",
+      "definition": "The observing self — the part of you that is aware of all your experiences but is not defined by any of them.",
+      "key_metaphor": "The Sky and the Weather — you are the sky, not the weather. Storms pass through you but you remain.",
+      "exercises": [
+        {
+          "name": "Observer Exercise",
+          "instruction": "Notice that there is a part of you observing all your thoughts and feelings. That part has been there your whole life, unchanged.",
+          "game_mapping": "A quest where the character gains the ability to 'see themselves from above' — an observer perspective moment."
+        },
+        {
+          "name": "Continuous You",
+          "instruction": "Remember yourself at 5, 15, 25 years old. Notice that the 'you' who was aware then is the same 'you' now.",
+          "game_mapping": "A flashback mechanic where the character sees their past selves — and recognizes continuity."
+        },
+        {
+          "name": "Chessboard Metaphor",
+          "instruction": "Your thoughts and feelings are chess pieces fighting. But you are the board — you hold all the pieces without being any of them.",
+          "game_mapping": "An NPC who presents conflict as a game board — the character realizes they're bigger than any single move."
+        }
+      ],
+      "npc_design": "A narrator figure who can see the character's full story — past, present, potential futures."
+    },
+    {
+      "id": "values",
+      "name": "Values",
+      "opposite": "Dominance by avoidance, fusion, or social compliance",
+      "definition": "Chosen life directions — not goals (which can be achieved) but qualities of ongoing action.",
+      "key_metaphor": "Compass — values are the direction, not the destination. You never 'arrive' at a value.",
+      "domains": [
+        "Family/Relationships",
+        "Friendships/Social",
+        "Work/Career",
+        "Education/Growth",
+        "Recreation/Fun",
+        "Spirituality/Meaning",
+        "Health/Body",
+        "Community/Citizenship"
+      ],
+      "exercises": [
+        {
+          "name": "Values Card Sort",
+          "instruction": "Sort value cards into 'Very Important', 'Quite Important', 'Not Important'. Pick your top 5.",
+          "game_mapping": "Character creation phase — player sorts value cards to shape the game world."
+        },
+        {
+          "name": "80th Birthday Speech",
+          "instruction": "Imagine your 80th birthday. What would you want people to say about you? What kind of life would you want to have lived?",
+          "game_mapping": "An NPC 'oracle' who asks: 'What do you want your character's story to be about when it's done?'"
+        },
+        {
+          "name": "The Tombstone Question",
+          "instruction": "What would you want written on your tombstone? Not achievements — qualities.",
+          "game_mapping": "A game ending that reflects the values the character lived by — different endings for different values."
+        }
+      ],
+      "npc_design": "An NPC who asks about direction, not destination: 'Where is your character heading — not where are they going?'",
+      "game_integration": "Values should shape the game world from character creation onward. Every major choice connects back to a value."
+    },
+    {
+      "id": "committed_action",
+      "name": "Committed Action",
+      "opposite": "Inaction, impulsivity, or persistent avoidance",
+      "definition": "Taking effective action guided by values — even when it's hard, even when uncomfortable thoughts and feelings show up.",
+      "key_metaphor": "The journey — you walk in the direction of your values, step by step. You will stumble. You get up and keep walking.",
+      "exercises": [
+        {
+          "name": "SMART Values Goals",
+          "instruction": "Set Specific, Meaningful, Adaptive, Realistic, Time-framed goals connected to values.",
+          "game_mapping": "Quest objectives are always framed as value-connected actions, not arbitrary tasks."
+        },
+        {
+          "name": "Willingness + Action",
+          "instruction": "Ask: Am I willing to have [uncomfortable feeling] in order to do [valued action]? Then do it.",
+          "game_mapping": "Quest choices that require the character to face discomfort to achieve something meaningful."
+        },
+        {
+          "name": "Pattern Breaking",
+          "instruction": "Identify a behavior pattern that's not working. Choose one small thing to do differently.",
+          "game_mapping": "A quest arc where the character's old pattern fails, and they must try a new approach."
+        }
+      ],
+      "npc_design": "An NPC mentor who says: 'You don't have to feel ready. You just have to take the next step.'"
+    }
+  ],
+  "psychological_flexibility_matrix": {
+    "description": "The ACT Matrix — a simple visual tool that maps behavior along two dimensions",
+    "axes": {
+      "vertical": "Toward what matters (top) vs. Away from unwanted experience (bottom)",
+      "horizontal": "Inner experience (left) vs. Outer behavior (right)"
+    },
+    "quadrants": {
+      "top_right": "Actions moving toward values (committed action)",
+      "top_left": "What matters to me (values, people, qualities)",
+      "bottom_right": "Actions moving away from pain (avoidance behaviors)",
+      "bottom_left": "Unwanted inner experiences (thoughts, feelings, sensations)"
+    },
+    "game_mapping": "Every quest choice can be mapped to the matrix — is the character moving toward or away? This is therapeutic data for the dashboard."
+  }
+}

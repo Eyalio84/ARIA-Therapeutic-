@@ -1,0 +1,382 @@
+{
+  "_meta": {
+    "source": "Structured Communication KB for Therapist-Guided Narrative Game (kb2.md)",
+    "purpose": "Per-disorder communication rules for voice interview, NPC dialogue, and game design",
+    "rule": "The game is a therapeutic communicator, not a therapist"
+  },
+  "disorders": [
+    {
+      "id": "anxiety",
+      "name": "Anxiety Disorders",
+      "subtypes": ["GAD", "SAD", "Panic", "Phobias", "Agoraphobia"],
+      "communication_landscape": "Hyper-attuned to ambiguity. The interaction itself can become a trigger. Ambiguity, unexpected shifts, or pressure to answer 'correctly' can escalate anxiety in real time.",
+      "opens_them_up": [
+        "Offering choices and control at every junction",
+        "Pacing: speak slowly, leave room for response, never rush",
+        "Normalizing: 'A lot of people find that part challenging'",
+        "Small, concrete first steps before emotionally complex quests"
+      ],
+      "helpful_phrases": [
+        "There's no pressure to go anywhere you don't want to go in this story.",
+        "Your character gets to set the pace.",
+        "What's the safest part of this world for your character right now?",
+        "I noticed your character is hesitating here. What do you think they're feeling?"
+      ],
+      "avoid": [
+        "Unpredictability — telegraph transitions",
+        "Piling on follow-up questions",
+        "Validating reassurance-seeking in loops",
+        "Timed responses or performance pressure",
+        "High-stimulation scenes without a decompression path"
+      ],
+      "npc_design": [
+        "Companion NPC who models calm affect and regulated behavior",
+        "Allow the character to 'prepare' before new challenges — ritual = autonomic regulation",
+        "NPCs should validate hesitation: 'Are you sure you want to go in? There's no rush.'"
+      ]
+    },
+    {
+      "id": "depression",
+      "name": "Major Depressive Disorder",
+      "communication_landscape": "Anhedonia, psychomotor slowing, negative cognitive triad. Short answers or disengagement is symptom expression, not resistance.",
+      "opens_them_up": [
+        "Behavioral activation via micro-quests — small achievable challenges",
+        "Emphasizing meaning over performance",
+        "Social connection as game mechanic — NPCs who check in and remember",
+        "Progress visibility — narrative journal tracking what character has done"
+      ],
+      "helpful_phrases": [
+        "Your character has been through a lot. What do they need most right now?",
+        "Even small steps count in this world.",
+        "I see your character. They matter to this story.",
+        "What's one thing your character is still holding on to?"
+      ],
+      "avoid": [
+        "Performative or forced enthusiasm",
+        "Long branching dialogue trees requiring sustained concentration",
+        "Narrative arcs that begin with crisis or suffering",
+        "Asking 'What makes you happy?' — unanswerable with anhedonia",
+        "Closing scenes with unresolved negative affect"
+      ],
+      "npc_design": [
+        "NPC who has 'been through something hard' and is still showing up",
+        "NPCs should notice the character: 'I've been thinking about you.'",
+        "NPCs should reach out, not wait to be approached"
+      ]
+    },
+    {
+      "id": "ptsd",
+      "name": "PTSD and Trauma-Related Disorders",
+      "communication_landscape": "Exquisitely sensitive to safety, control, and re-traumatization. Highest-stakes voice interaction.",
+      "opens_them_up": [
+        "Predictability and safety above all else — announce transitions",
+        "Explicit user control: 'You decide how much your character shares'",
+        "Gradual titration of emotionally loaded content",
+        "Externalization via character — 'What happened to your character' not 'what happened to you'",
+        "Titrated exposure through narrative"
+      ],
+      "helpful_phrases": [
+        "Your character gets to decide what they remember and what they keep private.",
+        "It takes a lot of courage to keep going in this story. You're doing that.",
+        "No matter when something happened to your character, what they're feeling now is real.",
+        "Your character can pause here as long as they need.",
+        "I'm not going to ask you to explain anything you don't want to.",
+        "That sounds like something your character has been carrying for a long time."
+      ],
+      "avoid": [
+        "Pressing for trauma narrative details before readiness",
+        "Ambush, sudden violence, loss of character control without consent",
+        "Physical/spatial metaphors mapping onto trauma ('trapped', 'held down')",
+        "Labeling as 'survivors' or 'victims'",
+        "Tone suggesting urgency or impatience",
+        "Invalidating time: 'it was a long time ago'",
+        "Calling them 'brave' or 'resilient' in shame-inducing ways"
+      ],
+      "trauma_informed_language": [
+        "People-first: 'a person who experienced trauma' not 'a traumatized person'",
+        "Non-blaming, non-shaming: language centering agency and dignity",
+        "Avoid pathology language entirely in-game",
+        "Normalize nervous system responses: 'Your character's body is doing exactly what bodies do'"
+      ],
+      "npc_design": [
+        "At least one NPC embodying safety — consistent, warm, non-demanding, always there",
+        "NPCs never betray trust, surprise, or disappear without explanation",
+        "Character has a 'safe place' they can return to at any time",
+        "NPC dialogue models co-regulation: calm breathing, grounded responses, witnessing"
+      ]
+    },
+    {
+      "id": "sud",
+      "name": "Substance Use Disorders",
+      "communication_landscape": "Shame and ambivalence define communication challenges. Direct confrontation entrenches avoidance.",
+      "opens_them_up": [
+        "Exploring ambivalence: 'What would be different if they didn't need the substance?'",
+        "Strengths-based language: what they HAVE managed",
+        "Rolling with resistance — validate the part not ready to change",
+        "NPC companions modeling managing difficulty without substances"
+      ],
+      "helpful_phrases": [
+        "Your character has been coping with something really hard. That takes a lot out of you.",
+        "What has your character tried when things get really overwhelming?",
+        "It sounds like part of them wants something different. What does that part look like?",
+        "There's no wrong answer here. We're just exploring.",
+        "On a scale of 1-10, how much does your character care about making a change right now?"
+      ],
+      "avoid": [
+        "Any language conveying moral judgment",
+        "Ultimatums or high-pressure NPC dialogue",
+        "Game mechanics punishing substance-related choices with shame",
+        "Pushing for commitment to change before readiness",
+        "Directly confronting denial — arguing with resistance reinforces it"
+      ],
+      "npc_design": [
+        "NPCs in recovery — honest about own struggles, not preachy",
+        "Game world shows natural consequences without moralizing narration",
+        "'What matters to you' mechanic built into quest structure"
+      ]
+    },
+    {
+      "id": "adhd",
+      "name": "Attention Deficit Hyperactivity Disorder",
+      "communication_landscape": "Executive dysfunction, history of criticism and failure. Deep shame around underperformance.",
+      "opens_them_up": [
+        "Gamification matches ADHD neurology — immediate feedback, novelty, reward loops",
+        "Short interview segments: 2-3 questions max before a game transition",
+        "Positive reinforcement of engagement, not performance",
+        "Choice architecture: frequent branching decisions",
+        "Progress visibility: badges, maps, journal entries"
+      ],
+      "helpful_phrases": [
+        "What's the most interesting thing your character could do right now?",
+        "Great — let's keep moving.",
+        "Your character noticed something important there.",
+        "Let's take that in a different direction — what about...?"
+      ],
+      "avoid": [
+        "Long monologue explanations or complex NPC backstory dumps",
+        "Multi-step instructions or questions",
+        "Drawing attention to tangents or 'going off track'",
+        "Frustration cues when user takes non-linear paths",
+        "Quest structures with no clear short-term reward cycle"
+      ],
+      "npc_design": [
+        "NPC embodying ADHD traits positively — creative, spontaneous, inventive",
+        "Frequent in-world discoveries rewarding curiosity",
+        "Timer-free zones as default; optional urgency clearly labeled"
+      ]
+    },
+    {
+      "id": "bipolar",
+      "name": "Bipolar Disorder",
+      "communication_landscape": "Must adapt to radically different user states: expansive/talkative in hypomania vs withdrawn/brief in depression.",
+      "opens_them_up": [
+        "Naming the weather, not the diagnosis: 'Your character seems really energized today'",
+        "Psychoeducation in game lore: world has rhythms mirroring mood cycles",
+        "Stability-building: consistent NPCs, predictable rituals, clear structure",
+        "IPSRT-aligned mechanics: game rewards routine"
+      ],
+      "helpful_phrases": [
+        "Your character's energy seems different today. What's the world like from where they're standing?",
+        "What does your character need most right now to feel steady?",
+        "What's one thing that keeps your character grounded when everything is moving fast?"
+      ],
+      "avoid": [
+        "During high-energy: matching energy (escalation), grandiosity-reinforcing praise",
+        "During depressive: high expectations, 'why isn't your character doing anything?'",
+        "Sudden mood-matching — voice assistant maintains calm baseline",
+        "Labeling the state: 'It sounds like you might be manic' — therapist's role only"
+      ],
+      "npc_design": [
+        "Stable NPC anchor whose behavior doesn't mirror mood swings — models co-regulation",
+        "Narrative arcs showing cyclical seasons (abundance/scarcity) — universalizing without pathologizing",
+        "Safe harbors accessible during any mood state"
+      ]
+    },
+    {
+      "id": "schizophrenia",
+      "name": "Schizophrenia Spectrum Disorders",
+      "communication_landscape": "Distorted thinking, perceptions, emotions, social engagement challenges. Trust is foundational.",
+      "opens_them_up": [
+        "Simplicity and directness: short sentences, plain language, one idea at a time",
+        "Scaffolding: break game elements into very small steps",
+        "Validation without confirmation of delusions",
+        "Patience: allow long processing pauses",
+        "Psychoeducation in NPC dialogue: explain world rules clearly",
+        "Manifest interest: 'I'm genuinely interested in what your character thinks'"
+      ],
+      "helpful_phrases": [
+        "Take your time. There's no rush in this world.",
+        "Your character can ask me to explain anything again.",
+        "What does your character see from where they're standing?",
+        "That sounds like a lot for your character to process. What stands out most?",
+        "Your character's thoughts matter in this story. What are they thinking?"
+      ],
+      "avoid": [
+        "Abstract metaphors, complex symbolism, ambiguous NPC dialogue",
+        "Rapid NPC voice changes, multiple simultaneous voices, dissonant audio",
+        "Confronting or arguing with unusual perceptions",
+        "Rushing transitions or creating narrative disorientation",
+        "Jokes or irony without very clear signaling"
+      ],
+      "npc_design": [
+        "NPCs speak clearly, with one voice, one topic at a time",
+        "No whispering NPCs, conspiracies, or talking behind character's back",
+        "Central trusted NPC whose loyalty is absolutely consistent"
+      ]
+    },
+    {
+      "id": "ocd",
+      "name": "Obsessive-Compulsive Disorder",
+      "communication_landscape": "Intrusive thoughts and compulsive rituals. Critical trap: reassurance-seeking — answering yes maintains the OCD cycle.",
+      "opens_them_up": [
+        "Normalizing uncertainty as a narrative feature",
+        "Externalizing OCD as a character: 'The OCD voice says X — what does the rest say?'",
+        "ERP-aligned quests: approach feared situations without checking/avoiding",
+        "NPCs who tolerate uncertainty calmly"
+      ],
+      "helpful_phrases": [
+        "Your character doesn't have to know for sure what's ahead to keep moving.",
+        "That uncertain feeling makes sense. What does your character do anyway?",
+        "Intrusive thoughts in this world don't predict what will happen — they're just thoughts.",
+        "What would your character do if they trusted themselves a little more right now?"
+      ],
+      "avoid": [
+        "Responding to reassurance-seeking with definitive reassurance",
+        "Contamination/checking/catastrophe content without clinical guidance",
+        "Punishing compulsive in-game behaviors (induces shame)",
+        "Repeating information because asked again — gently redirect instead"
+      ],
+      "npc_design": [
+        "Companion NPC modeling tolerating uncertainty",
+        "NPCs do not compulsively check or verify",
+        "Quest rewards tied to completing actions DESPITE uncertainty"
+      ]
+    },
+    {
+      "id": "eating_disorders",
+      "name": "Eating Disorders",
+      "communication_landscape": "Greatest density of language landmines. Bodies, food, weight, appearance are all live wires. Bypass the disorder's language domain entirely.",
+      "opens_them_up": [
+        "Asking about feelings, not behaviors",
+        "Validating complexity without centering food or body",
+        "Connecting to values: 'What does your character wish people understood?'",
+        "Narrative arcs about nourishment, care, deserving — not about eating",
+        "Written disclosure via in-game character journal"
+      ],
+      "helpful_phrases": [
+        "What's going on for your character emotionally right now?",
+        "Your character deserves to take up space in this world.",
+        "What does your character need that they haven't been able to ask for?",
+        "What would it look like if your character took care of themselves the way they take care of others?"
+      ],
+      "avoid_hard_rules": [
+        "ANY comment, even positive, about weight, appearance, or body shape",
+        "'You look healthy / better / different'",
+        "NPC content involving food choices, eating behaviors, body comparisons",
+        "Game mechanics involving visual body representation without clinical oversight",
+        "'You're so disciplined' — reinforces restriction",
+        "Asking about meals, intake, or physical symptoms"
+      ],
+      "npc_design": [
+        "NPCs are body-neutral by design — no comments on appearance",
+        "Food, if present, is purely environmental and non-interactive",
+        "Storytelling NPC inviting expression through narrative, art, or music"
+      ]
+    },
+    {
+      "id": "bpd",
+      "name": "Borderline Personality Disorder",
+      "communication_landscape": "Emotional dysregulation, intense fear of abandonment, unstable self. People with BPD hear words 'inside out, sideways, and devoid of context'. Emotional attunement to feelings, not words.",
+      "opens_them_up": [
+        "Active empathic listening — feelings, not just words",
+        "Validation without enabling escalation",
+        "Distraction into positive engagement when emotions escalate",
+        "Consistent session endings — never abrupt",
+        "DBT-informed language: validation, wise mind references"
+      ],
+      "helpful_phrases": [
+        "Your character's feelings are real, and they matter in this story.",
+        "I'm not going anywhere. I'm here for the whole session.",
+        "What does the wise part of your character think about this?",
+        "Your character is allowed to feel all of this.",
+        "Let's give your character a break from this for a moment — there's something interesting just over here...",
+        "It makes sense you feel that strongly. What does your character need right now to feel a little safer?"
+      ],
+      "avoid": [
+        "Sudden session terminations or unannounced interruptions",
+        "Arguing with emotional interpretation",
+        "Invalidating with logic: 'That doesn't make sense'",
+        "Inconsistent NPC behavior, disappearing, expressing rejection",
+        "Overstimulating scenes without recovery path",
+        "Promises the system cannot keep: 'I will always be here'"
+      ],
+      "npc_design": [
+        "Most consistently warm, stable NPC as central companion",
+        "NPC loyalty and presence never in doubt — no betrayals or unannounced absences",
+        "DBT skill metaphors: 'wise elder' for distress tolerance, 'fire keeper' for emotion regulation"
+      ]
+    }
+  ],
+  "gamification_mechanics": [
+    {
+      "mechanic": "Micro-quest system",
+      "clinical_mechanism": "Behavioral activation; counters anhedonia/avoidance",
+      "best_for": ["depression", "adhd", "sud"]
+    },
+    {
+      "mechanic": "Progress journal / narrative log",
+      "clinical_mechanism": "Written emotional disclosure; meaning-making",
+      "best_for": ["ptsd", "eating_disorders", "anxiety"]
+    },
+    {
+      "mechanic": "Character creation interview",
+      "clinical_mechanism": "Narrative identity reconstruction; externalization",
+      "best_for": ["all"]
+    },
+    {
+      "mechanic": "Companion NPC relationships",
+      "clinical_mechanism": "Co-regulation; attachment repair",
+      "best_for": ["ptsd", "bpd", "depression"]
+    },
+    {
+      "mechanic": "Safe room mechanic",
+      "clinical_mechanism": "Polyvagal safety activation; window of tolerance",
+      "best_for": ["ptsd", "anxiety", "bpd"]
+    },
+    {
+      "mechanic": "Mood visible in game world",
+      "clinical_mechanism": "Self-monitoring; psychoeducation",
+      "best_for": ["bipolar", "adhd", "bpd"]
+    },
+    {
+      "mechanic": "Observer-perspective NPC scenes",
+      "clinical_mechanism": "Cognitive restructuring via detachment",
+      "best_for": ["ocd", "depression", "anxiety"]
+    },
+    {
+      "mechanic": "Uncertainty-tolerating quest design",
+      "clinical_mechanism": "Graduated ERP",
+      "best_for": ["ocd", "anxiety"]
+    },
+    {
+      "mechanic": "Achievement badges",
+      "clinical_mechanism": "Positive reinforcement; counters shame",
+      "best_for": ["adhd", "depression", "sud"]
+    },
+    {
+      "mechanic": "Skill-teaching NPC mentors",
+      "clinical_mechanism": "Psychoeducation; CBT skill modeling",
+      "best_for": ["all"]
+    },
+    {
+      "mechanic": "Peer NPC in recovery",
+      "clinical_mechanism": "Vicarious social learning; stigma reduction",
+      "best_for": ["sud", "schizophrenia", "bipolar"]
+    },
+    {
+      "mechanic": "Narrative arc with ups and downs",
+      "clinical_mechanism": "Normalizes non-linear recovery",
+      "best_for": ["bipolar", "bpd", "ptsd"]
+    }
+  ]
+}

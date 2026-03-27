@@ -1,0 +1,51 @@
+# routers/ — API Route Handlers
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## routers/ — Router Modules
+  aria : NAI search, 4D persona, respond, validate, memory [router] @entry
+    -> nai, persona_engine, response_svc, introspection_svc, fastapi
+  computer_use : Web fetch, search, image analysis, self-test [router]
+    -> computer_svc, fastapi
+  dashboard : Therapist dashboard: moods, flags, notes, controls [router]
+    -> dashboard_svc, therapy_svc, controls_svc, fastapi
+  docs : Doc registry: list, read, write, API index [router]
+    -> stdlib, fastapi
+  game : Interview, generation, gameplay, saves, cartridges [router]
+    -> interview_engine, game_generator, game_runtime, therapy_svc, kg_bridge, persistence, scene_image, device_state, prebuilt_games, clinical_cartridges, fastapi
+  kg : KG Studio CRUD: nodes, edges, import/export [router]
+    -> nai, fastapi
+  products : Product catalog: list, detail, related [router]
+    -> nai, fastapi
+  termux : Android device APIs: battery, torch, SMS, camera [router]
+    -> termux_svc, device_state, fastapi
+  therapy : Therapy sessions, respond, validate, user KG [router]
+    -> therapy_svc, fastapi
+
+## services/ — Business Logic
+  nai : NAI / IntentGraph [service]
+  persona_engine : PersonaEngine 4D [service]
+  response_svc : ResponseService [service]
+  introspection_svc : IntrospectionService [service]
+  therapy_svc : TherapyService [service]
+  dashboard_svc : DashboardService [service]
+  controls_svc : ControlsService [service]
+  interview_engine : InterviewEngine [service]
+  game_generator : GameGenerator [service]
+  game_runtime : GameRuntime [service]
+  kg_bridge : KGBridge [service]
+  persistence : GamePersistence [service]
+  scene_image : SceneImageService [service]
+  computer_svc : computer_use_service [service]
+  termux_svc : termux_service [service]
+  device_state : device_state [service]
+
+## data/ — Static Data
+  prebuilt_games : Prebuilt game definitions [data]
+  clinical_cartridges : Clinical cartridge configs [data]
+
+## libs — Shared Libraries
+  fastapi : FastAPI / Pydantic [lib]
+  dataclasses_lib : dataclasses [lib]
+  stdlib : os / math / importlib / base64 / datetime [lib]

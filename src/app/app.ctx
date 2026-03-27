@@ -1,0 +1,29 @@
+# app/ — Next.js Routes
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## app/ — Next.js Routes
+  layout : Root HTML, fonts, metadata [root] @entry
+    -> home
+  home : Home — TabBar + TabContainer [screen]
+    -> TabBar, TabContainer
+  globals.css : Dark theme, animations [config]
+  dashboard/page : Therapist Dashboard route [screen]
+    -> DashboardShell
+  docs/page : Doc viewer/editor [screen]
+    ~> docsApi
+  game/page : Game route [screen]
+    -> GameShell
+  su/page : SU Lab route [screen]
+    -> SUShell
+
+## components/ — External UI
+  TabBar : Tab navigation [component]
+  TabContainer : Content switcher [component]
+  DashboardShell : Dashboard UI [component]
+  GameShell : Game engine UI [component]
+  SUShell : SU Lab UI [component]
+
+## Backend APIs
+  docsApi : /api/docs [router]

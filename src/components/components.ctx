@@ -1,0 +1,54 @@
+# components/ — UI Components
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## Main Chat Interface
+  ChatPanel : Chat orchestrator [component] @entry
+    -> TopBar, MessageThread, VoiceOrb, ChatInput, ConfigDrawer, SessionHistory, SnapshotManager
+    ~> useChatStore
+  TopBar : Top bar status display [component]
+    ~> useChatStore
+  MessageThread : Message list renderer [component]
+    ~> useChatStore
+  VoiceOrb : Voice connection button [component]
+    -> AriaLib
+    ~> useChatStore
+  ChatInput : Text input with slash commands [component]
+    -> SlashMenu, AriaLib
+    ~> useChatStore
+  SlashMenu : Slash command autocomplete [component]
+  ConfigDrawer : Configuration drawer [component]
+    -> PersonaLoader
+  ConfigPanel : Configuration panel [component]
+  PersonaLoader : Persona config loader [component]
+  SessionHistory : Session list browser [component]
+    -> SessionStore
+  SnapshotManager : Snapshot save/restore [component]
+
+## Tab System
+  TabBar : Top navigation tabs [component]
+    -> TabContainer
+    ~> useTabStore
+  TabContainer : Lazy tab router [component]
+    -> SDK, Store, Roadmap
+
+## Subfolders
+  ### sdk/ (5) -> sdk/sdk.ctx
+    SDK : SDK dev tools [dir]
+  ### store/ (8) -> store/store.ctx
+    Store : E-commerce components [dir]
+  ### roadmap/ (1) -> roadmap/roadmap.ctx
+    Roadmap : Project roadmap view [dir]
+  ### dashboard/ (9) -> dashboard/dashboard.ctx
+    Dashboard : Clinical dashboard panels [dir]
+  ### game/ (46) -> game/game.ctx
+    Game : Gameplay components [dir]
+  ### su/ (3) -> su/su.ctx
+    SU : Visual canvas shell [dir]
+
+## External
+  useChatStore : Chat messages and voice status [store]
+  useTabStore : Active tab state [store]
+  AriaLib : Core Aria voice engine [lib]
+  SessionStore : Session persistence store [store]

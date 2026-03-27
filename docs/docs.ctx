@@ -1,0 +1,73 @@
+# docs/ — Project Documentation
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## Root Documents
+
+  ARIA-VOICE-ASSISTANT-REFERENCE : Gemini Live protocol + audio pipeline [doc]
+    ~> SPROG
+  END-OF-DAY-REPORT-2026-03-24 : Sprint: logic + FunctionGemma [doc]
+    ~> SU-LAB-VISUAL-LOGIC-ARCHITECTURE
+    ~> LOCAL-INFERENCE-ALTERNATIVES-REPORT
+  hf-token.txt : HuggingFace credential [doc]
+    ~> SESSION-HANDOFF-SETFIT-PIPELINE
+  I.txt : I/O prototype origin story [doc]
+    ~> SU-LAB-COMPREHENSIVE-REPORT
+  LOCAL-INFERENCE-ALTERNATIVES-REPORT : 5 inference architectures [doc]
+    ~> SESSION-HANDOFF-SETFIT-PIPELINE
+  LOGIC-PROTOTYPE-IMPLEMENTATION-PLAN : MVP wireframes + data model [doc]
+    ~> SU-LAB-LOGIC-SYSTEM
+  MEGA-PLAN-TESTING-GUIDE : 9-phase test script [doc]
+    ~> WEEK1-PROGRESSION-REPORT
+  PHASE3-RESEARCH-FINDINGS : Sensor mechanics + novel features [doc]
+    ~> WEEK2-NARRATIVE-GAME-PLAN
+  PSYCHOLOGY-DATA-SOURCES : 15 clinical APIs + datasets [doc]
+    ~> STRUCTURED-DATA-UPGRADE
+  SESSION-2026-03-24_17-44 : Unified logic 5-phase build [doc]
+    ~> SU-LAB-LOGIC-SYSTEM
+  SESSION-2026-03-25_00-15 : Tutorials + calculator confirmed [doc]
+    ~> SU-LAB-LOGIC-SYSTEM
+  SESSION-HANDOFF-SETFIT-PIPELINE : SetFit voice router plan [doc]
+    ~> SU-LAB-LOGIC-SYSTEM
+  SESSION-PROGRESSION-2026-03-21-22 : 12-hour game engine build [doc]
+    ~> ARIA-VOICE-ASSISTANT-REFERENCE
+  STRUCTURED-DATA-UPGRADE : Prose to 11 structured JSONs [doc]
+    ~> WEEK1-PROGRESSION-REPORT
+  SU-LAB-COMPREHENSIVE-REPORT : Full SU Lab analysis [doc]
+    ~> SU-LAB-LOGIC-SYSTEM
+  SU-LAB-LOGIC-SYSTEM : Production logic reference [doc]
+    ~> WEEK2-NARRATIVE-GAME-PLAN
+  SU-LAB-UNIFIED-LOGIC-PLAN : 6-phase logic plan [doc]
+    ~> SU-LAB-LOGIC-SYSTEM
+  SU-LAB-VISUAL-LOGIC-ARCHITECTURE : Original arch spec - superseded [doc]
+    ~> SU-LAB-LOGIC-SYSTEM
+  THERAPEUTIC-GAME-RESEARCH : Psychology research backup [doc]
+    ~> WEEK2-NARRATIVE-GAME-PLAN
+    ~> PHASE3-RESEARCH-FINDINGS
+  WEEK1-PROGRESSION-REPORT : Dashboard + KG bridge [doc]
+    ~> MEGA-PLAN-TESTING-GUIDE
+  WEEK2-NARRATIVE-GAME-PLAN : Game engine design [doc]
+    ~> SESSION-PROGRESSION-2026-03-21-22
+    ~> WEEK1-PROGRESSION-REPORT
+
+## plans/
+  2026-03-15-aria-portable-framework : Portable persona + memory [doc]
+    ~> ARIA-VOICE-ASSISTANT-REFERENCE
+
+## thrapy-KB/
+  thr1.md : 10 disorders + neuroscience [doc]
+    ~> thr2.txt
+    ~> STRUCTURED-DATA-UPGRADE
+  thr2.txt : Summary + 80 citations [doc]
+  kb2.md : OARS + per-disorder rules [doc]
+    ~> sum2.txt
+    ~> STRUCTURED-DATA-UPGRADE
+    ~> THERAPEUTIC-GAME-RESEARCH
+  sum2.txt : Summary + citations [doc]
+
+## the-game/
+  io-prototype.html : Original knobs + CSS objects [doc]
+    ~> I.txt
+  log.log : Console demo output [doc]
+    ~> io-prototype.html

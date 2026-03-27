@@ -1,0 +1,16 @@
+# roadmap/ — Project Roadmap UI
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## External
+  TabContainer : Lazy tab router [component] -> RoadmapPage
+
+## RoadmapPage
+  RoadmapPage : Project roadmap page [component] @entry
+  ROADMAP_DATA : Inline roadmap data [data] -> SectionCard
+  STATUS_STYLE : 3 status configs [config] -> ItemRow
+  SectionCard : Section card, renders x9 [component]
+    -> ItemRow, ProgressBar
+  ItemRow : Done/active/planned row [component]
+  ProgressBar : Per-section and global progress [component]

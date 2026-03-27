@@ -1,0 +1,42 @@
+# aria-personal/ — Project Root
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## Config
+  package.json   : Project manifest and scripts [config] @entry
+    -> SRC, BACKEND
+  next.config.ts : API proxy to :8095, COOP/COEP headers [config]
+    -> SRC
+    ~> BACKEND "proxy /api/* -> :8095"
+  tailwind.config.ts : Dark theme, aria purple palette [config] -> SRC
+  tsconfig.json  : Strict TS, bundler resolution, @/* alias [config] -> SRC
+  postcss.config.js : Tailwind and autoprefixer [config]
+  README.md      : Project overview [doc]
+
+## Frontend
+  SRC            : 188 files — Next.js pages, components, stores, lib, types [dir] -> src/src.ctx
+    ~> BACKEND "API calls via proxy"
+    ~> geminiAPI "WebSocket"
+
+## Backend
+  BACKEND        : 145 files — FastAPI routers, services, persona, data, tests [dir] -> backend/backend.ctx
+    ~> geminiAPI "Gemini API"
+    ~> SCRIPTS "local inference"
+
+## Support
+  DOCS           : 28 files — research, plans, therapy KB, game prototypes [dir] -> docs/docs.ctx
+    ~> SRC "references"
+    ~> BACKEND "references"
+  DATA           : 6 files — FunctionGemma fine-tuning datasets [dir] -> data/data.ctx
+    -> huggingface "training data"
+  SCRIPTS        : 5 files — FunctionGemma download and inference [dir] -> scripts/scripts.ctx
+    -> MODELS "download + inference"
+  CTX_PACKETS    : 10 files — session preservation packets [dir] -> context-packets/context-packets.ctx
+    ~> DOCS "session continuity"
+  MODELS         : Reserved for local model weights [dir]
+
+## External
+  geminiAPI      : Gemini Live API — voice WebSocket streaming [ext]
+  huggingface    : HuggingFace Hub — model hosting and AutoTrain [ext]
+    -> MODELS "fine-tuned model"

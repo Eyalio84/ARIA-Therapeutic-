@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build output
+.next/
+out/
+dist/
+build/
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# Models (large binaries)
+models/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Debug
+npm-debug.log*
+
+# Build artifacts
+tsconfig.tsbuildinfo
+
+# Tokens & secrets in docs
+docs/hf-token.txt
+
+# SQLite databases (user session data)
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+!backend/data/jewelry-store-kg.db
+
+# Context packets (session-specific, not shared)
+context-packets/*.md
+!context-packets/start-here.md
+!context-packets/context-packets.md
+!context-packets/context-packets.ctx
+
+# Claude skill export (convenience copy)
+ctx-skill/

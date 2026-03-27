@@ -1,0 +1,278 @@
+{
+  "_meta": {
+    "source": "Public domain clinical assessment instruments",
+    "purpose": "Mood check-in and screening tools for therapist dashboard",
+    "note": "All scales here are public domain or free for clinical/research use",
+    "scales_count": 7,
+    "loinc_mappings": {
+      "phq9": "44249-1",
+      "gad7": "69737-5",
+      "pcl5": "no panel code — individual items only",
+      "dass21": "no LOINC code — use subscale scores",
+      "who5": "no LOINC code — WHO proprietary coding",
+      "cssrs_screen": "no LOINC code — use C-SSRS protocol"
+    },
+    "loinc_api": "https://fhir.loinc.org"
+  },
+  "scales": {
+    "phq9": {
+      "name": "Patient Health Questionnaire-9",
+      "loinc_code": "44249-1",
+      "measures": "Depression severity",
+      "scoring": "0-27 total, each item 0-3",
+      "timeframe": "Over the last 2 weeks",
+      "items": [
+        {"id": 1, "text": "Little interest or pleasure in doing things"},
+        {"id": 2, "text": "Feeling down, depressed, or hopeless"},
+        {"id": 3, "text": "Trouble falling or staying asleep, or sleeping too much"},
+        {"id": 4, "text": "Feeling tired or having little energy"},
+        {"id": 5, "text": "Poor appetite or overeating"},
+        {"id": 6, "text": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down"},
+        {"id": 7, "text": "Trouble concentrating on things, such as reading the newspaper or watching television"},
+        {"id": 8, "text": "Moving or speaking so slowly that other people could have noticed. Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual"},
+        {"id": 9, "text": "Thoughts that you would be better off dead, or of hurting yourself"}
+      ],
+      "response_options": [
+        {"value": 0, "label": "Not at all"},
+        {"value": 1, "label": "Several days"},
+        {"value": 2, "label": "More than half the days"},
+        {"value": 3, "label": "Nearly every day"}
+      ],
+      "severity_thresholds": [
+        {"range": [0, 4], "severity": "minimal", "action": "None"},
+        {"range": [5, 9], "severity": "mild", "action": "Watchful waiting; repeat at follow-up"},
+        {"range": [10, 14], "severity": "moderate", "action": "Treatment plan; counseling and/or pharmacotherapy"},
+        {"range": [15, 19], "severity": "moderately_severe", "action": "Active treatment with pharmacotherapy and/or psychotherapy"},
+        {"range": [20, 27], "severity": "severe", "action": "Immediate initiation of pharmacotherapy and referral to specialist"}
+      ],
+      "item9_flag": "Any score > 0 on item 9 requires clinical follow-up for suicide risk"
+    },
+    "gad7": {
+      "name": "Generalized Anxiety Disorder-7",
+      "measures": "Anxiety severity",
+      "scoring": "0-21 total, each item 0-3",
+      "timeframe": "Over the last 2 weeks",
+      "items": [
+        {"id": 1, "text": "Feeling nervous, anxious or on edge"},
+        {"id": 2, "text": "Not being able to stop or control worrying"},
+        {"id": 3, "text": "Worrying too much about different things"},
+        {"id": 4, "text": "Trouble relaxing"},
+        {"id": 5, "text": "Being so restless that it is hard to sit still"},
+        {"id": 6, "text": "Becoming easily annoyed or irritable"},
+        {"id": 7, "text": "Feeling afraid as if something awful might happen"}
+      ],
+      "response_options": [
+        {"value": 0, "label": "Not at all"},
+        {"value": 1, "label": "Several days"},
+        {"value": 2, "label": "More than half the days"},
+        {"value": 3, "label": "Nearly every day"}
+      ],
+      "severity_thresholds": [
+        {"range": [0, 4], "severity": "minimal", "action": "None"},
+        {"range": [5, 9], "severity": "mild", "action": "Monitor"},
+        {"range": [10, 14], "severity": "moderate", "action": "Possible clinically significant condition"},
+        {"range": [15, 21], "severity": "severe", "action": "Active treatment warranted"}
+      ]
+    },
+    "pcl5": {
+      "name": "PTSD Checklist for DSM-5",
+      "measures": "PTSD symptom severity",
+      "scoring": "0-80 total, each item 0-4",
+      "timeframe": "In the past month",
+      "source": "U.S. Department of Veterans Affairs / National Center for PTSD",
+      "license": "Public domain (US government work)",
+      "items": [
+        {"id": 1, "cluster": "B", "text": "Repeated, disturbing, and unwanted memories of the stressful experience"},
+        {"id": 2, "cluster": "B", "text": "Repeated, disturbing dreams of the stressful experience"},
+        {"id": 3, "cluster": "B", "text": "Suddenly feeling or acting as if the stressful experience were actually happening again (as if you were actually back there reliving it)"},
+        {"id": 4, "cluster": "B", "text": "Feeling very upset when something reminded you of the stressful experience"},
+        {"id": 5, "cluster": "B", "text": "Having strong physical reactions when something reminded you of the stressful experience (for example, heart pounding, trouble breathing, sweating)"},
+        {"id": 6, "cluster": "C", "text": "Avoiding memories, thoughts, or feelings related to the stressful experience"},
+        {"id": 7, "cluster": "C", "text": "Avoiding external reminders of the stressful experience (for example, people, places, conversations, activities, objects, or situations)"},
+        {"id": 8, "cluster": "D", "text": "Trouble remembering important parts of the stressful experience"},
+        {"id": 9, "cluster": "D", "text": "Having strong negative beliefs about yourself, other people, or the world (for example, having thoughts such as: I am bad, there is something seriously wrong with me, no one can be trusted, the world is completely dangerous)"},
+        {"id": 10, "cluster": "D", "text": "Blaming yourself or someone else for the stressful experience or what happened after it"},
+        {"id": 11, "cluster": "D", "text": "Having strong negative feelings such as fear, horror, anger, guilt, or shame"},
+        {"id": 12, "cluster": "D", "text": "Loss of interest in activities that you used to enjoy"},
+        {"id": 13, "cluster": "D", "text": "Feeling distant or cut off from other people"},
+        {"id": 14, "cluster": "D", "text": "Trouble experiencing positive feelings (for example, being unable to feel happiness or have loving feelings for people close to you)"},
+        {"id": 15, "cluster": "E", "text": "Irritable behavior, angry outbursts, or acting aggressively"},
+        {"id": 16, "cluster": "E", "text": "Taking too many risks or doing things that could cause you harm"},
+        {"id": 17, "cluster": "E", "text": "Being 'superalert' or watchful or on guard"},
+        {"id": 18, "cluster": "E", "text": "Feeling jumpy or easily startled"},
+        {"id": 19, "cluster": "E", "text": "Having difficulty concentrating"},
+        {"id": 20, "cluster": "E", "text": "Trouble falling or staying asleep"}
+      ],
+      "response_options": [
+        {"value": 0, "label": "Not at all"},
+        {"value": 1, "label": "A little bit"},
+        {"value": 2, "label": "Moderately"},
+        {"value": 3, "label": "Quite a bit"},
+        {"value": 4, "label": "Extremely"}
+      ],
+      "clusters": {
+        "B": {"name": "Intrusion", "items": [1,2,3,4,5]},
+        "C": {"name": "Avoidance", "items": [6,7]},
+        "D": {"name": "Negative alterations in cognitions and mood", "items": [8,9,10,11,12,13,14]},
+        "E": {"name": "Alterations in arousal and reactivity", "items": [15,16,17,18,19,20]}
+      },
+      "severity_thresholds": [
+        {"range": [0, 30], "severity": "below_threshold", "action": "No probable PTSD diagnosis"},
+        {"range": [31, 33], "severity": "threshold", "action": "Provisional PTSD diagnosis — clinical interview recommended"},
+        {"range": [34, 80], "severity": "above_threshold", "action": "Probable PTSD — refer for clinical assessment"}
+      ],
+      "dsm5_criteria_method": "A provisional diagnosis requires: at least 1 B item, 1 C item, 2 D items, and 2 E items scored >= 2 (Moderately)"
+    },
+    "dass21": {
+      "name": "Depression Anxiety Stress Scales — 21 item version",
+      "measures": "Depression, Anxiety, and Stress as 3 separate subscales",
+      "scoring": "Each subscale 0-42 (7 items x 0-3, multiplied by 2)",
+      "timeframe": "Over the past week",
+      "source": "Lovibond & Lovibond (1995), University of New South Wales",
+      "license": "Public domain",
+      "items": [
+        {"id": 1, "subscale": "S", "text": "I found it hard to wind down"},
+        {"id": 2, "subscale": "A", "text": "I was aware of dryness of my mouth"},
+        {"id": 3, "subscale": "D", "text": "I couldn't seem to experience any positive feeling at all"},
+        {"id": 4, "subscale": "A", "text": "I experienced breathing difficulty (e.g., excessively rapid breathing, breathlessness in the absence of physical exertion)"},
+        {"id": 5, "subscale": "D", "text": "I found it difficult to work up the initiative to do things"},
+        {"id": 6, "subscale": "S", "text": "I tended to over-react to situations"},
+        {"id": 7, "subscale": "A", "text": "I experienced trembling (e.g., in the hands)"},
+        {"id": 8, "subscale": "S", "text": "I felt that I was using a lot of nervous energy"},
+        {"id": 9, "subscale": "A", "text": "I was worried about situations in which I might panic and make a fool of myself"},
+        {"id": 10, "subscale": "D", "text": "I felt that I had nothing to look forward to"},
+        {"id": 11, "subscale": "S", "text": "I found myself getting agitated"},
+        {"id": 12, "subscale": "S", "text": "I found it difficult to relax"},
+        {"id": 13, "subscale": "D", "text": "I felt down-hearted and blue"},
+        {"id": 14, "subscale": "S", "text": "I was intolerant of anything that kept me from getting on with what I was doing"},
+        {"id": 15, "subscale": "A", "text": "I felt I was close to panic"},
+        {"id": 16, "subscale": "D", "text": "I was unable to become enthusiastic about anything"},
+        {"id": 17, "subscale": "D", "text": "I felt I wasn't worth much as a person"},
+        {"id": 18, "subscale": "S", "text": "I felt that I was rather touchy"},
+        {"id": 19, "subscale": "A", "text": "I was aware of the action of my heart in the absence of physical exertion (e.g., sense of heart rate increase, heart missing a beat)"},
+        {"id": 20, "subscale": "A", "text": "I felt scared without any good reason"},
+        {"id": 21, "subscale": "D", "text": "I felt that life was meaningless"}
+      ],
+      "response_options": [
+        {"value": 0, "label": "Did not apply to me at all"},
+        {"value": 1, "label": "Applied to me to some degree, or some of the time"},
+        {"value": 2, "label": "Applied to me to a considerable degree or a good part of time"},
+        {"value": 3, "label": "Applied to me very much or most of the time"}
+      ],
+      "subscales": {
+        "D": {"name": "Depression", "items": [3,5,10,13,16,17,21]},
+        "A": {"name": "Anxiety", "items": [2,4,7,9,15,19,20]},
+        "S": {"name": "Stress", "items": [1,6,8,11,12,14,18]}
+      },
+      "severity_thresholds": {
+        "depression": [
+          {"range": [0, 9], "severity": "normal"},
+          {"range": [10, 13], "severity": "mild"},
+          {"range": [14, 20], "severity": "moderate"},
+          {"range": [21, 27], "severity": "severe"},
+          {"range": [28, 42], "severity": "extremely_severe"}
+        ],
+        "anxiety": [
+          {"range": [0, 7], "severity": "normal"},
+          {"range": [8, 9], "severity": "mild"},
+          {"range": [10, 14], "severity": "moderate"},
+          {"range": [15, 19], "severity": "severe"},
+          {"range": [20, 42], "severity": "extremely_severe"}
+        ],
+        "stress": [
+          {"range": [0, 14], "severity": "normal"},
+          {"range": [15, 18], "severity": "mild"},
+          {"range": [19, 25], "severity": "moderate"},
+          {"range": [26, 33], "severity": "severe"},
+          {"range": [34, 42], "severity": "extremely_severe"}
+        ]
+      },
+      "scoring_note": "Sum items per subscale, then multiply by 2 to match the full DASS-42 scoring"
+    },
+    "who5": {
+      "name": "WHO-5 Well-Being Index",
+      "measures": "General psychological well-being",
+      "scoring": "0-25 raw (each item 0-5), multiply by 4 for percentage (0-100)",
+      "timeframe": "Over the last two weeks",
+      "source": "WHO Collaborating Centre for Mental Health, Hillerod, Denmark",
+      "license": "Free to use without permission",
+      "items": [
+        {"id": 1, "text": "I have felt cheerful and in good spirits"},
+        {"id": 2, "text": "I have felt calm and relaxed"},
+        {"id": 3, "text": "I have felt active and vigorous"},
+        {"id": 4, "text": "I woke up feeling fresh and rested"},
+        {"id": 5, "text": "My daily life has been filled with things that interest me"}
+      ],
+      "response_options": [
+        {"value": 5, "label": "All of the time"},
+        {"value": 4, "label": "Most of the time"},
+        {"value": 3, "label": "More than half of the time"},
+        {"value": 2, "label": "Less than half of the time"},
+        {"value": 1, "label": "Some of the time"},
+        {"value": 0, "label": "At no time"}
+      ],
+      "severity_thresholds": [
+        {"range": [0, 28], "severity": "low_wellbeing", "action": "Score below 50% — screen for depression (administer PHQ-9)"},
+        {"range": [29, 50], "severity": "moderate_wellbeing", "action": "Monitor — may benefit from support"},
+        {"range": [51, 100], "severity": "good_wellbeing", "action": "No immediate concern"}
+      ],
+      "change_threshold": "A change of 10% or more is clinically significant"
+    },
+    "cssrs_screen": {
+      "name": "Columbia Suicide Severity Rating Scale — Screener",
+      "measures": "Suicidal ideation and behavior (screening version)",
+      "scoring": "Any YES triggers clinical follow-up protocol",
+      "timeframe": "Lifetime + Since Last Visit",
+      "source": "Columbia University / NIMH",
+      "license": "Free for clinical and research use (registration at cssrs.columbia.edu)",
+      "critical_note": "This is a SCREENING tool only. Any positive response requires immediate clinical follow-up. Do NOT use as a diagnostic instrument without trained clinical oversight.",
+      "items": [
+        {"id": 1, "text": "Have you wished you were dead or wished you could go to sleep and not wake up?", "category": "ideation", "severity": "passive"},
+        {"id": 2, "text": "Have you actually had any thoughts of killing yourself?", "category": "ideation", "severity": "active_nonspecific"},
+        {"id": 3, "text": "Have you been thinking about how you might do this?", "category": "ideation", "severity": "active_with_method", "escalation": true},
+        {"id": 4, "text": "Have you had these thoughts and had some intention of acting on them?", "category": "ideation", "severity": "active_with_intent", "escalation": true},
+        {"id": 5, "text": "Have you started to work out or worked out the details of how to kill yourself? Do you intend to carry out this plan?", "category": "ideation", "severity": "active_with_plan", "escalation": true},
+        {"id": 6, "text": "Have you ever done anything, started to do anything, or prepared to do anything to end your life?", "category": "behavior", "severity": "behavioral", "escalation": true}
+      ],
+      "response_options": [
+        {"value": 0, "label": "No"},
+        {"value": 1, "label": "Yes"}
+      ],
+      "risk_levels": [
+        {"items_positive": [], "level": "no_risk", "action": "No intervention needed"},
+        {"items_positive": [1], "level": "low", "action": "Clinical follow-up recommended"},
+        {"items_positive": [2], "level": "moderate", "action": "Safety assessment required"},
+        {"items_positive": [3,4,5], "level": "high", "action": "Immediate safety protocol — do not leave patient alone, notify therapist"},
+        {"items_positive": [6], "level": "severe", "action": "Emergency protocol — crisis resources, emergency contact, therapist notification"}
+      ],
+      "game_integration": {
+        "note": "In the Aria game context, these questions are NEVER asked directly to the user. The safety system monitors for content that maps to these categories and auto-flags for the therapist.",
+        "auto_flag_mapping": {
+          "passive_ideation_detected": "severity: concern, category: disclosure",
+          "active_ideation_detected": "severity: urgent, category: disclosure",
+          "plan_or_intent_detected": "severity: urgent, immediate therapist notification",
+          "behavioral_indicator": "severity: urgent, immediate crisis protocol"
+        }
+      }
+    },
+    "simple_mood": {
+      "name": "Session Mood Check-In",
+      "measures": "Subjective mood at session start and end",
+      "scoring": "1-5 scale",
+      "purpose": "Track mood velocity across sessions for therapist dashboard",
+      "labels": [
+        {"value": 1, "label": "Really struggling", "emoji": "storm"},
+        {"value": 2, "label": "Having a hard time", "emoji": "cloudy"},
+        {"value": 3, "label": "Getting by", "emoji": "partly_cloudy"},
+        {"value": 4, "label": "Doing okay", "emoji": "sunny"},
+        {"value": 5, "label": "Feeling good", "emoji": "bright"}
+      ],
+      "interpretation": {
+        "velocity_improving": "Things have been getting a little easier.",
+        "velocity_declining": "It's been a tough stretch. Let's take it easy today.",
+        "velocity_stable": "Your mood has been holding steady.",
+        "insufficient_data": "We'll need a few more sessions to see the trend."
+      }
+    }
+  }
+}

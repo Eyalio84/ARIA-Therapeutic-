@@ -1,0 +1,43 @@
+# persona/ — Persona Dimension Computers
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## Brand Persona — Jewelry Store
+  BrandEmotionalComputer : Mood from customer signals [service]
+    -> DimensionComputer, EmotionalState
+  BrandLinguisticComputer : Fixed jewelry brand voice [service]
+    -> DimensionComputer, LinguisticState
+  BrandRelationalComputer : Product KG entity detection [service]
+    -> DimensionComputer, RelationalState
+    ~> JewelryKG, sqlite3
+  BrandTemporalComputer : Customer journey stages [service]
+    -> DimensionComputer, TemporalState
+
+## Therapy Persona — Mental Wellbeing
+  TherapyEmotionalComputer : Empathy from KG concerns [service]
+    -> DimensionComputer, EmotionalState
+    ~> TherapyKG
+  TherapyLinguisticComputer : Adaptive therapeutic voice [service]
+    -> DimensionComputer, LinguisticState
+    ~> TherapyKG
+  TherapyRelationalComputer : Therapy KG subgraph activation [service]
+    -> DimensionComputer, RelationalState
+    ~> TherapyKG
+  TherapyTemporalComputer : Session arc and handoff [service]
+    -> DimensionComputer, TemporalState
+    ~> TherapyKG
+
+## persona_engine Framework
+  DimensionComputer : Base class for all computers [lib] @entry
+  EmotionalState : X-axis return type [type]
+  LinguisticState : Z-axis return type [type]
+  RelationalState : Y-axis return type [type]
+  TemporalState : T-axis return type [type]
+
+## Knowledge Graphs
+  JewelryKG : SQLite product graph [data]
+  TherapyKG : User's personal graph [data]
+
+## External
+  sqlite3 : Database access [ext]

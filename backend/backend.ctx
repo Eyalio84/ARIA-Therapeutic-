@@ -1,0 +1,31 @@
+# backend/ — FastAPI Backend
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## Root — Entry Points
+  main.py : Brand assistant server :8000 [root] @entry
+    -> config.py, routers, services
+  serve_game.py : Game engine server :8080 [root] @entry
+    -> config.py, routers, services, templates
+    ~> FunctionGemma
+  config.py : Paths, keys, brand prompt [config]
+  requirements.txt : Core Python deps [config]
+
+## Subfolders
+  data : 40 files — KG builders, datasets, DBs [dir]
+  persona : 9 files — 4D dimension computers [dir]
+  routers : 10 files — API route handlers [dir]
+    -> services
+  services : 21 files — Business logic [dir]
+    -> data, persona
+    ~> GeminiAPI, ICD11, TermuxAPI
+  templates : 1 file — Game client SPA [dir]
+  tests : 14 files — Test suite [dir]
+    ~> services, routers
+
+## External
+  GeminiAPI : Gemini API — LLM inference [ext]
+  ICD11 : WHO ICD-11 — Clinical classification [ext]
+  TermuxAPI : termux-api — Android system access [ext]
+  FunctionGemma : FunctionGemma — On-device function calling [ext]

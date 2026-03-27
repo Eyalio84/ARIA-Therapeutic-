@@ -1,0 +1,40 @@
+[5:30:04 PM] 🔄 CONVERT: opacity (100%) → 1
+
+[5:30:04 PM] 🔄 CONVERT: opacity (100%) → 1
+
+[5:30:04 PM] 🔗 ROUTE: opacity_dial → protagonist.opacity = 1
+
+[5:30:04 PM] 🔗 ROUTE: opacity_dial → collectible.opacity = 1
+
+[5:30:04 PM] 🎛️ DIAL: opacity = 100%
+
+[5:30:04 PM] 🔄 CONVERT: opacity (100%) → 1
+
+[5:30:04 PM] 🔄 CONVERT: opacity (100%) → 1
+
+[5:30:04 PM] 🔗 ROUTE: opacity_dial → protagonist.opacity = 1
+
+[5:30:04 PM] 🔗 ROUTE: opacity_dial → collectible.opacity = 1
+
+[5:30:04 PM] 🎛️ DIAL: opacity = 100%
+
+[5:30:04 PM] 🔄 CONVERT: opacity (97%) → 0.97
+
+[5:30:04 PM] 🔄 CONVERT: opacity (97%) → 0.97
+
+[5:30:04 PM] 🔗 ROUTE: opacity_dial → protagonist.opacity = 0.97
+
+[5:30:04 PM] 🔗 ROUTE: opacity_dial → collectible.opacity = 0.97
+
+[5:30:04 PM] 🎛️ DIAL: opacity = 97%
+
+[5:30:04 PM] 🔄 CONVERT: opacity (96%) → 0.96
+
+[5:30:04 PM] 🔄 CONVERT: opacity (96%) → 0.96
+
+[5:30:04 PM] 🔗 ROUTE: opacity_dial → protagonist.opacity = 0.96
+
+[5:30:04 PM] 🔗 ROUTE: opacity_dial → collectible.opacity = 0.96
+
+[5:30:04 PM] 🎛️ DIAL: opacity = 96%
+

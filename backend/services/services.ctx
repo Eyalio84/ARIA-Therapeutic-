@@ -1,0 +1,70 @@
+# services/ — Backend Service Layer
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## Orchestrators
+  response_service : Full Aria pipeline: retrieve, compute, validate [service] @entry
+    -> nai_service, persona_service, introspection
+  therapy_service : Therapy pipeline: safety, KG, 4D, context [service] @entry
+    -> therapy_safety
+    ~> therapy_kg_store
+
+## Game Engine
+  game_interview : SFBT/OARS therapeutic interview engine [service]
+    -> game_generator
+  game_generator : Interview synthesis, playable game config [service]
+    -> game_runtime
+  game_runtime : Executes game config as narrative game [service]
+    -> therapy_safety
+  game_kg_bridge : Maps game events to therapy KG [service]
+    -> therapist_dashboard
+    ~> therapy_kg_store
+  gemini_narrative : LLM narrative generation for game [service]
+    -> http_client, therapy_safety
+    ~> gemini_api
+  scene_image : Gemini Imagen scene generation + caching [service]
+    ~> scene_cache, gemini_api
+  persistence : Per-user SQLite game save/load [service]
+    ~> user_game_db
+
+## Therapy & Safety
+  therapy_safety : Crisis detection, hard blocks, guardrails [service]
+  therapist_dashboard : Clinical oversight: timelines, flags, achievements [service]
+    ~> dashboard_db
+  therapist_controls : Remote game pause, disclosure limits, messaging [service]
+    ~> controls_db
+  introspection : Output validation against 4D persona state [service]
+  icd11_service : WHO ICD-11 mental disorder taxonomy [service]
+    ~> icd11_cache, icd11_api
+
+## Persona & Search
+  persona_service : 4D PersonaEngine with brand computers [service]
+    ~> persona_engine_lib
+  nai_service : IntentGraph search over jewelry KG [service]
+    ~> jewelry_kg_store, intentgraph_lib
+
+## Device Layer
+  device_state : Cached device sensor polling [service]
+    -> termux_service
+  termux_service : Async termux-api Android commands [service]
+    ~> termux_api
+  computer_use_service : Web fetch, Gemini search, image analysis [service]
+    ~> gemini_api
+  http_client : Shared aiohttp connection pool [service]
+
+## Stores
+  user_game_db : Saves, transcripts, context [store]
+  dashboard_db : Notes, moods, flags [store]
+  controls_db : Pause, disclosure, messages [store]
+  therapy_kg_store : Per-user therapy graphs [store]
+  jewelry_kg_store : Product knowledge graph [store]
+  scene_cache : Cached scene images [store]
+  icd11_cache : Mental disorders JSON [store]
+
+## External
+  gemini_api : Gemini API — LLM, Vision, Search, Imagen [ext]
+  termux_api : Termux API — Android device access [ext]
+  icd11_api : ICD-11 API — WHO classification service [ext]
+  persona_engine_lib : PersonaEngine — 4D persona framework [ext]
+  intentgraph_lib : IntentGraphEngine — 4-weight KG search [ext]

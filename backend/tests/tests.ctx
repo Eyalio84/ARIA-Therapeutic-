@@ -1,0 +1,67 @@
+# tests/ — Backend Test Suite
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## Master Suite
+  test_suite : KG, NAI, persona, introspection, response, edge cases (50 tests) [test]
+    ~> NAIService, PersonaService, IntrospectionService, ResponseService, JEWELRY_KG
+
+## Adversarial / Security
+  test_adversarial : 15 prompt-injection attacks against introspection engine [test]
+    -> ADVERSARIAL_RESULTS
+    ~> IntrospectionService
+  ADVERSARIAL_RESULTS : Generated report: 15/15 attacks blocked [data]
+
+## Game Pipeline
+  test_game_interview : Question bank, depths, mirror bubbles, synthesis [test]
+    ~> GameInterviewEngine
+  test_game_generator : Synthesis to GameConfig: locations, NPCs, quests, items [test]
+    ~> GameGenerator
+  test_game_api : End-to-end: interview to gameplay integration [test]
+    -> test_game_interview, test_game_generator, test_game_runtime
+    ~> GameInterviewEngine, GameGenerator, GameRuntime
+  test_game_runtime : Playable engine: nav, NPCs, quests, save/restore [test]
+    -> test_game_generator
+    ~> GameRuntime, GameGenerator
+  test_gemini_integration : Live Gemini API: enrichment, dialogue, safety [test]
+    ~> GeminiNarrative, TherapySafetyService, GameGenerator, GameInterviewEngine, GameRuntime
+
+## Therapy Domain
+  test_therapy_safety : 26 safety scenarios: crisis, blocks, guardrails [test]
+    ~> TherapySafetyService
+  test_therapy_kg : Per-user KG: CRUD, sessions, search, export [test]
+    ~> TherapyKG
+  test_therapy_personas : 4D persona computers: X, Y, Z, T dimensions [test]
+    ~> TherapyEmotionalComputer, TherapyRelationalComputer, TherapyLinguisticComputer, TherapyTemporalComputer, TherapyKG
+  test_therapy_service : Orchestrator pipeline: safety to KG to persona [test]
+    ~> TherapyService
+  test_therapist_dashboard : Clinical oversight: moods, flags, achievements [test]
+    ~> TherapistDashboardService, TherapyKG
+
+## Persona Stability
+  test_persona_stability : 4D state consistency under manipulation [test]
+    ~> PersonaService
+
+## External Services
+  IntrospectionService : Validates LLM output against 4D state [service]
+  PersonaService : Computes 4D persona from user messages [service]
+  NAIService : KG search and product retrieval [service]
+  ResponseService : Full response pipeline orchestrator [service]
+  GameInterviewEngine : Therapeutic game interview engine [service]
+  GameGenerator : Synthesis to GameConfig [service]
+  GameRuntime : Playable game engine [service]
+  GeminiNarrative : Gemini API for narrative enrichment [service]
+  TherapySafetyService : Crisis detection and safety blocks [service]
+  TherapyService : Therapy session orchestrator [service]
+  TherapistDashboardService : Clinical oversight dashboard [service]
+
+## Persona Computers
+  TherapyEmotionalComputer : X-axis: emotional state [service]
+  TherapyRelationalComputer : Y-axis: KG relations [service]
+  TherapyLinguisticComputer : Z-axis: voice/dialect [service]
+  TherapyTemporalComputer : T-axis: session stages [service]
+
+## Data Layer
+  TherapyKG : Per-user SQLite KG [data]
+  JEWELRY_KG : Jewelry store KG [data]

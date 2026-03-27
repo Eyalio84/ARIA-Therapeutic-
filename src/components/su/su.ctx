@@ -1,0 +1,29 @@
+# su/ — Visual Logic Canvas
+# format: ctx/1.0
+# last-verified: 2026-03-27
+# edges: -> call/render | ~> subscribe/read | => HTTP API call
+
+## Components
+  SUShell : Main canvas: 97 voice functions, 12 object renderers, Play/Pause, tutorials, config panels [root] @entry
+    -> LogicEditor, ColorPicker
+    ~> labStore, gameVoiceStore, logicEngine, behaviorSync, recipeRunner, recipes, ariaEngine, trainingLogger
+    => termuxRouter, gameRouter
+  LogicEditor : Full-screen node editor: wire drawing, block config, typed port system [component]
+    ~> labStore, logicEngine
+  ColorPicker : Hue slider + 8 presets [component]
+
+## State Stores
+  labStore : 12 objects, LogicGraph, playMode, undo, presets [store]
+  gameVoiceStore : Aria orb state (useGameVoiceStore @ store/gameVoice) [store]
+
+## Libraries
+  logicEngine : executeFromSource, evaluateBlock (8 types) [lib]
+  behaviorSync : Card-Graph sync [lib]
+  recipeRunner : Tutorial step execution [lib]
+  recipes : 5 tutorials [lib]
+  ariaEngine : Voice AI connection [lib]
+  trainingLogger : Dataset capture [lib]
+
+## Backend
+  termuxRouter : Termux device API — torch, battery, notification, volume, camera/photo, dynamic bc.targetLabel [backend]
+  gameRouter : Game API — /api/game/voice-config (Aria engine key + config) [backend]

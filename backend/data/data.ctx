@@ -1,0 +1,47 @@
+# data/ — Backend Data Layer
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## data/ — Python Modules
+  build_jewelry_kg : Builds jewelry store KG into SQLite [service] @entry
+    -> jewelry_kg_db
+  build_therapy_kg : Per-user therapy KG factory [service] @entry
+    -> therapy_user_dbs
+  clinical_cartridges : 5 therapy-approach game scenarios [data]
+    -> act_processes, cognitive_distortions, dbt_skills, ifs_model, oars_framework, npc_archetypes
+  prebuilt_games : 3 pre-built game cartridges [data]
+
+## psychology/ — Clinical Reference Data
+  act_processes : ACT hexaflex processes [data]
+  assessment_scales : 7 clinical assessment instruments [data]
+  cognitive_distortions : 15 CBT distortions [data]
+  dbt_skills : DBT skills, 4 modules [data]
+  disorder_communication : Per-disorder comms for 10 conditions [data]
+  graduated_disclosure : 4-layer disclosure depth control [data]
+  icd11_mental_disorders : ICD-11 Chapter 06 taxonomy [data]
+  ifs_model : IFS parts model [data]
+  npc_archetypes : 7 therapeutic NPC archetypes [data]
+  oars_framework : MI OARS conversational framework [data]
+  safe_phrases : Safe/harmful phrase filtering [data]
+
+## stores — Runtime SQLite Databases
+  jewelry_kg_db : Jewelry demo KG [store]
+  therapy_user_dbs : Per-user therapy KGs [store]
+  therapist_controls_db : Therapist controls [store]
+  therapist_dashboard_db : Therapist dashboard [store]
+  game_dbs : Per-user game state [store]
+
+## External
+  KGManager : NAI knowledge graph manager [lib]
+    ~> jewelry_kg_db, therapy_user_dbs
+  GameGenerator : Generates game configs [lib]
+    ~> clinical_cartridges, prebuilt_games
+  GameInterviewEngine : Conducts player interviews [lib]
+    ~> prebuilt_games
+  TherapistDashboard : Therapist-facing UI [lib]
+    ~> assessment_scales, therapist_dashboard_db, therapist_controls_db, icd11_mental_disorders
+  VoiceInterview : Voice interview system [lib]
+    ~> oars_framework, graduated_disclosure, safe_phrases, disorder_communication
+  NPCDialogue : NPC dialogue generator [lib]
+    ~> npc_archetypes, safe_phrases, disorder_communication

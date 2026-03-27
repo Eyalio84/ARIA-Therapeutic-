@@ -1,0 +1,94 @@
+# src/ — Context Map
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## app/ — Routes
+  layout         : Root HTML, fonts, metadata [root] @entry
+    -> home
+  home           : Home — TabBar + tabs [screen]
+    -> TabBar, TabContainer, ChatPanel
+  dashboard/page : /dashboard route [screen]
+    -> DashboardShell
+  game/page      : /game route [screen]
+    -> GameShell
+  su/page        : /su route [screen]
+    -> SUShell
+  docs/page      : /docs route [screen]
+
+## components/ — UI
+  ### Chat Interface (13)
+    ChatPanel      : Chat orchestrator [component]
+      -> VoiceOrb, ChatInput, ariaSingleton
+      ~> chatStore
+    VoiceOrb       : 5-state voice button [component]
+      ~> chatStore
+    ChatInput      : Text + slash commands [component]
+    TabBar         : Top navigation [component]
+    TabContainer   : Lazy tab router [component]
+      -> SdkDashboard, StorePage, RoadmapPage
+  ### game/ (46)
+    GameShell      : Game orchestrator [component]
+      -> gameAdapter
+      ~> gameStore
+  ### dashboard/ (9)
+    DashboardShell : 6-tab clinical panel [component]
+      -> backend
+      ~> dashStore
+  ### su/ (3)
+    SUShell        : Visual canvas shell [component]
+      -> AriaEngine, SUPersona
+      ~> labStore
+  ### sdk/ (5)
+    SdkDashboard   : SDK dev tools [component]
+  ### store/ (8)
+    StorePage      : E-commerce shell [component]
+      ~> cartStore
+  ### roadmap/ (1)
+    RoadmapPage    : Project roadmap [component]
+
+## lib/ — Core Engine
+  ### aria-core/ — Framework
+    AriaCore       : Main orchestrator [lib]
+      -> GeminiLive, NLKE, StateMachine, ContextEngine, CommandRouter, AudioPipeline
+    GeminiLive     : WebSocket provider [lib] -> geminiAPI
+    NLKE           : Knowledge engine [lib]
+    StateMachine   : Connection states [lib]
+    ContextEngine  : Prompt assembly [lib]
+    CommandRouter  : Function dispatch [lib]
+    AudioPipeline  : Mic to PCM to playback [lib]
+  ### App Wiring
+    ariaSingleton  : App singleton [lib]
+      -> AriaCore, dbSqlite, sessionAdapter, kgAdapter, memoryInjector
+      ~> chatStore
+    dbSqlite       : SQLite WASM [lib] ~> sqliteTypes
+    sessionAdapter : Session persistence [lib]
+    kgAdapter      : KG persistence [lib]
+    memoryInjector : NLKE to prompt [lib]
+  ### Game Layer
+    gameAdapter    : 23 voice functions [lib]
+      -> gameApi
+      ~> gameStore, gameTypes
+    gameApi        : Backend fetch wrapper [lib] -> backend
+    logicEngine    : 7 block types [lib]
+  ### Voice Engines
+    AriaEngine     : Domain-agnostic voice [lib]
+    SUPersona      : ~95 voice functions [lib]
+  localAria        : FunctionGemma on-device [lib]
+
+## store/ — Zustand State (14)
+  chatStore        : Messages, voice status [store]
+  gameStore        : Screens, config, stats [store] ~> gameTypes
+  dashStore        : Mood, flags, notes [store] ~> dashTypes
+  labStore         : Logic editor canvas [store]
+  cartStore        : Shopping cart [store]
+  ... (9)          : tab, ariaMode, gameVoice, gameTheme, transcript, devLog, products, kg, sdk [store]
+
+## types/ — Shared Types (3)
+  gameTypes        : Game engine types [type]
+  dashTypes        : Dashboard types [type]
+  sqliteTypes      : SQLite WASM ambient [type]
+
+## External
+  backend          : Python Backend — Game, Dashboard, NAI APIs [ext]
+  geminiAPI        : Gemini Live API — WebSocket streaming [ext]

@@ -1,0 +1,48 @@
+# store/ — Zustand State Stores
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## Core Stores
+  chat : Messages, voice status, context [store]
+  tab : Active tab navigation [store]
+  ariaMode : Game/SU mode toggle [store]
+    -> game, lab
+
+## Game Stores
+  game : Screens, config, stats, narrative [store]
+    ~> gameTypes, devLogger
+  gameVoice : Voice orb state [store]
+  gameTheme : 4 color presets [store]
+  transcript : Session transcript log [store]
+    ~> gameTypes
+
+## Dashboard Stores
+  dashboard : Mood, flags, notes, achievements [store]
+    ~> dashTypes, apiDash
+  devLog : Dev console buffer [store]
+
+## Lab Stores
+  lab : Canvas objects, logic graph, undo/redo [store]
+
+## Commerce Stores
+  products : Product inventory [store]
+    ~> apiProducts
+  cart : Shopping cart [store] -> products
+  kg : Knowledge graph CRUD [store]
+    ~> apiKg
+
+## SDK Stores
+  sdk : NAI search, persona, introspection [store]
+    ~> apiAria
+
+## Backend APIs
+  apiDash : /api/dashboard [ext]
+  apiProducts : /api/products [ext]
+  apiKg : /api/kg [ext]
+  apiAria : /api/aria [ext]
+
+## External
+  gameTypes : @/types/game [type]
+  dashTypes : @/types/dashboard [type]
+  devLogger : @/lib/gameDevLogger [lib]

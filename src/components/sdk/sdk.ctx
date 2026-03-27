@@ -1,0 +1,26 @@
+# sdk/ — SDK Developer Tools
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## SDK Dashboard
+  SdkDashboard : SDK dev tools panel [component] @entry
+    -> NaiSearchPanel, IntrospectionTester, PersonaVisualizer, KgExplorer
+  NaiSearchPanel : NAI search interface [component]
+    ~> useSdkStore
+  IntrospectionTester : Text validation tester [component]
+    ~> useSdkStore
+  PersonaVisualizer : Persona state viewer [component]
+    ~> useSdkStore
+  KgExplorer : Knowledge graph explorer [component]
+    ~> useKgStore, ReactFlow
+
+## Stores
+  useSdkStore : NAI + introspection state [store] -> backend
+  useKgStore : Knowledge graph state [store] -> backend
+
+## External
+  TabContainer : Lazy tab router — renders SdkDashboard [ext]
+    -> SdkDashboard
+  backend : Python Backend — /api/nai/*, /api/introspect/*, /api/kg/* [ext]
+  ReactFlow : @xyflow/react graph library [ext]

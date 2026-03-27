@@ -1,0 +1,212 @@
+{
+  "_meta": {
+    "source": "Dialectical Behavior Therapy — Marsha Linehan (2015)",
+    "purpose": "Structured DBT skills for clinical cartridge design and NPC dialogue",
+    "note": "Skill structure is common knowledge; specific worksheets are copyrighted. Game integration mappings are original."
+  },
+  "modules": [
+    {
+      "id": "mindfulness",
+      "name": "Core Mindfulness",
+      "goal": "Observe, describe, and participate in the present moment without judgment",
+      "what_skills": [
+        {
+          "id": "observe",
+          "name": "Observe",
+          "instruction": "Notice without reacting. Just watch thoughts and feelings come and go.",
+          "game_mapping": "A quest where the character must sit still and describe what they see/hear/feel before acting.",
+          "npc_dialogue": "What do you notice right now? Don't change it — just notice."
+        },
+        {
+          "id": "describe",
+          "name": "Describe",
+          "instruction": "Put words on your experience. Label thoughts as thoughts, feelings as feelings.",
+          "game_mapping": "NPC asks the character to describe what they're experiencing in the game world.",
+          "npc_dialogue": "Can you put words to what your character is feeling right now?"
+        },
+        {
+          "id": "participate",
+          "name": "Participate",
+          "instruction": "Throw yourself completely into the activity. Become one with the experience.",
+          "game_mapping": "A quest that rewards full engagement — no half-measures, the character must commit.",
+          "npc_dialogue": "Your character is right here, right now. What do they want to do with this moment?"
+        }
+      ],
+      "how_skills": [
+        {
+          "id": "nonjudgmental",
+          "name": "Non-Judgmentally",
+          "instruction": "See but don't evaluate. Take each moment as it is, not as you wish it were.",
+          "game_mapping": "NPC companion who models accepting the world as it is without labeling good/bad."
+        },
+        {
+          "id": "one_mindfully",
+          "name": "One-Mindfully",
+          "instruction": "Do one thing at a time. Focus on the single task at hand.",
+          "game_mapping": "Quests that require focused attention — rushing or multitasking leads to failure."
+        },
+        {
+          "id": "effectively",
+          "name": "Effectively",
+          "instruction": "Do what works. Focus on what's effective, not what's 'right' or 'fair'.",
+          "game_mapping": "A quest where the 'right' choice isn't the effective one — the character must be pragmatic."
+        }
+      ],
+      "wise_mind": {
+        "concept": "The synthesis of emotional mind and reasonable mind",
+        "instruction": "Access your inner wisdom — the place where knowing and feeling meet.",
+        "game_mapping": "A mentor NPC who asks 'What does the wise part of your character think?'",
+        "npc_archetype": "mentor"
+      }
+    },
+    {
+      "id": "distress_tolerance",
+      "name": "Distress Tolerance",
+      "goal": "Survive crisis moments without making things worse",
+      "crisis_survival": [
+        {
+          "id": "tipp",
+          "name": "TIPP",
+          "components": [
+            {"letter": "T", "skill": "Temperature", "instruction": "Hold ice, splash cold water on face — activates dive reflex, calms nervous system"},
+            {"letter": "I", "skill": "Intense exercise", "instruction": "Run, jump, do push-ups — burns adrenaline"},
+            {"letter": "P", "skill": "Paced breathing", "instruction": "Breathe out longer than in — activates parasympathetic"},
+            {"letter": "P", "skill": "Progressive muscle relaxation", "instruction": "Tense and release each muscle group"}
+          ],
+          "game_mapping": "Rest point mechanic — character does a TIPP activity to restore calm before continuing."
+        },
+        {
+          "id": "stop",
+          "name": "STOP",
+          "components": [
+            {"letter": "S", "skill": "Stop", "instruction": "Freeze. Don't react."},
+            {"letter": "T", "skill": "Take a step back", "instruction": "Literally or figuratively step away."},
+            {"letter": "O", "skill": "Observe", "instruction": "What's happening inside and outside?"},
+            {"letter": "P", "skill": "Proceed mindfully", "instruction": "Act with awareness, not on impulse."}
+          ],
+          "game_mapping": "When a game event triggers emotional reaction, NPC suggests STOP before the character acts."
+        },
+        {
+          "id": "pros_cons",
+          "name": "Pros and Cons",
+          "instruction": "List pros and cons of both tolerating the distress AND acting on the urge.",
+          "game_mapping": "Quest choice where the character weighs options — a journal entry comparing paths."
+        },
+        {
+          "id": "distract_wise",
+          "name": "Distract with WISE MIND ACCEPTS",
+          "components": ["Activities", "Contributing", "Comparisons", "Emotions (opposite)", "Push away", "Thoughts (other)", "Sensations"],
+          "game_mapping": "When emotional intensity peaks, an NPC offers an interesting side activity (distraction with purpose)."
+        }
+      ],
+      "reality_acceptance": [
+        {
+          "id": "radical_acceptance",
+          "name": "Radical Acceptance",
+          "instruction": "Accept reality completely — not approving, just acknowledging what is.",
+          "game_mapping": "A quest where the character cannot change the outcome — the lesson is accepting it.",
+          "npc_dialogue": "Some things in this world can't be changed. What can your character do with what is?"
+        },
+        {
+          "id": "turning_mind",
+          "name": "Turning the Mind",
+          "instruction": "Choose over and over to accept. Each time rejection comes back, turn toward acceptance again.",
+          "game_mapping": "A recurring game mechanic where the character faces the same acceptance choice repeatedly."
+        },
+        {
+          "id": "willingness",
+          "name": "Willingness vs. Willfulness",
+          "instruction": "Willingness = doing what works, participating in life. Willfulness = refusing to tolerate, giving up.",
+          "game_mapping": "NPC who models willingness — keeps going despite difficulty, versus an NPC who is willful and stuck."
+        }
+      ]
+    },
+    {
+      "id": "emotion_regulation",
+      "name": "Emotion Regulation",
+      "goal": "Understand, reduce vulnerability to, and change unwanted emotions",
+      "skills": [
+        {
+          "id": "abc_please",
+          "name": "ABC PLEASE",
+          "components": [
+            {"letter": "A", "skill": "Accumulate positives", "instruction": "Do pleasant activities — short-term and long-term"},
+            {"letter": "B", "skill": "Build mastery", "instruction": "Do one thing each day that builds competence"},
+            {"letter": "C", "skill": "Cope ahead", "instruction": "Plan for difficult situations before they happen"},
+            {"letter": "PL", "skill": "Treat physical illness", "instruction": "Take care of health"},
+            {"letter": "E", "skill": "Balanced eating", "instruction": "Eat regularly, not too much or too little"},
+            {"letter": "A", "skill": "Avoid mood-altering substances", "instruction": "Stay away from drugs and alcohol"},
+            {"letter": "S", "skill": "Sleep hygiene", "instruction": "Get enough sleep"},
+            {"letter": "E", "skill": "Exercise", "instruction": "Move your body regularly"}
+          ],
+          "game_mapping": "Game rewards routine actions (sleep, eat, practice) as part of the daily narrative cycle."
+        },
+        {
+          "id": "opposite_action",
+          "name": "Opposite Action",
+          "instruction": "When the emotion doesn't fit the facts, act OPPOSITE to the emotional urge.",
+          "examples": [
+            {"emotion": "fear", "urge": "avoid", "opposite": "approach"},
+            {"emotion": "sadness", "urge": "withdraw", "opposite": "get active, reach out"},
+            {"emotion": "anger", "urge": "attack", "opposite": "gently avoid, be kind"},
+            {"emotion": "shame", "urge": "hide", "opposite": "make public, repeat the action"},
+            {"emotion": "guilt", "urge": "punish self", "opposite": "repair, forgive self"}
+          ],
+          "game_mapping": "A quest where the obvious choice matches the emotion but the better choice is the opposite."
+        },
+        {
+          "id": "check_the_facts",
+          "name": "Check the Facts",
+          "instruction": "Ask: What event triggered the emotion? What are my interpretations? Are they facts or assumptions?",
+          "game_mapping": "NPC who asks clarifying questions before the character reacts to a game event."
+        }
+      ]
+    },
+    {
+      "id": "interpersonal_effectiveness",
+      "name": "Interpersonal Effectiveness",
+      "goal": "Get what you need from relationships while maintaining self-respect and the relationship",
+      "skills": [
+        {
+          "id": "dear_man",
+          "name": "DEAR MAN",
+          "purpose": "Getting what you want (objective effectiveness)",
+          "components": [
+            {"letter": "D", "skill": "Describe", "instruction": "Describe the situation factually"},
+            {"letter": "E", "skill": "Express", "instruction": "Express feelings and opinions about the situation"},
+            {"letter": "A", "skill": "Assert", "instruction": "Ask for what you want or say no clearly"},
+            {"letter": "R", "skill": "Reinforce", "instruction": "Explain why meeting your request is positive"},
+            {"letter": "M", "skill": "Mindful", "instruction": "Stay focused on your objective, don't get distracted"},
+            {"letter": "A", "skill": "Appear confident", "instruction": "Use confident tone and posture"},
+            {"letter": "N", "skill": "Negotiate", "instruction": "Be willing to give to get, offer alternatives"}
+          ],
+          "game_mapping": "NPC dialogue choices structured as DEAR MAN steps — the character practices assertive communication."
+        },
+        {
+          "id": "give",
+          "name": "GIVE",
+          "purpose": "Keeping the relationship (relationship effectiveness)",
+          "components": [
+            {"letter": "G", "skill": "Gentle", "instruction": "Be gentle — no attacks, threats, or judging"},
+            {"letter": "I", "skill": "Interested", "instruction": "Act interested — listen, don't interrupt"},
+            {"letter": "V", "skill": "Validate", "instruction": "Validate the other person's feelings and thoughts"},
+            {"letter": "E", "skill": "Easy manner", "instruction": "Use a little humor, be light"}
+          ],
+          "game_mapping": "Companion NPC relationship mechanic — using GIVE builds bond level, violating it decreases trust."
+        },
+        {
+          "id": "fast",
+          "name": "FAST",
+          "purpose": "Maintaining self-respect (self-respect effectiveness)",
+          "components": [
+            {"letter": "F", "skill": "Fair", "instruction": "Be fair to yourself AND the other person"},
+            {"letter": "A", "skill": "Apologies (no excessive)", "instruction": "Don't over-apologize or apologize for existing"},
+            {"letter": "S", "skill": "Stick to values", "instruction": "Don't sell out your values to get what you want"},
+            {"letter": "T", "skill": "Truthful", "instruction": "Don't lie, don't act helpless, don't exaggerate"}
+          ],
+          "game_mapping": "Quest choices where the character must balance getting what they want with maintaining integrity."
+        }
+      ]
+    }
+  ]
+}

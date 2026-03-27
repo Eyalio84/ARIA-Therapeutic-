@@ -1,0 +1,992 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal I/O Interface Prototype - V1.2 (Game Mode)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Main Container - 50/50 Split */
+        .full-container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Control Panel Container (50% width) */
+        .control-panel {
+            width: 50%;
+            background: rgba(42, 42, 42, 0.95);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #00ff00;
+        }
+
+        .panel-header {
+            background: #00ff00;
+            color: black;
+            padding: 12px 20px;
+            font-weight: bold;
+            text-align: center;
+            margin: -20px -20px 20px -20px;
+            font-size: 16px;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            flex: 1;
+            align-content: start;
+        }
+
+        /* Live Preview Container (50% width) */
+        .live-preview {
+            width: 50%;
+            position: relative;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            overflow: hidden;
+        }
+
+        /* Universal Dial Component (from 2.html) */
+        .universal-dial {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 10px auto;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .dial-background {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+            border: 3px solid #555;
+            box-shadow: 
+                inset 0 0 10px rgba(0, 0, 0, 0.5),
+                0 0 15px rgba(0, 255, 0, 0.2);
+            position: relative;
+        }
+
+        .dial-track {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 94px;
+            height: 94px;
+            border-radius: 50%;
+            border: 2px solid #666;
+            background: conic-gradient(
+                from 135deg,
+                #333 0deg,
+                #555 135deg,
+                #00ff00 var(--dial-angle, 135deg),
+                #333 var(--dial-angle, 135deg)
+            );
+        }
+
+        .dial-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 3px;
+            background: #00ff00;
+            border-radius: 2px;
+            transform-origin: left center;
+            transform: translate(-2px, -50%) rotate(var(--dial-rotation, -135deg));
+            box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+            transition: transform 0.1s ease;
+        }
+
+        .dial-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(145deg, #555, #333);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid #00ff00;
+        }
+
+        /* New Marker Styles */
+        .dial-markers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .dial-marker {
+            position: absolute;
+            width: 1px;
+            height: 5px;
+            background: #888;
+            transform-origin: bottom center;
+        }
+
+        .dial-marker.major {
+            height: 10px;
+            background: #ccc;
+            width: 2px;
+        }
+
+        .dial-info {
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .dial-label {
+            font-size: 11px;
+            color: #00ff00;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .dial-value {
+            font-size: 14px;
+            color: white;
+            font-family: 'Courier New', monospace;
+        }
+
+        .dial-percentage {
+            font-size: 10px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        /* Macro Connection Indicators */
+        .macro-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .macro-input, .macro-output {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #666;
+            background: #333;
+            transition: all 0.2s ease;
+        }
+
+        .macro-input.active {
+            border-color: #00ff00;
+            background: rgba(0, 255, 0, 0.3);
+        }
+
+        .macro-output.active {
+            border-color: #ff6600;
+            background: rgba(255, 102, 0, 0.3);
+        }
+
+        /* Game Objects */
+        .ball-object, .square-object {
+            position: absolute;
+            transition: all 0.05s linear; /* Faster transition for gameplay */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            user-select: none;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .ball-object {
+            width: 60px;
+            height: 60px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            top: 30%;
+            left: 25%;
+            color: white;
+            font-size: 10px;
+        }
+
+        .square-object {
+            width: 60px;
+            height: 60px;
+            background: #4ecdc4;
+            top: 60%;
+            left: 65%;
+            border-radius: 8px;
+            color: white;
+            font-size: 10px;
+        }
+
+        /* Object Toggle Controls */
+        .object-toggles {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #00ff00;
+            font-size: 11px;
+            z-index: 1001;
+        }
+
+        .toggle-group {
+            margin-bottom: 10px;
+        }
+
+        .toggle-label {
+            color: #00ff00;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .toggle-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .parameter-toggle {
+            padding: 3px 6px;
+            background: #333;
+            border: 1px solid #666;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 9px;
+            transition: all 0.2s ease;
+        }
+
+        .parameter-toggle.active {
+            background: #00ff00;
+            color: black;
+            border-color: #00ff00;
+        }
+
+        /* Analytical Matrix Grid (5×10 from 3.html) */
+        .matrix-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .grid-cell {
+            position: absolute;
+            border: 1px solid rgba(0, 255, 0, 0.15);
+            box-sizing: border-box;
+        }
+
+        .grid-cell.highlight {
+            background: rgba(0, 255, 0, 0.1);
+            border-color: rgba(0, 255, 0, 0.4);
+        }
+
+        /* Debug Console (adapted from 3.html) */
+        .debug-console-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 12px;
+            background: #00ff00;
+            border: 2px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 10003;
+            transition: all 0.2s ease;
+            opacity: 0.7;
+        }
+
+        .debug-console-toggle:hover {
+            opacity: 1;
+        }
+
+        .debug-console-toggle.hidden-mode {
+            background: #333;
+        }
+
+        .debug-console-toggle::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            top: 1px;
+            left: 1px;
+            transition: transform 0.2s ease;
+        }
+
+        .debug-console-toggle.hidden-mode::after {
+            transform: translateX(8px);
+        }
+
+        .debug-console {
+            position: fixed;
+            top: 30px;
+            right: 10px;
+            width: 300px;
+            height: 250px;
+            background: rgba(0, 0, 0, 0.95);
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 9px;
+            border: 1px solid #00ff00;
+            border-radius: 4px;
+            z-index: 10002;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .debug-console.hidden {
+            display: none;
+        }
+
+        .console-header {
+            background: #00ff00;
+            color: black;
+            padding: 4px 8px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 3px 3px 0 0;
+            font-size: 8px;
+        }
+
+        .console-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px;
+            line-height: 1.4;
+        }
+
+        .console-entry {
+            margin: 1px 0;
+            padding: 1px 0;
+        }
+
+        .console-entry.signal { color: #00aaff; }
+        .console-entry.conversion { color: #ffaa00; }
+        .console-entry.connection { color: #ff00aa; }
+        .console-entry.position { color: #aaff00; }
+        .console-entry.error { color: #ff4444; }
+        .console-entry.system { color: #ffffff; font-weight: bold; }
+        .console-entry.object { color: #4ecdc4; }
+
+
+        /* System Status */
+        .system-status {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 4px solid #00ff00;
+            font-size: 12px;
+            z-index: 1000;
+        }
+
+        .status-item {
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            min-width: 200px;
+        }
+
+        .status-value {
+            color: #00ff00;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Game Score Display */
+        .game-score {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 4px solid #ffaa00;
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #ffaa00;
+            z-index: 1000;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .controls-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .universal-dial {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        /* Add this to your <style> block */
+@keyframes pop-out {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.colliding {
+    animation: pop-out 0.3s ease-out forwards;
+}
+
+.hidden {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none; /* Make it un-interactable while hidden */
+}
+    </style>
+</head>
+<body>
+    <div class="debug-console-toggle" id="debugToggle" onclick="toggleDebugConsole()"></div>
+    
+    <div class="debug-console hidden" id="debugConsole">
+        <div class="console-header">
+            <span>UNIVERSAL I/O DEBUG</span>
+            <button onclick="clearDebugConsole()" style="background:none;border:none;color:black;cursor:pointer;">CLR</button>
+        </div>
+        <div class="console-content" id="debugContent"></div>
+    </div>
+
+    <div class="full-container">
+        <div class="control-panel">
+            <div class="panel-header">
+                🎛️ UNIVERSAL I/O INTERFACE - CONTROL PANEL
+            </div>
+
+            <div class="controls-grid">
+                <div class="dial-container">
+                    <div class="universal-dial" data-param="size" data-value="50">
+                        <div class="dial-background"><div class="dial-track"></div><div class="dial-markers"></div><div class="dial-indicator"></div><div class="dial-center"></div></div>
+                    </div>
+                    <div class="dial-info">
+                        <div class="dial-label">OBJECT SIZE</div>
+                        <div class="dial-value" id="dial-size-value">105px</div>
+                        <div class="dial-percentage" id="dial-size-percent">50%</div>
+                    </div>
+                </div>
+                <div class="dial-container">
+                    <div class="universal-dial" data-param="position_x" data-value="25">
+                         <div class="dial-background"><div class="dial-track"></div><div class="dial-markers"></div><div class="dial-indicator"></div><div class="dial-center"></div></div>
+                    </div>
+                    <div class="dial-info">
+                        <div class="dial-label">POS X (Unused)</div>
+                        <div class="dial-value" id="dial-position_x-value">200px</div>
+                        <div class="dial-percentage" id="dial-position_x-percent">25%</div>
+                    </div>
+                </div>
+                <div class="dial-container">
+                    <div class="universal-dial" data-param="position_y" data-value="60">
+                         <div class="dial-background"><div class="dial-track"></div><div class="dial-markers"></div><div class="dial-indicator"></div><div class="dial-center"></div></div>
+                    </div>
+                    <div class="dial-info">
+                        <div class="dial-label">POS Y (Unused)</div>
+                        <div class="dial-value" id="dial-position_y-value">360px</div>
+                        <div class="dial-percentage" id="dial-position_y-percent">60%</div>
+                    </div>
+                </div>
+                <div class="dial-container">
+                    <div class="universal-dial" data-param="opacity" data-value="85">
+                         <div class="dial-background"><div class="dial-track"></div><div class="dial-markers"></div><div class="dial-indicator"></div><div class="dial-center"></div></div>
+                    </div>
+                    <div class="dial-info">
+                        <div class="dial-label">OPACITY</div>
+                        <div class="dial-value" id="dial-opacity-value">0.85</div>
+                        <div class="dial-percentage" id="dial-opacity-percent">85%</div>
+                    </div>
+                </div>
+                <div class="dial-container">
+                    <div class="universal-dial" data-param="color_hue" data-value="20">
+                         <div class="dial-background"><div class="dial-track"></div><div class="dial-markers"></div><div class="dial-indicator"></div><div class="dial-center"></div></div>
+                    </div>
+                    <div class="dial-info">
+                        <div class="dial-label">COLOR HUE</div>
+                        <div class="dial-value" id="dial-color_hue-value">72°</div>
+                        <div class="dial-percentage" id="dial-color_hue-percent">20%</div>
+                    </div>
+                </div>
+                <div class="dial-container">
+                    <div class="universal-dial" data-param="movement_macro" data-value="0">
+                         <div class="dial-background"><div class="dial-track"></div><div class="dial-markers"></div><div class="dial-indicator"></div><div class="dial-center"></div></div>
+                    </div>
+                    <div class="dial-info">
+                        <div class="dial-label">MACRO 1</div>
+                        <div class="dial-value" id="dial-movement_macro-value">Idle</div>
+                        <div class="dial-percentage" id="dial-movement_macro-percent">0%</div>
+                    </div>
+                </div>
+                <div class="dial-container">
+                    <div class="universal-dial" data-param="global_scale" data-value="75">
+                         <div class="dial-background"><div class="dial-track"></div><div class="dial-markers"></div><div class="dial-indicator"></div><div class="dial-center"></div></div>
+                    </div>
+                    <div class="dial-info">
+                        <div class="dial-label">MACRO 2</div>
+                        <div class="dial-value" id="dial-global_scale-value">1.5x</div>
+                        <div class="dial-percentage" id="dial-global_scale-percent">75%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="live-preview">
+            <div class="system-status">
+                <div class="status-item"><span>Universal I/O:</span><span class="status-value">ACTIVE</span></div>
+                <div class="status-item"><span>Node Director:</span><span class="status-value">PROCESSING</span></div>
+                <div class="status-item"><span>Game Manager:</span><span class="status-value">RUNNING</span></div>
+                <div class="status-item"><span>Debug Console:</span><span class="status-value" id="debug-status">READY</span></div>
+            </div>
+            
+            <div class="game-score" id="gameScore">SCORE: 0</div>
+
+            <div class="matrix-grid" id="matrixGrid"></div>
+
+            <div class="ball-object" id="protagonistObject">PROTAGONIST</div>
+            <div class="square-object" id="collectibleObject">COLLECTIBLE</div>
+
+            <div class="object-toggles">
+                <div class="toggle-group">
+                    <div class="toggle-label">Protagonist:</div>
+                    <div class="toggle-row">
+                        <div class="parameter-toggle active" data-object="protagonist" data-param="size">Size</div>
+                        <div class="parameter-toggle" data-object="protagonist" data-param="position_x">Pos X</div>
+                        <div class="parameter-toggle" data-object="protagonist" data-param="position_y">Pos Y</div>
+                        <div class="parameter-toggle active" data-object="protagonist" data-param="opacity">Opacity</div>
+                        <div class="parameter-toggle active" data-object="protagonist" data-param="color_hue">Color</div>
+                    </div>
+                </div>
+                <div class="toggle-group">
+                    <div class="toggle-label">Collectible:</div>
+                    <div class="toggle-row">
+                        <div class="parameter-toggle active" data-object="collectible" data-param="size">Size</div>
+                        <div class="parameter-toggle active" data-object="collectible" data-param="position_x">Pos X</div>
+                        <div class="parameter-toggle active" data-object="collectible" data-param="position_y">Pos Y</div>
+                        <div class="parameter-toggle active" data-object="collectible" data-param="opacity">Opacity</div>
+                        <div class="parameter-toggle active" data-object="collectible" data-param="color_hue">Color</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Universal I/O Interface Prototype - V1.2 (Game Mode)
+         */
+
+        // Node Director - Intelligent Middleware (V1.1 - Implicit Routing)
+        class NodeDirector {
+            constructor() {
+                this.nodeDefinitions = {
+                    'size': { type: 'integer', range: [10, 200], unit: 'px' },
+                    'position_x': { type: 'integer', range: [0, 800], unit: 'px' },
+                    'position_y': { type: 'integer', range: [0, 600], unit: 'px' },
+                    'opacity': { type: 'float', range: [0.0, 1.0], unit: '' },
+                    'color_hue': { type: 'integer', range: [0, 360], unit: '°' },
+                    'movement_macro': { type: 'string', range: ['Idle', 'Orbit', 'Random', 'Follow'], unit: '' },
+                    'global_scale': { type: 'float', range: [0.5, 2.0], unit: 'x' }
+                };
+                console.log('🔧 NodeDirector V1.1: Implicit routing enabled');
+            }
+
+            convertValue(percentage, nodeType) {
+                const def = this.nodeDefinitions[nodeType];
+                if (!def) {
+                    this.logError(`Unknown node type: ${nodeType}`);
+                    return 0;
+                }
+                let value;
+                if (def.type === 'integer') {
+                    const range = def.range[1] - def.range[0];
+                    value = Math.round(def.range[0] + (percentage * range / 100));
+                } else if (def.type === 'float') {
+                    const range = def.range[1] - def.range[0];
+                    value = parseFloat((def.range[0] + (percentage * range / 100)).toFixed(2));
+                } else if (def.type === 'string') {
+                    const index = Math.floor((percentage / 100) * def.range.length);
+                    value = def.range[Math.min(index, def.range.length - 1)];
+                }
+                this.logConversion(percentage, nodeType, value, def.unit);
+                return value;
+            }
+
+            routeSignal(sourceId, nodeType, percentage) {
+                const convertedValue = this.convertValue(percentage, nodeType);
+                
+                // Convention-based routing: check all game objects for a matching parameter.
+                for (const objectId in window.gameObjects) {
+                    const gameObject = window.gameObjects[objectId];
+                    if (gameObject.parameters.hasOwnProperty(nodeType)) {
+                        gameObject.updateParameter(nodeType, convertedValue);
+                        this.logConnection(sourceId, objectId, nodeType, convertedValue);
+                    }
+                }
+                return convertedValue;
+            }
+
+            logConversion(p, n, v, u) { debugDirector.addEntry(`🔄 CONVERT: ${n} (${p}%) → ${v}${u}`, 'conversion'); }
+            logConnection(s, t, p, v) { debugDirector.addEntry(`🔗 ROUTE: ${s} → ${t}.${p} = ${v}`, 'connection'); }
+            logError(m) { debugDirector.addEntry(`⚠️ ERROR: ${m}`, 'error'); }
+        }
+
+        // Universal Dial Component (V1.1 - Smart Defaults)
+        class UniversalDial {
+            constructor(element, param, nodeDirector) {
+                this.element = element;
+                this.param = param;
+                this.nodeDirector = nodeDirector;
+                this.value = parseFloat(element.dataset.value) || 0;
+                this.isDragging = false;
+                
+                // Point 3: "Smart Defaults" conceptual proof
+                this.definition = this.nodeDirector.nodeDefinitions[this.param];
+                if (this.definition) {
+                    debugDirector.addEntry(`🧠 SMART-DEFAULT: Dial '${this.param}' found definition: type=${this.definition.type}, range=[${this.definition.range.join(',')}]`, 'system');
+                } else {
+                    debugDirector.addEntry(`🧠 SMART-DEFAULT: Dial '${this.param}' has no definition.`, 'error');
+                }
+
+                this.setupEventListeners();
+                this.setupMarkers();
+                this.updateVisual();
+                this.updateDisplay();
+                console.log(`🎛️ UniversalDial V1.1: ${param} initialized at ${this.value}%`);
+            }
+
+            setupMarkers() {
+                const markersContainer = this.element.querySelector('.dial-markers');
+                if (!markersContainer || !this.definition) return;
+
+                markersContainer.innerHTML = ''; // Clear existing markers
+                const numMarkers = 5; // Example: min, 25%, 50%, 75%, max
+
+                for (let i = 0; i < numMarkers; i++) {
+                    const percent = i / (numMarkers - 1);
+                    const marker = document.createElement('div');
+                    marker.className = (i === 0 || i === numMarkers - 1 || i === 2) ? 'dial-marker major' : 'dial-marker';
+                    
+                    const angle = -135 + (percent * 270);
+                    const radius = 50; // Center to edge of dial background
+                    const x = 50 + Math.cos(angle * Math.PI / 180) * radius;
+                    const y = 50 + Math.sin(angle * Math.PI / 180) * radius;
+                    
+                    marker.style.left = `${x}%`;
+                    marker.style.top = `${y}%`;
+                    marker.style.transform = `translate(-50%, -100%) rotate(${angle + 90}deg)`;
+                    
+                    markersContainer.appendChild(marker);
+                }
+            }
+            setupEventListeners() { this.element.addEventListener('mousedown', (e) => this.startDrag(e)); }
+            startDrag(event) {
+                this.isDragging = true;
+                event.preventDefault();
+                const moveHandler = (e) => { if (this.isDragging) this.updateFromMouse(e.clientX, e.clientY); };
+                const upHandler = () => {
+                    this.isDragging = false;
+                    document.removeEventListener('mousemove', moveHandler);
+                    document.removeEventListener('mouseup', upHandler);
+                };
+                document.addEventListener('mousemove', moveHandler);
+                document.addEventListener('mouseup', upHandler);
+            }
+            updateFromMouse(clientX, clientY) {
+                const rect = this.element.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                let angle = Math.atan2(clientY - centerY, clientX - centerX) * 180 / Math.PI;
+                angle = (angle + 495) % 360; 
+                if (angle > 270) angle = 270;
+                const percent = Math.max(0, Math.min(100, (angle / 270) * 100));
+                this.setValue(percent);
+            }
+            setValue(percentage) {
+                this.value = Math.round(percentage);
+                this.updateVisual();
+                this.updateDisplay();
+                this.nodeDirector.routeSignal(`${this.param}_dial`, this.param, this.value);
+                debugDirector.addEntry(`🎛️ DIAL: ${this.param} = ${this.value}%`, 'signal');
+            }
+            updateVisual() {
+                const angle = -135 + (this.value / 100) * 270;
+                this.element.querySelector('.dial-track').style.setProperty('--dial-angle', (angle + 270) + 'deg');
+                this.element.querySelector('.dial-indicator').style.setProperty('--dial-rotation', angle + 'deg');
+            }
+            updateDisplay() {
+                const convertedValue = nodeDirector.convertValue(this.value, this.param);
+                const def = nodeDirector.nodeDefinitions[this.param];
+                document.getElementById(`dial-${this.param}-value`).textContent = convertedValue + (def.unit || '');
+                document.getElementById(`dial-${this.param}-percent`).textContent = this.value + '%';
+            }
+        }
+
+        // Game Object Component
+        class GameObject {
+            constructor(id, type, element) {
+                this.id = id;
+                this.type = type;
+                this.element = element;
+                this.parameters = { size: 60, position_x: 200, position_y: 300, opacity: 1.0, color_hue: 0 };
+                this.updateVisual();
+                console.log(`📦 GameObject: ${id} (${type}) initialized`);
+            }
+            updateParameter(parameterName, value) {
+                this.parameters[parameterName] = value;
+                this.updateVisual();
+            }
+            updateVisual() {
+                const { size, position_x, position_y, opacity, color_hue } = this.parameters;
+                this.element.style.width = size + 'px';
+                this.element.style.height = size + 'px';
+                this.element.style.left = position_x + 'px';
+                this.element.style.top = position_y + 'px';
+                this.element.style.opacity = opacity;
+                this.element.style.backgroundColor = `hsl(${color_hue}, 70%, 60%)`;
+            }
+        
+
+        
+            }
+        
+// Replace the old GameManager class with this one
+class GameManager {
+    constructor(protagonist, collectible) {
+        this.protagonist = protagonist;
+        this.collectible = collectible;
+        this.score = 0;
+        this.movementSpeed = 5;
+        this.keysPressed = {};
+        
+        // --- NEW PROPERTIES ---
+        this.collectibleVisible = false; // Track the collectible's state
+        this.respawnTimer = null; // To hold our setTimeout reference
+
+        // Initially hide the collectible
+        this.collectible.element.classList.add('hidden');
+
+        this.setupKeyboardListeners();
+        
+        // --- MODIFIED LOGIC ---
+        // Start the first spawn timer
+        debugDirector.addEntry('⏳ Starting 10s initial spawn timer...', 'system');
+        this.respawnTimer = setTimeout(() => this.spawnCollectible(), 10000);
+        
+        this.gameLoop();
+        console.log('🎮 GameManager: Timed logic initialized.');
+    }
+
+    setupKeyboardListeners() {
+        document.addEventListener('keydown', (e) => { this.keysPressed[e.key.toLowerCase()] = true; });
+        document.addEventListener('keyup', (e) => { this.keysPressed[e.key.toLowerCase()] = false; });
+    }
+
+    updatePlayerPosition() {
+        // This method remains unchanged
+        let dx = 0, dy = 0;
+        if (this.keysPressed['w']) dy -= this.movementSpeed;
+        if (this.keysPressed['s']) dy += this.movementSpeed;
+        if (this.keysPressed['a']) dx -= this.movementSpeed;
+        if (this.keysPressed['d']) dx += this.movementSpeed;
+
+        if (dx !== 0 || dy !== 0) {
+            const playArea = document.querySelector('.live-preview').getBoundingClientRect();
+            const protRect = this.protagonist.element.getBoundingClientRect();
+            let newX = this.protagonist.parameters.position_x + dx;
+            let newY = this.protagonist.parameters.position_y + dy;
+            if (newX < 0) newX = 0;
+            if (newY < 0) newY = 0;
+            if (newX + protRect.width > playArea.width) newX = playArea.width - protRect.width;
+            if (newY + protRect.height > playArea.height) newY = playArea.height - protRect.height;
+            this.protagonist.updateParameter('position_x', newX);
+            this.protagonist.updateParameter('position_y', newY);
+        }
+    }
+
+    checkCollision() {
+        // --- MODIFIED LOGIC ---
+        // Only check for collision if the collectible is visible
+        if (!this.collectibleVisible) return;
+
+        const prot = this.protagonist.element.getBoundingClientRect();
+        const coll = this.collectible.element.getBoundingClientRect();
+
+        if (prot.left < coll.right && prot.right > coll.left && prot.top < coll.bottom && prot.bottom > coll.top) {
+            this.handleCollision();
+        }
+    }
+
+    // --- NEW METHOD ---
+    // Handles all collision events
+    handleCollision() {
+        this.collectibleVisible = false;
+        this.score++;
+        document.getElementById('gameScore').textContent = `SCORE: ${this.score}`;
+        
+        // Add animation class, then hide it after the animation finishes
+        this.collectible.element.classList.add('colliding');
+        setTimeout(() => {
+            this.collectible.element.classList.add('hidden');
+        }, 300); // Same duration as the animation
+
+        debugDirector.addEntry(`💥 COLLISION! Score is now ${this.score}`, 'signal');
+        debugDirector.addEntry('⏳ Starting 10s respawn timer...', 'system');
+        
+        // Start the 10-second respawn timer
+        this.respawnTimer = setTimeout(() => this.spawnCollectible(), 10000);
+    }
+
+    spawnCollectible() {
+        // --- MODIFIED LOGIC ---
+        this.collectibleVisible = true;
+        
+        // Remove animation and hidden classes to make it reappear
+        this.collectible.element.classList.remove('hidden');
+        this.collectible.element.classList.remove('colliding');
+
+        const playArea = document.querySelector('.live-preview').getBoundingClientRect();
+        const collSize = this.collectible.parameters.size;
+        const randomX = Math.random() * (playArea.width - collSize);
+        const randomY = Math.random() * (playArea.height - collSize);
+        this.collectible.updateParameter('position_x', randomX);
+        this.collectible.updateParameter('position_y', randomY);
+        
+        debugDirector.addEntry(`📦 SPAWN: Collectible appeared at (${Math.round(randomX)}, ${Math.round(randomY)})`, 'object');
+    }
+
+    gameLoop() {
+        this.updatePlayerPosition();
+        this.checkCollision();
+        requestAnimationFrame(() => this.gameLoop());
+    }
+}
+        // Debug Director
+        class DebugDirector {
+            constructor() {
+                this.isVisible = false;
+                this.entries = [];
+                console.log('🐛 DebugDirector: Debug transparency system initialized');
+            }
+            addEntry(message, type = 'signal') {
+                const entry = { timestamp: new Date().toLocaleTimeString(), message, type };
+                this.entries.push(entry);
+                if (this.entries.length > 100) this.entries.shift();
+                this.updateConsoleDisplay();
+            }
+            updateConsoleDisplay() {
+                if (!this.isVisible) return;
+                const content = document.getElementById('debugContent');
+                const recent = this.entries.slice(-20);
+                content.innerHTML = recent.map(e => `<div class="console-entry ${e.type}">[${e.timestamp}] ${e.message}</div>`).join('');
+                content.scrollTop = content.scrollHeight;
+            }
+            toggle() {
+                this.isVisible = !this.isVisible;
+                document.getElementById('debugConsole').classList.toggle('hidden', !this.isVisible);
+                document.getElementById('debugToggle').classList.toggle('hidden-mode', !this.isVisible);
+                document.getElementById('debug-status').textContent = this.isVisible ? 'VISIBLE' : 'READY';
+                if (this.isVisible) {
+                    this.updateConsoleDisplay();
+                    this.addEntry('🐛 DEBUG: Console activated', 'system');
+                } else { this.addEntry('🐛 DEBUG: Console hidden (logging continues)', 'system'); }
+            }
+            clear() {
+                this.entries = [];
+                this.updateConsoleDisplay();
+                this.addEntry('🗑️ DEBUG: Console cleared', 'system');
+            }
+        }
+
+        // Global system instances
+        let nodeDirector, debugDirector;
+        let universalDials = [], gameObjects = {};
+
+        // UI Functions
+        function toggleDebugConsole() { debugDirector.toggle(); }
+        function clearDebugConsole() { debugDirector.clear(); }
+        function toggleParameter(element) {
+            const objectId = element.dataset.object;
+            const param = element.dataset.param;
+            const isActive = element.classList.toggle('active');
+            nodeDirector.updateToggle(objectId, param, isActive);
+            if (isActive) {
+                const dial = universalDials.find(d => d.param === param);
+                if (dial) dial.setValue(dial.value);
+            }
+        }
+
+        // Initialize System
+        function initializeSystem() {
+            console.log('🚀 Initializing Universal I/O Interface Prototype...');
+            nodeDirector = new NodeDirector();
+            debugDirector = new DebugDirector();
+            window.nodeDirector = nodeDirector;
+            window.debugDirector = debugDirector;
+            
+            document.querySelectorAll('.universal-dial').forEach(el => {
+                universalDials.push(new UniversalDial(el, el.dataset.param, nodeDirector));
+            });
+            
+            gameObjects.protagonist = new GameObject('protagonist', 'ball', document.getElementById('protagonistObject'));
+            gameObjects.collectible = new GameObject('collectible', 'square', document.getElementById('collectibleObject'));
+            window.gameObjects = gameObjects;
+            
+            document.querySelectorAll('.parameter-toggle').forEach(toggle => {
+                toggle.addEventListener('click', () => toggleParameter(toggle));
+            });
+            
+            universalDials.forEach(dial => dial.setValue(dial.value)); // Initial sync
+            
+            // --- GAME MODE ACTIVATION ---
+            document.querySelector('.parameter-toggle[data-object="protagonist"][data-param="position_x"]').classList.remove('active');
+            document.querySelector('.parameter-toggle[data-object="protagonist"][data-param="position_y"]').classList.remove('active');
+            nodeDirector.updateToggle('protagonist', 'position_x', false);
+            nodeDirector.updateToggle('protagonist', 'position_y', false);
+
+            const gameManager = new GameManager(gameObjects.protagonist, gameObjects.collectible);
+            
+            debugDirector.addEntry('🎉 SYSTEM: Universal I/O Interface operational', 'system');
+            debugDirector.addEntry('🚀 GAME MODE: WASD control activated for Protagonist.', 'system');
+            console.log('✅ Universal I/O Interface Prototype fully operational!');
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeSystem);
+    </script>
+</body>
+</html>

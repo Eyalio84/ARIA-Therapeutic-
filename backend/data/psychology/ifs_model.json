@@ -1,0 +1,51 @@
+{
+  "_meta": {
+    "source": "Internal Family Systems (IFS) — Richard Schwartz",
+    "purpose": "Parts-based framework for character creation and NPC design",
+    "note": "IFS views the mind as naturally containing multiple sub-personalities (parts)"
+  },
+  "core_concept": "Everyone has a core Self (calm, curious, compassionate) and multiple Parts that developed to protect them.",
+  "self_qualities": [
+    "Calm", "Curiosity", "Compassion", "Confidence",
+    "Courage", "Creativity", "Clarity", "Connectedness"
+  ],
+  "part_types": {
+    "exiles": {
+      "name": "Exiles",
+      "role": "Carry the pain, shame, fear, and trauma from past experiences.",
+      "behavior": "Hold wounded emotions; are kept hidden by Managers and Firefighters.",
+      "game_mapping": "The character's backstory wounds — what they don't talk about.",
+      "npc_mapping": "An NPC who carries visible vulnerability and needs protection.",
+      "therapeutic_goal": "Witness, validate, and unburden these parts safely.",
+      "example_in_game": "A quest item that represents something the character lost — retrieving it is therapeutic."
+    },
+    "managers": {
+      "name": "Managers",
+      "role": "Proactive protectors that try to prevent emotional pain before it happens.",
+      "behavior": "Control, plan, criticize, people-please, achieve, avoid, intellectualize.",
+      "game_mapping": "The character's defense mechanisms — how they navigate the world.",
+      "npc_mapping": "An NPC who is overly cautious, controlling, or perfectionistic — relatable to the player.",
+      "therapeutic_goal": "Appreciate their protective intent while relaxing rigid control.",
+      "example_in_game": "A quest where the character must let go of control to succeed."
+    },
+    "firefighters": {
+      "name": "Firefighters",
+      "role": "Reactive protectors that act urgently when Exiles' pain breaks through.",
+      "behavior": "Distract, numb, rage, binge, use substances, dissociate, self-harm.",
+      "game_mapping": "The character's crisis responses — what they do when overwhelmed.",
+      "npc_mapping": "An NPC who acts impulsively or self-destructively but has good reasons underneath.",
+      "therapeutic_goal": "Understand what they're protecting and find less extreme alternatives.",
+      "example_in_game": "A moment where the character's companion NPC acts out — and the player must understand why, not punish."
+    }
+  },
+  "game_integration": {
+    "character_creation": [
+      "What quality does your character have that they're most proud of? (Self)",
+      "What does your character hide from the world? (Exile)",
+      "How does your character protect themselves? (Manager)",
+      "What does your character do when things get too much? (Firefighter)"
+    ],
+    "antagonist_as_part": "The game's antagonist can represent an extreme Protector part — something that was once helpful but became rigid and harmful.",
+    "healing_arc": "The narrative arc mirrors IFS unburdening: recognize the part → understand its intent → witness its pain → offer it a new role."
+  }
+}

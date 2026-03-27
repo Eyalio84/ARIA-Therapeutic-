@@ -1,0 +1,1159 @@
+{
+  "id": "334423054",
+  "code": "06",
+  "title": "Mental, behavioural or neurodevelopmental disorders",
+  "definition": "Mental, behavioural and neurodevelopmental disorders are syndromes characterised by clinically significant disturbance in an individual's cognition, emotional regulation, or behaviour that reflects a dysfunction in the psychological, biological, or developmental processes that underlie mental and behavioural functioning. These disturbances are usually associated with distress or impairment in personal, family, social, educational, occupational, or other important areas of functioning.",
+  "coding_note": "",
+  "child_count": 23,
+  "children": [
+    {
+      "id": "1516623224",
+      "code": "",
+      "title": "Neurodevelopmental disorders",
+      "definition": "Neurodevelopmental disorders are behavioural and cognitive disorders that arise during the developmental period that involve significant difficulties in the acquisition and execution of specific intellectual, motor, language, or social functions. Although behavioural and cognitive deficits are present in many mental and behavioural disorders that can arise during the developmental period (e.g., Schizophrenia, Bipolar disorder), only disorders whose core features are neurodevelopmental are included in this grouping. The presumptive etiology for neurodevelopmental disorders is complex, and in many individual cases is unknown.",
+      "coding_note": "",
+      "child_count": 9,
+      "children": [
+        {
+          "id": "605267007",
+          "code": "6A00",
+          "title": "Disorders of intellectual development",
+          "definition": "Disorders of intellectual development are a group of etiologically diverse conditions originating during the developmental period characterised by significantly below average intellectual functioning and adaptive behaviour that are approximately two or more standard deviations below the mean (approximately less than the 2.3rd percentile), based on appropriately normed, individually administered standardized tests. Where appropriately normed and standardized tests are not available, diagnosis of disorders of intellectual development requires greater reliance on clinical judgment based on appropriate assessment of comparable behavioural indicators.",
+          "coding_note": "Use additional code, if desired, to identify any known aetiology.",
+          "child_count": 6
+        },
+        {
+          "id": "33269655",
+          "code": "6A01",
+          "title": "Developmental speech or language disorders",
+          "definition": "Developmental speech or language disorders arise during the developmental period and are characterised by difficulties in understanding or producing speech and language or in using language in context for the purposes of communication that are outside the limits of normal variation expected for age and level of intellectual functioning. The observed speech and language problems are not attributable to regional, social, or cultural/ethnic language variations and are not fully explained by anatomical or neurological abnormalities. The presumptive aetiology for Developmental speech or language disorders is complex, and in many individual cases, is unknown.",
+          "coding_note": "",
+          "child_count": 5
+        },
+        {
+          "id": "437815624",
+          "code": "6A02",
+          "title": "Autism spectrum disorder",
+          "definition": "Autism spectrum disorder is characterised by persistent deficits in the ability to initiate and to sustain reciprocal social interaction and social communication, and by a range of restricted, repetitive, and inflexible patterns of behaviour, interests or activities that are clearly atypical or excessive for the individual’s age and sociocultural context. The onset of the disorder occurs during the developmental period, typically in early childhood, but symptoms may not become fully manifest until later, when social demands exceed limited capacities. Deficits are sufficiently severe to cause impairment in personal, family, social, educational, occupational or other important areas of functioning and are usually a pervasive feature of the individual’s functioning observable in all settings, although they may vary according to social, educational, or other context. Individuals along the spectrum exhibit a full range of intellectual functioning and language abilities.",
+          "coding_note": "",
+          "child_count": 7
+        },
+        {
+          "id": "2099676649",
+          "code": "6A03",
+          "title": "Developmental learning disorder",
+          "definition": "Developmental learning disorder is characterised by significant and persistent difficulties in learning academic skills, which may include reading, writing, or arithmetic. The individual’s performance in the affected academic skill(s) is markedly below what would be expected for chronological age and general level of intellectual functioning, and results in significant impairment in the individual’s academic or occupational functioning. Developmental learning disorder first manifests when academic skills are taught during the early school years. Developmental learning disorder is not due to a disorder of intellectual development, sensory impairment (vision or hearing), neurological or motor disorder, lack of availability of education, lack of proficiency in the language of academic instruction, or psychosocial adversity.",
+          "coding_note": "",
+          "child_count": 5
+        },
+        {
+          "id": "148247104",
+          "code": "6A04",
+          "title": "Developmental motor coordination disorder",
+          "definition": "Developmental motor coordination disorder is characterised by a significant delay in the acquisition of gross and fine motor skills and impairment in the execution of coordinated motor skills that manifest in clumsiness, slowness, or inaccuracy of motor performance. Coordinated motor skills are markedly below that expected given the individual's chronological age and level of intellectual functioning. Onset of coordinated motor skills difficulties occurs during the developmental period and is typically apparent from early childhood. Coordinated motor skills difficulties cause significant and persistent limitations in functioning (e.g. in activities of daily living, school work, and vocational and leisure activities). Difficulties with coordinated motor skills are not solely attributable to a Disease of the Nervous System, Disease of the Musculoskeletal System or Connective Tissue, sensory impairment, and not better explained by a Disorder of Intellectual Development.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "821852937",
+          "code": "6A05",
+          "title": "Attention deficit hyperactivity disorder",
+          "definition": "Attention deficit hyperactivity disorder is characterised by a persistent pattern (at least 6 months) of inattention and/or hyperactivity-impulsivity that has a direct negative impact on academic, occupational, or social functioning. There is evidence of significant inattention and/or hyperactivity-impulsivity symptoms prior to age 12, typically by early to mid-childhood, though some individuals may first come to clinical attention later. The degree of inattention and hyperactivity-impulsivity is outside the limits of normal variation expected for age and level of intellectual functioning. Inattention refers to significant difficulty in sustaining attention to tasks that do not provide a high level of stimulation or frequent rewards, distractibility and problems with organisation. Hyperactivity refers to excessive motor activity and difficulties with remaining still, most evident in structured situations that require behavioural self-control. Impulsivity is a tendency to act in response to immediate stimuli, without deliberation or consideration of the risks and consequences. The relative balance and the specific manifestations of inattentive and hyperactive-impulsive characteristics varies across individuals and may change over the course of development. In order for a diagnosis to be made, manifestations of inattention and/or hyperactivity-impulsivity must be evident across multiple situations or settings (e.g., home, school, work, with friends or relatives), but are likely to vary according to the structure and demands of the setting. Symptoms are not better accounted for by another mental, behavioural, or neurodevelopmental disorder and are not due to the effect of a substance or medication.",
+          "coding_note": "",
+          "child_count": 5
+        },
+        {
+          "id": "1111628448",
+          "code": "6A06",
+          "title": "Stereotyped movement disorder",
+          "definition": "Stereotyped movement disorder is characterised by the persistent (e.g., lasting several months) presence of voluntary, repetitive, stereotyped, apparently purposeless (and often rhythmic) movements that arise during the early developmental period, are not caused by the direct physiological effects of a substance or medication (including withdrawal), and markedly interfere with normal activities or result in self-inflicted bodily injury. Stereotyped movements that are non-injurious can include body rocking, head rocking, finger-flicking mannerisms, and hand flapping. Stereotyped self-injurious behaviours can include repetitive head banging, face slapping, eye poking, and biting of the hands, lips, or other body parts.",
+          "coding_note": "",
+          "child_count": 3
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "405565289",
+      "code": "",
+      "title": "Schizophrenia or other primary psychotic disorders",
+      "definition": "Schizophrenia and other primary psychotic disorders are characterised by significant impairments in reality testing and alterations in behaviour manifest in positive symptoms such as persistent delusions, persistent hallucinations, disorganised thinking (typically manifest as disorganised speech), grossly disorganised behaviour, and experiences of passivity and control, negative symptoms such as blunted or flat affect and avolition, and psychomotor disturbances. The symptoms occur with sufficient frequency and intensity to deviate from expected cultural or subcultural norms. These symptoms do not arise as a feature of another mental and behavioural disorder (e.g., a mood disorder, delirium, or a disorder due to substance use). The categories in this grouping should not be used to classify the expression of ideas, beliefs, or behaviours that are culturally sanctioned.",
+      "coding_note": "",
+      "child_count": 9,
+      "children": [
+        {
+          "id": "1683919430",
+          "code": "6A20",
+          "title": "Schizophrenia",
+          "definition": "Schizophrenia is characterised by disturbances in multiple mental modalities, including thinking (e.g., delusions, disorganisation in the form of thought), perception (e.g., hallucinations), self-experience (e.g., the experience that one's feelings, impulses, thoughts, or behaviour are under the control of an external force), cognition (e.g., impaired attention, verbal memory, and social cognition), volition (e.g., loss of motivation), affect (e.g., blunted emotional expression), and behaviour (e.g., behaviour that appears bizarre or purposeless, unpredictable or inappropriate emotional responses that interfere with the organisation of behaviour). Psychomotor disturbances, including catatonia, may be present. Persistent delusions, persistent hallucinations, thought disorder, and experiences of influence, passivity, or control are considered core symptoms. Symptoms must have persisted for at least one month in order for a diagnosis of schizophrenia to be assigned. The symptoms are not a manifestation of another health condition (e.g., a brain tumour) and are not due to the effect of a substance or medication on the central nervous system (e.g., corticosteroids), including withdrawal (e.g., alcohol withdrawal).",
+          "coding_note": "",
+          "child_count": 5
+        },
+        {
+          "id": "106339515",
+          "code": "6A21",
+          "title": "Schizoaffective disorder",
+          "definition": "Schizoaffective disorder is an episodic disorder in which the diagnostic requirements of schizophrenia and a manic, mixed, or moderate or severe depressive episode are met within the same episode of illness, either simultaneously or within a few days of each other. Prominent symptoms of schizophrenia (e.g. delusions, hallucinations, disorganisation in the form of thought, experiences of influence, passivity and control) are accompanied by typical symptoms of a moderate or severe depressive episode (e.g. depressed mood, loss of interest, reduced energy), a manic episode (e.g. an extreme mood state characterised by euphoria, irritability, or expansiveness; increased activity or a subjective experience of increased energy) or a mixed episode. Psychomotor disturbances, including catatonia, may be present. Symptoms must have persisted for at least one month. The symptoms are not a manifestation of another medical condition (e.g. a brain tumor) and are not due to the effect of a substance or medication on the central nervous system (e.g. corticosteroids), including withdrawal (e.g. alcohol withdrawal).",
+          "coding_note": "",
+          "child_count": 5
+        },
+        {
+          "id": "18178000",
+          "code": "6A22",
+          "title": "Schizotypal disorder",
+          "definition": "Schizotypal disorder is characterised by an enduring pattern (i.e. characteristic of the person’s functioning over a period of at least several years) of eccentricities in behaviour, appearance and speech, accompanied by cognitive and perceptual distortions, unusual beliefs, and discomfort with— and often reduced capacity for— interpersonal relationships. Symptoms may include constricted or inappropriate affect and anhedonia. Paranoid ideas, ideas of reference, or other psychotic symptoms, including hallucinations in any modality, may occur, but are not of sufficient intensity or duration to meet the diagnostic requirements of schizophrenia, schizoaffective disorder, or delusional disorder. The symptoms cause distress or impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "284410555",
+          "code": "6A23",
+          "title": "Acute and transient psychotic disorder",
+          "definition": "Acute and transient psychotic disorder is characterised by acute onset of psychotic symptoms that emerge without a prodrome and reach their maximal severity within two weeks. Symptoms may include delusions, hallucinations, disorganisation of thought processes, perplexity or confusion, and disturbances of affect and mood. Catatonia-like psychomotor disturbances may be present. Symptoms typically change rapidly, both in nature and intensity, from day to day, or even within a single day. The duration of the episode does not exceed 3 months, and most commonly lasts from a few days to 1 month. The symptoms are not a manifestation of another medical condition (e.g. a brain tumour) and are not due to the effect of a substance or medication on the central nervous system (e.g. corticosteroids), including withdrawal (e.g. alcohol withdrawal).",
+          "coding_note": "",
+          "child_count": 4
+        },
+        {
+          "id": "1974996783",
+          "code": "6A24",
+          "title": "Delusional disorder",
+          "definition": "Delusional disorder is characterised by the development of a delusion or set of related delusions, typically persisting for at least 3 months and often much longer, in the absence of a Depressive, Manic, or Mixed mood episode. The delusions are variable in content across individuals, but typically stable within individuals, although they may evolve over time. Other characteristic symptoms of Schizophrenia (i.e. clear and persistent hallucinations, negative symptoms, disorganised thinking, or experiences of influence, passivity, or control) are not present, although various forms of perceptual disturbances (e.g. hallucinations, illusions, misidentifications of persons) thematically related to the delusion are still consistent with the diagnosis. Apart from actions and attitudes directly related to the delusion or delusional system, affect, speech, and behavior are typically unaffected. The symptoms are not a manifestation of another medical condition (e.g., a brain tumour) and are not due to the effect of a substance or medication on the central nervous system (e.g. corticosteroids), including withdrawal effects (e.g. alcohol withdrawal).",
+          "coding_note": "",
+          "child_count": 4
+        },
+        {
+          "id": "1358754380",
+          "code": "6A25",
+          "title": "Symptomatic manifestations of primary psychotic disorders",
+          "definition": "These categories may be used to characterize the current clinical presentation in individuals diagnosed with Schizophrenia or another primary psychotic disorder, and should not be used in individuals without such a diagnosis. Multiple categories may be applied. Symptoms attributable to the direct pathophysiological consequences of a health condition or injury not classified under Mental, behavioural or neurodevelopmental disorders (e.g., a brain tumour or traumatic brain injury), or to the direct effects of a substance or medication on the central nervous system, including withdrawal effects, should not be considered as examples of the respective types of symptoms.",
+          "coding_note": "These categories should never be used in primary coding. The codes are provided for use as supplementary or additional codes when it is desired to identify the presence of these symptoms in primary psychotic disorders.",
+          "child_count": 6
+        },
+        {
+          "id": "173259898",
+          "code": "",
+          "title": "Substance-induced psychotic disorders",
+          "definition": "",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "486722075",
+      "code": "",
+      "title": "Catatonia",
+      "definition": "Catatonia is a syndrome of primarily psychomotor disturbances, characterized by the co-occurrence of several symptoms of decreased, increased, or abnormal psychomotor activity. The assessment of catatonia is complex and requires observation, interview and physical exam. Catatonia can occur in the context of another mental disorder, such as Schizophrenia or Other Primary Psychotic Disorders, Mood Disorders, and Neurodevelopmental Disorders, especially Autism Spectrum Disorder. Catatonia can also develop during or soon after intoxication or withdrawal from certain psychoactive substances, including phencyclidine (PCP), cannabis, hallucinogens such as mescaline or LSD, cocaine and MDMA or related drugs, or during the use of certain psychoactive and non-psychoactive medications (e.g. antipsychotic medications, benzodiazepines, steroids, disulfiram, ciprofloxacin). Finally, Catatonia can occur as a direct pathophysiological consequence of a medical condition not classified under Mental, Behavioural or Neurodevelopmental Disorders. Examples of medical conditions that may be associated with Catatonia include diabetic ketoacidosis, hypercalcemia, hepatic encephalopathy, homocystinuria, neoplasms head trauma, cerebrovascular disease, and encephalitis.",
+      "coding_note": "",
+      "child_count": 3,
+      "children": [
+        {
+          "id": "556568822",
+          "code": "6A40",
+          "title": "Catatonia associated with another mental disorder",
+          "definition": "Catatonia associated with another mental disorder is a syndrome of primarily psychomotor disturbances, characterized by the co-occurrence of several symptoms of decreased, increased, or abnormal psychomotor activity, which occurs in the context of another mental disorder, such as Schizophrenia or Other Primary Psychotic Disorders, Mood Disorders, and Neurodevelopmental Disorders, especially Autism Spectrum Disorder.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "289492002",
+          "code": "6A41",
+          "title": "Catatonia induced by substances or medications",
+          "definition": "Catatonia induced by substances or medications is a syndrome of primarily psychomotor disturbances, characterized by the co-occurrence of several symptoms of decreased, increased, or abnormal psychomotor activity, which develops during or soon after intoxication or withdrawal from certain psychoactive substances, including phencyclidine (PCP), cannabis, hallucinogens such as mescaline or LSD, cocaine and MDMA or related drugs, or during the use of certain psychoactive and non-psychoactive medications (e.g. antipsychotic medications, benzodiazepines, steroids, disulfiram, ciprofloxacin).",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "76398729",
+      "code": "",
+      "title": "Mood disorders",
+      "definition": "Mood Disorders refers to a superordinate grouping of Bipolar and Depressive Disorders. Mood disorders are defined according to particular types of mood episodes and their pattern over time. The primary types of mood episodes are Depressive episode, Manic episode, Mixed episode, and Hypomanic episode. Mood episodes are not independently diagnosable entities, and therefore do not have their own diagnostic codes. Rather, mood episodes make up the primary components of most of the Depressive and Bipolar Disorders.",
+      "coding_note": "",
+      "child_count": 6,
+      "children": [
+        {
+          "id": "613065957",
+          "code": "",
+          "title": "Bipolar or related disorders",
+          "definition": "Bipolar and related disorders are episodic mood disorders defined by the occurrence of Manic, Mixed or Hypomanic episodes or symptoms. These episodes typically alternate over the course of these disorders with Depressive episodes or periods of depressive symptoms.",
+          "coding_note": "",
+          "child_count": 5
+        },
+        {
+          "id": "1563440232",
+          "code": "",
+          "title": "Depressive disorders",
+          "definition": "Depressive disorders are characterised by depressive mood (e.g., sad, irritable, empty) or loss of pleasure accompanied by other cognitive, behavioural, or neurovegetative symptoms that significantly affect the individual’s ability to function. A depressive disorder should not be diagnosed in individuals who have ever experienced a manic, mixed or hypomanic episode, which would indicate the presence of a bipolar disorder.",
+          "coding_note": "",
+          "child_count": 6
+        },
+        {
+          "id": "496273089",
+          "code": "6A80",
+          "title": "Symptomatic and course presentations for mood episodes in mood disorders",
+          "definition": "These categories may be applied to describe the presentation and characteristics of mood episodes in the context of single episode depressive disorder, recurrent depressive disorder, bipolar type I disorder, or bipolar type II disorder. These categories indicate the presence of specific, important features of the clinical presentation or of the course, onset, and pattern of mood episodes. These categories are not mutually exclusive, and as many may be added as apply.",
+          "coding_note": "These categories should never be used in primary coding. The codes are provided for use as supplementary or additional codes when it is desired to identify specific clinically important features of mood episodes in mood disorders.",
+          "child_count": 6
+        },
+        {
+          "id": "2133003467",
+          "code": "",
+          "title": "Substance-induced mood disorders",
+          "definition": "",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "1336943699",
+      "code": "",
+      "title": "Anxiety or fear-related disorders",
+      "definition": "Anxiety and fear-related disorders are characterised by excessive fear and anxiety and related behavioural disturbances, with symptoms that are severe enough to result in significant distress or significant impairment in personal, family, social, educational, occupational, or other important areas of functioning. Fear and anxiety are closely related phenomena; fear represents a reaction to perceived imminent threat in the present, whereas anxiety is more future-oriented, referring to perceived anticipated threat. A key differentiating feature among the Anxiety and fear-related disorders are disorder-specific foci of apprehension, that is, the stimulus or situation that triggers the fear or anxiety. The clinical presentation of Anxiety and fear-related disorders typically includes specific associated cognitions that can assist in differentiating among the disorders by clarifying the focus of apprehension.",
+      "coding_note": "",
+      "child_count": 10,
+      "children": [
+        {
+          "id": "1712535455",
+          "code": "6B00",
+          "title": "Generalised anxiety disorder",
+          "definition": "Generalised anxiety disorder is characterised by marked symptoms of anxiety that persist for at least several months, for more days than not, manifested by either general apprehension (i.e. ‘free-floating anxiety’) or excessive worry focused on multiple everyday events, most often concerning family, health, finances, and school or work, together with additional symptoms such as muscular tension or motor restlessness, sympathetic autonomic over-activity, subjective experience of nervousness, difficulty maintaining concentration, irritability, or sleep disturbance. The symptoms result in significant distress or significant impairment in personal, family, social, educational, occupational, or other important areas of functioning. The symptoms are not a manifestation of another health condition and are not due to the effects of a substance or medication on the central nervous system.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "56162827",
+          "code": "6B01",
+          "title": "Panic disorder",
+          "definition": "Panic disorder is characterised by recurrent unexpected panic attacks that are not restricted to particular stimuli or situations. Panic attacks are discrete episodes of intense fear or apprehension accompanied by the rapid and concurrent onset of several characteristic symptoms (e.g. palpitations or increased heart rate, sweating, trembling, shortness of breath, chest pain, dizziness or lightheadedness, chills, hot flushes, fear of imminent death). In addition, panic disorder is characterised by persistent concern about the recurrence or significance of panic attacks, or behaviours intended to avoid their recurrence, that results in significant impairment in personal, family, social, educational, occupational, or other important areas of functioning. The symptoms are not a manifestation of another medical condition and are not due to the effects of a substance or medication on the central nervous system.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "530592394",
+          "code": "6B02",
+          "title": "Agoraphobia",
+          "definition": "Agoraphobia is characterised by marked and excessive fear or anxiety that occurs in response to multiple situations where escape might be difficult or help might not be available, such as using public transportation, being in crowds, being outside the home alone (e.g., in shops, theatres, standing in line). The individual is consistently anxious about these situations due to a fear of specific negative outcomes (e.g., panic attacks, other incapacitating or embarrassing physical symptoms). The situations are actively avoided, entered only under specific circumstances such as in the presence of a trusted companion, or endured with intense fear or anxiety. The symptoms persist for at least several months, and are sufficiently severe to result in significant distress or significant impairment in personal, family, social, educational, occupational, or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "239513569",
+          "code": "6B03",
+          "title": "Specific phobia",
+          "definition": "Specific phobia is characterised by a marked and excessive fear or anxiety that consistently occurs upon exposure or anticipation of exposure to one or more specific objects or situations (e.g., proximity to certain animals, flying, heights, closed spaces, sight of blood or injury) that is out of proportion to actual danger. The phobic objects or situations are avoided or else endured with intense fear or anxiety. Symptoms persist for at least several months and are sufficiently severe to result in significant distress or significant impairment in personal, family, social, educational, occupational, or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "2062286624",
+          "code": "6B04",
+          "title": "Social anxiety disorder",
+          "definition": "Social anxiety disorder is characterised by marked and excessive fear or anxiety that consistently occurs in one or more social situations such as social interactions (e.g. having a conversation), doing something while feeling observed (e.g. eating or drinking in the presence of others), or performing in front of others (e.g. giving a speech). The individual is concerned that he or she will act in a way, or show anxiety symptoms, that will be negatively evaluated by others. Relevant social situations are consistently avoided or else endured with intense fear or anxiety. The symptoms persist for at least several months and are sufficiently severe to result in significant distress or significant impairment in personal, family, social, educational, occupational, or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "830200631",
+          "code": "6B05",
+          "title": "Separation anxiety disorder",
+          "definition": "Separation anxiety disorder is characterised by marked and excessive fear or anxiety about separation from specific attachment figures. In children and adolescents, separation anxiety typically focuses on caregivers, parents or other family members and the fear or anxiety is beyond what would be considered developmentally normative. In adults, the focus is typically a romantic partner or children. Manifestations of separation anxiety may include thoughts of harm or untoward events befalling the attachment figure, reluctance to go to school or work, recurrent excessive distress upon separation, reluctance or refusal to sleep away from the attachment figure, and recurrent nightmares about separation. The symptoms persist for at least several months and are sufficiently severe to result in significant distress or significant impairment in personal, family, social, educational, occupational, or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "167946871",
+          "code": "6B06",
+          "title": "Selective mutism",
+          "definition": "Selective mutism is characterised by consistent selectivity in speaking, such that a child demonstrates adequate language competence in specific social situations, typically at home, but consistently fails to speak in others, typically at school. The disturbance lasts for at least one month, is not limited to the first month of school, and is of sufficient severity to interfere with educational achievement or with social communication. Failure to speak is not due to a lack of knowledge of, or comfort with, the spoken language required in the social situation (e.g. a different language spoken at school than at home).",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1372161015",
+          "code": "",
+          "title": "Substance-induced anxiety disorders",
+          "definition": "",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "1321276661",
+      "code": "",
+      "title": "Obsessive-compulsive or related disorders",
+      "definition": "Obsessive-compulsive and related disorders is a group of disorders characterised by repetitive thoughts and behaviours that are believed to share similarities in aetiology and key diagnostic validators. Cognitive phenomena such as obsessions, intrusive thoughts and preoccupations are central to a subset of these conditions (i.e., obsessive-compulsive disorder, body dysmorphic disorder, hypochondriasis, and olfactory reference disorder) and are accompanied by related repetitive behaviours. Hoarding Disorder is not associated with intrusive unwanted thoughts but rather is characterised by a compulsive need to accumulate possessions and distress related to discarding them. Also included in the grouping are body-focused repetitive behaviour disorders, which are primarily characterised by recurrent and habitual actions directed at the integument (e.g., hair-pulling, skin-picking) and lack a prominent cognitive aspect. The symptoms result in significant distress or significant impairment in personal, family, social, educational, occupational, or other important areas of functioning.",
+      "coding_note": "",
+      "child_count": 9,
+      "children": [
+        {
+          "id": "1582741816",
+          "code": "6B20",
+          "title": "Obsessive-compulsive disorder",
+          "definition": "Obsessive-Compulsive Disorder is characterised by the presence of persistent obsessions or compulsions, or most commonly both. Obsessions are repetitive and persistent thoughts, images, or impulses/urges that are intrusive, unwanted, and are commonly associated with anxiety. The individual attempts to ignore or suppress obsessions or to neutralize them by performing compulsions. Compulsions are repetitive behaviours including repetitive mental acts that the individual feels driven to perform in response to an obsession, according to rigid rules, or to achieve a sense of ‘completeness’. In order for obsessive-compulsive disorder to be diagnosed, obsessions and compulsions must be time consuming (e.g. taking more than an hour per day) or result in significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 3
+        },
+        {
+          "id": "731724655",
+          "code": "6B21",
+          "title": "Body dysmorphic disorder",
+          "definition": "Body Dysmorphic Disorder is characterised by persistent preoccupation with one or more perceived defects or flaws in appearance that are either unnoticeable or only slightly noticeable to others. Individuals experience excessive self-consciousness, often with ideas of reference (i.e., the conviction that people are taking notice, judging, or talking about the perceived defect or flaw). In response to their preoccupation, individuals engage in repetitive and excessive behaviours that include repeated examination of the appearance or severity of the perceived defect or flaw, excessive attempts to camouflage or alter the perceived defect, or marked avoidance of social situations or triggers that increase distress about the perceived defect or flaw. The symptoms are sufficiently severe to result in significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 3
+        },
+        {
+          "id": "1119008568",
+          "code": "6B22",
+          "title": "Olfactory reference disorder",
+          "definition": "Olfactory Reference Disorder is characterised by persistent preoccupation with the belief that one is emitting a perceived foul or offensive body odour or breath that is either unnoticeable or only slightly noticeable to others. Individuals experience excessive self-consciousness about the perceived odour, often with ideas of reference (i.e., the conviction that people are taking notice, judging, or talking about the odour). In response to their preoccupation, individuals engage in repetitive and excessive behaviours such as repeatedly checking for body odour or checking the perceived source of the smell, or repeatedly seeking reassurance, excessive attempts to camouflage, alter, or prevent the perceived odour, or marked avoidance of social situations or triggers that increase distress about the perceived foul or offensive odour. The symptoms are sufficiently severe to result in significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 3
+        },
+        {
+          "id": "675329566",
+          "code": "6B23",
+          "title": "Hypochondriasis",
+          "definition": "Hypochondriasis is characterised by persistent preoccupation or fear about the possibility of having one or more serious, progressive or life-threatening illnesses. The preoccupation is accompanied by either: 1) repetitive and excessive health-related behaviours, such as repeatedly checking the body for evidence of illness, spending inordinate amounts of time searching for information about the feared illness, repeatedly seeking reassurance (e.g. arranging multiple medical consultations); or 2) maladaptive avoidance behaviour related to health (e.g. avoids medical appointments). The symptoms result in significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 3
+        },
+        {
+          "id": "1991016628",
+          "code": "6B24",
+          "title": "Hoarding disorder",
+          "definition": "Hoarding disorder is characterised by accumulation of possessions that results in living spaces becoming cluttered to the point that their use or safety is compromised. Accumulation occurs due to both repetitive urges or behaviours related to amassing items and difficulty discarding possessions due to a perceived need to save items and distress associated with discarding them. If living areas are uncluttered this is only due to the intervention of third parties (e.g., family members, cleaners, authorities). Amassment may be passive (e.g. accumulation of incoming flyers or mail) or active (e.g. excessive acquisition of free, purchased, or stolen items). The symptoms result in significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 3
+        },
+        {
+          "id": "1121465374",
+          "code": "6B25",
+          "title": "Body-focused repetitive behaviour disorders",
+          "definition": "Body focused repetitive behaviour disorders are characterised by recurrent and habitual actions directed at the integument (e.g. hair-pulling, skin-picking, lip-biting), typically accompanied by unsuccessful attempts to decrease or stop the behaviour involved, and which lead to dermatological sequelae (e.g., hair loss, skin lesions, lip abrasions). The behaviour may occur in brief episodes scattered throughout the day or in less frequent but more sustained periods. The symptoms result in significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 4
+        },
+        {
+          "id": "254139238",
+          "code": "",
+          "title": "Substance-induced obsessive-compulsive or related disorders",
+          "definition": "",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "991786158",
+      "code": "",
+      "title": "Disorders specifically associated with stress",
+      "definition": "Disorders specifically associated with stress are directly related to exposure to a stressful or traumatic event, or a series of such events or adverse experiences. For each of the disorders in this grouping, an identifiable stressor is a necessary, though not sufficient, causal factor. Although not all individuals exposed to an identified stressor will develop a disorder, the disorders in this grouping would not have occurred without experiencing the stressor. Stressful events for some disorders in this grouping are within the normal range of life experiences (e.g., divorce, socio-economic problems, bereavement). Other disorders require the experience of a stressor of an extremely threatening or horrific nature (i.e., potentially traumatic events). With all disorders in this grouping, it is the nature, pattern, and duration of the symptoms that arise in response to the stressful events—together with associated functional impairment—that distinguishes the disorders.",
+      "coding_note": "",
+      "child_count": 8,
+      "children": [
+        {
+          "id": "2070699808",
+          "code": "6B40",
+          "title": "Post traumatic stress disorder",
+          "definition": "Post traumatic stress disorder (PTSD) may develop following exposure to an extremely threatening or horrific event or series of events. It is characterised by all of the following: 1) re-experiencing the traumatic event or events in the present in the form of vivid intrusive memories, flashbacks, or nightmares. Re-experiencing may occur via one or multiple sensory modalities and is typically accompanied by strong or overwhelming emotions, particularly fear or horror, and strong physical sensations; 2) avoidance of thoughts and memories of the event or events, or avoidance of activities, situations, or people reminiscent of the event(s); and 3) persistent perceptions of heightened current threat, for example as indicated by hypervigilance or an enhanced startle reaction to stimuli such as unexpected noises. The symptoms persist for at least several weeks and cause significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "585833559",
+          "code": "6B41",
+          "title": "Complex post traumatic stress disorder",
+          "definition": "Complex post traumatic stress disorder (Complex PTSD) is a disorder that may develop following exposure to an event or series of events of an extremely threatening or horrific nature, most commonly prolonged or repetitive events from which escape is difficult or impossible (e.g. torture, slavery, genocide campaigns, prolonged domestic violence, repeated childhood sexual or physical abuse). All diagnostic requirements for PTSD are met. In addition, Complex PTSD is characterised by severe and persistent 1) problems in affect regulation; 2) beliefs about oneself as diminished, defeated or worthless, accompanied by feelings of shame, guilt or failure related to the traumatic event; and 3) difficulties in sustaining relationships and in feeling close to others. These symptoms cause significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1183832314",
+          "code": "6B42",
+          "title": "Prolonged grief disorder",
+          "definition": "Prolonged grief disorder is a disturbance in which, following the death of a partner, parent, child, or other person close to the bereaved, there is persistent and pervasive grief response characterised by longing for the deceased or persistent preoccupation with the deceased accompanied by intense emotional pain (e.g. sadness, guilt, anger, denial, blame, difficulty accepting the death, feeling one has lost a part of one’s self, an inability to experience positive mood, emotional numbness, difficulty in engaging with social or other activities). The grief response has persisted for an atypically long period of time following the loss (more than 6 months at a minimum) and clearly exceeds expected social, cultural or religious norms for the individual’s culture and context. Grief reactions that have persisted for longer periods that are within a normative period of grieving given the person’s cultural and religious context are viewed as normal bereavement responses and are not assigned a diagnosis. The disturbance causes significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "264310751",
+          "code": "6B43",
+          "title": "Adjustment disorder",
+          "definition": "Adjustment disorder is a maladaptive reaction to an identifiable psychosocial stressor or multiple stressors (e.g. divorce, illness or disability, socio-economic problems, conflicts at home or work) that usually emerges within a month of the stressor. The disorder is characterised by preoccupation with the stressor or its consequences, including excessive worry, recurrent and distressing thoughts about the stressor, or constant rumination about its implications, as well as by failure to adapt to the stressor that causes significant impairment in personal, family, social, educational, occupational or other important areas of functioning. The symptoms are not better explained by another mental disorder (e.g., Mood Disorder, another Disorder Specifically Associated with Stress) and typically resolve within 6 months, unless the stressor persists for a longer duration.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1867081699",
+          "code": "6B44",
+          "title": "Reactive attachment disorder",
+          "definition": "Reactive attachment disorder is characterised by grossly abnormal attachment behaviours in early childhood, occurring in the context of a history of grossly inadequate child care (e.g., severe neglect, maltreatment, institutional deprivation). Even when an adequate primary caregiver is newly available, the child does not turn to the primary caregiver for comfort, support and nurture, rarely displays security-seeking behaviours towards any adult, and does not respond when comfort is offered. Reactive attachment disorder can only be diagnosed in children, and features of the disorder develop within the first 5 years of life. However, the disorder cannot be diagnosed before the age of 1 year (or a developmental age of less than 9 months), when the capacity for selective attachments may not be fully developed, or in the context of Autism spectrum disorder.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "467941148",
+          "code": "6B45",
+          "title": "Disinhibited social engagement disorder",
+          "definition": "Disinhibited social engagement disorder is characterised by grossly abnormal social behaviour, occurring in the context of a history of grossly inadequate child care (e.g., severe neglect, institutional deprivation). The child approaches adults indiscriminately, lacks reticence to approach, will go away with unfamiliar adults, and exhibits overly familiar behaviour towards strangers. Disinhibited social engagement disorder can only be diagnosed in children, and features of the disorder develop within the first 5 years of life. However, the disorder cannot be diagnosed before the age of 1 year (or a developmental age of less than 9 months), when the capacity for selective attachments may not be fully developed, or in the context of Autism spectrum disorder.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "108180424",
+      "code": "",
+      "title": "Dissociative disorders",
+      "definition": "Dissociative disorders are characterised by involuntary disruption or discontinuity in the normal integration of one or more of the following: identity, sensations, perceptions, affects, thoughts, memories, control over bodily movements, or behaviour. Disruption or discontinuity may be complete, but is more commonly partial, and can vary from day to day or even from hour to hour. The symptoms of dissociative disorders are not due to the direct effects of a medication or substance, including withdrawal effects, are not better explained by another Mental, behavioural, or neurodevelopmental disorder, a Sleep-wake disorder, a Disease of the nervous system or other health condition, and are not part of an accepted cultural, religious, or spiritual practice. Dissociative symptoms in dissociative disorders are sufficiently severe to result in significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+      "coding_note": "",
+      "child_count": 9,
+      "children": [
+        {
+          "id": "1069443471",
+          "code": "6B60",
+          "title": "Dissociative neurological symptom disorder",
+          "definition": "Dissociative neurological symptom disorder is characterised by the presentation of motor, sensory, or cognitive symptoms that imply an involuntary discontinuity in the normal integration of motor, sensory, or cognitive functions and are not consistent with a recognised disease of the nervous system, other mental or behavioural disorder, or other medical condition. The symptoms do not occur exclusively during another dissociative disorder and are not due to the effects of a substance or medication on the central nervous system, including withdrawal effects, or a Sleep-Wake disorder.",
+          "coding_note": "",
+          "child_count": 12
+        },
+        {
+          "id": "626975732",
+          "code": "6B61",
+          "title": "Dissociative amnesia",
+          "definition": "Dissociative amnesia is characterised by an inability to recall important autobiographical memories, typically of recent traumatic or stressful events, that is inconsistent with ordinary forgetting. The amnesia does not occur exclusively during another dissociative disorder and is not better explained by another mental, behavioural or neurodevelopmental disorder. The amnesia is not due to the direct effects of a substance or medication on the central nervous system, including withdrawal effects, and is not due to a disease of the nervous system or to head trauma. The amnesia results in significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 3
+        },
+        {
+          "id": "1807490186",
+          "code": "6B62",
+          "title": "Trance disorder",
+          "definition": "Trance disorder is characterised by trance states in which there is a marked alteration in the individual’s state of consciousness or a loss of the individual’s customary sense of personal identity in which the individual experiences a narrowing of awareness of immediate surroundings or unusually narrow and selective focusing on environmental stimuli and restriction of movements, postures, and speech to repetition of a small repertoire that is experienced as being outside of one’s control. The trance state is not characterised by the experience of being replaced by an alternate identity. Trance episodes are recurrent or, if the diagnosis is based on a single episode, the episode has lasted for at least several days. The trance state is involuntary and unwanted and is not accepted as a part of a collective cultural or religious practice. The symptoms do not occur exclusively during another dissociative disorder and are not better explained by another mental, behavioural or neurodevelopmental disorder. The symptoms are not due to the direct effects of a substance or medication on the central nervous system, including withdrawal effects, exhaustion, or to hypnagogic or hypnopompic states, and are not due to a disease of the nervous system, head trauma, or a sleep-wake disorder. The symptoms result in significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1374925579",
+          "code": "6B63",
+          "title": "Possession trance disorder",
+          "definition": "Possession trance disorder is characterised by trance states in which there is a marked alteration in the individual’s state of consciousness and the individual’s customary sense of personal identity is replaced by an external ‘possessing’ identity and in which the individual’s behaviours or movements are experienced as being controlled by the possessing agent. Possession trance episodes are recurrent or, if the diagnosis is based on a single episode, the episode has lasted for at least several days. The possession trance state is involuntary and unwanted and is not accepted as a part of a collective cultural or religious practice. The symptoms do not occur exclusively during another dissociative disorder and are not better explained by another mental, behavioural or neurodevelopmental disorder. The symptoms are not due to the direct effects of a substance or medication on the central nervous system, including withdrawal effects, exhaustion, or to hypnagogic or hypnopompic states, and are not due to a disease of the nervous system or a sleep-wake disorder. The symptoms result in significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1829103493",
+          "code": "6B64",
+          "title": "Dissociative identity disorder",
+          "definition": "Dissociative identity disorder is characterised by disruption of identity in which there are two or more distinct personality states (dissociative identities) associated with marked discontinuities in the sense of self and agency. Each personality state includes its own pattern of experiencing, perceiving, conceiving, and relating to self, the body, and the environment. At least two distinct personality states recurrently take executive control of the individual’s consciousness and functioning in interacting with others or with the environment, such as in the performance of specific aspects of daily life such as parenting, or work, or in response to specific situations (e.g., those that are perceived as threatening). Changes in personality state are accompanied by related alterations in sensation, perception, affect, cognition, memory, motor control, and behaviour. There are typically episodes of amnesia, which may be severe. The symptoms are not better explained by another mental, behavioural or neurodevelopmental disorder and are not due to the direct effects of a substance or medication on the central nervous system, including withdrawal effects, and are not due to a disease of the nervous system or a sleep-wake disorder. The symptoms result in significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "988400777",
+          "code": "6B65",
+          "title": "Partial dissociative identity disorder",
+          "definition": "Partial dissociative identity disorder is characterised by disruption of identity in which there are two or more distinct personality states (dissociative identities) associated with marked discontinuities in the sense of self and agency. Each personality state includes its own pattern of experiencing, perceiving, conceiving, and relating to self, the body, and the environment. One personality state is dominant and normally functions in daily life, but is intruded upon by one or more non-dominant personality states (dissociative intrusions). These intrusions may be cognitive, affective, perceptual, motor, or behavioural. They are experienced as interfering with the functioning of the dominant personality state and are typically aversive. The non-dominant personality states do not recurrently take executive control of the individual’s consciousness and functioning, but there may be occasional, limited and transient episodes in which a distinct personality state assumes executive control to engage in circumscribed behaviours, such as in response to extreme emotional states or during episodes of self-harm or the reenactment of traumatic memories. The symptoms are not better explained by another mental, behavioural or neurodevelopmental disorder and are not due to the direct effects of a substance or medication on the central nervous system, including withdrawal effects, and are not due to a disease of the nervous system or a sleep-wake disorder. The symptoms result in significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "253124068",
+          "code": "6B66",
+          "title": "Depersonalization-derealization disorder",
+          "definition": "Depersonalization-derealization disorder is characterised by persistent or recurrent experiences of depersonalization, derealization, or both. Depersonalization is characterised by experiencing the self as strange or unreal, or feeling detached from, or as though one were an outside observer of, one’s thoughts, feelings, sensations, body, or actions. Derealization is characterised by experiencing other persons, objects, or the world as strange or unreal (e.g., dreamlike, distant, foggy, lifeless, colourless, or visually distorted) or feeling detached from one’s surroundings. During experiences of depersonalization or derealization, reality testing remains intact. The experiences of depersonalization or derealization do not occur exclusively during another dissociative disorder and are not better explained by another mental, behavioural or neurodevelopmental disorder. The experiences of depersonalization or derealization are not due to the direct effects of a substance or medication on the central nervous system, including withdrawal effects, and are not due to a disease of the nervous system or to head trauma. The symptoms result in significant distress or impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "1412387537",
+      "code": "",
+      "title": "Feeding or eating disorders",
+      "definition": "Feeding and Eating Disorders involve abnormal eating or feeding behaviours that are not explained by another health condition and are not developmentally appropriate or culturally sanctioned. Feeding disorders involve behavioural disturbances that are not related to body weight and shape concerns, such as eating of non-edible substances or voluntary regurgitation of foods. Eating disorders involve abnormal eating behaviour and preoccupation with food as well as prominent body weight and shape concerns.",
+      "coding_note": "",
+      "child_count": 8,
+      "children": [
+        {
+          "id": "263852475",
+          "code": "6B80",
+          "title": "Anorexia Nervosa",
+          "definition": "Anorexia Nervosa is characterised by significantly low body weight for the individual’s height, age and developmental stage that is not due to another health condition or to the unavailability of food. A commonly used threshold is body mass index (BMI) less than 18.5 kg/m² in adults and BMI-for-age under 5th percentile in children and adolescents. Rapid weight loss (e.g. more than 20% of total body weight within 6 months) may replace the low body weight guideline as long as other diagnostic requirements are met. Children and adolescents may exhibit failure to gain weight as expected based on the individual developmental trajectory rather than weight loss. Low body weight is accompanied by a persistent pattern of behaviours to prevent restoration of normal weight, which may include behaviours aimed at reducing energy intake (restricted eating), purging behaviours (e.g. self-induced vomiting, misuse of laxatives), and behaviours aimed at increasing energy expenditure (e.g. excessive exercise), typically associated with a fear of weight gain. Low body weight or shape is central to the person's self-evaluation or is inaccurately perceived to be normal or even excessive.",
+          "coding_note": "",
+          "child_count": 5
+        },
+        {
+          "id": "509381842",
+          "code": "6B81",
+          "title": "Bulimia Nervosa",
+          "definition": "Bulimia Nervosa is characterised by frequent, recurrent episodes of binge eating (e.g. once a week or more over a period of at least one month). A binge eating episode is a distinct period of time during which the individual experiences a subjective loss of control over eating, eating notably more or differently than usual, and feels unable to stop eating or limit the type or amount of food eaten. Binge eating is accompanied by repeated inappropriate compensatory behaviours aimed at preventing weight gain (e.g. self-induced vomiting, misuse of laxatives or enemas, strenuous exercise). The individual is preoccupied with body shape or weight, which strongly influences self-evaluation. There is marked distress about the pattern of binge eating and inappropriate compensatory behaviour or significant impairment in personal, family, social, educational, occupational or other important areas of functioning. The individual does not meet the diagnostic requirements of Anorexia Nervosa.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1673294767",
+          "code": "6B82",
+          "title": "Binge eating disorder",
+          "definition": "Binge eating disorder is characterised by frequent, recurrent episodes of binge eating (e.g. once a week or more over a period of several months). A binge eating episode is a distinct period of time during which the individual experiences a subjective loss of control over eating, eating notably more or differently than usual, and feels unable to stop eating or limit the type or amount of food eaten. Binge eating is experienced as very distressing, and is often accompanied by negative emotions such as guilt or disgust. However, unlike in Bulimia Nervosa, binge eating episodes are not regularly followed by inappropriate compensatory behaviours aimed at preventing weight gain (e.g. self-induced vomiting, misuse of laxatives or enemas, strenuous exercise). There is marked distress about the pattern of binge eating or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1242188600",
+          "code": "6B83",
+          "title": "Avoidant-restrictive food intake disorder",
+          "definition": "Avoidant-restrictive food intake disorder (ARFID) is characterised by avoidance or restriction of food intake that results in: 1) the intake of an insufficient quantity or variety of food to meet adequate energy or nutritional requirements that has resulted in significant weight loss, clinically significant nutritional deficiencies, dependence on oral nutritional supplements or tube feeding, or has otherwise negatively affected the physical health of the individual; or 2) significant impairment in personal, family, social, educational, occupational or other important areas of functioning (e.g., due to avoidance or distress related to participating in social experiences involving eating). The pattern of eating behaviour is not motivated by preoccupation with body weight or shape. Restricted food intake and its effects on weight, other aspects of health, or functioning are not due to unavailability of food, not a manifestation of another medical condition (e.g. food allergies, hyperthyroidism) or mental disorder, and are not due to the effect of a substance or medication on the central nervous system including withdrawal effects.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "833390860",
+          "code": "6B84",
+          "title": "Pica",
+          "definition": "Pica is characterised by the regular consumption of non-nutritive substances, such as non-food objects and materials (e.g., clay, soil, chalk, plaster, plastic, metal and paper) or raw food ingredients (e.g., large quantities of salt or corn flour) that is persistent or severe enough to require clinical attention in an individual who has reached a developmental age at which they would be expected to distinguish between edible and non-edible substances (approximately 2 years). That is, the behaviour causes damage to health, impairment in functioning, or significant risk due to the frequency, amount or nature of the substances or objects ingested.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1205760590",
+          "code": "6B85",
+          "title": "Rumination-regurgitation disorder",
+          "definition": "Rumination-regurgitation disorder is characterised by the intentional and repeated bringing up of previously swallowed food back to the mouth (i.e., regurgitation), which may be re-chewed and re-swallowed (i.e. rumination), or may be deliberately spat out (but not as in vomiting). The regurgitation behaviour is frequent (at least several times per week) and sustained over a period of at least several weeks. The regurgitation behaviour is not fully accounted for by another medical condition that directly causes regurgitation (e.g., oesophageal strictures or neuromuscular disorders affecting oesophageal functioning) or causes nausea or vomiting (e.g. pyloric stenosis). Rumination-regurgitation disorder should only be diagnosed in individuals who have reached a developmental age of at least 2 years.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "1884115764",
+      "code": "",
+      "title": "Elimination disorders",
+      "definition": "Elimination disorders include the repeated voiding of urine into clothes or bed (enuresis) and the repeated passage of faeces in inappropriate places (encopresis). Elimination disorders should only be diagnosed after the individual has reached a developmental age when continence is ordinarily expected (5 years for enuresis and 4 years for encopresis). The urinary or faecal incontinence may have been present from birth (i.e., an atypical extension of normal infantile incontinence), or may have arisen following a period of acquired bladder or bowel control. An Elimination disorder should not be diagnosed if the behaviour is fully attributable to another health condition that causes incontinence, congenital or acquired abnormalities of the urinary tract or bowel, or excessive use of laxatives or diuretics.",
+      "coding_note": "",
+      "child_count": 3,
+      "children": [
+        {
+          "id": "1157749237",
+          "code": "6C00",
+          "title": "Enuresis",
+          "definition": "Enuresis is the repeated voiding of urine into clothes or bed, which may occur during the day or at night, in an individual who has reached a developmental age when urinary continence is ordinarily expected (5 years). The urinary incontinence may have been present from birth (i.e., an atypical extension of normal infantile incontinence), or may have arisen following a period of acquired bladder control. In most cases, the behaviour is involuntary but in some cases it appears intentional. Enuresis should not be diagnosed if unintentional voiding of urine is due to a health condition that interferes with continence (e.g., diseases of the nervous system or musculoskeletal disorders) or by congenital or acquired abnormalities of the urinary tract.",
+          "coding_note": "",
+          "child_count": 4
+        },
+        {
+          "id": "313374467",
+          "code": "6C01",
+          "title": "Encopresis",
+          "definition": "Encopresis is the repeated passage of faeces in inappropriate places. Encopresis should be diagnosed if inappropriate passage of faeces occurs repeatedly (e.g., at least once per month over a period of several months) in an individual who has reached the developmental age when faecal continence is ordinarily expected (4 years). The faecal incontinence may have been present from birth (i.e., an atypical extension of normal infantile incontinence), or may have arisen following a period of acquired bowel control. Encopresis should not be diagnosed if faecal soiling is fully attributable to another health condition (e.g., aganglionic megacolon, spina bifida, dementia), congenital or acquired abnormalities of the bowel, gastrointestinal infection, or excessive use of laxatives.",
+          "coding_note": "",
+          "child_count": 3
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "794195577",
+      "code": "",
+      "title": "Disorders of bodily distress or bodily experience",
+      "definition": "Disorders of bodily distress and bodily experience are characterised by disturbances in the person’s experience of his or her body. Bodily distress disorder involves bodily symptoms that the individual finds distressing and to which excessive attention is directed. Body integrity dysphoria involves a disturbance in the person’s experience of the body manifested by the persistent desire to have a specific physical disability accompanied by persistent discomfort, or intense feelings of inappropriateness concerning current non-disabled body configuration.",
+      "coding_note": "",
+      "child_count": 4,
+      "children": [
+        {
+          "id": "767044268",
+          "code": "6C20",
+          "title": "Bodily distress disorder",
+          "definition": "Bodily distress disorder is characterised by the presence of bodily symptoms that are distressing to the individual and excessive attention directed toward the symptoms, which may be manifest by repeated contact with health care providers. If another health condition is causing or contributing to the symptoms, the degree of attention is clearly excessive in relation to its nature and progression. Excessive attention is not alleviated by appropriate clinical examination and investigations and appropriate reassurance. Bodily symptoms are persistent, being present on most days for at least several months. Typically, bodily distress disorder involves multiple bodily symptoms that may vary over time. Occasionally there is a single symptom—usually pain or fatigue—that is associated with the other features of the disorder. The symptoms and associated distress and preoccupation have at least some impact on the individual’s functioning (e.g. strain in relationships, less effective academic or occupational functioning, abandonment of specific leisure activities).",
+          "coding_note": "",
+          "child_count": 4
+        },
+        {
+          "id": "256572629",
+          "code": "6C21",
+          "title": "Body integrity dysphoria",
+          "definition": "Body integrity dysphoria is characterised by an intense and persistent desire to become physically disabled in a significant way (e.g. major limb amputee, paraplegic, blind), with onset by early adolescence accompanied by persistent discomfort, or intense feelings of inappropriateness concerning current non-disabled body configuration. The desire to become physically disabled results in harmful consequences, as manifested by either the preoccupation with the desire (including time spent pretending to be disabled) significantly interfering with productivity, with leisure activities, or with social functioning (e.g. person is unwilling to have a close relationship because it would make it difficult to pretend) or by attempts to actually become disabled having resulted in the person putting his or her health or life in significant jeopardy. The disturbance is not better accounted for by another mental, behavioural or neurodevelopmental disorder, by a Disease of the Nervous System or by another medical condition, or by Malingering.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "1602669465",
+      "code": "",
+      "title": "Disorders due to substance use or addictive behaviours",
+      "definition": "Disorders due to substance use and addictive behaviours are mental and behavioural disorders that develop as a result of the use of predominantly psychoactive substances, including medications, or specific repetitive rewarding and reinforcing behaviours.",
+      "coding_note": "",
+      "child_count": 2,
+      "children": [
+        {
+          "id": "590211325",
+          "code": "",
+          "title": "Disorders due to substance use",
+          "definition": "Disorders due to substance use include disorders that result from a single occasion or repeated use of substances that have psychoactive properties, including certain medications. Disorders related to fourteen classes or groups of psychoactive substances are included. Typically, initial use of these substances produces pleasant or appealing psychoactive effects that are rewarding and reinforcing with repeated use. With continued use, many of the included substances have the capacity to produce dependence. They also have the potential to cause numerous forms of harm, both to mental and physical health. Disorders due to harmful non-medical use of non-psychoactive substances are also included in this grouping.",
+          "coding_note": "",
+          "child_count": 20
+        },
+        {
+          "id": "499894965",
+          "code": "",
+          "title": "Disorders due to addictive behaviours",
+          "definition": "Disorders due to addictive behaviours are recognizable and clinically significant syndromes associated with distress or interference with personal functions that develop as a result of repetitive rewarding behaviours other than the use of dependence-producing substances. Disorders due to addictive behaviours include gambling disorder and gaming disorder, which may involve both online and offline behaviour.",
+          "coding_note": "",
+          "child_count": 4
+        }
+      ]
+    },
+    {
+      "id": "826065555",
+      "code": "",
+      "title": "Impulse control disorders",
+      "definition": "Impulse control disorders are characterised by the repeated failure to resist an impulse, drive, or urge to perform an act that is rewarding to the person, at least in the short-term, despite consequences such as longer-term harm either to the individual or to others, marked distress about the behaviour pattern, or significant impairment in personal, family, social, educational, occupational, or other important areas of functioning. Impulse Control Disorders involve a range of specific behaviours, including fire-setting, stealing, sexual behaviour, and explosive outbursts.",
+      "coding_note": "",
+      "child_count": 7,
+      "children": [
+        {
+          "id": "1532500290",
+          "code": "6C70",
+          "title": "Pyromania",
+          "definition": "Pyromania is characterised by a recurrent failure to control strong impulses to set fires, resulting in multiple acts of, or attempts at, setting fire to property or other objects, in the absence of an apparent motive (e.g., monetary gain, revenge, sabotage, political statement, attracting attention or recognition). There is an increasing sense of tension or affective arousal prior to instances of fire setting, persistent fascination or preoccupation with fire and related stimuli (e.g., watching fires, building fires, fascination with firefighting equipment), and a sense of pleasure, excitement, relief or gratification during, and immediately after the act of setting the fire, witnessing its effects, or participating in its aftermath. The behaviour is not better explained by intellectual impairment, another mental and behavioural disorder, or substance intoxication.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "804604349",
+          "code": "6C71",
+          "title": "Kleptomania",
+          "definition": "Kleptomania is characterised by a recurrent failure to control strong impulses to steal objects in the absence of an apparent motive (e.g., objects are not acquired for personal use or monetary gain). There is an increasing sense of tension or affective arousal before instances of theft and a sense of pleasure, excitement, relief, or gratification during and immediately after the act of stealing. The behaviour is not better explained by intellectual impairment, another mental and behavioural disorder, or substance intoxication.",
+          "coding_note": "If stealing occurs within the context of conduct-dissocial disorder or a manic episode, Kleptomania should not be diagnosed separately.",
+          "child_count": 0
+        },
+        {
+          "id": "1630268048",
+          "code": "6C72",
+          "title": "Compulsive sexual behaviour disorder",
+          "definition": "Compulsive sexual behaviour disorder is characterised by a persistent pattern of failure to control intense, repetitive sexual impulses or urges resulting in repetitive sexual behaviour. Symptoms may include repetitive sexual activities becoming a central focus of the person’s life to the point of neglecting health and personal care or other interests, activities and responsibilities; numerous unsuccessful efforts to significantly reduce repetitive sexual behaviour; and continued repetitive sexual behaviour despite adverse consequences or deriving little or no satisfaction from it. The pattern of failure to control intense, sexual impulses or urges and resulting repetitive sexual behaviour is manifested over an extended period of time (e.g., 6 months or more), and causes marked distress or significant impairment in personal, family, social, educational, occupational, or other important areas of functioning. Distress that is entirely related to moral judgments and disapproval about sexual impulses, urges, or behaviours is not sufficient to meet this requirement.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "295017661",
+          "code": "6C73",
+          "title": "Intermittent explosive disorder",
+          "definition": "Intermittent explosive disorder is characterised by repeated brief episodes of verbal or physical aggression or destruction of property that represent a failure to control aggressive impulses, with the intensity of the outburst or degree of aggressiveness being grossly out of proportion to the provocation or precipitating psychosocial stressors. The symptoms are not better explained by another mental, behavioural, or neurodevelopmental disorder and are not part of a pattern of chronic anger and irritability (e.g., in oppositional defiant disorder). The behaviour pattern is of sufficient severity to result in significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "843505186",
+          "code": "",
+          "title": "Substance-induced impulse control disorders",
+          "definition": "",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "310393530",
+      "code": "",
+      "title": "Disruptive behaviour or dissocial disorders",
+      "definition": "Disruptive behaviour and dissocial disorders are characterised by persistent behaviour problems that range from markedly and persistently defiant, disobedient, provocative or spiteful (i.e., disruptive) behaviours to those that persistently violate the basic rights of others or major age-appropriate societal norms, rules, or laws (i.e., dissocial). Onset of Disruptive and dissocial disorders is commonly, though not always, during childhood.",
+      "coding_note": "",
+      "child_count": 4,
+      "children": [
+        {
+          "id": "1487528823",
+          "code": "6C90",
+          "title": "Oppositional defiant disorder",
+          "definition": "Oppositional defiant disorder is a persistent pattern (e.g., 6 months or more) of markedly defiant, disobedient, provocative or spiteful behaviour that occurs more frequently than is typically observed in individuals of comparable age and developmental level and that is not restricted to interaction with siblings. Oppositional defiant disorder may be manifest in prevailing, persistent angry or irritable mood, often accompanied by severe temper outbursts or in headstrong, argumentative and defiant behaviour. The behaviour pattern is of sufficient severity to result in significant impairment in personal, family, social, educational, occupational or other important areas of functioning",
+          "coding_note": "",
+          "child_count": 3
+        },
+        {
+          "id": "719572464",
+          "code": "6C91",
+          "title": "Conduct-dissocial disorder",
+          "definition": "Conduct-dissocial disorder is characterised by a repetitive and persistent pattern of behaviour in which the basic rights of others or major age-appropriate societal norms, rules, or laws are violated such as aggression towards people or animals; destruction of property; deceitfulness or theft; and serious violations of rules. The behaviour pattern is of sufficient severity to result in significant impairment in personal, family, social, educational, occupational or other important areas of functioning. To be diagnosed, the behaviour pattern must be enduring over a significant period of time (e.g., 12 months or more). Isolated dissocial or criminal acts are thus not in themselves grounds for the diagnosis.",
+          "coding_note": "",
+          "child_count": 3
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "37291724",
+      "code": "",
+      "title": "Personality disorders and related traits",
+      "definition": "",
+      "coding_note": "",
+      "child_count": 2,
+      "children": [
+        {
+          "id": "941859884",
+          "code": "6D10",
+          "title": "Personality disorder",
+          "definition": "Personality disorder is characterised by problems in functioning of aspects of the self (e.g., identity, self-worth, accuracy of self-view, self-direction), and/or interpersonal dysfunction (e.g., ability to develop and maintain close and mutually satisfying relationships, ability to understand others’ perspectives and to manage conflict in relationships) that have persisted over an extended period of time (e.g., 2 years or more). The disturbance is manifest in patterns of cognition, emotional experience, emotional expression, and behaviour that are maladaptive (e.g., inflexible or poorly regulated) and is manifest across a range of personal and social situations (i.e., is not limited to specific relationships or social roles). The patterns of behaviour characterizing the disturbance are not developmentally appropriate and cannot be explained primarily by social or cultural factors, including socio-political conflict. The disturbance is associated with substantial distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+          "coding_note": "",
+          "child_count": 4
+        },
+        {
+          "id": "1128733473",
+          "code": "6D11",
+          "title": "Prominent personality traits or patterns",
+          "definition": "Trait domain qualifiers may be applied to Personality Disorders or Personality Difficulty to describe the characteristics of the individual’s personality that are most prominent and that contribute to personality disturbance. Trait domains are continuous with normal personality characteristics in individuals who do not have Personality Disorder or Personality Difficulty. Trait domains are not diagnostic categories, but rather represent a set of dimensions that correspond to the underlying structure of personality. As many trait domain qualifiers may be applied as necessary to describe personality functioning. Individuals with more severe personality disturbance tend to have a greater number of prominent trait domains.",
+          "coding_note": "",
+          "child_count": 6
+        }
+      ]
+    },
+    {
+      "id": "2110604642",
+      "code": "",
+      "title": "Paraphilic disorders",
+      "definition": "Paraphilic disorders are characterised by persistent and intense patterns of atypical sexual arousal, manifested by sexual thoughts, fantasies, urges, or behaviours, the focus of which involves others whose age or status renders them unwilling or unable to consent and on which the person has acted or by which he or she is markedly distressed. Paraphilic disorders may include arousal patterns involving solitary behaviours or consenting individuals only when these are associated with marked distress that is not simply a result of rejection or feared rejection of the arousal pattern by others or with significant risk of injury or death.",
+      "coding_note": "",
+      "child_count": 8,
+      "children": [
+        {
+          "id": "141881468",
+          "code": "6D30",
+          "title": "Exhibitionistic disorder",
+          "definition": "Exhibitionistic disorder is characterised by a sustained, focused and intense pattern of sexual arousal—as manifested by persistent sexual thoughts, fantasies, urges, or behaviours—that involves exposing one’s genitals to an unsuspecting individual in public places, usually without inviting or intending closer contact. In addition, in order for Exhibitionistic Disorder to be diagnosed, the individual must have acted on these thoughts, fantasies or urges or be markedly distressed by them. Exhibitionistic Disorder specifically excludes consensual exhibitionistic behaviours that occur with the consent of the person or persons involved as well as socially sanctioned forms of exhibitionism.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1832861162",
+          "code": "6D31",
+          "title": "Voyeuristic disorder",
+          "definition": "Voyeuristic disorder is characterised by a sustained, focused and intense pattern of sexual arousal—as manifested by persistent sexual thoughts, fantasies, urges, or behaviours—that involves observing an unsuspecting individual who is naked, in the process of disrobing, or engaging in sexual activity. In addition, in order for Voyeuristic Disorder to be diagnosed, the individual must have acted on these thoughts, fantasies or urges or be markedly distressed by them. Voyeuristic Disorder specifically excludes consensual voyeuristic behaviours that occur with the consent of the person or persons being observed.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "517058174",
+          "code": "6D32",
+          "title": "Pedophilic disorder",
+          "definition": "Pedophilic disorder is characterised by a sustained, focused, and intense pattern of sexual arousal—as manifested by persistent sexual thoughts, fantasies, urges, or behaviours—involving pre-pubertal children. In addition, in order for Pedophilic Disorder to be diagnosed, the individual must have acted on these thoughts, fantasies or urges or be markedly distressed by them. This diagnosis does not apply to sexual behaviours among pre- or post-pubertal children with peers who are close in age.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1890228613",
+          "code": "6D33",
+          "title": "Coercive sexual sadism disorder",
+          "definition": "Coercive sexual sadism disorder is characterised by a sustained, focused and intense pattern of sexual arousal—as manifested by persistent sexual thoughts, fantasies, urges or behaviours—that involves the infliction of physical or psychological suffering on a non-consenting person. In addition, in order for Coercive Sexual Sadism Disorder to be diagnosed, the individual must have acted on these thoughts, fantasies or urges or be markedly distressed by them. Coercive Sexual Sadism Disorder specifically excludes consensual sexual sadism and masochism.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1580013387",
+          "code": "6D34",
+          "title": "Frotteuristic disorder",
+          "definition": "Frotteuristic disorder is characterised by a sustained, focused and intense pattern of sexual arousal—as manifested by persistent sexual thoughts, fantasies, urges, or behaviours—that involves touching or rubbing against a non-consenting person in crowded public places. In addition, in order for Frotteuristic Disorder to be diagnosed, the individual must have acted on these thoughts, fantasies or urges or be markedly distressed by them. Frotteuristic Disorder specifically excludes consensual touching or rubbing that occurs with the consent of the person or persons involved.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1582257458",
+          "code": "6D35",
+          "title": "Other paraphilic disorder involving non-consenting individuals",
+          "definition": "Other paraphilic disorder involving non-consenting individuals is characterised by a persistent and intense pattern of atypical sexual arousal — manifested by sexual thoughts, fantasies, urges, or behaviours — in which the focus of the arousal pattern involves others who are unwilling or unable to consent but that is not specifically described in any of the other named Paraphilic Disorders categories (e.g., arousal patterns involving corpses or animals). The individual must have acted on these thoughts, fantasies or urges or be markedly distressed by them. The disorder specifically excludes sexual behaviours that occur with the consent of the person or persons involved, provided that they are considered able to provide such consent.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "2055403635",
+          "code": "6D36",
+          "title": "Paraphilic disorder involving solitary behaviour or consenting individuals",
+          "definition": "Paraphilic disorder involving solitary behaviour or consenting individuals is characterised by a persistent and intense pattern of atypical sexual arousal — manifested by sexual thoughts, fantasies, urges, or behaviours — that involves consenting adults or solitary behaviours. One of the following two elements must be present: 1) the person is markedly distressed by the nature of the arousal pattern and the distress is not simply a consequence of rejection or feared rejection of the arousal pattern by others; or 2) the nature of the paraphilic behaviour involves significant risk of injury or death either to the individual or to the partner (e.g., asphyxophilia).",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "430567349",
+      "code": "",
+      "title": "Factitious disorders",
+      "definition": "Factitious disorders are characterised by intentionally feigning, falsifying, inducing, or aggravating medical, psychological, or behavioural signs and symptoms or injury in oneself or in another person, most commonly a child dependent, associated with identified deception. A pre-existing disorder or disease may be present, but the individual intentionally aggravates existing symptoms or falsifies or induces additional symptoms. Individuals with factitious disorder seek treatment or otherwise present themselves or another person as ill, injured, or impaired based on the feigned, falsified, or self-induced signs, symptoms, or injuries. The deceptive behaviour is not solely motivated by obvious external rewards or incentives (e.g., obtaining disability payments or evading criminal prosecution). This is in contrast to Malingering, in which obvious external rewards or incentives motivate the behaviour.",
+      "coding_note": "",
+      "child_count": 3,
+      "children": [
+        {
+          "id": "790764418",
+          "code": "6D50",
+          "title": "Factitious disorder imposed on self",
+          "definition": "Factitious disorder imposed on self is characterised by feigning, falsifying, or inducing medical, psychological, or behavioural signs and symptoms or injury associated with identified deception. If a pre-existing disorder or disease is present, the individual intentionally aggravates existing symptoms or falsifies or induces additional symptoms. The individual seeks treatment or otherwise presents himself or herself as ill, injured, or impaired based on the feigned, falsified, or self-induced signs, symptoms, or injuries. The deceptive behaviour is not solely motivated by obvious external rewards or incentives (e.g., obtaining disability payments or evading criminal prosecution). This is in contrast to Malingering, in which obvious external rewards or incentives motivate the behaviour",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "775605963",
+          "code": "6D51",
+          "title": "Factitious disorder imposed on another",
+          "definition": "Factitious disorder imposed on another is characterised by feigning, falsifying, or inducing medical, psychological, or behavioural signs and symptoms or injury in another person, most commonly a child dependent, associated with identified deception. If a pre-existing disorder or disease is present in the other person, the individual intentionally aggravates existing symptoms or falsifies or induces additional symptoms. The individual seeks treatment for the other person or otherwise presents him or her as ill, injured, or impaired based on the feigned, falsified, or induced signs, symptoms, or injuries. The deceptive behaviour is not solely motivated by obvious external rewards or incentives (e.g., obtaining disability payments or avoiding criminal prosecution for child or elder abuse).",
+          "coding_note": "The diagnosis of Factitious Disorder Imposed on Another is assigned to the individual who is feigning, falsifying or inducing the symptoms in another person, not to the person who is presented as having the symptoms. Occasionally the individual induces or falsifies symptoms in a pet rather than in another person.",
+          "child_count": 0
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "213458094",
+      "code": "",
+      "title": "Neurocognitive disorders",
+      "definition": "Neurocognitive disorders are characterised by primary clinical deficits in cognitive functioning that are acquired rather than developmental. That is, neurocognitive disorders do not include disorders characterised by deficits in cognitive function that are present from birth or that typically arise during the developmental period, which are classified in the grouping neurodevelopmental disorders. Rather, neurocognitive disorders represent a decline from a previously attained level of functioning. Although cognitive deficits are present in many mental disorders (e.g., schizophrenia, bipolar disorders), only disorders whose core features are cognitive are included in the neurocognitive disorders grouping. In cases where the underlying pathology and aetiology for neurocognitive disorders can be determined, the identified etiology should be classified separately.",
+      "coding_note": "",
+      "child_count": 6,
+      "children": [
+        {
+          "id": "897917531",
+          "code": "6D70",
+          "title": "Delirium",
+          "definition": "Delirium is characterized by a disturbance of attention, orientation, and awareness that develops within a short period of time, typically presenting as significant confusion or global neurocognitive impairment, with transient symptoms that may fluctuate depending on the underlying causal condition or etiology. Delirium often includes disturbance of behaviour and emotion, and may include impairment in multiple cognitive domains. A disturbance of the sleep-wake cycle, including reduced arousal of acute onset or total sleep loss with reversal of the sleep-wake cycle, may also be present. Delirium may be caused by the direct physiological effects of a medical condition not classified under mental, behavioural or neurodevelopmental disorders, by the direct physiological effects of a substance or medication, including withdrawal, or by multiple or unknown etiological factors.",
+          "coding_note": "",
+          "child_count": 5
+        },
+        {
+          "id": "195531803",
+          "code": "6D71",
+          "title": "Mild neurocognitive disorder",
+          "definition": "Mild neurocognitive disorder is characterized by mild impairment in one or more cognitive domains relative to that expected given the individual’s age and general premorbid level of cognitive functioning, which represents a decline from the individual’s previous level of functioning. Diagnosis is based on report from the patient, informant, or clinical observation, and is accompanied by objective evidence of impairment by quantified clinical assessment or standardized cognitive testing. Cognitive impairment is not severe enough to significantly interfere with an individual’s ability to perform activities related to personal, family, social, educational, and/or occupational functioning or other important functional areas. Cognitive impairment is not attributable to normal aging and may be static, progressive, or may resolve or improve depending on underlying cause or treatment. Cognitive impairment may be attributable to an underlying acquired disease of the nervous system, a trauma, an infection or other disease process affecting the brain, use of specific substances or medications, nutritional deficiency or exposure to toxins, or the etiology may be undetermined. The impairment is not due to current substance intoxication or withdrawal.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "386330688",
+          "code": "6D72",
+          "title": "Amnestic disorder",
+          "definition": "Amnestic disorder is characterised by prominent memory impairment relative to expectations for age and general premorbid level of cognitive functioning, which represents a decline from the individual’s previous level of functioning, in the absence of other significant cognitive impairment. It is manifested by a deficit in acquiring, learning, and/or retaining new information, and may include the inability to recall previously learned information, without disturbance of consciousness, altered mental status, or delirium. Recent memory is typically more disturbed than remote memory, and the ability to immediately recall a limited amount of information is usually relatively preserved. The memory impairment is severe enough to result in significant impairment in personal, family, social, educational, occupational, or other important areas of functioning. It is presumed to be attributable to an underlying acquired disease of the nervous system, a trauma, an infection or other disease process affecting the brain, to use of specific substances or medications, nutritional deficiency or exposure to toxins, or the etiology may be undetermined. The impairment is not due to current substance intoxication or withdrawal.",
+          "coding_note": "",
+          "child_count": 4
+        },
+        {
+          "id": "546689346",
+          "code": "",
+          "title": "Dementia",
+          "definition": "Dementia is characterized by the presence of marked impairment in two or more cognitive domains relative to that expected given the individual’s age and general premorbid level of cognitive functioning, which represents a decline from the individual’s previous level of functioning. Memory impairment is present in most forms of dementia, but cognitive impairment is not restricted to memory (i.e., there is impairment in other areas such as executive functions, attention, language, social cognition and judgment, psychomotor speed, visuoperceptual or visuospatial abilities). Neurobehavioural changes may also be present and, in some forms of dementia, may be the presenting symptom. Cognitive impairment is not attributable to normal aging and is severe enough to significantly interfere with independence in an individual’s performance of activities of daily living. The cognitive impairment is presumed to be attributable to an underlying acquired disease of the nervous system, a trauma, an infection or other disease process affecting the brain, or to use of specific substances or medications, nutritional deficiency or exposure to toxins, or the etiology may be undetermined. The impairment is not due to current substance intoxication or withdrawal.",
+          "coding_note": "This category should only be used for primary tabulation, if the aetiology of the dementia is unknown. If the aetiology of the dementia is known code to the aetiology of the dementia for primary tabulation. \n\nWhen dementia is due to multiple aetiologies, code all that apply.",
+          "child_count": 9
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "882114523",
+      "code": "",
+      "title": "Mental or behavioural disorders associated with pregnancy, childbirth or the puerperium",
+      "definition": "Syndromes associated with pregnancy or the puerperium (commencing within about 6 weeks after delivery) that involve significant mental and behavioural features. If the symptoms meet the diagnostic requirements for a specific mental disorder, that diagnosis should also be assigned.",
+      "coding_note": "",
+      "child_count": 3,
+      "children": [
+        {
+          "id": "1124422593",
+          "code": "6E20",
+          "title": "Mental or behavioural disorders associated with pregnancy, childbirth or the puerperium, without psychotic symptoms",
+          "definition": "A syndrome associated with pregnancy or the puerperium (commencing within about 6 weeks after delivery) that involves significant mental and behavioural features, most commonly depressive symptoms. The syndrome does not include delusions, hallucinations, or other psychotic symptoms. If the symptoms meet the diagnostic requirements for a specific mental disorder, that diagnosis should also be assigned. This designation should not be used to describe mild and transient depressive symptoms that do not meet the diagnostic requirements for a depressive episode, which may occur soon after delivery (so-called postpartum blues).",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "380591392",
+          "code": "6E21",
+          "title": "Mental or behavioural disorders associated with pregnancy, childbirth or the puerperium, with psychotic symptoms",
+          "definition": "A syndrome associated with pregnancy or the puerperium (commencing within about 6 weeks after delivery) that involves significant mental and behavioural features, including delusions, hallucinations, or other psychotic symptoms. Mood symptoms (depressive and/or manic) are also typically present. If the symptoms meet the diagnostic requirements for a specific mental disorder, that diagnosis should also be assigned.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "523677473",
+      "code": "6E40",
+      "title": "Psychological or behavioural factors affecting disorders or diseases classified elsewhere",
+      "definition": "Psychological and behavioural factors affecting disorders or diseases classified elsewhere are those that may adversely affect the manifestation, treatment, or course of a condition classified in another chapter of the ICD. These factors may adversely affect the manifestation, treatment, or course of the disorder or disease classified in another chapter by: interfering with the treatment of the disorder or disease by affecting treatment adherence or care seeking; constituting an additional health risk; or influencing the underlying pathophysiology to precipitate or exacerbate symptoms or otherwise necessitate medical attention. This diagnosis should be assigned only when the factors increase the risk of suffering, disability, or death and represent a focus of clinical attention, and should be assigned together with the diagnosis for the relevant other condition.",
+      "coding_note": "",
+      "child_count": 7,
+      "children": [
+        {
+          "id": "1553197895",
+          "code": "6E40.0",
+          "title": "Mental disorder affecting disorders or diseases classified elsewhere",
+          "definition": "All diagnostic requirements for Psychological or behavioural factors affecting disorders or diseases classified elsewhere are met. The individual is diagnosed with a mental, behavioural, or neurodevelopmental disorder that adversely affects the manifestation, treatment, or course of a disorder or disease classified in another chapter (e.g., a woman with Bulimia Nervosa and Type 1 diabetes mellitus who skips insulin doses as a way to avoid weight gain that would otherwise be caused by her binge eating).",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "700487590",
+          "code": "6E40.1",
+          "title": "Psychological symptoms affecting disorders or diseases classified elsewhere",
+          "definition": "All diagnostic requirements for Psychological or behavioural factors affecting disorders or diseases classified elsewhere are met. The individual exhibits psychological symptoms that do not meet the diagnostic requirements for a mental, behavioural, or neurodevelopmental disorder that adversely affect the manifestation, treatment, or course of a disorder or disease classified in another chapter (e.g., depressive symptoms interfering with rehabilitation following surgery).",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "967687778",
+          "code": "6E40.2",
+          "title": "Personality traits or coping style affecting disorders or diseases classified elsewhere",
+          "definition": "All diagnostic requirements for Psychological or behavioural factors affecting disorders or diseases classified elsewhere are met. The individual exhibits personality traits or coping styles that do not meet the diagnostic requirements for a mental, behavioural, or neurodevelopmental disorder that adversely affect the manifestation, treatment, or course of a disorder or disease classified in another chapter (e.g., pathological denial of the need for surgery in a patient with cancer; hostile, pressured behaviour contributing to heart disease).",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "130379446",
+          "code": "6E40.3",
+          "title": "Maladaptive health behaviours affecting disorders or diseases classified elsewhere",
+          "definition": "All diagnostic requirements for Psychological or behavioural factors affecting disorders or diseases classified elsewhere are met. The individual exhibits maladaptive health behaviours that adversely affect the manifestation, treatment, or course of a disorder or disease classified in another chapter (e.g., overeating, lack of exercise).",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "2091262725",
+          "code": "6E40.4",
+          "title": "Stress-related physiological response affecting disorders or diseases classified elsewhere",
+          "definition": "All diagnostic requirements for Psychological or behavioural factors affecting disorders or diseases classified elsewhere are met. The individual exhibits stress-related physiological responses that adversely affect the manifestation, treatment, or course of a disorder or disease classified in another chapter (e.g., stress-related exacerbation of ulcer, hypertension, arrhythmia, or tension headache).",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "302122526",
+      "code": "",
+      "title": "Secondary mental or behavioural syndromes associated with disorders or diseases classified elsewhere",
+      "definition": "This grouping includes syndromes characterised by the presence of prominent psychological or behavioural symptoms judged to be direct pathophysiological consequences of a medical condition not classified under mental and behavioural disorders, based on evidence from the history, physical examination, or laboratory findings. The symptoms are not accounted for by delirium or by another mental and behavioural disorder, and are not a psychologically mediated response to a severe medical condition (e.g., adjustment disorder or anxiety symptoms in response to being diagnosed with a life-threatening illness). These categories should be used in addition to the diagnosis for the presumed underlying disorder or disease when the psychological and behavioural symptoms are sufficiently severe to warrant specific clinical attention.",
+      "coding_note": "",
+      "child_count": 12,
+      "children": [
+        {
+          "id": "255980141",
+          "code": "6E60",
+          "title": "Secondary neurodevelopmental syndrome",
+          "definition": "A syndrome that involves significant neurodevelopmental features that do not fulfill the diagnostic requirements of any of the specific neurodevelopmental disorders that is judged to be a direct pathophysiological consequence of a health condition not classified under mental and behavioural disorders (e.g., autistic-like features in Rett syndrome; aggression and self-mutilation in Lesch-Nyhan syndrome, abnormalities in language development in Williams syndrome), based on evidence from the history, physical examination, or laboratory findings.\n\nThis category should be used in addition to the diagnosis for the presumed underlying disorder or disease when the neurodevelopmental problems are sufficiently severe to warrant specific clinical attention.",
+          "coding_note": "",
+          "child_count": 3
+        },
+        {
+          "id": "696956921",
+          "code": "6E61",
+          "title": "Secondary psychotic syndrome",
+          "definition": "A syndrome characterised by the presence of prominent hallucinations or delusions judged to be a direct pathophysiological consequence of a health condition not classified under mental and behavioural disorders, based on evidence from the history, physical examination, or laboratory findings. The symptoms are not accounted for by delirium or by another mental and behavioural disorder, and are not a psychologically mediated response to a severe medical condition (e.g., an acute stress reaction in response to a life-threatening diagnosis). This category should be used in addition to the diagnosis for the presumed underlying disorder or disease when the psychotic symptoms are sufficiently severe to warrant specific clinical attention.",
+          "coding_note": "",
+          "child_count": 4
+        },
+        {
+          "id": "216291184",
+          "code": "6E62",
+          "title": "Secondary mood syndrome",
+          "definition": "A syndrome characterised by the presence of prominent mood symptoms (i.e., depression, elevated mood, irritability) judged to be a direct pathophysiological consequence of a health condition not classified under mental and behavioural disorders, based on evidence from the history, physical examination, or laboratory findings. The symptoms are not accounted for by delirium or by another mental and behavioural disorder, and are not a psychologically mediated response to a severe medical condition (e.g., depressive symptoms in response to a life-threatening diagnosis). This category should be used in addition to the diagnosis for the presumed underlying disorder or disease when the mood symptoms are sufficiently severe to warrant specific clinical attention.",
+          "coding_note": "",
+          "child_count": 4
+        },
+        {
+          "id": "2131412196",
+          "code": "6E63",
+          "title": "Secondary anxiety syndrome",
+          "definition": "A syndrome characterised by the presence of prominent anxiety symptoms judged to be a direct pathophysiological consequence of a health condition not classified under mental and behavioural disorders, based on evidence from the history, physical examination, or laboratory findings. The symptoms are not accounted for by delirium or by another mental and behavioural disorder, and are not a psychologically mediated response to a severe medical condition (e.g., anxiety symptoms or panic attacks in response to a life-threatening diagnosis). This category should be used in addition to the diagnosis for the presumed underlying disorder or disease when the anxiety symptoms are sufficiently severe to warrant specific clinical attention.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1126473669",
+          "code": "6E64",
+          "title": "Secondary obsessive-compulsive or related syndrome",
+          "definition": "A syndrome characterised by the presence of prominent obsessions, compulsions, hoarding, skin picking, hair pulling, other body-focused repetitive behaviours, or other symptoms characteristic of obsessive-compulsive and related disorder that is judged to be the direct pathophysiological consequence of a disorder or disease not classified under Mental and behavioural disorders, based on evidence from the history, physical examination, or laboratory findings. The symptoms are not accounted for by Delirium or by another Mental and behavioural disorder, and are not a psychologically mediated response to a severe medical condition (e.g., repetitive ruminations in response to a life-threatening diagnosis). This category should be used in addition to the diagnosis for the presumed underlying disorder or disease when the obsessive-compulsive or related symptoms are sufficiently severe to warrant specific clinical attention.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "440469874",
+          "code": "6E65",
+          "title": "Secondary dissociative syndrome",
+          "definition": "A syndrome characterised by the presence of prominent dissociative symptoms (e.g., depersonalization, derealization) that is judged to be the direct pathophysiological consequence of a health condition not classified under mental and behavioural disorders, based on evidence from the history, physical examination, or laboratory findings. The symptoms are not accounted for by delirium or by another mental and behavioural disorder, and are not a psychologically mediated response to a severe medical condition (e.g., as part of an acute stress reaction in response to a life-threatening diagnosis). This category should be used in addition to the diagnosis for the presumed underlying disorder or disease when the dissociative symptoms are sufficiently severe to warrant specific clinical attention.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1638354338",
+          "code": "6E66",
+          "title": "Secondary impulse control syndrome",
+          "definition": "A syndrome characterised by the presence of prominent symptoms that are characteristic of Impulse Control Disorders or Disorders Due to Addictive Behaviours (e.g., stealing, fire-setting, aggressive outbursts, compulsive sexual behaviour, excessive gambling) that are judged to be a direct pathophysiological consequence of a health condition not classified under mental and behavioural disorders, based on evidence from the history, physical examination, or laboratory findings. The symptoms are not accounted for by delirium or by another mental and behavioural disorder, and are not a psychologically mediated response to a severe medical condition (e.g., as part of an adjustment disorder in response to a life-threatening diagnosis). This category should be used in addition to the diagnosis for the presumed underlying disorder or disease when the impulse control symptoms are sufficiently severe to warrant specific clinical attention.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "235421675",
+          "code": "6E67",
+          "title": "Secondary neurocognitive syndrome",
+          "definition": "A syndrome that involves significant cognitive features that do not fulfill the diagnostic requirements of any of the specific neurocognitive disorders and are judged to be a direct pathophysiological consequence of a health condition or injury not classified under mental and behavioural disorders (e.g., cognitive changes due to a brain tumour), based on evidence from the history, physical examination, or laboratory findings. This category should be used in addition to the diagnosis for the presumed underlying disorder or disease when the cognitive symptoms are sufficiently severe to warrant specific clinical attention.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "1324394161",
+          "code": "6E68",
+          "title": "Secondary personality change",
+          "definition": "A syndrome characterised by a persistent personality disturbance that represents a change from the individual’s previous characteristic personality pattern that is judged to be a direct pathophysiological consequence of a health condition not classified under Mental and behavioural disorders, based on evidence from the history, physical examination, or laboratory findings. The symptoms are not accounted for by delirium or by another mental and behavioural disorder, and are not a psychologically mediated response to a severe medical condition (e.g., social withdrawal, avoidance, or dependence in response to a life-threatening diagnosis). This category should be used in addition to the diagnosis for the presumed underlying disorder or disease when the personality symptoms are sufficiently severe to warrant specific clinical attention.",
+          "coding_note": "",
+          "child_count": 0
+        },
+        {
+          "id": "518306574",
+          "code": "6E69",
+          "title": "Secondary catatonia syndrome",
+          "definition": "Secondary catatonia syndrome is a syndrome of primarily psychomotor disturbances, characterized by the co-occurrence of several symptoms of decreased, increased, or abnormal psychomotor activity, which occurs as a direct pathophysiological consequence of a medical condition not classified under Mental, Behavioural or Neurodevelopmental Disorders. Examples of medical conditions that may be associated with Catatonia include diabetic ketoacidosis, hypercalcaemia, hepatic encephalopathy, homocystinuria, neoplasms head trauma, cerebrovascular disease, and encephalitis.",
+          "coding_note": "Use additional code, if desired, for any underlying disorder if known.",
+          "child_count": 0
+        },
+        {
+          "id": "other",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "id": "unspecified",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "id": "other",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "id": "unspecified",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "_meta": {
+    "source": "WHO ICD-11 API (2024-01 release)",
+    "chapter": "06 — Mental, behavioural or neurodevelopmental disorders",
+    "imported_at": "2026-03-22T08:15:22Z",
+    "total_entities": 156,
+    "max_depth": 2
+  }
+}

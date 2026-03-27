@@ -1,0 +1,83 @@
+# lib/ — Core Engine
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## App Layer
+  aria : App singleton — wires core + persona [lib] @entry
+    -> AriaCore, persona, commands, db, sessionResolver
+    ~> chatStore
+  persona : Default PersonaConfig [lib]
+  commands : Personal commands (3) [lib]
+  useBackend : React hook for backend [lib]
+    ~> apiAria
+
+## Persistence
+  db : SQLite WASM singleton [lib]
+  kgAdapter : KGAdapter (SQL) [lib] -> db
+  sessionAdapter : SessionAdapter (SQL) [lib] -> db
+  sessionResolver : Auto-resume (24h) [lib]
+  memoryInjector : NLKE to prompt [lib] -> kgStore
+
+## Game Layer
+  gameApi : /api/game/* wrapper [lib]
+    ~> apiGame
+  gameAdapter : 23 game voice functions [lib]
+    -> AriaCore
+    ~> gameStore
+  gameDevLog : RingBuffer + AuditTrail [lib]
+  behaviorSync : Cards to LogicGraph [lib]
+  logicEngine : 7 block types, cycle-safe [lib]
+    ~> behaviorSync, labStore
+  recipeRunner : Tutorial step runner [lib] -> recipeIndex
+
+## Local AI
+  localAria : FunctionGemma client [lib]
+  trainingLogger : JSONL training capture [lib]
+
+## aria-core/ — Provider-Agnostic Framework
+  AriaCore : Main orchestrator [lib]
+    -> contextEngine, registry, stateMachine, baseProvider, mic, playback
+  ### audio/
+    mic : getUserMedia to PCM [lib]
+    pcm : Encode/decode [lib]
+    playback : Gapless chunks [lib]
+  ### providers/
+    baseProvider : Abstract + reconnect [lib]
+    geminiLive : WebSocket provider [lib] -> baseProvider
+  ### state/
+    stateMachine : idle to speaking [lib]
+    kgStore : NLKE hybrid retrieval [lib] -> fusion
+    sqliteSession : Session persistence [lib]
+  ### knowledge/ — NLKE
+    bm25 : Keyword + intent boost [lib]
+    hashEmbed : N-gram vectors [lib]
+    graphScorer : Proximity scoring [lib]
+    fusion : 3-path fusion [lib]
+      -> bm25, hashEmbed, graphScorer
+  ### commands/
+    registry : Context-aware lookup [lib]
+    router : FunctionCall to result [lib] -> registry
+    builtins : 5 built-ins [lib] -> router
+  ### context/
+    contextEngine : Active context mgmt [lib]
+      -> promptBuilder
+    promptBuilder : System prompt assembly [lib]
+
+## aria/ — Game Voice Engine
+  engine : Voice orchestrator [lib] -> AriaCore
+  ariaPersona : Persona registry [lib]
+  suPersona : SU persona (~95 functions) [lib]
+
+## recipes/
+  recipeIndex : 5 tutorials — calculator, quiz, etc. [data]
+
+## storekit-commands/
+  storekitCtx : Jewelry store (12 functions) [lib] -> registry
+
+## External
+  chatStore : Zustand chat store [store]
+  gameStore : Zustand game store [store]
+  labStore : Zustand lab store [store]
+  apiGame : /api/game [ext]
+  apiAria : /api/aria [ext]

@@ -1,0 +1,340 @@
+
+***
+
+## What This Knowledge Base Covers
+
+The report is organized in **7 parts** built specifically for your voice interview + NPC narrative game architecture:
+
+### 🧠 Why It Works (Part I)
+Your core mechanics are validated. **SPARX** — a CBT-embedded RPG from New Zealand — was shown in a BMJ randomized controlled trial to be *non-inferior to face-to-face therapy* for adolescent depression[1], with effects lasting 3+ months[2]. A 2025 APA *Monitor* article confirmed TTRPGs show clinical promise for anxiety, depression, trauma, and ADHD[3]. Avatar-based therapy research confirms anonymity and self-objectification through characters **increases self-disclosure** and reduces barriers to engagement[4].
+
+### 📢 Universal Rules (Part II)
+- The **OARS framework** (Open questions, Affirmations, Reflective listening, Summarizing) is your voice interview's conversational engine[5][6]
+- At least **70% of questions must be open-ended**[7]
+- Never ask **"Why?"** — it's clinically proven to generate defensiveness[8]
+- A full table of what to never say across all disorders with validated replacements[9][10][11]
+
+### 🗂️ All 10 Disorders — Structured Tables (Part III)
+Each disorder gets:
+- **What opens them up** (communication approach)
+- **Exact phrases that help** (copy-paste ready)
+- **Hard avoidance rules** (what will close them down or cause harm)
+- **NPC design considerations** specific to that disorder's psychology
+
+### 🎙️ Voice Interview Science (Part IV)
+- Silence is therapeutic — never fill pauses[12][13]
+- **Observer-perspective questions** (asking what a character would think/feel) create the therapeutic distance that makes difficult material safe[14]
+- The **Graduated Disclosure Architecture (GDA)** — a 4-layer model for how deeply the interview should go, gated by safety and therapist review
+
+### 🎮 Game + NPC Design (Part V)
+- A complete **NPC Archetype Map** (The Companion, Mentor, Mirror, Peer in Recovery, etc.) mapped to therapeutic roles and disorder fits[15][3]
+- The **Projective Identification** framework — how users unconsciously project their inner world onto NPCs, and how to design for it[16]
+- **Gamification Mechanics Table** — 12 mechanics each mapped to the clinical mechanism they activate and the disorders they fit best[17][18]
+
+### 🛡️ Safety Architecture (Part VI)
+Hard trigger rules, therapist-guided session visibility requirements, and the exact scope-communication script the voice assistant should deliver to users.
+
+Citations:
+[1] Improving treatment with role-playing games https://www.apa.org/monitor/2025/04-05/role-playing-games-therapy
+[2] Evaluating the Feasibility of a Multiplayer Role-Playing Game as a Behavioral Health Intervention in Adolescent Patients With Chronic Physical or Mental Conditions: Protocol for a Cohort Study https://pmc.ncbi.nlm.nih.gov/articles/PMC10337425/
+[3] Gamification in Psychiatry: A Systematic Evaluation of Its ... https://journals.sagepub.com/doi/10.1177/00207640251400797
+[4] The effectiveness of SPARX, a computerised self help ... https://www.bmj.com/content/344/bmj.e2598
+[5] SPARX Fact sheet - Medical and Health Sciences https://www.fmhs.auckland.ac.nz/assets/fmhs/faculty/ABOUT/newsandevents/docs/SPARX%20Fact%20sheet.pdf
+[6] Evaluating the Utility of a Psychoeducational Serious Game ... https://pmc.ncbi.nlm.nih.gov/articles/PMC10037175/
+[7] Nationwide Implementation of Unguided Cognitive ... https://www.jmir.org/2025/1/e66047
+[8] Enhancing an online cognitive behavioural therapy intervention for depression: Harnessing the feedback of sexual and gender minority youth to help improve SPARX - Mathijs FG Lucassen, Karolina Stasiak, Theresa Fleming, Matthew Shepherd, Sally N Merry, 2023 https://journals.sagepub.com/doi/full/10.1177/10398562231153061
+[9] Understanding Narrative Therapy: Concepts, Applications ... https://multitherapy.co/blog-post17
+[10] Narrative Therapy: Techniques, Efficacy, and Use Cases https://www.resiliencelab.us/thought-lab/narrative-therapy
+[11] Framework proposal for Role-Playing Games as mental ... https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2024.1297332/full
+[12] Reducing Mental Health Stigma Through Identification ... - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC7509402/
+[13] Exploring User Experience and the Therapeutic Relationship ... https://humanfactors.jmir.org/2025/1/e66158
+[14] Game Design in Mental Health Care: Case Study–Based ... - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC8686469/
+[15] JMIR Serious Games - Game Design in Mental Health Care: Case Study–Based Framework for Integrating Game Design Into Therapeutic Content https://games.jmir.org/2021/4/e27953
+[16] Using Motivational Interviewing to Address Client Resistance https://www.mentalhealthacademy.com.au/blog/using-motivational-interviewing-to-address-client-resistance
+[17] Motivational interviewing techniques https://www.racgp.org.au/afp/2012/september/motivational-interviewing-techniques
+[18] 12+ Motivational Interviewing Questions & Techniques https://positivepsychology.com/motivational-interviewing/
+[19] Motivational Interviewing: An Evidence-Based Approach for ... https://pmc.ncbi.nlm.nih.gov/articles/PMC8200683/
+[20] Using Curious Questions in Motivational Interviewing - Veriti https://www.veriti.com.au/using-curious-questions-in-motivational-interviewing/
+[21] cultivating curiosity and insight in the therapeutic process - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC12325357/
+[22] What to Say (and Not Say) to Support Mental Health https://raftconsulting.com/blog/14673/Words-Matter-What-to-Say-and-Not-Say-to-Support-Mental-Health
+[23] [PDF] PMWM-PTSD-supportive-language.pdf - AHA https://www.aha.org/system/files/media/file/2022/04/PMWM-PTSD-supportive-language.pdf
+[24] What to say and what not to say to someone with a mental ... https://rogersbh.org/wp-content/files/InHealthdodont919web.pdf
+[25] 6 Worst Things To Say To Someone With PTSD - Amen Clinics https://www.amenclinics.com/blog/6-worst-things-to-say-to-someone-with-ptsd/
+[26] 6 Types of Motivational Interviewing Questions for Therapists https://thewellnesssociety.org/6-types-of-motivational-interviewing-questions-for-therapists/
+[27] What to say and what not to say to someone with a mental ... https://rogersbh.org/blog/what-say-and-what-not-say-someone-mental-health-condition/
+[28] What to Say and What Not to Say to Someone With a Mental ... https://eliminatestigma.org/wp-content/uploads/What-to-Say-and-Not-to-Say.pdf
+[29] 7 Things to Avoid Saying to Someone With PTSD https://www.resurfacegroup.com/post/x-things-to-avoid-saying-to-someone-with-ptsd
+[30] Alleviating Anxiety: Optimizing Communication With the Anxious Patient. https://pmc.ncbi.nlm.nih.gov/articles/PMC6526974/
+[31] Reimagining Game Design for Mental Health https://www.entropyinteractive.com.au/research/position-paper
+[32] The Action of Verbal and Non-verbal Communication in the Therapeutic Alliance Construction: A Mixed Methods Approach to Assess the Initial Interactions With Depressed Patients https://www.frontiersin.org/articles/10.3389/fpsyg.2020.00234/pdf
+[33] The Action of Verbal and Non-verbal Communication in the Therapeutic Alliance Construction: A Mixed Methods Approach to Assess the Initial Interactions With Depressed Patients https://pmc.ncbi.nlm.nih.gov/articles/PMC7047748/
+[34] Exploring the Implementation of Gamification as a Treatment ... https://pmc.ncbi.nlm.nih.gov/articles/PMC12388161/
+[35] Trauma-informed language as a tool for health equity https://pmc.ncbi.nlm.nih.gov/articles/PMC11683881/
+[36] Different experiences, different approach: trauma-informed care to address disparities and inequities https://pmc.ncbi.nlm.nih.gov/articles/PMC11784121/
+[37] Videogames as a Therapeutic Tool in the Context of Narrative Therapy https://www.frontiersin.org/articles/10.3389/fpsyg.2016.01657/pdf
+[38] What To Say (and Not To Say) To Someone Who Has PTSDwww.nemahealth.com › blog-posts › what-to-say-and-not-to-say-to-someo... https://www.nemahealth.com/blog-posts/what-to-say-and-not-to-say-to-someone-who-has-ptsd
+[39] Understanding Trauma Through Polyvagal Theory - Roamers Therapy https://roamerstherapy.com/shifting-between-survival-modes-understanding-trauma-through-polyvagal-theory/
+[40] Motivational Interviewing (MI) Rolling with Resistance What ... https://health.mo.gov/living/healthcondiseases/chronic/wisewoman/pdf/MIRollingwithResistance.pdf
+[41] Motivational Interviewing Techniques: Expert Guide https://www.avidcounseling.org/motivational-interviewing-techniques-transform-lives-through-expert-counseling/
+[42] Motivational Interviewing Questions: Effective Techniques ... https://www.blueprint.ai/blog/motivational-interviewing-questions-effective-techniques-for-enhancing-client-engagement
+[43] Improving Self-Regulation of Communication in Patients ... https://beckinstitute.org/blog/improving-self-regulation-of-communication-in-patients-experiencing-bipolar-episodes/
+[44] Establishing Trust Relationships with Schizophrenia Patients https://www.avantpsychiatry.com/building-trust-for-therapeutic-relationships-with-schizophrenia-patients
+[45] Treating Schizophrenia: Open Conversations and Stronger ... https://pmc.ncbi.nlm.nih.gov/articles/PMC7438851/
+[46] How Do You Engage Someone With Schizophrenia? https://engagetherapy.com/how-do-you-engage-someone-with-schizophrenia/
+[47] Effectiveness of written emotional disclosure interventions for eating disorders: a systematic review and meta-analysis https://pmc.ncbi.nlm.nih.gov/articles/PMC11667891/
+[48] Difficulties in emotion regulation in patients with eating disorders https://pmc.ncbi.nlm.nih.gov/articles/PMC4888739/
+[49] Examining emotion regulation in binge-eating disorder https://pmc.ncbi.nlm.nih.gov/articles/PMC8504023/
+[50] Dealing with BPD in Relationships Tips https://www.helpguide.org/mental-health/personality-disorders/bpd-in-relationships
+[51] Toolkit for Dietitians https://www.bda.uk.com/asset/30E0DB1D-5F19-41CE-9B19828469B757D9/
+[52] What to take up from the patient’s talk? The clinician’s responses to the patient’s self-disclosure of their subjective experience in the psychiatric intake interview https://pmc.ncbi.nlm.nih.gov/articles/PMC11224953/
+[53] Clinical interview - how to establish a therapeutic relationship and effectively listen to the patient. https://pmc.ncbi.nlm.nih.gov/articles/PMC10418035/
+[54] 6.9 Therapeutic Communication Techniques https://openbooks.macewan.ca/professionalcommunication/chapter/6-9-communication-strategies/
+[55] How to Practice Active Listening | Supporting Mental Health https://headsupguys.org/practice-active-listening-mental-health/
+[56] 17 Therapeutic Communication Techniques https://www.rivier.edu/academics/blog-posts/17-therapeutic-communication-techniques/
+[57] Active Listening: The Art of Empathetic Conversation https://positivepsychology.com/active-listening/
+[58] Strategic use of observer-perspective questions in couples therapy https://pmc.ncbi.nlm.nih.gov/articles/PMC10501453/
+[59] How Table-Top Role-Playing Games Can Help With Therapy https://galvingrowthgroup.com/how-table-top-role-playing-games-can-help-with-therapy/
+[60] A concrete representation of projective identification ... - Somer https://www.somer.co.il/articles/liora-somer-a-concrete-representation-of-projective-identification-in-art-therapy-with-a-did-patient/
+[61] Proffering Connections: Psychologising Experience in Psychotherapy and Everyday Life https://pmc.ncbi.nlm.nih.gov/articles/PMC7852462/
+[62] Narrative Identity Reconstruction as Adaptive Growth During Mental Health Recovery: A Narrative Coaching Boardgame Approach https://www.frontiersin.org/articles/10.3389/fpsyg.2019.00994/pdf
+[63] Narrative Identity Reconstruction as Adaptive Growth During Mental Health Recovery: A Narrative Coaching Boardgame Approach https://pmc.ncbi.nlm.nih.gov/articles/PMC6517514/
+[64] Breakthrough OCD Treatment: Going Beyond Standard Behavioral ... https://serenitymentalhealthcenters.com/adhd-blogs/new-treatments-for-ocd/
+[65] Depression and suicidality in psoriasis patients: emotional needs to discover https://onlinelibrary.wiley.com/doi/10.1111/jdv.14642
+[66] A Practical and Evidence-Based Approach to Common Symptoms https://www.acpjournals.org/doi/10.7326/M14-0461
+[67] Ageing Educating social workers for the demographic imperative https://www.semanticscholar.org/paper/acc4208f6345eba2fc397bae7692231cddfce0f5
+[68] SUPPORTIVE CARE NEWS http://link.springer.com/10.1007/s005200050251
+[69] Breaking the Stigma! Unobtrusively Probe Symptoms in Depression Disorder
+  Diagnosis Dialogue https://arxiv.org/pdf/2501.15260.pdf
+[70] DiagESC: Dialogue Synthesis for Integrating Depression Diagnosis into
+  Emotional Support Conversation http://arxiv.org/pdf/2408.06044.pdf
+[71] Taking a turn for the better: Conversation redirection throughout the
+  course of mental-health therapy https://arxiv.org/pdf/2410.07147.pdf
+[72] Prospective associations of text‐message‐based sentiment with symptoms of depression, generalized anxiety, and social anxiety https://pmc.ncbi.nlm.nih.gov/articles/PMC9729432/
+[73] Speaker and Time-aware Joint Contextual Learning for Dialogue-act
+  Classification in Counselling Conversations http://arxiv.org/pdf/2111.06647.pdf
+[74] Things Not to Say to Someone with Mental Illness | Blog https://www.talktoangel.com/blog/things-not-to-say-to-someone-with-mental-illness
+[75] The Development of Game-Based Digital Mental Health ... https://games.jmir.org/2023/1/e42173/
+[76] Narrative Therapy Explained https://www.therapyroute.com/article/narrative-therapy-explained-by-therapyroute
+[77] Therapeutic Uses of Gaming in Mental Health: An Untapped ... https://games.jmir.org/2024/1/e57714/
+[78] A Well-Worn Story: The Benefits of Narrative Therapy https://www.brainsway.com/knowledge-center/a-well-worn-story-the-benefits-of-narrative-therapy/
+[79] Journal of Innovative and Creativity Gamification in ... https://joecy.org/index.php/joecy/article/download/3225/2528
+[80] What Is Narrative Therapy? Techniques & Worksheets https://positivepsychology.com/narrative-therapy/
+[81] Working With Those Who Have Experienced Sudden Loss Of Loved Ones http://www.ispub.com/doi/10.5580/5ae
+[82] Exploring Care and Recovery for Individuals With Post-traumatic Stress Disorder: A Scoping Review https://assets.cureus.com/uploads/review_article/pdf/225706/20240207-28726-ghiw1z.pdf
+[83] Optimizing Empathy: Physician Self-Care as a Crucial Component of Trauma-Informed Treatment. https://pmc.ncbi.nlm.nih.gov/articles/PMC6519522/
+[84] Trauma Narratives: It's What You Say, Not How You Say It. https://pmc.ncbi.nlm.nih.gov/articles/PMC4217123/
+[85] Personal Narratives in Trauma-Related Disorders: Contributions from a Metacognitive Approach and Treatment Considerations https://www.mdpi.com/2076-328X/15/2/150
+[86] A Trauma-Informed Life https://pmc.ncbi.nlm.nih.gov/articles/PMC9162390/
+[87] Trauma-Informed Medical Care: Patient Response to a Primary Care Provider Communication Training https://pmc.ncbi.nlm.nih.gov/articles/PMC5051697/
+[88] How to Talk to Someone with Schizoaffective Disorder https://amfmtreatment.com/blog/how-to-talk-to-someone-with-schizoaffective-disorder/
+[89] Things Never To Say To Trauma Survivors - Grief Recovery Center https://www.griefrecoveryhouston.com/things-never-to-say-to-trauma-survivors/
+[90] Videogames and Therapy: A Narrative Review of Recent Publication and Application to Treatment https://www.frontiersin.org/articles/10.3389/fpsyg.2016.01085/pdf
+[91] Putting the Gaming Experience at the Center of the Therapy—The Video Game Therapy® Approach https://pmc.ncbi.nlm.nih.gov/articles/PMC10298057/
+[92] Framework proposal for Role-Playing Games as mental health intervention: the Critical Skills methodology https://pmc.ncbi.nlm.nih.gov/articles/PMC11079307/
+[93] Mastering Your Dragons: Using Tabletop Role-Playing Games in Therapy https://pmc.ncbi.nlm.nih.gov/articles/PMC12023950/
+[94] Unlocking the Power of Role-Playing Games in Mental ... https://lifestance.com/blog/role-playing-games-dungeons-dragons-group-therapy/
+[95] Resistance in Group Therapy: 9 Effective Ways to Increase ... https://www.icanotes.com/2024/06/01/increase-participation-in-group-therapy/
+[96] A Case Study based Framework for Integrating Game Design ... https://preprints.jmir.org/preprint/27953
+[97] Role-play Games (RPGs) for Mental Health (Why Not?) - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC9092936/
+[98] How to Engage Resistant Clients and Get Them To Open- ... https://www.youtube.com/watch?v=J2lJMusWKPU
+[99] Client Resistance in Therapy: How to Help Difficult Clients https://positivepsychology.com/resistance-to-change/
+[100] Game Design in Mental Health Care: Case Study–Based ... https://www.sciencedirect.com/science/article/pii/S2291927921000994
+[101] Developing a protocol to address co-occurring mental health conditions in the treatment of eating disorders. https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/eat.24008
+[102] Improving patient-centered communication of the borderline personality disorder diagnosis https://pmc.ncbi.nlm.nih.gov/articles/PMC4937878/
+[103] Eating disorders among patients with borderline personality disorder: understanding the prevalence and psychopathology https://pmc.ncbi.nlm.nih.gov/articles/PMC7429899/
+[104] A 12-month study of dialectical behavioral therapy for bοrderline patients suffering from eating disorders https://pmc.ncbi.nlm.nih.gov/articles/PMC10556119/
+[105] Dysregulated eating behaviors in borderline personality disorder: are rejection sensitivity and emotion dysregulation linking mechanisms? https://pmc.ncbi.nlm.nih.gov/articles/PMC4243037/
+[106] Coordinated Care Essential in Treating Borderline ... https://www.psychiatryadvisor.com/news/essential-coordinated-care-in-borderline-personality-eating-disorders/
+[107] Voice Assistants for Mental Health Services: Designing ... - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC11262314/
+[108] Personality Pathology and Its Influence on Eating Disorders https://pmc.ncbi.nlm.nih.gov/articles/PMC3074200/
+[109] How Interpersonal Distance Between Avatar and Human ... https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2021.675515/full
+[110] National Eating Disorders Association: Home https://www.nationaleatingdisorders.org
+[111] What Role Can Avatars Play in e-Mental Health Interventions ... https://openresearch-repository.anu.edu.au/items/0530d00b-e754-45d7-b147-22854801b509
+[112] Solution-Focused Brief Approach for Caregiver of a Person Living with Schizophrenia: A Case Study https://link.springer.com/10.1007/s40737-024-00434-y
+[113] Patient—Provider Communication https://pmc.ncbi.nlm.nih.gov/articles/PMC3538365/
+[114] What to take up from the patient’s talk? The clinician’s responses to the patient’s self-disclosure of their subjective experience in the psychiatric intake interview https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2024.1352601/pdf
+[115] Strategic use of observer-perspective questions in couples therapy https://www.frontiersin.org/articles/10.3389/fpsyg.2023.1229991/pdf
+[116] Motivational Interviewing is “Doing” What Matters: Integrating Motivational Interviewing Spirit and Skills into What Matters to You? Conversations https://pmc.ncbi.nlm.nih.gov/articles/PMC11822820/
+[117] A PHENOMENOLOGICAL ANALYSIS OF DEDICATED ... https://open.metu.edu.tr/bitstream/handle/11511/118410/10592996.pdf
+[118] 18 open-ended questions therapists ask clients https://www.counselling-directory.org.uk/articles/18-open-ended-questions-therapists-ask-clients
+[119] Open-Ended Questions in Counseling https://www.mentalyc.com/blog/open-ended-questions-in-counseling
+[120] A Study of Therapeutically Applied Tabletop Roleplaying ... https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=11580&context=etd
+[121] Spectrum of mental health among students: A scientometric analysis of 20 years of research on depression and anxiety https://journals.lww.com/10.1097/MD.0000000000046751
+[122] Mental Health Service Utilization among Older Adults in Indonesia: Nationwide Retrospective Cohort Study Using the National Health Insurance Claims Data, 2015–2023 http://e-agmr.org/journal/view.php?doi=10.4235/agmr.25.0108
+[123] “I think it is our responsibility, but not solely our responsibility”: A qualitative study exploring teachers’ perspectives on promoting mental health in Northwest London primary schools https://dx.plos.org/10.1371/journal.pone.0336946
+[124] Forecasting the Need for Medico-Psychological Rehabilitation among Law Enforcement Officers of the Russian Federation after Experiencing Mental Disorders https://www.journalpsychiatry.com/jour/article/view/1345
+[125] Gaming, religiosity and mental health among Georgian students https://link.springer.com/10.1007/s44192-025-00297-0
+[126] 18 Mental health status and barriers to seeking mental health care among migrant tea plantation workers of South India https://academic.oup.com/eurpub/article/doi/10.1093/eurpub/ckaf180.157/8372712
+[127] Pengembagan Program Kesehatan Mental Remaja Berbasis Komunitas pada Remaja di Desa Bangun Rejo, Kecamatan Tanjung Morawa, Kabupaten Deli Serdang Tahun 2025 https://journalshub.org/index.php/JPIKes/article/view/5304
+[128] 453 Examining Mental Health and Access to Mental Health Services among Deported Mexican Migrants: Results from a Probability Survey on the Mexico-U.S. Border https://academic.oup.com/eurpub/article/doi/10.1093/eurpub/ckaf180.150/8372540
+[129] Prevalence and correlates of anxiety, depression, and symptoms of trauma among Palestinian adults in Gaza after a year of war: a cross-sectional study https://conflictandhealth.biomedcentral.com/articles/10.1186/s13031-025-00681-1
+[130] Prevalence and Impact of Depression and Anxiety on Quality of Life Among Hemodialysis Patients https://bijpt.journals.ekb.eg/article_458140.html
+[131] Psychiatric disorders: a global look at facts and figures. https://pmc.ncbi.nlm.nih.gov/articles/PMC3028462/
+[132] The global burden of mental disorders: An update from the WHO World Mental Health (WMH) Surveys* https://pmc.ncbi.nlm.nih.gov/articles/PMC3039289/
+[133] The burden of mental disorders. https://pmc.ncbi.nlm.nih.gov/articles/PMC2683377/
+[134] The prevalence of mental health conditions in healthcare workers during and after a pandemic: Systematic review and meta‐analysis https://pmc.ncbi.nlm.nih.gov/articles/PMC9111784/
+[135] Increase in prevalence of current mental disorders in the context of COVID-19: analysis of repeated nationwide cross-sectional surveys https://pmc.ncbi.nlm.nih.gov/articles/PMC7573458/
+[136] Psychiatric Epidemiology: Reducing the Global Burden of Mental Illness https://pmc.ncbi.nlm.nih.gov/articles/PMC2572566/
+[137] Age of onset and cumulative risk of mental disorders: a cross-national analysis of population surveys from 29 countries. https://pmc.ncbi.nlm.nih.gov/articles/PMC10529120/
+[138] Prevalence of Mental Disorders in the WHO Eastern Mediterranean Region: A Systematic Review and Meta-Analysis https://www.frontiersin.org/articles/10.3389/fpsyt.2021.665019/pdf
+[139] Mental Health Statistics 2025: Key Numbers & Crisis Data https://int.livhospital.com/mental-health-statistics-2025-key-numbers-crisis-data/
+[140] Major Research Gaps And... https://pmc.ncbi.nlm.nih.gov/articles/PMC12692003/
+[141] Toward a Framework for AI Safety in Mental Health https://neuromodec.org/2025/10/toward-a-framework-for-ai-safety-in-mental-health-ai-safety-levels-mental-health-asl-mh/
+[142] Mental Health By the Numbers https://www.nami.org/mental-health-by-the-numbers/
+[143] Evolving Psychotherapeutic Approaches for PTSD: Beyond the Fear ... https://pmc.ncbi.nlm.nih.gov/articles/PMC12410240/
+[144] Ethical Decision-Making Guidelines for Mental Health ... - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC12692113/
+[145] The State of Mental Health in America 2025 https://mhanational.org/the-state-of-mental-health-in-america/
+[146] Trauma Therapy Techniques: Evidence-Based Approaches https://thelovettcenter.com/trauma-therapy-techniques/
+[147] Regulating AI in Mental Health: Ethics of Care Perspective https://pmc.ncbi.nlm.nih.gov/articles/PMC11450345/
+[148] Over a billion people living with mental health conditions https://www.who.int/news/item/02-09-2025-over-a-billion-people-living-with-mental-health-conditions-services-require-urgent-scale-up
+[149] Trauma Treatment Modalities | Effective Approaches https://alterbehavioralhealth.com/blog/trauma-treatment-modalities/
+[150] Regulating AI in Mental Health: Ethics of Care Perspective https://mental.jmir.org/2024/1/e58493
+[151] One Billion People Worldwide Are Living With Mental ... https://healthpolicy-watch.news/whos-latest-data-reveals-a-billion-people-worldwide-are-living-with-mental-health-disorders/
+[152] Breaking the cycle with trauma-focused mentalization-based treatment https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2024.1426092/full
+[153] Exploring the Ethical Challenges of Conversational AI in Mental ... https://mental.jmir.org/2025/1/e60432
+[154] The Trauma-Informed Model for Mindful Cognitive Behavioral Therapy https://esmed.org/MRA/mra/article/view/7197
+[155] Therapeutic Mechanisms of Art: An Interdisciplinary Exploration of How Painting Facilitates Psychological Healing and Well-being https://pdf.erytis.com/ah/ah.9024.pdf
+[156] EMDR therapy and adjunct approaches with children : complex trauma, attachment, and dissociation https://www.semanticscholar.org/paper/ea60500028fee70289763d9664479952c2a7b425
+[157] E D M R Therapy and Adjunct Approaches with Children: Complex Trauma, Attachment, and Dissociation https://www.semanticscholar.org/paper/af3619f910741da85aa7cab42a50d6b68d95f822
+[158] The vagal paradox: A polyvagal solution https://pmc.ncbi.nlm.nih.gov/articles/PMC10724739/
+[159] The vagal paradox: A polyvagal solution https://linkinghub.elsevier.com/retrieve/pii/S2666497623000346
+[160] A Systematic Review of a Polyvagal Perspective on Embodied Contemplative Practices as Promoters of Cardiorespiratory Coupling and Traumatic Stress Recovery for PTSD and OCD: Research Methodologies and State of the Art https://www.mdpi.com/1660-4601/18/22/11778/pdf
+[161] Neuropsychological Consequences of Massive Trauma: Implications and Clinical Interventions https://www.mdpi.com/1648-9144/59/12/2128/pdf?version=1701911366
+[162] Polyvagal Theory: A biobehavioral journey to sociality https://linkinghub.elsevier.com/retrieve/pii/S2666497621000436
+[163] A Systematic Review of a Polyvagal Perspective on Embodied Contemplative Practices as Promoters of Cardiorespiratory Coupling and Traumatic Stress Recovery for PTSD and OCD: Research Methodologies and State of the Art https://pmc.ncbi.nlm.nih.gov/articles/PMC8619958/
+[164] Neuropsychological Consequences of Massive Trauma: Implications and Clinical Interventions https://pmc.ncbi.nlm.nih.gov/articles/PMC10744839/
+[165] Rebuilding Body–Brain Interaction from the Vagal Network in Spinal Cord Injuries https://pmc.ncbi.nlm.nih.gov/articles/PMC8391959/
+[166] 2025 Literature Summary: Insights from Polyvagal Theory ... https://therapas.com.au/2025-literature-summary-insights-from-polyvagal-theory-for-therapeutic-treatment/
+[167] Are Mindfulness-Based Approaches Effective? - PsychVox https://www.psychvox.com/p/are-mindfulness-based-approaches
+[168] Mental Health Atlas 2024 - GHELI Repository https://repository.gheli.harvard.edu/repository/12501/
+[169] Effectiveness of mindfulness based interventions in ... - ArODES https://arodes.hes-so.ch/record/15876/files/AlkanEtal_2025_Effectiveness.pdf
+[170] Mental health atlas 2024 https://www.who.int/publications/i/item/9789240114487
+[171] Polyvagal Theory: Current Status, Clinical Applications, and ... https://pmc.ncbi.nlm.nih.gov/articles/PMC12302812/
+[172] Mindfulness and Mental Health: Exploring DBT, ACT, and ... https://mnclinicforhealth.com/mindfulness-and-mental-health-exploring-dbt-act-and-mbsr/
+[173] Mental Health Atlas 2020 https://www.who.int/teams/mental-health-and-substance-use/data-research/mental-health-atlas
+[174] Exploring a Polyvagal Futures Literacy https://jfsdigital.org/2025-2/vol-29-no-4-june-2025/20032-2/
+[175] Mindfulness-Based Cognitive Therapy in Clinical Practice - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC11900371/
+[176] Over a billion people living with mental health conditions https://www.paho.org/en/news/2-9-2025-over-billion-people-living-mental-health-conditions-services-require-urgent-scale
+[177] Polyvagal Theory: Current Status, Clinical Applications, ... https://www.clinicalneuropsychiatry.org/download/polyvagal-theory-current-status-clinical-applications-and-future-directions/
+[178] Mindfulness-based therapy offers new hope for people with ... https://www.news-medical.net/news/20250514/Mindfulness-based-therapy-offers-new-hope-for-people-with-persistent-depression.aspx
+[179] The WHO Mental Health Atlas 2024 highlights both progress ... https://health-inequalities.eu/jwddb/the-who-mental-health-atlas-2024-highlights-both-progress-and-persistent-gaps/
+[180] The prevalence of mental health issues among nursing students: An umbrella review synthesis of meta-analytic evidence. https://linkinghub.elsevier.com/retrieve/pii/S0020748925000021
+[181] Multimorbidity patterns of mental disorders and physical diseases of adults in northeast China: a cross-sectional network analysis https://www.cambridge.org/core/product/identifier/S2045796025000204/type/journal_article
+[182] The epidemiology and burden of ten mental disorders in countries of the Association of Southeast Asian Nations (ASEAN), 1990–2021: findings from the Global Burden of Disease Study 2021 https://linkinghub.elsevier.com/retrieve/pii/S2468266725000982
+[183] Trends in Mental Health: A Review of the Most Influential Research on Depression in Children and Adolescents https://annals-general-psychiatry.biomedcentral.com/articles/10.1186/s12991-024-00520-2
+[184] Depressive and anxiety disorders in children and adolescents with selected endocrine diseases https://www.termedia.pl/doi/10.5114/pedm.2025.155107
+[185] 96 Prevalence and patterns of multiple long-term conditions amongst migrants in high-income countries: a systematic review https://academic.oup.com/eurpub/article/doi/10.1093/eurpub/ckaf180.206/8372897
+[186] ADVERSE CHILDHOOD EXPERIENCES: PREVALENCE AND RELATIONSHIP TO DISEASE OUTCOMES IN CHILDHOOD-ONSET SYSTEMIC LUPUS ERYTHEMATOSUS (CSLE) http://www.jrheum.org/lookup/doi/10.3899/jrheum.2025-0390.O069
+[187] MON-180 Weight Stigma is Prevalent Among People with Polycystic Ovary Syndrome in Canada: A Cross-Sectional Study https://academic.oup.com/jes/article/doi/10.1210/jendso/bvaf149.1912/8298831
+[188] Prevalence of Mental Disorders in the WHO Eastern Mediterranean Region: A Systematic Review and Meta-Analysis https://pmc.ncbi.nlm.nih.gov/articles/PMC8316754/
+[189] Towards mental health as a human right: The key role of lived experience https://pmc.ncbi.nlm.nih.gov/articles/PMC10564147/
+[190] Mental & addictive disorders - Even more important during & after the COVID-19 pandemic https://pmc.ncbi.nlm.nih.gov/articles/PMC9205004/
+[191] Global burden and trends of major mental disorders in ... https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1635801/full
+[192] Performance of mental health chatbot agents in detecting ... https://www.nature.com/articles/s41598-025-17242-4
+[193] Knowledge graph and its application in the study of ... - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC11958944/
+[194] The Latest Mental Health Statistics: What the Numbers Say About ... https://huntingtonpsych.com/blog/the-latest-mental-health-statistics-what-the-numbers-say-about-the-state-of-our-minds-in-2024
+[195] The Generative AI Therapy Chatbot Will See You Now https://talk.crisisnow.com/the-generative-ai-therapy-chatbot-will-see-you-now/
+[196] Large language model powered knowledge graph construction for mental health exploration https://www.nature.com/articles/s41467-025-62781-z
+[197] Top 20 DSM-5-TR Disorders: A Prevalence Ranking | 2025 https://huntingtonpsych.com/blog/top-20-dsm-5-tr-disorders-a-prevalence-ranking
+[198] Crisis-line workers' perspectives on AI in suicide prevention https://pmc.ncbi.nlm.nih.gov/articles/PMC12220356/
+[199] What Ontology, RAG and Graph data do you use to develop Intelligent ... https://community.openai.com/t/what-ontology-rag-and-graph-data-do-you-use-to-develop-intelligent-assistants/787860
+[200] Development and evaluation of LLM-based suicide ... https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2025.1634714/full
+[201] LLM-empowered knowledge graph construction: A survey https://arxiv.org/html/2510.20345v1
+[202] Mental disorders - World Health Organization (WHO) https://www.who.int/news-room/fact-sheets/detail/mental-disorders
+[203] ERAN - Emotional First Aid https://en.eran.org.il
+[204] IoT-Based Preventive Mental Health Using Knowledge ... https://arxiv.org/html/2406.13791v2
+[205] "Voice of concern" for rural veterans with PTSD: Care managers' role engaging rural veterans in evidence-based therapies via telemedicine. https://doi.apa.org/doi/10.1037/tra0001845
+[206] The protocol matters: A meta-analysis of psychotherapy dropout from specific PTSD treatment approaches in U.S. service members and veterans. https://doi.apa.org/doi/10.1037/tra0002070
+[207] Evolving Psychotherapeutic Approaches for PTSD: Beyond the Fear-Based Model https://www.semanticscholar.org/paper/fcbc68c88aca203ad8b2aac590041846776eb0c6
+[208] “Pitching” posttraumatic stress disorder treatment: A qualitative study of how providers discuss evidence‐based psychotherapies with patients https://onlinelibrary.wiley.com/doi/10.1002/jts.23058
+[209] The Integrative PTSD Healing Center: A Novel Three-Tier Treatment Model Bridging
+Neuroscience, Spirituality, and Alternative Medicine https://unisciencepub.com/wp-content/uploads/2025/06/The-Integrative-PTSD-Healing-Center-A-Novel-Three-Tier-Treatment-Model-Bridging-Neuroscience-Spirituality-and-Alternative-Medicine.pdf
+[210] Novel Pharmacologic and Other Somatic Treatment Approaches for Posttraumatic Stress Disorder in Adults: State of the Evidence. https://psychiatryonline.org/doi/10.1176/appi.ajp.20230950
+[211] BRIDGING TRAUMA AND RESILIENCE: AN EVIDENCE-BASED REVIEW OF PSYCHOSOCIAL INTERVENTIONS IN IMMIGRATION DETENTION AND CUSTODY CENTERS https://www.uav.ro/jour/index.php/jpe/article/view/2502/2183
+[212] AboutFace: A randomized controlled evaluation of an online peer-based intervention to increase PTSD treatment engagement. https://doi.apa.org/doi/10.1037/ser0001001
+[213] Examining differences in neurobehavioral symptom changes across two cognitive processing therapy-based intensive PTSD treatment programs for veterans with and without mild traumatic brain injury. https://doi.apa.org/doi/10.1037/tra0002086
+[214] Loss of PTSD Diagnosis in Response to Evidence-Based Treatments: A Systematic Review and Meta-Analysis. https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2833838
+[215] Navigating the landscape of trauma treatments: the need for personalized care. https://pmc.ncbi.nlm.nih.gov/articles/PMC11733424/
+[216] Novel Approaches for the Treatment of Post-Traumatic Stress Disorder: A Systematic Review of Non-Invasive Brain Stimulation Interventions and Insights from Clinical Trials https://pmc.ncbi.nlm.nih.gov/articles/PMC10968279/
+[217] Posttraumatic Stress Disorder: Overview of Evidence-Based Assessment and Treatment https://www.mdpi.com/2077-0383/5/11/105/pdf
+[218] Novel Approaches for the Treatment of Post-Traumatic Stress Disorder: A Systematic Review of Non-Invasive Brain Stimulation Interventions and Insights from Clinical Trials https://www.mdpi.com/2076-3425/14/3/210/pdf?version=1708939936
+[219] Psychotherapies for adults with complex presentations of PTSD: a clinical guideline and five systematic reviews with meta-analyses https://pmc.ncbi.nlm.nih.gov/articles/PMC12004466/
+[220] Effectiveness of currently available psychotherapies for post‐traumatic stress disorder and future directions https://pmc.ncbi.nlm.nih.gov/articles/PMC9077626/
+[221] Advances in PTSD Treatment Delivery: Review of Findings and Clinical Considerations for the Use of Telehealth Interventions for PTSD https://pmc.ncbi.nlm.nih.gov/articles/PMC7261035/
+[222] Interventions to treat posttraumatic stress disorder in partnership with primary care: A review of feasibility and large randomized controlled studies. https://pmc.ncbi.nlm.nih.gov/articles/PMC7592634/
+[223] How Clinical Research is Improving PTSD Treatments in ... https://gminstitutes.com/2025/02/15/how-clinical-research-is-improving-ptsd-treatments-in-2025/
+[224] New Advances in Bipolar Disorder Treatment in 2025 https://papillonrecoverycentre.co.za/new-advances-in-bipolar-disorder-treatment/
+[225] The Role of AI in Revolutionizing Trauma-Informed Mental ... https://rsisinternational.org/journals/ijriss/uploads/vol10-iss1-pg3735-3746-202602_pdf.pdf
+[226] Novel and Emerging Treatments for Agitation in ... - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC12027268/
+[227] Ethical decision-making for AI in mental health - PMC - NIH https://pmc.ncbi.nlm.nih.gov/articles/PMC12315656/
+[228] PTSD and complex PTSD, current treatments and debates https://pmc.ncbi.nlm.nih.gov/articles/PMC12466117/
+[229] Schizophrenia Treatment in 2025: What's New and Effective? https://full-life-comprehensive-care.com/schizophrenia-treatment-2025-new-effective/
+[230] The Role of AI in Revolutionizing Trauma-Informed Mental ... https://rsisinternational.org/journals/ijriss/article.php?id=5199
+[231] A Review of PTSD and Current Treatment Strategies - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC8672952/
+[232] 2025 Schizophrenia Insights: Ending the Year With ... https://www.psychiatrictimes.com/view/2025-schizophrenia-insights-ending-the-year-with-positive-data
+[233] Alpha Declaration – Trauma-Informed Care AI Model (May ... https://secondchancetolive.org/alpha-declaration-trauma-informed-ai-model-may-2025/
+[234] New Horizons in Post-Traumatic Stress Disorder Treatment https://traumaj.com/index.php/pub/article/view/25
+[235] Global Experts Unveil New Schizophrenia Treatment ... https://www.psychiatrist.com/news/global-experts-unveil-new-schizophrenia-treatment-guidelines/
+[236] How ACEs and trauma risk development https://onlinelibrary.wiley.com/doi/10.1002/cbl.30839
+[237] The Impact of Adverse Childhood Experiences on the Life Course: A Case Study Using "The Haunting of Hill House" (2018) https://bcphr.org/78-article-farris/
+[238] How Does Trauma Make You Sick? The Role of Attachment in Explaining Somatic Symptoms of Survivors of Childhood Trauma https://www.mdpi.com/2227-9032/12/2/203
+[239] Screening for adverse childhood experiences in pediatric clinical settings: a scoping review http://medrxiv.org/lookup/doi/10.1101/2024.10.21.24315896
+[240] Interplay of serum BDNF levels and childhood adversity in predicting earlier-onset post-traumatic stress disorder: A two-year longitudinal study. https://linkinghub.elsevier.com/retrieve/pii/S0887618524001191
+[241] Renal Oxidative Stress May Explain Sex Differences in Blood Pressure in Adult Offspring Exposed to an Impoverished Environment https://journals.physiology.org/doi/10.1152/physiol.2024.39.S1.1615
+[242] Relationships between adverse childhood experiences, oxidative stress, and development of mental disorders: A systematic review of animal and human studies. https://linkinghub.elsevier.com/retrieve/pii/S014976342500394X
+[243] Rationale and design for a community-engaged intervention addressing the intergenerational transmission of adverse childhood experiences (ACEs): a hybrid implementation-effectiveness study protocol https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-025-08881-z
+[244] Functional brain changes related to adverse childhood experiences and the presence of psychopathology https://link.springer.com/10.1007/s44192-025-00202-9
+[245] ADVERSE CHILDHOOD EXPERIENCES AND RISK OF PERSONALITY DISORDERS IN ADULTHOOD: A PSYCHOPATHOLOGY PERSPECTIVE https://ipejournal.com/index.php/ipe/article/view/32
+[246] Childhood adversity is associated with reduced BOLD response in inhibitory control regions amongst preadolescents from the ABCD study https://pmc.ncbi.nlm.nih.gov/articles/PMC11035055/
+[247] Adverse childhood experiences predict neurite density differences in young children with and without attention deficit hyperactivity disorder. https://pmc.ncbi.nlm.nih.gov/articles/PMC8827844/
+[248] Cortical volume alteration in the superior parietal region mediates the relationship between childhood abuse and PTSD avoidance symptoms: A complementary multimodal neuroimaging study https://pmc.ncbi.nlm.nih.gov/articles/PMC10689271/
+[249] Is There an Ace Up Our Sleeve? A Review of Interventions and Strategies for Addressing Behavioral and Neurobiological Effects of Adverse Childhood Experiences in Youth https://pmc.ncbi.nlm.nih.gov/articles/PMC8281391/
+[250] Adverse childhood experiences and fronto-subcortical structures in the developing brain https://pmc.ncbi.nlm.nih.gov/articles/PMC9582338/
+[251] Childhood adversity and neural development: Deprivation and threat as distinct dimensions of early experience https://pmc.ncbi.nlm.nih.gov/articles/PMC4308474/
+[252] Adverse Childhood Experiences and the Consequences on Neurobiological, Psychosocial, and Somatic Conditions Across the Lifespan https://pmc.ncbi.nlm.nih.gov/articles/PMC6131660/
+[253] Association Between Early Life Adversity and Risk for Poor Emotional and Physical Health in Adolescence: A Putative Mechanistic Neurodevelopmental Pathway https://pmc.ncbi.nlm.nih.gov/articles/PMC6583637/
+[254] Interplay Between Adverse Childhood Experiences and ... - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC12313595/
+[255] Mental Health in 2025: Crisis Meets Innovation https://www.ariseccc.com/mental-health-in-2025-crisis-meets-innovation
+[256] the relationship between adverse childhood experiences ... https://www.nature.com/articles/s41398-026-03811-2
+[257] The technological revolution in mental health: opportunities ... https://www.nature.com/articles/s41599-025-06441-z
+[258] Ontologies as the semantic bridge between artificial ... - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC12426170/
+[259] Adverse childhood experiences, brain function, and ... https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2024.1401745/full
+[260] The Future of Mental Health: Emerging Technology in 2025 https://www.phoenixpointepsychiatry.com/post/the-future-of-mental-health-emerging-technology-in-2025
+[261] Ontological Framework for Integrating Predictive Analytics, ... https://www.scitepress.org/Papers/2025/135144/135144.pdf
+[262] Adverse Childhood Experiences and Post-Traumatic Stress ... https://pmc.ncbi.nlm.nih.gov/articles/PMC12272169/
+[263] The State Of Mental Health In 2025: Emerging Challenges ... https://doralhw.org/the-state-of-mental-health-in-2025-emerging-challenges-and-innovations/
+[264] Childhood adversity is associated with reduced BOLD ... https://www.sciencedirect.com/science/article/pii/S1878929324000392
+[265] Digital interventions in mental health: An overview and future ... https://pmc.ncbi.nlm.nih.gov/articles/PMC12051054/
+[266] Advancing transdiagnostic data analytics using knowledge ... https://www.sciencedirect.com/science/article/pii/S2666144625000048
+[267] Commentary on: The Prevalence of Eating Disorders and Disordered Eating in Adults Seeking Obesity Treatment: A Systematic Review With Meta-Analyses by Melville et al. https://onlinelibrary.wiley.com/doi/10.1002/eat.24522
+[268] The (Future) Role of Self‐Help Interventions in the Treatment of Eating Disorders: Commentary on Linardon et al. (2025) https://onlinelibrary.wiley.com/doi/10.1002/eat.24470
+[269] Bridging the Research Gap: The Potential and Limitations of Self-Help Interventions for Eating Disorders on Mental Health. Commentary on Linardon et al. (2025). https://onlinelibrary.wiley.com/doi/10.1002/eat.24454
+[270] The Light and Shadow of Smartphone Applications for Eating Disorders: Commentary on Cruz et al. (2025) https://onlinelibrary.wiley.com/doi/10.1002/eat.24536
+[271] Cognitive remediation therapy in eating disorders: a systematic review https://latam.redilat.org/index.php/lt/article/view/3766
+[272] 2025 Update to the Female Athlete Triad Coalition Consensus Statement Part 2: Clinical Guidelines for Screening, Diagnosis, Treatment, and Return to Play for Adolescents and Adults https://link.springer.com/10.1007/s40279-025-02332-0
+[273] Mental Health Impacts of Self‐Help Interventions for the Treatment and Prevention of Eating Disorders. A Meta‐Analysis https://onlinelibrary.wiley.com/doi/10.1002/eat.24405
+[274] Music-based interventions in the treatment of eating disorders: a scoping review https://www.frontiersin.org/articles/10.3389/fpsyt.2025.1660696/full
+[275] The impact of glucagon-like peptide-1 (GLP-1) agonists in the treatment of eating disorders: a systematic review and meta-analysis https://link.springer.com/10.1007/s40519-025-01720-9
+[276] Approved and Pipeline Pharmacological Interventions for Eating Disorders (2010–2025): 15 Years of Progress (or Lack Thereof) https://link.springer.com/10.1007/s40263-025-01248-7
+[277] Pharmacotherapy, alternative and adjunctive therapies for eating disorders: findings from a rapid review https://pmc.ncbi.nlm.nih.gov/articles/PMC10327007/
+[278] Recent advances in therapies for eating disorders https://pmc.ncbi.nlm.nih.gov/articles/PMC6764116/
+[279] Treatment of eating disorders: A systematic meta-review of meta-analyses and network meta-analyses https://pmc.ncbi.nlm.nih.gov/articles/PMC9813802/
+[280] Recent advances in therapies for eating disorders https://f1000research.com/articles/8-1693/v1/pdf
+[281] Treating the individual: moving towards personalised eating disorder care https://pmc.ncbi.nlm.nih.gov/articles/PMC11983806/
+[282] From research to practice: a model for clinical implementation of evidence-based outpatient interventions for eating disorders https://pmc.ncbi.nlm.nih.gov/articles/PMC8586828/
+[283] Informing mHealth and Web-Based Eating Disorder Interventions: Combining Lived Experience Perspectives With Design Thinking Approaches https://pmc.ncbi.nlm.nih.gov/articles/PMC9664336/
+[284] United States-based practice guidelines for children and adolescents with eating disorders https://pmc.ncbi.nlm.nih.gov/articles/PMC11987470/
+[285] Updates in the treatment of eating disorders in 2024: a year ... https://www.tandfonline.com/doi/full/10.1080/10640266.2025.2497750
+[286] The Latest Trends in Addiction Treatment https://harborwellnesscenter.org/the-latest-trends-in-addiction-treatment-whats-changing-in-2025/
+[287] Advancements in the Diagnosis and Treatment of Eating ... https://pmc.ncbi.nlm.nih.gov/articles/PMC12113955/
+[288] What are Addiction Treatment Services' Latest 2025 ... https://www.addictiontreatmentservices.com/what-are-addiction-treatment-services-latest-2025-innovations/
+[289] Brain & Behavior Research Foundation Highlights Top ... https://bbrfoundation.org/content/brain-behavior-research-foundation-highlights-top-mental-health-research-breakthroughs-2025
+[290] Web-Based Therapy for Bulimia Nervosa https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2837265
+[291] Reflecting on NIDA's 50th year and looking to 2025 https://nida.nih.gov/about-nida/noras-blog/2025/01/reflecting-nidas-50th-year-looking-to-2025
+[292] Reinforcing Gaps? A Rapid Review of Innovation in ... - PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC12384757/
+[293] Eating disorder treatment: Know your options https://www.mayoclinic.org/diseases-conditions/eating-disorders/in-depth/eating-disorder-treatment/art-20046234
+[294] Global Drug Addiction Treatment Market Outlook 2025–2030 https://www.linkedin.com/pulse/global-drug-addiction-treatment-market-outlook-20252030-nandana-s-xlf7c
+[295] An OCD Breakthrough: New Treatments for the Condition https://www.brainsway.com/knowledge-center/breakthroughs-in-ocd-treatment/
+[296] Helpline https://butterfly.org.au/get-support/helpline/
+[297] MAT vs 12-Step: Evidence-Based Addiction Recovery ... https://faspsych.com/blog/evidence-based-mat-superior-addiction-recovery-over-traditional-methods/
+[298] International OCD Foundation Announces 2025 Research ... https://iocdf.org/blog/2025/07/24/international-ocd-foundation-announces-2025-research-grant-recipients-to-advance-breakthroughs-in-ocd-and-related-disorders/

@@ -1,0 +1,133 @@
+{
+  "_meta": {
+    "source": "Burns/Beck canonical list — 15 cognitive distortions",
+    "purpose": "CBT-based thought pattern identification for game narrative and therapist dashboard",
+    "references": ["Burns, D. (1980). Feeling Good.", "Beck, A.T. (1979). Cognitive Therapy of Depression."]
+  },
+  "distortions": [
+    {
+      "id": "all_or_nothing",
+      "name": "All-or-Nothing Thinking",
+      "alias": "Black-and-White Thinking",
+      "definition": "Seeing things in only two categories rather than on a continuum.",
+      "example_thought": "If I'm not perfect, I'm a total failure.",
+      "game_signal": "Player consistently picks extreme choices; avoids nuanced options.",
+      "reframe": "Most things exist on a spectrum. Partial success is still success."
+    },
+    {
+      "id": "overgeneralization",
+      "name": "Overgeneralization",
+      "definition": "Making a broad conclusion based on a single event.",
+      "example_thought": "I failed this quest, so I'll fail everything.",
+      "game_signal": "Player gives up after one setback; says 'always' or 'never'.",
+      "reframe": "One event doesn't define a pattern. What happened this specific time?"
+    },
+    {
+      "id": "mental_filter",
+      "name": "Mental Filter",
+      "alias": "Selective Abstraction",
+      "definition": "Focusing exclusively on one negative detail while ignoring positives.",
+      "example_thought": "The NPC said one critical thing — the whole interaction was bad.",
+      "game_signal": "Player fixates on a single negative outcome despite multiple successes.",
+      "reframe": "What else happened in that interaction? What went well?"
+    },
+    {
+      "id": "disqualifying_positive",
+      "name": "Disqualifying the Positive",
+      "definition": "Rejecting positive experiences by insisting they 'don't count'.",
+      "example_thought": "That achievement doesn't matter — anyone could have done it.",
+      "game_signal": "Player dismisses compliments from NPCs or downplays achievements.",
+      "reframe": "What if that positive thing does count? How would that change things?"
+    },
+    {
+      "id": "jumping_to_conclusions",
+      "name": "Jumping to Conclusions",
+      "definition": "Making negative interpretations without supporting evidence.",
+      "subtypes": ["Mind Reading", "Fortune Telling"],
+      "example_thought": "That NPC thinks I'm stupid. This quest will definitely go wrong.",
+      "game_signal": "Player assumes NPC motivations or predicts negative quest outcomes.",
+      "reframe": "What evidence do you have for that? What's another possibility?"
+    },
+    {
+      "id": "magnification",
+      "name": "Magnification / Minimization",
+      "alias": "Binocular Trick",
+      "definition": "Exaggerating negatives or shrinking positives.",
+      "example_thought": "My mistake was catastrophic, but completing the quest was no big deal.",
+      "game_signal": "Player inflates failures and deflates successes in narrative choices.",
+      "reframe": "If a friend described this, how would you see the balance?"
+    },
+    {
+      "id": "emotional_reasoning",
+      "name": "Emotional Reasoning",
+      "definition": "Assuming feelings reflect reality: 'I feel it, therefore it must be true.'",
+      "example_thought": "I feel hopeless, so the situation must be hopeless.",
+      "game_signal": "Player's choices driven entirely by current emotional state, not game logic.",
+      "reframe": "Feelings are real, but they're not always facts. What do the facts say?"
+    },
+    {
+      "id": "should_statements",
+      "name": "Should Statements",
+      "definition": "Using 'should', 'must', 'ought to' to motivate through guilt.",
+      "example_thought": "I should be able to handle this. I must not show weakness.",
+      "game_signal": "Player expresses rigid expectations of their character's behavior.",
+      "reframe": "What if 'should' became 'could'? What would you choose freely?"
+    },
+    {
+      "id": "labeling",
+      "name": "Labeling",
+      "definition": "Attaching a fixed, global label to self or others based on behavior.",
+      "example_thought": "I'm a loser. That NPC is evil.",
+      "game_signal": "Player uses absolute labels for their character or NPCs.",
+      "reframe": "That was one action, not a definition. What else is true about them?"
+    },
+    {
+      "id": "personalization",
+      "name": "Personalization",
+      "definition": "Taking excessive responsibility for events outside your control.",
+      "example_thought": "The quest failed because of me — it's all my fault.",
+      "game_signal": "Player blames self for group failures or random game events.",
+      "reframe": "What other factors contributed? How much was actually in your control?"
+    },
+    {
+      "id": "catastrophizing",
+      "name": "Catastrophizing",
+      "definition": "Expecting the worst possible outcome in any situation.",
+      "example_thought": "If I make the wrong choice, everything will be ruined forever.",
+      "game_signal": "Player paralyzed by decision-making; asks for excessive reassurance.",
+      "reframe": "What's the most likely outcome? What would you do if that happened?"
+    },
+    {
+      "id": "control_fallacy",
+      "name": "Fallacy of Control",
+      "definition": "Feeling either totally responsible for everything or totally helpless.",
+      "example_thought": "Nothing I do matters — or — everything depends on me.",
+      "game_signal": "Player oscillates between passivity and hypercontrol in choices.",
+      "reframe": "What's within your influence right now? Focus on that."
+    },
+    {
+      "id": "fallacy_of_fairness",
+      "name": "Fallacy of Fairness",
+      "definition": "Expecting that life should always be fair and feeling resentful when it isn't.",
+      "example_thought": "It's not fair that this happened to my character.",
+      "game_signal": "Player shows resentment at narrative setbacks or NPC behavior.",
+      "reframe": "Fair and unfair are judgments. What can your character do with what is?"
+    },
+    {
+      "id": "blaming",
+      "name": "Blaming",
+      "definition": "Holding others entirely responsible for your emotional pain.",
+      "example_thought": "That NPC made me feel terrible. It's their fault.",
+      "game_signal": "Player attributes all negative feelings to external game characters.",
+      "reframe": "Others affect us, but how we respond is ours. What would help you feel better?"
+    },
+    {
+      "id": "heaven_reward_fallacy",
+      "name": "Heaven's Reward Fallacy",
+      "definition": "Expecting suffering will automatically lead to a reward.",
+      "example_thought": "I've struggled so much — I deserve a good ending.",
+      "game_signal": "Player expects automatic positive outcomes from enduring hardship.",
+      "reframe": "Your effort matters, but outcomes aren't guaranteed. What's valuable in the journey itself?"
+    }
+  ]
+}

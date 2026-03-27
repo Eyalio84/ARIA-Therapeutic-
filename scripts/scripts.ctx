@@ -1,0 +1,42 @@
+# scripts/ — FunctionGemma Utilities
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+# types: [script] = executable utility script
+
+## Download
+  download_functiongemma.py : Download GGUF or LoRA from HF [script]
+    -> hfHub
+    -> ggufFile, mergedModel
+
+## Inference Variants
+  functiongemma_inference.py : GGUF via llama-cpp-python [script]
+    -> llamaCpp, jsonAPI
+    ~> ggufFile
+  functiongemma_inference_ct2.py : Int8 via CTranslate2 [script]
+    -> ctranslate, transformers, jsonAPI
+    ~> ct2Model, mergedModel "tokenizer"
+  functiongemma_inference_hf.py : Safetensors via Transformers [script]
+    -> transformers, jsonAPI
+    ~> mergedModel
+
+## Connectivity
+  test-live.mjs : Gemini Live WebSocket test [script] -> genaiSDK
+
+## Local Models
+  ggufFile : GGUF file (q4_k_m / q8_0) [data]
+  ct2Model : CT2 int8 model [data]
+  mergedModel : Merged safetensors [data]
+
+## Output
+  jsonAPI : JSON function-call response (HTTP :8077 / stdout) [data]
+
+## Runtime Libraries
+  llamaCpp : llama-cpp-python [lib]
+  ctranslate : ctranslate2 [lib]
+  transformers : transformers + torch [lib]
+  genaiSDK : @google/genai [lib] -> geminiAPI
+
+## External
+  hfHub : HuggingFace Hub [ext]
+  geminiAPI : Gemini Live API [ext]

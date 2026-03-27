@@ -1,0 +1,43 @@
+# dashboard/ — Clinical Dashboard
+# format: ctx/1.0
+# last-verified: 2026-03-26
+# edges: -> call/render | ~> subscribe/read
+
+## Shell
+  DashboardShell : Tab nav + user selector [component] @entry
+    -> OverviewTab, TherapyKGTab, MoodTab, FlagsNotesTab, SessionsTab, AssessmentsTab
+    ~> dashboardStore, gameStore
+
+## tabs/ — Tab Screens
+  OverviewTab : Summary stats + controls [screen]
+    -> StatCard, SeverityBadge, TherapistControlsPanel
+    ~> dashboardStore
+  TherapyKGTab : Interactive KG graph [screen]
+    -> therapyAPI
+    ~> dashboardStore, ReactFlow
+  MoodTab : Mood velocity + history [screen]
+    -> MoodBar
+    ~> dashboardStore, MOOD_LABELS
+  FlagsNotesTab : Flags + therapist notes [screen]
+    ~> dashboardStore
+  SessionsTab : Sessions + choices + export [screen]
+    ~> dashboardStore
+  AssessmentsTab : Clinical scales catalog [screen]
+    -> dashboardAPI
+
+## Internal Components
+  StatCard : Stat display card [component]
+  SeverityBadge : Severity pill label [component]
+  TherapistControlsPanel : Pause/resume/message/disclosure [component]
+    -> dashboardAPI
+  MoodBar : Color-coded mood bar [component]
+
+## Stores
+  dashboardStore : useDashboardStore [store]
+  gameStore : useGameStore [store]
+
+## External
+  ReactFlow : Node graph renderer [ext]
+  MOOD_LABELS : Mood scale type [type]
+  therapyAPI : /api/therapy — KG graph data [ext]
+  dashboardAPI : /api/dashboard — Controls + health [ext]
