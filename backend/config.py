@@ -16,6 +16,10 @@ NAI_DIR = Path("/storage/self/primary/Download/gemini-3-pro/AI-LAB/docs/py-query
 # 4D Persona framework path (import from ari1/framework/)
 PERSONA_DIR = Path("/storage/self/primary/Download/ari1/framework")
 
+# Architectural KG (built from .ctx files by ctx-to-kg.py)
+CTX_KG_PATH = BACKEND_DIR.parent / "ctx-kg.db"
+CTX_EMBEDDINGS_PATH = BACKEND_DIR.parent / "data" / "ctx_embeddings.json"
+
 # API Keys
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 

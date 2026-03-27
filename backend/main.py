@@ -21,11 +21,12 @@ sys.path.insert(0, str(Path(__file__).parent))
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from config import HOST, PORT, CORS_ORIGINS
+from config import HOST, PORT, CORS_ORIGINS, CTX_KG_PATH, CTX_EMBEDDINGS_PATH
 from services.nai_service import NAIService
 from services.persona_service import PersonaService
 from services.introspection import IntrospectionService
 from services.response_service import ResponseService
+from services.ctx_kg_service import CtxKGService
 from routers import aria, products, kg
 
 # ── App Setup ────────────────────────────────────────────────────────
@@ -49,7 +50,16 @@ app.add_middleware(
 nai_service = NAIService()
 persona_service = PersonaService()
 introspection_service = IntrospectionService()
-response_service = ResponseService(nai_service, persona_service, introspection_service)
+
+# Architectural KG (optional — graceful degradation if ctx-kg.db missing)
+ctx_kg_service = CtxKGService(str(CTX_KG_PATH), str(CTX_EMBEDDINGS_PATH))
+if ctx_kg_service.available:
+    print(f"  Ctx KG: {ctx_kg_service.get_stats()}")
+else:
+    print("  Ctx KG: not available (run ctx-to-kg.py to build)")
+    ctx_kg_service = None
+
+response_service = ResponseService(nai_service, persona_service, introspection_service, ctx_kg=ctx_kg_service)
 
 # Initialize NAI (loads KG)
 nai_service.initialize()

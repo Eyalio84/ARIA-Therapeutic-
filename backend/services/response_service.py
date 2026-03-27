@@ -15,6 +15,7 @@ from typing import Dict, Any, List, Optional
 from services.nai_service import NAIService
 from services.persona_service import PersonaService
 from services.introspection import IntrospectionService, ValidationResult
+from services.ctx_kg_service import CtxKGService
 
 
 class ResponseService:
@@ -25,10 +26,12 @@ class ResponseService:
     """
 
     def __init__(self, nai: NAIService, persona: PersonaService,
-                 introspection: IntrospectionService):
+                 introspection: IntrospectionService,
+                 ctx_kg: Optional[CtxKGService] = None):
         self.nai = nai
         self.persona = persona
         self.introspection = introspection
+        self.ctx_kg = ctx_kg
 
     def process_query(self, user_message: str,
                       conversation_history: List[Dict[str, str]] = None,
@@ -68,11 +71,20 @@ class ResponseService:
         if kg_context:
             system_prompt += f"\n\nRELEVANT PRODUCT KNOWLEDGE:\n{kg_context}"
 
+        # Step 5: Architectural context (from .ctx KG, if available)
+        arch_context = ""
+        if self.ctx_kg and self.ctx_kg.available:
+            ctx_results = self.ctx_kg.search(user_message, top_k=5)
+            arch_context = self._build_architectural_context(ctx_results)
+            if arch_context:
+                system_prompt += f"\n\nARCHITECTURAL CONTEXT:\n{arch_context}"
+
         return {
             "system_prompt": system_prompt,
             "persona_state": state_dict,
             "kg_results": kg_results,
             "kg_context": kg_context,
+            "arch_context": arch_context,
             "session_id": session_id,
             "intent": kg_results.get("intent", "unknown"),
             "methods": kg_results.get("methods", []),
@@ -135,10 +147,34 @@ class ResponseService:
 
         return "\n".join(parts)
 
+    def _build_architectural_context(self, ctx_results: Dict[str, Any]) -> str:
+        """Build context string from architectural KG results."""
+        results = ctx_results.get("results", [])
+        if not results:
+            return ""
+
+        parts = []
+        for r in results[:5]:
+            name = r.get("name", "")
+            ntype = r.get("type", "")
+            desc = r.get("description", "")
+            neighbors = self.ctx_kg.get_neighbors(name) if self.ctx_kg else []
+
+            line = f"- {name} [{ntype}]: {desc}"
+            if neighbors:
+                connected = [f"{n['name']} ({n['edge_type']})" for n in neighbors[:5]]
+                line += f"\n  Connected to: {', '.join(connected)}"
+            parts.append(line)
+
+        return "\n".join(parts)
+
     def get_full_state(self, session_id: str = "default") -> Dict[str, Any]:
         """Get full system state for debugging/display."""
-        return {
+        state = {
             "kg_stats": self.nai.get_stats(),
             "persona_trajectory": self.persona.get_trajectory(session_id),
             "prediction": self.persona.predict_next(session_id),
         }
+        if self.ctx_kg:
+            state["ctx_kg_stats"] = self.ctx_kg.get_stats()
+        return state
