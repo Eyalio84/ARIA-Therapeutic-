@@ -26,6 +26,8 @@ Read `$ARGUMENTS` to determine the mode:
 - If `$ARGUMENTS` contains `-menu` → run **MODE: MENU**
 - If `$ARGUMENTS` is empty → run **MODE: MENU** (default)
 
+**Global flag:** If `$ARGUMENTS` contains `--dry-run`, set `DRY_RUN=true`. In dry-run mode, scan and report what would be done but do NOT create or modify any files. Supported by `-doc` and `-update`.
+
 ---
 
 ## MODE: NEW PROJECT (`/ctx -new`)
@@ -380,6 +382,23 @@ This mode scans an existing codebase and generates the full context management s
 6. If any DOCUMENTED folder exists, read ONE of its `start-here.md` files to learn the existing style. Match it.
 7. Read `docs/CTX-FORMAT-SPEC.md` if it exists. If not, create it first (same as -new Step 2).
 
+**If `DRY_RUN=true`, stop here and print the scan report:**
+```
+/ctx -doc --dry-run
+
+Would document {N} folders:
+  src/components/game/     — 47 files, 11 subdirs
+  src/components/su/       — 3 files
+  src/lib/aria-core/       — 32 files, 8 subdirs
+  backend/services/        — 18 files
+  ...
+
+Already documented (skipped): {M} folders
+Estimated: {N} agents, ~{N*8000} tokens
+
+Run /ctx -doc (without --dry-run) to execute.
+```
+
 ### Phase 2 — CHILD FOLDER AGENTS (parallel)
 
 For EACH folder marked UNDOCUMENTED that has 3+ source files, spawn a subagent (use the Agent tool) in parallel, in swarms of 5. Give each agent this task:
@@ -402,7 +421,7 @@ Rules:
 
 Backend Counterpart (required if API calls exist):
 - Scan source files for fetch('/api/...') or equivalent HTTP calls
-- If found: identify which backend routers they target (e.g. /api/termux/* → termux router)
+- If found: read .ctx-config.json for router mappings. If not available, infer from URL path segments and backend file names (e.g. /api/users/* likely maps to a users router file)
 - Add a "## Backend Counterpart" section to start-here.md with a table of routers used and links to their start-here.md
 - Add a "## Backend" section to {FOLDER}.ctx with backend router nodes [backend] and => edges from calling components
 - Add a "### Backend API" table to {FOLDER}.md External Dependencies section listing each endpoint, method, router, and purpose
@@ -445,11 +464,31 @@ Run a final check:
 
 This mode performs incremental surgical updates to existing context files when source code has changed. Unlike `-doc` (full generation), `-update` reads what's already there and patches only what's wrong or missing.
 
-### Step 1 — Determine Scope
+### Step 1 — Determine Scope and Load Config
 
 Parse `$ARGUMENTS` after `-update`:
 - If a path is given (e.g. `/ctx -update src/components`) → scope to that folder and its children
+- If `--dry-run` is present → scan and report only, do not modify any files
 - If no path → scope to the full project (all documented folders)
+
+Check for `.ctx-config.json` at project root. If it exists, read the `backendRouters` mapping. If not, auto-discover backend routers:
+1. Find the backend directory (look for `backend/`, `server/`, `api/`, or directory containing route handler files)
+2. Scan for route handler files (FastAPI: `@router`, Express: `router.get`, Django: `urlpatterns`, etc.)
+3. Build URL-to-file mapping by parsing route decorators
+4. Write the discovered mapping to `.ctx-config.json` for future runs
+5. Print what was discovered and ask user to confirm before proceeding
+
+**`.ctx-config.json` format:**
+```json
+{
+  "backendDir": "backend/routers",
+  "backendRouters": {
+    "/api/game/*": "backend/routers/game.py",
+    "/api/aria/*": "backend/routers/aria.py"
+  },
+  "backendEntryDoc": "backend/routers/start-here.md"
+}
+```
 
 ### Step 2 — Find Stale or Incomplete Folders
 
@@ -467,10 +506,11 @@ Folders to update:
   src/components/sdk/     — incomplete (API calls found, no Backend Counterpart section)
   src/app/                — current ✓
   ...
-Proceed? (yes/no)
 ```
 
-Wait for user confirmation before Step 3.
+**If `DRY_RUN=true`, stop here.** Print the report and exit — do not modify any files.
+
+Otherwise, ask `Proceed? (yes/no)` and wait for user confirmation before Step 3.
 
 ### Step 3 — Update Each Folder (parallel, swarms of 5)
 
@@ -498,15 +538,13 @@ Then perform a gap analysis:
 Patch only what's wrong — do not regenerate files from scratch.
 Update last-verified to today's date in ALL 3 files you touch.
 
-Backend router identification guide (for this project):
-  /api/termux/*    → backend/routers/termux.py
-  /api/game/*      → backend/routers/game.py
-  /api/aria/*      → backend/routers/aria.py
-  /api/dashboard/* → backend/routers/dashboard.py
-  /api/therapy/*   → backend/routers/therapy.py
-  /api/kg/*        → backend/routers/kg.py
-  /api/products/*  → backend/routers/products.py
-  /api/docs/*      → backend/routers/docs.py
+Backend router identification:
+- Read .ctx-config.json at project root for the router mapping (if it exists)
+- If no config exists: scan the backend directory for route handler files
+  (look for @router, @app.get/post, router.get/post, etc.)
+  and infer the URL-to-file mapping from route decorators
+- Match each fetch('/api/{segment}/...') to the router file that handles /{segment}/*
+- If you cannot determine the mapping, ask the user
 ```
 
 ### Step 4 — Summary

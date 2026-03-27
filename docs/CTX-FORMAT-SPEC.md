@@ -67,7 +67,7 @@ The header consists of lines beginning with `#` (single hash + space). It must a
 # {folder}/ — {title}
 # format: ctx/1.0
 # last-verified: YYYY-MM-DD
-# edges: -> call/render | ~> subscribe/read
+# edges: -> call/render | ~> subscribe/read | => HTTP API call
 ```
 
 | Field | Description |
@@ -75,7 +75,7 @@ The header consists of lines beginning with `#` (single hash + space). It must a
 | **Line 1** | Folder name and human-readable title |
 | **format** | Format version. Always `ctx/1.0` for this spec. |
 | **last-verified** | Date when this file was last confirmed accurate against source code. ISO 8601 date (YYYY-MM-DD). |
-| **edges** | Legend declaring all edge types used in this file. Required so the meaning of `->` and `~>` is never ambiguous. |
+| **edges** | Legend declaring all edge types used in this file. Required so the meaning of `->`, `~>`, and `=>` is never ambiguous. Only include edge types actually used in the file. |
 
 ### 3.2 Optional Header Fields
 
@@ -159,7 +159,7 @@ Nodes represent individual components, modules, files, stores, services, or any 
 
 - Node names must be unique within the file
 - Names should match the source code identifier (component name, file name, store name)
-- Names must not contain `:`, `->`, `~>`, `[`, `]`, or `#`
+- Names must not contain `:`, `->`, `~>`, `=>`, `[`, `]`, or `#`
 - Names are case-sensitive
 - When referencing nodes in edges, the name must match exactly
 
@@ -183,6 +183,7 @@ Type tags classify nodes for quick scanning. The following types are defined in 
 | `[ext]` | External service or API | Gemini API, HuggingFace |
 | `[dir]` | Collapsed child directory | A folder represented as a single node |
 | `[doc]` | Documentation file | Research docs, plans |
+| `[backend]` | Backend API router (used in Backend Counterpart pattern) | game router, aria router |
 
 Custom types are permitted. If a project needs domain-specific types, they may be added as `[custom-type]` (lowercase, hyphenated). Custom types should be documented in the file header:
 
@@ -228,24 +229,27 @@ Edges represent relationships between nodes. In `.ctx`, edges are **always inlin
   {source} : {description} [{type}]
     -> {target1}, {target2}, {target3}
     ~> {target4}, {target5}
+    => {target6}
 ```
 
 - Edges are indented 2 spaces deeper than their source node
 - `->` = direct dependency (call, render, import, instantiate)
 - `~>` = reactive dependency (subscribe, read, observe, use)
+- `=>` = HTTP API call (frontend component calls backend router)
 - Multiple targets on one line, comma-separated
-- A node may have multiple edge lines (one `->` and one `~>`, or multiple of each)
+- A node may have multiple edge lines (one `->`, one `~>`, one `=>`, or multiple of each)
 
 ### 6.2 Edge Types
 
-v1.0 defines exactly two edge types:
+v1.0 defines three edge types:
 
 | Syntax | Name | Semantics | Examples |
 |---|---|---|---|
 | `->` | **call** | Source directly invokes, renders, imports, or instantiates target. Synchronous, explicit dependency. If target breaks, source breaks. | Component renders child, function calls function, router calls service |
 | `~>` | **subscribe** | Source reactively reads, observes, or subscribes to target. Indirect, decoupled dependency. Source consumes target's output but doesn't control it. | Component reads store, service queries database, module uses type definitions |
+| `=>` | **http** | Source makes HTTP API calls to target. Cross-boundary dependency — frontend to backend, service to service, or any network call. | Component fetches from API router, service calls external API |
 
-The edge type set is **closed** in v1.0. No additional edge types may be defined. This constraint is intentional — two types is the minimum needed to distinguish direct from reactive dependencies, and additional types add cognitive load without proportional benefit.
+The edge type set is **closed** in v1.0. No additional edge types may be defined. Three types distinguish direct dependencies, reactive subscriptions, and network boundaries — the three fundamental categories of coupling in modern full-stack applications.
 
 ### 6.3 Edge Labels
 

@@ -1,0 +1,14 @@
+{
+  "backendDir": "backend/routers",
+  "backendRouters": {
+    "/api/game/*": "backend/routers/game.py",
+    "/api/aria/*": "backend/routers/aria.py",
+    "/api/termux/*": "backend/routers/termux.py",
+    "/api/dashboard/*": "backend/routers/dashboard.py",
+    "/api/therapy/*": "backend/routers/therapy.py",
+    "/api/kg/*": "backend/routers/kg.py",
+    "/api/products/*": "backend/routers/products.py",
+    "/api/docs/*": "backend/routers/docs.py"
+  },
+  "backendEntryDoc": "backend/routers/start-here.md"
+}
