@@ -1,4 +1,4 @@
-<!-- last-verified: 2026-03-25 -->
+<!-- last-verified: 2026-03-27 -->
 
 # store/ — Full Reference
 

@@ -1,4 +1,4 @@
-<!-- last-verified: 2026-03-26 -->
+<!-- last-verified: 2026-03-27 -->
 
 # src/ — Full Reference
 

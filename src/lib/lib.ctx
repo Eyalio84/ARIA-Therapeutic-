@@ -1,6 +1,6 @@
 # lib/ — Core Engine
 # format: ctx/1.0
-# last-verified: 2026-03-26
+# last-verified: 2026-03-27
 # edges: -> call/render | ~> subscribe/read
 
 ## App Layer
