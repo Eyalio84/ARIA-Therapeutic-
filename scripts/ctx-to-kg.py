@@ -530,6 +530,161 @@ def quick_query(db_path: str, embeddings_path: str, query: str, top_k: int = 15,
     return result
 
 
+# ============================================================================
+# IMPACT ANALYSIS — reverse traversal from a target node
+# ============================================================================
+
+def impact_query(db_path: str, embeddings_path: str, target_name: str, top_k: int = 25, output_format: str = 'text'):
+    """Find everything that depends on a target node. Groups by risk level."""
+    nodes, embeddings, conn = _load_kg_and_embeddings(db_path, embeddings_path)
+
+    # Find target node (exact match, fallback to fuzzy)
+    target = None
+    if target_name in nodes:
+        target = target_name
+    else:
+        # Fuzzy: find best token overlap
+        query_tokens = set(tokenize(target_name))
+        best_score, best_name = 0, None
+        for name in nodes:
+            overlap = query_tokens & set(tokenize(name))
+            if len(overlap) > best_score:
+                best_score = len(overlap)
+                best_name = name
+        target = best_name
+
+    if not target or target not in nodes:
+        result = {'query': target_name, 'target': None, 'error': f'Node "{target_name}" not found', 'results': []}
+        if output_format == 'json':
+            print(json.dumps(result))
+        else:
+            print(f"\n  Node \"{target_name}\" not found in KG.")
+        return result
+
+    target_node = nodes[target]
+
+    # Hop 1: direct dependents (HIGH risk)
+    high_risk = []
+    hop1_names = set()
+    for row in conn.execute("SELECT from_node, type FROM edges WHERE to_node = ?", (target,)):
+        name = row['from_node']
+        if name != target and name in nodes:
+            hop1_names.add(name)
+            high_risk.append({
+                'name': name,
+                'type': nodes[name].get('type', 'unknown'),
+                'description': nodes[name].get('description', ''),
+                'source_file': nodes[name].get('source_file', ''),
+                'edge_type': row['type'],
+                'risk': 'high',
+                'path': f"{name} --{row['type']}--> {target}",
+            })
+
+    # Hop 2: transitive dependents (MEDIUM risk)
+    medium_risk = []
+    for hop1 in hop1_names:
+        for row in conn.execute("SELECT from_node, type FROM edges WHERE to_node = ?", (hop1,)):
+            name = row['from_node']
+            if name != target and name not in hop1_names and name in nodes:
+                medium_risk.append({
+                    'name': name,
+                    'type': nodes[name].get('type', 'unknown'),
+                    'description': nodes[name].get('description', ''),
+                    'source_file': nodes[name].get('source_file', ''),
+                    'edge_type': row['type'],
+                    'risk': 'medium',
+                    'path': f"{name} --{row['type']}--> {hop1} --X--> {target}",
+                })
+
+    # Deduplicate medium risk
+    seen_medium = set()
+    unique_medium = []
+    for r in medium_risk:
+        if r['name'] not in seen_medium:
+            seen_medium.add(r['name'])
+            unique_medium.append(r)
+    medium_risk = unique_medium
+
+    # Embedding similarity: indirect dependents (not in graph)
+    graph_found = hop1_names | seen_medium | {target}
+    indirect = []
+    if target in embeddings:
+        target_vec = embeddings[target]
+        for name, vec in embeddings.items():
+            if name in graph_found:
+                continue
+            sim = cosine_sim(target_vec, vec)
+            if sim > 0.4:
+                indirect.append({
+                    'name': name,
+                    'type': nodes.get(name, {}).get('type', 'unknown'),
+                    'description': nodes.get(name, {}).get('description', ''),
+                    'source_file': nodes.get(name, {}).get('source_file', ''),
+                    'similarity': round(sim, 4),
+                    'risk': 'indirect',
+                    'path': f"{name} ~~ similar embedding ~~ {target}",
+                })
+        indirect.sort(key=lambda x: -x['similarity'])
+        indirect = indirect[:top_k]
+
+    conn.close()
+
+    result = {
+        'query': target_name,
+        'target': {
+            'name': target,
+            'type': target_node.get('type', 'unknown'),
+            'description': target_node.get('description', ''),
+        },
+        'impact': {
+            'high': high_risk,
+            'medium': medium_risk,
+            'indirect': indirect,
+        },
+        'metadata': {
+            'high_count': len(high_risk),
+            'medium_count': len(medium_risk),
+            'indirect_count': len(indirect),
+            'total': len(high_risk) + len(medium_risk) + len(indirect),
+        }
+    }
+
+    if output_format == 'json':
+        print(json.dumps(result))
+        return result
+
+    # Text format
+    t = result['target']
+    meta = result['metadata']
+    print(f"\n{'='*70}")
+    print(f"  Impact analysis: \"{t['name']}\" [{t['type']}]")
+    print(f"  {t['description'][:60]}")
+    print(f"  Total affected: {meta['total']} ({meta['high_count']} high, {meta['medium_count']} medium, {meta['indirect_count']} indirect)")
+    print(f"{'='*70}")
+
+    if high_risk:
+        print(f"\n  HIGH RISK — direct dependents (will break if changed):")
+        for i, r in enumerate(high_risk, 1):
+            print(f"    {i:2d}. {r['name']:<28s} [{r['type']}] via {r['edge_type']}")
+            print(f"        {r['description'][:55]}")
+
+    if medium_risk:
+        print(f"\n  MEDIUM RISK — transitive (2 hops away):")
+        for i, r in enumerate(medium_risk[:15], 1):
+            print(f"    {i:2d}. {r['name']:<28s} [{r['type']}] via {r['edge_type']}")
+            print(f"        {r['path']}")
+
+    if indirect:
+        print(f"\n  INDIRECT — semantically similar (may need review):")
+        for i, r in enumerate(indirect[:10], 1):
+            print(f"    {i:2d}. {r['name']:<28s} [{r['type']}] similarity={r['similarity']:.3f}")
+
+    if meta['total'] == 0:
+        print(f"\n  No dependents found — this node is a leaf or isolated.")
+
+    return result
+
+
 def cosine_sim(a, b):
     dot = sum(x*y for x, y in zip(a, b))
     na = math.sqrt(sum(x*x for x in a))
@@ -550,6 +705,7 @@ def main():
     parser.add_argument('--embeddings', default='data/ctx_embeddings.json', help='Output embeddings path')
     parser.add_argument('--dim', type=int, default=50, help='Embedding dimensions (default: 50)')
     parser.add_argument('--query', '-q', type=str, help='Quick semantic search query')
+    parser.add_argument('--impact', action='store_true', help='Impact analysis mode (reverse traversal from target)')
     parser.add_argument('--format', choices=['text', 'json'], default='text', help='Output format (default: text)')
     parser.add_argument('--stats', action='store_true', help='Print KG statistics')
     parser.add_argument('--top-k', type=int, default=15, help='Top-k results for query')
@@ -560,7 +716,10 @@ def main():
 
     # If just querying, skip build if DB exists
     if args.query and os.path.exists(db_path) and os.path.exists(emb_path):
-        quick_query(db_path, emb_path, args.query, args.top_k, args.format)
+        if args.impact:
+            impact_query(db_path, emb_path, args.query, args.top_k, args.format)
+        else:
+            quick_query(db_path, emb_path, args.query, args.top_k, args.format)
         return
 
     # Build KG
