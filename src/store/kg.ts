@@ -15,7 +15,7 @@ export const NODE_COLORS: Record<string, string> = {
   brand_identity: "#e0e0e0",
 }
 
-interface KgNodeData {
+interface KgNodeData extends Record<string, unknown> {
   label: string
   type: string
   description: string

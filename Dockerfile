@@ -5,6 +5,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 RUN npm run build
+RUN mkdir -p /app/public
 
 # Stage 2: Production
 FROM node:20-slim
@@ -22,7 +23,7 @@ COPY --from=builder /app/tsconfig.json ./
 COPY --from=builder /app/tailwind.config.ts ./
 COPY --from=builder /app/postcss.config.js ./
 COPY --from=builder /app/src ./src
-COPY --from=builder /app/public ./public 2>/dev/null || true
+COPY --from=builder /app/public ./public
 
 # Copy backend
 COPY backend/ ./backend/

@@ -56,3 +56,7 @@ context-packets/*.md
 
 # Claude skill export (convenience copy)
 ctx-skill/
+
+# Deployment scripts (contain API keys — never commit)
+scripts/deploy-cloud-run.sh
+scripts/deploy-prompt.md

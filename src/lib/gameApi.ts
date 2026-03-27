@@ -156,7 +156,7 @@ export async function saveFullGame(params: {
   gameId: string
   cartridgeId?: string
   narratives: string[]
-  transcript?: Array<Record<string, unknown>>
+  transcript?: unknown[]
   ariaContext?: string
   keyEvents?: string[]
   sessionState?: Record<string, unknown>

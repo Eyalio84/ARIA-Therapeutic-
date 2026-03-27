@@ -12,6 +12,7 @@ import { initRecipes } from "@/lib/recipes"
 import { LogicEditor } from "./LogicEditor"
 import { ColorPicker } from "./ColorPicker"
 import type { PersonaConfig } from "@/lib/aria/persona"
+import type { FunctionDeclaration } from "@/lib/aria-core"
 
 // ── Debug Entry ──
 interface DebugEntry {
@@ -153,10 +154,10 @@ const OBJECT_FUNCTIONS = [...SHARED_FUNCTIONS, ...CANVAS_FUNCTIONS]
 
 // Helper to get functions for a given context
 type ViewContext = "canvas" | "logic"
-function getFunctionsForContext(ctx: ViewContext) {
+function getFunctionsForContext(ctx: ViewContext): FunctionDeclaration[] {
   return ctx === "logic"
-    ? [...SHARED_FUNCTIONS, ...LOGIC_FUNCTIONS]
-    : [...SHARED_FUNCTIONS, ...CANVAS_FUNCTIONS]
+    ? [...SHARED_FUNCTIONS, ...LOGIC_FUNCTIONS] as FunctionDeclaration[]
+    : [...SHARED_FUNCTIONS, ...CANVAS_FUNCTIONS] as FunctionDeclaration[]
 }
 
 
