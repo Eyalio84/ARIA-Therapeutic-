@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.env
+.env.local
+.env.*.local
+__pycache__
+*.pyc
+models/
+ctx-skill/
+docs/hf-token.txt
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+!backend/data/jewelry-store-kg.db
