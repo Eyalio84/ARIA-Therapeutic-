@@ -145,6 +145,46 @@ Then add the hook to `.claude/settings.local.json` (create if needed, merge if e
 }
 ```
 
+### Step 3b — Install Git Pre-Commit Hook (if git repo detected)
+
+Check if the project is a git repo (`test -d .git`). If yes, create `scripts/pre-commit-ctx-check.sh`:
+
+```bash
+#!/usr/bin/env bash
+# Pre-commit hook: warns if source files changed in a documented folder
+# but the corresponding context files (start-here.md, .ctx, .md) were not updated.
+set -euo pipefail
+
+YELLOW='\033[1;33m'
+RESET='\033[0m'
+WARN=0
+
+STAGED=$(git diff --cached --name-only --diff-filter=AMR)
+DOCUMENTED_FOLDERS=$(git ls-files '*/start-here.md' | sed 's|/start-here.md$||' | sort -u)
+
+for folder in $DOCUMENTED_FOLDERS; do
+  foldername=$(basename "$folder")
+  source_changed=$(echo "$STAGED" | grep "^${folder}/" | grep -v '\.md$' | grep -v '\.ctx$' | head -1 || true)
+  [ -z "$source_changed" ] && continue
+  doc_changed=$(echo "$STAGED" | grep -E "^${folder}/(start-here\.md|${foldername}\.ctx|${foldername}\.md)$" | head -1 || true)
+  if [ -z "$doc_changed" ]; then
+    WARN=1
+    echo -e "${YELLOW}⚠ ctx drift: ${folder}/ has source changes but no context doc updates${RESET}"
+    echo "  Consider running: /ctx -update ${folder}"
+  fi
+done
+
+if [ "$WARN" -eq 1 ]; then
+  echo ""
+  echo -e "${YELLOW}Commit proceeding — update docs when ready, or run /ctx -update${RESET}"
+fi
+exit 0
+```
+
+Make it executable and install: `chmod +x scripts/pre-commit-ctx-check.sh && cp scripts/pre-commit-ctx-check.sh .git/hooks/pre-commit`
+
+If not a git repo, skip this step entirely.
+
 ### Step 4 — Create Root Templates
 
 Create `start-here.md`:

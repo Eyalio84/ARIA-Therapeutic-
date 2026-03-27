@@ -3,8 +3,8 @@
 > A documentation architecture that gives AI coding assistants instant understanding of your codebase — without reading every file.
 
 **Author:** Eyal Nof
-**Version:** 1.0
-**Date:** 2026-03-26
+**Version:** 1.1
+**Date:** 2026-03-27
 
 ---
 
@@ -160,7 +160,7 @@ The `.ctx` format is a structured architecture notation that LLMs understand wit
 # components/ — UI Components
 # format: ctx/1.0
 # last-verified: 2026-03-26
-# edges: -> call/render | ~> subscribe/read
+# edges: -> call/render | ~> subscribe/read | => HTTP API call
 
 ## Chat Interface
   ChatPanel     : Chat orchestrator [component] @entry
@@ -194,6 +194,7 @@ The `.ctx` format is a structured architecture notation that LLMs understand wit
 | `Name : description [type]` | Node definition |
 | `-> A, B, C` | Direct dependencies (call, render, import) |
 | `~> X, Y` | Reactive dependencies (subscribe, read, observe) |
+| `=> A, B` | HTTP API calls (frontend to backend router) |
 | `@entry` | Marks the primary entry point |
 | `... (N) : a, b, c [type]` | Collapsed group of similar nodes |
 | `## dir/ (46) -> dir/dir.ctx` | Drill-down to child .ctx file |
@@ -217,6 +218,7 @@ The `.ctx` format is a structured architecture notation that LLMs understand wit
 | `[data]` | Data files/datasets |
 | `[test]` | Test files |
 | `[doc]` | Documentation files |
+| `[backend]` | Backend API routers (used in Backend Counterpart pattern) |
 
 ### Why .ctx instead of Mermaid?
 
@@ -335,6 +337,22 @@ This scaffolds the system with templates, the spec, the staleness hook, and main
 
 This scans your codebase, identifies documentation hubs (folders with 3+ source files), and generates the complete 3-file set for every folder using parallel agents. It also installs the infrastructure (hook, spec, maintenance guide).
 
+### Update Stale Docs
+
+```
+/ctx -update [path]
+```
+
+Incrementally patches stale or incomplete docs. Scans for folders where source files changed since `last-verified`, or where the Backend Counterpart pattern is missing despite API calls existing. Shows you what needs updating and patches only the gaps — does not regenerate from scratch.
+
+### Interactive Context Loader
+
+```
+/ctx -menu    (or just /ctx)
+```
+
+Presents a numbered list of all documented areas in your project. Pick what you want to work on and the relevant context files load automatically. This is the recommended way to start a new session.
+
 ### Manual Installation
 
 If you prefer to set things up yourself:
@@ -356,7 +374,8 @@ If you prefer to set things up yourself:
      }
    }
    ```
-4. Create the 3-file set for each folder following the spec
+4. If using git, copy `scripts/pre-commit-ctx-check.sh` and install as `.git/hooks/pre-commit`
+5. Create the 3-file set for each folder following the spec
 
 ---
 
@@ -372,7 +391,55 @@ If you prefer to set things up yourself:
 | Deleted or renamed a file | Update all 3 files in that folder |
 | Added a dependency between components | Add an edge in the source's .ctx file |
 | Created a subfolder | Add a row to the parent's start-here.md |
-| Completed a major feature | Run `/ctx -doc` to catch any gaps |
+| Completed a major feature | Run `/ctx -update` to catch any gaps |
+| Added an API call (`fetch('/api/...')`) | Add Backend Counterpart sections to all 3 files |
+
+### Backend Counterpart Pattern
+
+When a frontend folder makes HTTP API calls, its context docs must cross-reference the backend:
+
+**In `start-here.md`:**
+```markdown
+## Backend Counterpart
+| Router | What this folder uses it for | Entry point |
+|--------|------------------------------|-------------|
+| **game** | Interview, play actions, save/load | [backend/routers/start-here.md](...) |
+```
+
+**In `{folder}.ctx`:**
+```
+  GameScreen : Main gameplay [screen]
+    => game, dashboard           # HTTP API calls
+
+## Backend
+  game : Game engine API [backend]
+  dashboard : Therapist API [backend]
+```
+
+**In `{folder}.md`:**
+```markdown
+### Backend API
+| Endpoint | Method | Router | Purpose |
+|----------|--------|--------|---------|
+| `/api/game/play/action` | POST | game | Submit gameplay action |
+```
+
+This ensures any AI session working on frontend code instantly knows which backend files are relevant without searching.
+
+### Git Integration
+
+If your project uses git, the system includes a **pre-commit hook** (`scripts/pre-commit-ctx-check.sh`) that:
+- Checks if you staged source files in a documented folder
+- Warns if you did NOT also stage the corresponding context files
+- Suggests running `/ctx -update` to fix the gap
+- **Non-blocking** — warns but does not reject commits
+
+This catches documentation drift at commit time. Combined with the staleness hook (which catches it at read time), you have two-layer protection.
+
+Git also provides:
+- **Rollback safety** — `git checkout -- path/to/docs` instantly reverts a bad `/ctx -update`
+- **Diff visibility** — context file changes in `git diff` serve as architectural changelogs
+- **History** — every doc update is tracked with full version control
 
 ### Rules
 
@@ -381,6 +448,8 @@ If you prefer to set things up yourself:
 3. **Node names in .ctx edges must exactly match definitions.** No aliases, no abbreviations.
 4. **Update `last-verified` dates** when you confirm docs match code. This is what the staleness hook checks.
 5. **Collapse large groups** in .ctx files: `... (N) : name1, name2 [type]` for groups of 6+ similar nodes that aren't edge targets.
+6. **If source files contain API calls**, the Backend Counterpart pattern is required in all 3 doc files.
+7. **Use `=>` for HTTP API edges** — always include `=> HTTP API call` in the .ctx edges legend when used.
 
 ---
 
@@ -417,6 +486,12 @@ Want to understand a subsystem?
 
 Want to know what's in a folder?
   → Read that folder's start-here.md
+
+Want to start a new session efficiently?
+  → Run /ctx (interactive menu) or /ctx -menu
+
+Want to update stale docs?
+  → Run /ctx -update [optional path]
 ```
 
 ---
@@ -442,7 +517,7 @@ Lazy-Loading Context Management System
 │
 ├── Architecture Layer ({folder}.ctx × N folders)
 │   ├── Structured node definitions
-│   ├── Inline edges (-> and ~>)
+│   ├── Inline edges (->, ~>, and =>)
 │   ├── Group hierarchy (## / ###)
 │   ├── Cross-file drill-down references
 │   └── Collapse syntax for large groups
@@ -452,6 +527,7 @@ Lazy-Loading Context Management System
 │
 ├── Enforcement Layer
 │   ├── doc-staleness-hook.sh (PreToolUse on Read, ~5ms)
+│   ├── pre-commit-ctx-check.sh (git pre-commit, warns on ctx drift)
 │   └── check-doc-staleness.py (on-demand deep audit)
 │
 └── Specification Layer

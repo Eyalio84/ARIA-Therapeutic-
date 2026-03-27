@@ -27,7 +27,7 @@ A `.ctx` file is a **structured architecture map** that an LLM can read in one p
 # src/ — Context Map
 # format: ctx/1.0
 # last-verified: 2026-03-26
-# edges: -> call/render | ~> subscribe/read
+# edges: -> call/render | ~> subscribe/read | => HTTP API call
 
 ## app/ — Routes
   layout     : Root HTML, fonts, metadata [root] @entry
@@ -104,7 +104,7 @@ This prevents the critical failure mode: an AI session confidently acting on a s
 # folder/ — Title
 # format: ctx/1.0
 # last-verified: 2026-03-26
-# edges: -> call/render | ~> subscribe/read
+# edges: -> call/render | ~> subscribe/read | => HTTP API call
 ```
 
 ### Groups
@@ -118,17 +118,28 @@ This prevents the critical failure mode: an AI session confidently acting on a s
   ComponentName : What it does in 1 sentence [type]
 ```
 
-Type tags: `[root]` `[screen]` `[component]` `[lib]` `[store]` `[service]` `[router]` `[config]` `[ext]` `[dir]` `[type]` `[data]` `[test]` `[doc]`
+Type tags: `[root]` `[screen]` `[component]` `[lib]` `[store]` `[service]` `[router]` `[config]` `[ext]` `[dir]` `[type]` `[data]` `[test]` `[doc]` `[backend]`
 
 ### Edges (inline under source node)
 ```
   ChatPanel : Chat orchestrator [component]
     -> VoiceOrb, ChatInput          # direct: renders these
     ~> chatStore                     # reactive: subscribes to this
+    => ariaRouter                    # HTTP: calls backend API
 ```
 
 - `->` = direct dependency (call, render, import)
 - `~>` = reactive dependency (subscribe, read, observe)
+- `=>` = HTTP API call (frontend to backend router)
+
+### Backend Counterpart Pattern
+
+When a frontend component calls backend APIs (`fetch('/api/...')`), its docs must include:
+- `start-here.md` — a `## Backend Counterpart` table linking to relevant backend router docs
+- `{folder}.ctx` — `=>` edges from calling components + a `## Backend` section with `[backend]` nodes
+- `{folder}.md` — a `### Backend API` table listing endpoints, methods, routers, and purposes
+
+This pattern ensures an AI session always knows which backend files are relevant when working on frontend code.
 
 ### Collapse (for large groups)
 ```
