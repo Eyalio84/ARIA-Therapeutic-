@@ -23,8 +23,9 @@ Read `$ARGUMENTS` to determine the mode:
 - If `$ARGUMENTS` contains `-new` → run **MODE: NEW PROJECT**
 - If `$ARGUMENTS` contains `-doc` → run **MODE: DOCUMENT EXISTING**
 - If `$ARGUMENTS` contains `-update` → run **MODE: UPDATE**
+- If `$ARGUMENTS` contains `-search` → run **MODE: SEARCH**
 - If `$ARGUMENTS` contains `-menu` → run **MODE: MENU**
-- If `$ARGUMENTS` is empty → run **MODE: MENU** (default)
+- If `$ARGUMENTS` is empty → run **MODE: MENU** (default — includes search fallback)
 
 **Global flag:** If `$ARGUMENTS` contains `--dry-run`, set `DRY_RUN=true`. In dry-run mode, scan and report what would be done but do NOT create or modify any files. Supported by `-doc` and `-update`.
 
@@ -596,6 +597,8 @@ Options:
 
 Build the option list dynamically from the discovered start-here.md files. Use the `# Title` line from each start-here.md as the description. Exclude node_modules and build artifacts.
 
+**Search fallback:** Add a final option: "Or describe what you want to work on" — if the user selects this (or types text via the "Other" option), route their input to **MODE: SEARCH** logic (run `ctx-to-kg.py --query` and present grouped results). This lets `/ctx` with no args serve as both a menu and a search interface.
+
 ### Step 3 — Load selected context
 
 Based on the user's choice:
@@ -603,6 +606,96 @@ Based on the user's choice:
 2. Read the selected folder's `{folder}.ctx` (for architecture understanding)
 3. If the `start-here.md` has a **Backend Counterpart** section, note the linked backend folders but do NOT auto-load them — mention them to the user: "This area also connects to backend/routers/ — want me to load that context too?"
 4. Report what was loaded and ask what the user wants to do
+
+---
+
+## MODE: SEARCH (`/ctx -search`)
+
+This mode performs semantic + graph search across the project's architecture using structural contextual embeddings. It finds architecturally related components that text search (grep) would miss.
+
+### Step 1 — Extract Query and Check KG
+
+Parse `$ARGUMENTS` after `-search`:
+- The search query is everything after `-search` (e.g., `/ctx -search voice input` → query is `"voice input"`)
+- If `--impact` flag is present, switch to impact analysis mode (see Step 4)
+
+Check if `ctx-kg.db` and `data/ctx_embeddings.json` exist at project root.
+- If they DON'T exist: run `python3 scripts/ctx-to-kg.py --root .` via Bash to build the KG and embeddings first. Inform the user: "Building architecture KG from .ctx files..."
+- If they DO exist: proceed directly to Step 2.
+
+### Step 2 — Run Search
+
+Execute via Bash:
+```
+python3 scripts/ctx-to-kg.py --query "{query}" --format json --root . --top-k 15
+```
+
+Parse the JSON output. The structure is:
+```json
+{
+  "query": "voice input",
+  "results": [
+    {"name": "GameVoiceOrb", "type": "component", "description": "...", "group": "...", "source_file": "...", "score": 1.44, "sources": {"text": 1.0, "embed": 0.74}}
+  ],
+  "metadata": {"text_matches": 24, "embed_neighbors": 195, "graph_connected": 29, "grep_would_miss": 186}
+}
+```
+
+### Step 3 — Present Results
+
+Group results by layer (infer from `source_file`):
+- Files containing `src/components` → **Frontend Components**
+- Files containing `src/store` → **State Stores**
+- Files containing `src/lib` → **Libraries**
+- Files containing `backend/routers` → **Backend Routers**
+- Files containing `backend/services` → **Backend Services**
+- Everything else → **Other**
+
+Present grouped results:
+```
+Found 15 results for "voice input" (grep would miss 186)
+
+Frontend Components:
+  1. GameVoiceOrb [component] — Floating mic button (score: 1.44, via text+embed)
+  2. VoiceStatus [component] — State label (score: 1.22, via text+embed)
+  3. AriaPanel [component] — Voice + personality config (score: 1.24, via text)
+
+Libraries:
+  4. gameAriaAdapter [lib] — Voice adapter (score: 1.40, via text+embed)
+  5. ariaEngine [lib] — Voice AI connection (score: 1.36, via text+embed)
+
+Backend Services:
+  6. ... etc
+```
+
+After showing results, offer:
+- "Load context for these areas?" → read the start-here.md + .ctx for each unique source folder
+- If results span frontend AND backend → note the cross-boundary connection
+
+### Step 4 — Impact Analysis (when `--impact` flag present)
+
+If `--impact` is in `$ARGUMENTS`, run:
+```
+python3 scripts/ctx-to-kg.py --query "{component_name}" --impact --format json --root .
+```
+
+Present results grouped by risk:
+```
+Impact analysis for "useGameStore"
+
+HIGH RISK (direct dependents — will break if changed):
+  1. GameScreen [screen] — via subscribe edge
+  2. BurgerMenu [component] — via subscribe edge
+  ...
+
+MEDIUM RISK (transitive — 2 hops away):
+  3. DrawerMap [component] — via GameScreen → subscribe
+  ...
+
+INDIRECT (semantically similar — may need review):
+  4. useTranscriptStore [store] — similar state pattern
+  ...
+```
 
 ---
 
