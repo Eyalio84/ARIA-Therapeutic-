@@ -1,6 +1,6 @@
 ---
 name: ctx
-description: "Set up or generate a lazy-loading context management system for any project. `/ctx -new` scaffolds the system on an empty/new project (hook, spec, templates, maintenance rules). `/ctx -doc` documents an existing codebase (tree scan, hub identification, parallel 3-file generation). Stack and language agnostic."
+description: "Set up or generate a lazy-loading context management system for any project. `/ctx -new` scaffolds the system on an empty/new project (hook, spec, templates, maintenance rules). `/ctx -doc` documents an existing codebase (tree scan, hub identification, parallel 3-file generation). `/ctx -update` incrementally patches stale docs. `/ctx -menu` presents an interactive context loader. Stack and language agnostic."
 ---
 
 # /ctx — Lazy-Loading Context Management System
@@ -23,7 +23,8 @@ Read `$ARGUMENTS` to determine the mode:
 - If `$ARGUMENTS` contains `-new` → run **MODE: NEW PROJECT**
 - If `$ARGUMENTS` contains `-doc` → run **MODE: DOCUMENT EXISTING**
 - If `$ARGUMENTS` contains `-update` → run **MODE: UPDATE**
-- If `$ARGUMENTS` is empty → ask the user: "Is this a new/empty project (`-new`), an existing codebase to document (`-doc`), or do you want to update stale docs (`-update`)?"
+- If `$ARGUMENTS` contains `-menu` → run **MODE: MENU**
+- If `$ARGUMENTS` is empty → run **MODE: MENU** (default)
 
 ---
 
@@ -482,6 +483,48 @@ Updated {N} folders:
 
 {M} folders already current — skipped.
 ```
+
+---
+
+## MODE: MENU (`/ctx -menu` or `/ctx` with no args)
+
+This mode presents an interactive context loader — a numbered list of all documented areas in the project. The user picks what they want to work on, and Claude loads that context.
+
+### Step 1 — Discover all start-here.md files
+
+Use `Glob` to find all `**/start-here.md` files in the project. Group them by depth:
+- **Root** (depth 0): the project root start-here.md
+- **Domain** (depth 1): top-level folders (src/, backend/, docs/, etc.)
+- **Component** (depth 2+): nested folders (src/components/su/, backend/routers/, etc.)
+
+### Step 2 — Present numbered menu
+
+Use the `AskUserQuestion` tool to present the choices. Format as a single-select question with options grouped logically:
+
+```
+What would you like to work on?
+
+Options:
+  1. Project overview (root)
+  2. Frontend (src/)
+  3. Backend (backend/)
+  4. SU Lab — voice canvas (src/components/su/)
+  5. Game — therapeutic RPG (src/components/game/)
+  6. Store — e-commerce (src/components/store/)
+  7. Dashboard — therapist UI (src/components/dashboard/)
+  8. SDK tools (src/components/sdk/)
+  ... etc
+```
+
+Build the option list dynamically from the discovered start-here.md files. Use the `# Title` line from each start-here.md as the description. Exclude node_modules and build artifacts.
+
+### Step 3 — Load selected context
+
+Based on the user's choice:
+1. Read the selected folder's `start-here.md`
+2. Read the selected folder's `{folder}.ctx` (for architecture understanding)
+3. If the `start-here.md` has a **Backend Counterpart** section, note the linked backend folders but do NOT auto-load them — mention them to the user: "This area also connects to backend/routers/ — want me to load that context too?"
+4. Report what was loaded and ask what the user wants to do
 
 ---
 
