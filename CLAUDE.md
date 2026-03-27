@@ -118,10 +118,28 @@ When a frontend folder makes HTTP API calls, its docs include:
 
 | Command | What it does |
 |---------|-------------|
-| `/ctx` or `/ctx -menu` | Interactive context loader — pick an area to work on |
+| `/ctx` or `/ctx -menu` | Interactive context loader — pick an area, or type to search |
+| `/ctx -search "query"` | Semantic + graph architectural search (runs ctx-to-kg.py) |
+| `/ctx -search --impact X` | Impact analysis — what depends on component X, grouped by risk |
 | `/ctx -new` | Scaffold the context system on a new project |
-| `/ctx -doc` | Generate docs for an existing codebase (full scan) |
-| `/ctx -update [path]` | Incrementally patch stale or incomplete docs |
+| `/ctx -doc [--dry-run]` | Generate docs for an existing codebase (full scan) |
+| `/ctx -update [path] [--dry-run]` | Incrementally patch stale or incomplete docs |
+
+### Structural Contextual Embeddings (enhancement layer)
+
+The context system has an optional **semantic + graph search** layer built on structural contextual embeddings — vector representations conditioned on KG neighborhood, not just text.
+
+**Files:**
+- `ctx-kg.db` — SQLite KG built from all .ctx files (445 nodes, 528 edges)
+- `data/ctx_embeddings.json` — 50-dimensional embeddings for each node
+- `scripts/ctx-to-kg.py` — parser, KG builder, embedding generator, search + impact query
+- `backend/services/ctx_kg_service.py` — Aria integration (injects architectural context into chat responses)
+
+**How search works:** hybrid scoring — text matching (1.0) + embedding similarity (0.6) + graph traversal (0.8). Surfaces architecturally connected components that grep misses.
+
+**How impact works:** reverse graph traversal from a target node. HIGH risk = direct dependents, MEDIUM = 2-hop transitive, INDIRECT = semantically similar by embedding.
+
+**Rebuilding:** if .ctx files change, rebuild with `python3 scripts/ctx-to-kg.py --root .`
 
 ---
 
