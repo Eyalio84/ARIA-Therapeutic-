@@ -1,6 +1,6 @@
 # game/ — Game Component Tree
 # format: ctx/1.0
-# last-verified: 2026-03-27
+# last-verified: 2026-03-28
 # edges: -> call/render | ~> subscribe/read | => HTTP API call
 
 ## Entry Point

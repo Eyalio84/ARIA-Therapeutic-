@@ -1,6 +1,6 @@
 # game/ — Component Library Documentation
 
-<!-- last-verified: 2026-03-27 -->
+<!-- last-verified: 2026-03-28 -->
 
 ## Manifest
 
@@ -100,7 +100,7 @@ game/
 
 <a id="GameShell"></a>
 ### GameShell.tsx
-**Root orchestrator and screen router.** Maps `currentScreen` from `useGameStore` to one of four screen components (`onboarding`, `interview`, `generating`, `game`). On mount, checks if the backend still has the game loaded; if not, attempts to restore from cartridge or falls back to onboarding. Wraps everything in `ThemedContainer` for CSS variable injection.
+**Root orchestrator and screen router.** Maps `currentScreen` from `useGameStore` to one of four screen components (`onboarding`, `interview`, `generating`, `game`). On mount, runs an interview error recovery guard: if `currentScreen` is `"interview"` and the current question is null or has phase `"error"`, it resets to onboarding instead of rendering a broken interview. For the `"game"` screen, checks if the backend still has the game loaded; if not, attempts to restore from cartridge or falls back to onboarding. Wraps everything in `ThemedContainer` for CSS variable injection.
 
 **Connects to:** `useGameStore` (screen state), `@/lib/gameApi` (session sync), `ThemedContainer`, all screen components.
 

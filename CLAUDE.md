@@ -124,6 +124,7 @@ When a frontend folder makes HTTP API calls, its docs include:
 | `/ctx -new` | Scaffold the context system on a new project |
 | `/ctx -doc [--dry-run]` | Generate docs for an existing codebase (full scan) |
 | `/ctx -update [path] [--dry-run]` | Incrementally patch stale or incomplete docs |
+| `/ctx -upkeep` | Full maintenance: update + KG rebuild + drift report. Use with `/loop 30m` or `/schedule daily` |
 
 ### Structural Contextual Embeddings (enhancement layer)
 

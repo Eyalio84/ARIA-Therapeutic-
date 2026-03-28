@@ -1,11 +1,12 @@
 # services/ — Backend Service Layer
 # format: ctx/1.0
-# last-verified: 2026-03-26
+# last-verified: 2026-03-28
 # edges: -> call/render | ~> subscribe/read
 
 ## Orchestrators
   response_service : Full Aria pipeline: retrieve, compute, validate [service] @entry
     -> nai_service, persona_service, introspection
+    ~> ctx_kg_service
   therapy_service : Therapy pipeline: safety, KG, 4D, context [service] @entry
     -> therapy_safety
     ~> therapy_kg_store
@@ -43,6 +44,8 @@
     ~> persona_engine_lib
   nai_service : IntentGraph search over jewelry KG [service]
     ~> jewelry_kg_store, intentgraph_lib
+  ctx_kg_service : Architectural KG query — search, stats, Aria context injection [service]
+    ~> ctx_kg_db, ctx_embeddings
 
 ## Device Layer
   device_state : Cached device sensor polling [service]
@@ -59,6 +62,8 @@
   controls_db : Pause, disclosure, messages [store]
   therapy_kg_store : Per-user therapy graphs [store]
   jewelry_kg_store : Product knowledge graph [store]
+  ctx_kg_db : Architectural KG from .ctx files [store]
+  ctx_embeddings : Structural contextual embeddings JSON [store]
   scene_cache : Cached scene images [store]
   icd11_cache : Mental disorders JSON [store]
 

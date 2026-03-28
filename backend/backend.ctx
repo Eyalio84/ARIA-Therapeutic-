@@ -1,6 +1,6 @@
 # backend/ — FastAPI Backend
 # format: ctx/1.0
-# last-verified: 2026-03-26
+# last-verified: 2026-03-28
 # edges: -> call/render | ~> subscribe/read
 
 ## Root — Entry Points
@@ -17,7 +17,7 @@
   persona : 9 files — 4D dimension computers [dir]
   routers : 10 files — API route handlers [dir]
     -> services
-  services : 21 files — Business logic [dir]
+  services : 22 files — Business logic [dir]
     -> data, persona
     ~> GeminiAPI, ICD11, TermuxAPI
   templates : 1 file — Game client SPA [dir]

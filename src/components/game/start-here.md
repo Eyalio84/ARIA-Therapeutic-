@@ -1,4 +1,4 @@
-<!-- last-verified: 2026-03-27 -->
+<!-- last-verified: 2026-03-28 -->
 > Parent: [../start-here.md](../start-here.md)
 
 # game/ — Start Here
@@ -7,7 +7,7 @@
 
 | Component | What it is | game.md | game.ctx |
 |---|---|---|---|
-| **GameShell** | Root screen router. Maps `currentScreen` to one of 4 phase views. Hydrates backend session on mount. | [GameShell](game.md#GameShell) | `GameShell` node |
+| **GameShell** | Root screen router. Maps `currentScreen` to one of 4 phase views. Hydrates backend session on mount. Interview error recovery guard resets to onboarding if question is null or has error phase. | [GameShell](game.md#GameShell) | `GameShell` node |
 | **OnboardingScreen** | First screen — vibe selection, depth picker, cartridge browser, saved game list. Entry to interview or direct cartridge load. | [OnboardingScreen](game.md#OnboardingScreen) | `OnboardingScreen` node |
 | **InterviewScreen** | AI-driven Q&A that builds the game world. Handles mirror bubble therapeutic moments and phase progression. | [InterviewScreen](game.md#InterviewScreen) | `InterviewScreen` node |
 | **GeneratingScreen** | Stateless loading spinner shown during world generation. No logic — parent drives transitions. | [GeneratingScreen](game.md#GeneratingScreen) | `GeneratingScreen` node |

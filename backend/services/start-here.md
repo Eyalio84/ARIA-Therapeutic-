@@ -1,4 +1,4 @@
-<!-- last-verified: 2026-03-25 -->
+<!-- last-verified: 2026-03-28 -->
 > Parent: [../start-here.md](../start-here.md)
 
 # services/ — Start Here
@@ -8,6 +8,7 @@
 | Component | What it is | services.md | services.ctx |
 |---|---|---|---|
 | **computer_use_service** | Web fetch, Gemini-powered search/vision, and game self-test suite | [computer_use_service](services.md#computer_use_service) | computer_use_service node |
+| **ctx_kg_service** | Architectural KG query service — loads ctx-kg.db + embeddings, provides search and stats for Aria context injection (163 lines) | [ctx_kg_service](services.md#ctx_kg_service) | ctx_kg_service node |
 | **device_state** | Cached device sensor polling (battery, thermal, RAM, WiFi) with adaptive behavior properties | [device_state](services.md#device_state) | device_state node |
 | **game_generator** | Transforms interview synthesis into a playable game config with locations, NPCs, quests, and endings | [game_generator](services.md#game_generator) | game_generator node |
 | **game_interview** | SFBT/OARS therapeutic interview engine with five phases, three depths, mirror bubbles | [game_interview](services.md#game_interview) | game_interview node |

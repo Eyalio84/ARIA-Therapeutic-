@@ -1,6 +1,6 @@
 ---
 name: ctx
-description: "Set up or generate a lazy-loading context management system for any project. `/ctx -new` scaffolds the system on an empty/new project (hook, spec, templates, maintenance rules). `/ctx -doc` documents an existing codebase (tree scan, hub identification, parallel 3-file generation). `/ctx -update` incrementally patches stale docs. `/ctx -menu` presents an interactive context loader. Stack and language agnostic."
+description: "Set up or generate a lazy-loading context management system for any project. `/ctx -new` scaffolds the system on an empty/new project (hook, spec, templates, maintenance rules). `/ctx -doc` documents an existing codebase (tree scan, hub identification, parallel 3-file generation). `/ctx -update` incrementally patches stale docs. `/ctx -upkeep` runs full maintenance (update + KG rebuild + drift report) — use with `/loop 30m` or `/schedule daily`. `/ctx -menu` presents an interactive context loader. Stack and language agnostic."
 ---
 
 # /ctx — Lazy-Loading Context Management System
@@ -23,6 +23,7 @@ Read `$ARGUMENTS` to determine the mode:
 - If `$ARGUMENTS` contains `-new` → run **MODE: NEW PROJECT**
 - If `$ARGUMENTS` contains `-doc` → run **MODE: DOCUMENT EXISTING**
 - If `$ARGUMENTS` contains `-update` → run **MODE: UPDATE**
+- If `$ARGUMENTS` contains `-upkeep` → run **MODE: UPKEEP**
 - If `$ARGUMENTS` contains `-search` → run **MODE: SEARCH**
 - If `$ARGUMENTS` contains `-menu` → run **MODE: MENU**
 - If `$ARGUMENTS` is empty → run **MODE: MENU** (default — includes search fallback)
@@ -561,6 +562,67 @@ Updated {N} folders:
   ...
 
 {M} folders already current — skipped.
+```
+
+---
+
+## MODE: UPKEEP (`/ctx -upkeep`)
+
+This mode performs a full documentation maintenance cycle — update stale docs, rebuild the knowledge graph and embeddings, and report what drifted. Designed for recurring use via `/loop` (during sessions) or `/schedule` (daily cron).
+
+### Step 1 — Run UPDATE (full project scope)
+
+Execute MODE: UPDATE logic with scope = full project (no path restriction, no `--dry-run`). This finds all stale folders and patches them.
+
+**Important:** Run silently — don't ask for confirmation before updating. Upkeep is meant to run unattended.
+
+If no folders need updating, skip to Step 3 and note "0 folders updated" in the report.
+
+### Step 2 — Rebuild KG + Embeddings
+
+Check if `scripts/ctx-to-kg.py` exists at project root.
+
+If yes, run via Bash:
+```
+python3 scripts/ctx-to-kg.py --root . --stats
+```
+
+This rebuilds the SQLite knowledge graph and regenerates structural contextual embeddings from all `.ctx` files. The `--stats` flag prints node/edge counts.
+
+If the script doesn't exist, skip this step and note "KG rebuild skipped — ctx-to-kg.py not found" in the report.
+
+### Step 3 — Drift Report
+
+Print a summary:
+
+```
+/ctx -upkeep complete — {TIMESTAMP}
+
+Documentation:
+  Updated: {N} folders
+  Current: {M} folders (skipped)
+  {list of updated folders with what changed}
+
+Knowledge Graph:
+  Rebuilt: {nodes} nodes, {edges} edges
+  Embeddings: {vectors} vectors ({dimensions}d)
+  — OR —
+  Skipped (ctx-to-kg.py not found)
+
+Drift detected:
+  {list any folders where source files changed but docs couldn't be auto-patched}
+  — OR —
+  None — all docs aligned with code ✓
+```
+
+### Usage with /loop and /schedule
+
+```bash
+# During active coding (every 30 minutes):
+/loop 30m /ctx -upkeep
+
+# Daily automated maintenance:
+/schedule daily /ctx -upkeep
 ```
 
 ---

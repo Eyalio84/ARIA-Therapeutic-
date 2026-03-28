@@ -26,6 +26,16 @@ export default function GameShell() {
   // On mount, re-sync backend runtime if we have persisted game state
   useEffect(() => {
     const resync = async () => {
+      // If interview has an error question or no question at all, reset to onboarding
+      if (currentScreen === "interview") {
+        const q = useGameStore.getState().currentQuestion
+        if (!q || q.phase === "error") {
+          useGameStore.getState().setScreen("onboarding")
+          setHydrated(true)
+          return
+        }
+      }
+
       if (currentScreen === "game" && gameConfig && userId) {
         setSyncing(true)
         try {

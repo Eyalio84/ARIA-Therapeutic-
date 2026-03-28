@@ -172,7 +172,7 @@ export default function DocsPage() {
   const [toast, setToast] = useState("")
 
   useEffect(() => {
-    fetch(`${API}/list`).then((r) => r.json()).then(setCategories).catch(() => {})
+    fetch(`${API}/list`).then((r) => r.json()).then((d) => setCategories(Array.isArray(d) ? d : [])).catch(() => {})
   }, [])
 
   const openDoc = useCallback(async (id: string) => {

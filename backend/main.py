@@ -27,7 +27,10 @@ from services.persona_service import PersonaService
 from services.introspection import IntrospectionService
 from services.response_service import ResponseService
 from services.ctx_kg_service import CtxKGService
-from routers import aria, products, kg
+from routers import aria, products, kg, game
+from services.game_interview import GameInterviewEngine
+from services.game_generator import GameGenerator
+from services.game_runtime import GameRuntime
 
 # ── App Setup ────────────────────────────────────────────────────────
 
@@ -69,11 +72,26 @@ aria.init_services(nai_service, persona_service, response_service, introspection
 products.init_services(nai_service)
 kg.init_services(nai_service)
 
+# Game services
+_gemini_key_path = "/storage/emulated/0/Download/perplexity/gemini.txt"
+_gemini_key = ""
+try:
+    with open(_gemini_key_path) as f:
+        _gemini_key = f.read().strip()
+except FileNotFoundError:
+    print("  Game: Gemini key not found — generator will use templates")
+
+interview_engine = GameInterviewEngine()
+game_generator = GameGenerator(gemini_api_key=_gemini_key)
+game_runtime = GameRuntime()
+game.init_services(interview_engine, game_generator, game_runtime)
+
 # ── Register Routers ─────────────────────────────────────────────────
 
 app.include_router(aria.router)
 app.include_router(products.router)
 app.include_router(kg.router)
+app.include_router(game.router)
 
 
 @app.get("/")

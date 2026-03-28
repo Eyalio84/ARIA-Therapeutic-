@@ -1,4 +1,4 @@
-<!-- last-verified: 2026-03-25 -->
+<!-- last-verified: 2026-03-28 -->
 
 # services/ — Full Reference
 
@@ -11,7 +11,7 @@
 | **Framework / stack** | Python 3, asyncio, aiohttp, sqlite3, urllib, Gemini API |
 | **Entry point** | `response_service.py` (jewelry pipeline), `therapy_service.py` (therapy pipeline), `game_runtime.py` (game engine) |
 | **External dependencies** | `data/build_therapy_kg.TherapyKG`, `persona/*` (4D dimension computers), `config` module, `nai/` (IntentGraphEngine, KGManager), `persona_engine` (PersonaEngine), Gemini API, Termux API, ICD-11 WHO API, aiohttp |
-| **Component/file count** | 21 files (20 modules + `__init__.py`) |
+| **Component/file count** | 22 files (21 modules + `__init__.py`) |
 | **Architecture style** | Service-oriented — stateless orchestrators wrapping domain engines, per-user SQLite persistence, singleton device polling, LLM-as-a-service via Gemini |
 
 ---
@@ -22,6 +22,7 @@
 services/
   __init__.py                  # Empty package marker
   computer_use_service.py      # Web fetch, Gemini search, image analysis, self-test
+  ctx_kg_service.py            # Architectural KG query — search, stats, Aria context injection
   device_state.py              # Cached device sensor polling (battery, thermal, RAM)
   game_generator.py            # Transforms interview synthesis into playable game config
   game_interview.py            # SFBT/OARS therapeutic interview engine
@@ -62,6 +63,22 @@ services/
 - `self_test_game()` runs 4 automated tests against game API (health, cartridges, gameplay, snapshot)
 
 **Connects to:** Gemini API (external), game API endpoints (localhost:8095)
+
+---
+
+<a id="ctx_kg_service"></a>
+
+### services/ctx_kg_service.py
+
+**Architectural knowledge graph query service — loads ctx-kg.db (SQLite) and ctx_embeddings.json, provides hybrid search (text + embedding + graph traversal) and stats. Injected into ResponseService for Aria architectural context awareness. Graceful degradation if DB missing.**
+
+- `CtxKGService(db_path, embeddings_path)` loads KG and embeddings at init
+- `available` property indicates whether the KG loaded successfully
+- `get_stats()` returns node/edge counts
+- `search(query)` performs hybrid scoring — text match + embedding similarity + graph traversal
+- Used by `main.py` to optionally inject into `ResponseService` via `ctx_kg=` parameter
+
+**Connects to:** `ctx-kg.db` (SQLite, built by `scripts/ctx-to-kg.py`), `data/ctx_embeddings.json`
 
 ---
 
@@ -243,7 +260,7 @@ services/
 - `validate_response()` checks generated output against 4D state before delivery
 - `_build_kg_context()` converts top KG results into natural language with material/care/pairing details
 
-**Connects to:** `services.nai_service.NAIService`, `services.persona_service.PersonaService`, `services.introspection.IntrospectionService`
+**Connects to:** `services.nai_service.NAIService`, `services.persona_service.PersonaService`, `services.introspection.IntrospectionService`, `services.ctx_kg_service.CtxKGService` (optional, via `ctx_kg=` parameter)
 
 ---
 
